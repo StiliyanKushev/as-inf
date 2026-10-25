@@ -110,3 +110,8 @@ pod when it is idle; GPU billing continues while it is running.
 
 See [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) for the file layout and exact
 recovery behavior.
+
+For a complete new-computer procedure covering pod creation, state validation,
+Hugging Face login, Klein 9B LoRA training, checkpoint selection, and cost-safe
+shutdown, see
+[docs/RECOVERY_AND_TRAINING_RUNBOOK.md](docs/RECOVERY_AND_TRAINING_RUNBOOK.md).
