@@ -75,7 +75,8 @@ LFS.
   behavior without requiring a placeholder photo. A built-in interactive crop
   lets you frame an arbitrary source image at 3:4 before it enters Qwen,
   reference conditioning, and the final comparison; crop-to-fill normalization
-  prevents aspect-ratio stretching and resize padding.
+  prevents aspect-ratio stretching and resize padding. The installer enables
+  ComfyUI Nodes 2.0 because the visual crop editor requires that renderer.
 - `final-kurva-maker.json` — prompt-only predecessor.
 - `4k-local-repair-flux2-v2.json` — masked FLUX.2 repair flow.
 - `4k-masked-editor.json` — crop-and-stitch masked editor.
