@@ -9,7 +9,10 @@ LOCK="$ROOT/manifests/plugins.lock.tsv"
 export DEBIAN_FRONTEND=noninteractive
 
 apt-get update
-apt-get install -y --no-install-recommends git curl rsync zstd python3-venv
+apt-get install -y --no-install-recommends git git-lfs curl rsync zstd python3-venv
+
+git -C "$ROOT" lfs install --local
+git -C "$ROOT" lfs pull
 
 read -r _ comfy_repo comfy_commit < <(awk -F '\t' '$1=="ComfyUI" {print $1, $2, $3}' "$LOCK")
 if [[ ! -d "$COMFY_DIR/.git" ]]; then
@@ -39,6 +42,20 @@ done
 "$ROOT/scripts/install-runtime.sh"
 "$ROOT/scripts/download-public-models.sh"
 
+mkdir -p "$COMFY_DIR/models/loras"
+for name in \
+  FLUX2_KLEIN_UNLOCKED_V2.safetensors \
+  klein_instagramreality_v2.safetensors \
+  HighDetail.safetensors \
+  alexsparks.safetensors; do
+  source_file="$ROOT/models/loras/$name"
+  if [[ ! -s "$source_file" ]] || head -c 64 "$source_file" | grep -q 'git-lfs.github.com/spec'; then
+    echo "Git LFS object is unavailable: $source_file" >&2
+    exit 1
+  fi
+  cp -f "$source_file" "$COMFY_DIR/models/loras/$name"
+done
+
 qwen_dir="$COMFY_DIR/models/LLM/Qwen/Qwen3-VL-8B-Instruct"
 if [[ ! -f "$qwen_dir/config.json" ]]; then
   "$VENV_DIR/bin/python" - "$qwen_dir" <<'PY'
@@ -53,6 +70,5 @@ export OLLAMA_MODELS="$WORKSPACE/ollama/models"
 ollama pull '0xIbra/supergemma4-26b-uncensored-gguf-v2:Q4_K_M'
 
 echo
-echo "Base installation complete. Upload the four LoRAs listed in"
-echo "manifests/model-sha256.txt, then run:"
+echo "Base installation and LoRA restoration complete. Now run:"
 echo "  /workspace/recover-final-kurva-maker.sh"

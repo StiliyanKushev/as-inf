@@ -5,7 +5,8 @@ The repository contains workflows, pinned plugin revisions, integrity manifests,
 and scripts for recovering the existing RunPod network volume or provisioning a
 new one.
 
-Model weights, LoRAs, reference photos, generated images, API keys, and SSH
+The four LoRAs required by the saved workflows are stored with Git LFS. Large
+base-model weights, reference photos, generated images, API keys, and SSH
 private keys are intentionally excluded from Git.
 
 ## Current deployment
@@ -61,8 +62,8 @@ git clone https://github.com/StiliyanKushev/as-inf.git /workspace/as-inf
 
 The bootstrap pins ComfyUI and every custom node, installs the Python packages,
 downloads the public FLUX.2/Qwen/VAE files, downloads Qwen3-VL, installs Ollama,
-and pulls the exact SuperGemma model. The four LoRAs are not redistributed; use
-`scripts/upload-loras.sh` from a machine that already has them.
+pulls the exact SuperGemma model, and restores the four workflow LoRAs from Git
+LFS.
 
 ## Workflows
 
