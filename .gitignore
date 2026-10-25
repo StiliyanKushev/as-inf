@@ -39,6 +39,12 @@ images/
 !assets/persona_refs/
 !assets/persona_refs/*.png
 
+# The curated LoRA training dataset is versioned with Git LFS.
+!training/
+!training/datasets/
+!training/datasets/vexa_person/
+!training/datasets/vexa_person/*.png
+
 # Local/runtime files.
 .venv/
 __pycache__/

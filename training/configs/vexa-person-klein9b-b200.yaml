@@ -1,0 +1,77 @@
+---
+job: extension
+config:
+  name: "vexa_person_klein9b_v1"
+  process:
+    - type: "sd_trainer"
+      training_folder: "/workspace/training/output"
+      device: cuda:0
+      trigger_word: "vexa_person"
+
+      network:
+        type: "lora"
+        linear: 32
+        linear_alpha: 32
+
+      save:
+        dtype: float16
+        save_every: 250
+        # Keep every checkpoint so 750-1500 can be compared with the final run.
+        max_step_saves_to_keep: 8
+        push_to_hub: false
+
+      datasets:
+        - folder_path: "/workspace/as-inf/training/datasets/vexa_person"
+          caption_ext: "txt"
+          caption_dropout_rate: 0.05
+          shuffle_tokens: false
+          cache_latents_to_disk: true
+          resolution: [512, 768, 1024]
+
+      train:
+        batch_size: 1
+        steps: 2000
+        gradient_accumulation_steps: 1
+        train_unet: true
+        train_text_encoder: false
+        # The B200 has enough VRAM to avoid checkpointing and model offloading.
+        gradient_checkpointing: false
+        noise_scheduler: "flowmatch"
+        timestep_type: "weighted"
+        optimizer: "adamw8bit"
+        lr: 1e-4
+        dtype: bf16
+        ema_config:
+          use_ema: false
+          ema_decay: 0.99
+
+      model:
+        name_or_path: "black-forest-labs/FLUX.2-klein-base-9B"
+        arch: "flux2_klein_9b"
+        # Full BF16 is intentional on the 180 GB B200.
+        quantize: false
+        quantize_te: false
+        low_vram: false
+
+      sample:
+        sampler: "flowmatch"
+        sample_every: 250
+        sample_start_step: 250
+        width: 1024
+        height: 1024
+        prompts:
+          - "A realistic close-up photograph of vexa_person, front view, neutral expression, soft window daylight, plain warm-grey background."
+          - "A realistic iPhone front-camera selfie of vexa_person seated at an outdoor European cafe in natural morning light."
+          - "A realistic waist-up street photograph of vexa_person, three-quarter view, casual clothing, overcast daylight, softly blurred city background."
+          - "A realistic full-body fashion photograph of vexa_person standing naturally in a park, simple clothing, soft daylight."
+        neg: ""
+        seed: 42
+        walk_seed: false
+        guidance_scale: 4
+        sample_steps: 30
+
+meta:
+  name: "[name]"
+  version: "1.0"
+  base_model: "black-forest-labs/FLUX.2-klein-base-9B"
+  trigger_word: "vexa_person"
