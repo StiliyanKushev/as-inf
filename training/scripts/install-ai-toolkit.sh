@@ -7,6 +7,11 @@ VENV_DIR="${AI_TOOLKIT_VENV:-$WORKSPACE/ai-toolkit-venv}"
 TOOLKIT_COMMIT="73ebae13a468942ded8b47991b5d56eeeea25c36"
 MIN_FREE_GIB="${MIN_FREE_GIB:-50}"
 
+# RunPod's ComfyUI image constrains pip to the runtime's older torch build.
+# This trainer uses its own venv and the AI Toolkit-pinned CUDA 13 build, so
+# inherited ComfyUI pip constraints must not leak into this installation.
+unset PIP_CONSTRAINT PIP_EXTRA_INDEX_URL
+
 available_kib="$(df -Pk "$WORKSPACE" | awk 'NR==2 {print $4}')"
 required_kib="$((MIN_FREE_GIB * 1024 * 1024))"
 if (( available_kib < required_kib )); then
