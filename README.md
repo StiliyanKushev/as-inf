@@ -72,7 +72,10 @@ LFS.
   conditioning; choosing `None` skips both. Both modes use two-pass SuperGemma
   prompt compilation, FLUX.2 Klein generation, DyPE, and comparison review.
   The bundled `ASInfOptionalReferenceImage` node provides the single-control
-  behavior without requiring a placeholder photo.
+  behavior without requiring a placeholder photo. A built-in interactive crop
+  lets you frame an arbitrary source image at 3:4 before it enters Qwen,
+  reference conditioning, and the final comparison; crop-to-fill normalization
+  prevents aspect-ratio stretching and resize padding.
 - `final-kurva-maker.json` — prompt-only predecessor.
 - `4k-local-repair-flux2-v2.json` — masked FLUX.2 repair flow.
 - `4k-masked-editor.json` — crop-and-stitch masked editor.

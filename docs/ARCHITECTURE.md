@@ -28,13 +28,17 @@ the persistent ComfyUI checkout.
 
 1. `ASInfOptionalReferenceImage` emits both the selected image and a Boolean
    indicating whether the selector is `None`.
-2. With a reference, Qwen3-VL describes the photograph and FLUX.2 receives its
-   encoded reference latent. With `None`, lazy switches skip both branches.
-3. SuperGemma rewrites the user request as either a modification or a complete
+2. A built-in `ImageCropV2` control provides a draggable, locked 3:4 crop. Its
+   result is normalized to 1008 × 1344 with crop-to-fill, so arbitrary source
+   aspect ratios are neither stretched nor padded.
+3. With a reference, the same cropped pixels reach Qwen3-VL, the encoded
+   FLUX.2 reference latent, and the comparison viewer. With `None`, lazy
+   switches skip the reference branches.
+4. SuperGemma rewrites the user request as either a modification or a complete
    new-image description.
-4. A second SuperGemma pass resolves the selected mode into one conflict-free
+5. A second SuperGemma pass resolves the selected mode into one conflict-free
    FLUX.2 prompt.
-5. FLUX.2 Klein renders at 2016 × 2688 and delivers 3024 × 4032.
+6. FLUX.2 Klein renders at 2016 × 2688 and delivers 3024 × 4032.
 
 ## Files excluded from Git
 

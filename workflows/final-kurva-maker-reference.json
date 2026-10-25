@@ -1,8 +1,8 @@
 {
   "id": "4bfcc5b5-7c82-4fe1-9121-4320bda7551e",
-  "revision": 7,
-  "last_node_id": 73,
-  "last_link_id": 151,
+  "revision": 8,
+  "last_node_id": 75,
+  "last_link_id": 153,
   "nodes": [
     {
       "id": 43,
@@ -95,10 +95,10 @@
         "widget_ue_connectable": {}
       },
       "widgets_values": [
-        "FINAL KURVA MAKER · QUICK GUIDE\n\nCONTROL PANEL\nOnly two inputs are needed: OPTIONAL REFERENCE and REQUEST / PROMPT.\n\nPROMPT-ONLY GENERATION\nChoose [None — prompt-only mode] in OPTIONAL REFERENCE. In REQUEST / PROMPT, describe the complete desired image: subject, pose, clothing, setting, camera/framing, lighting, and style. Qwen analysis and reference latent conditioning are skipped automatically.\n\nREFERENCE EDITING\nSelect or upload a real image in OPTIONAL REFERENCE. Reference mode activates automatically. In REQUEST / PROMPT, describe only what should change. Leave the request blank when you only want the fictional LoRA identity applied. The 1.0 MP preparation preserves composition, pose, lighting, and scene geometry; try 0.6–0.75 MP for stronger structural edits.\n\nAUTOMATIC PIPELINE\nSuperGemma rewrites the request, then compiles either the Qwen source analysis or the prompt-only instruction into one FLUX.2 prompt. Inspect FINAL COMPILED PROMPT when diagnosing behavior.\n\nOUTPUT\nThe result is generated at 2016 × 2688 and delivered at 3024 × 4032. With a reference selected, hover over the comparison to reveal the aligned source. With None selected, both comparison inputs use the generated result."
+        "FINAL KURVA MAKER · QUICK GUIDE\n\nCONTROL PANEL\nUse OPTIONAL REFERENCE, REFERENCE CROP, REQUEST / PROMPT, and the FINAL RESULT slider.\n\nPROMPT-ONLY GENERATION\nChoose [None — prompt-only mode] in OPTIONAL REFERENCE. Describe the complete desired image in REQUEST / PROMPT. The crop, Qwen analysis, and reference latent branches are skipped automatically.\n\nREFERENCE EDITING\nSelect or upload a real image. In REFERENCE CROP, choose 3:4 from the ratio menu, keep the lock enabled, resize the rectangle from a corner, and drag it over the exact composition to preserve. The crop is normalized with crop-to-fill rather than stretching, then the same pixels go to Qwen, the FLUX.2 reference latent, and the comparison viewer. In REQUEST / PROMPT, describe only what should change. Leave it blank when you only want the fictional LoRA identity applied.\n\nAUTOMATIC PIPELINE\nSuperGemma rewrites the request, then compiles either the Qwen source analysis or the prompt-only instruction into one FLUX.2 prompt. Inspect FINAL COMPILED PROMPT when diagnosing behavior.\n\nOUTPUT\nThe result is generated at 2016 × 2688 and delivered at 3024 × 4032. With a reference selected, hover over the comparison to reveal the aligned cropped source. With None selected, both comparison inputs use the generated result."
       ],
       "widgets_values_named": {
-        "text": "FINAL KURVA MAKER · QUICK GUIDE\n\nCONTROL PANEL\nOnly two inputs are needed: OPTIONAL REFERENCE and REQUEST / PROMPT.\n\nPROMPT-ONLY GENERATION\nChoose [None — prompt-only mode] in OPTIONAL REFERENCE. In REQUEST / PROMPT, describe the complete desired image: subject, pose, clothing, setting, camera/framing, lighting, and style. Qwen analysis and reference latent conditioning are skipped automatically.\n\nREFERENCE EDITING\nSelect or upload a real image in OPTIONAL REFERENCE. Reference mode activates automatically. In REQUEST / PROMPT, describe only what should change. Leave the request blank when you only want the fictional LoRA identity applied. The 1.0 MP preparation preserves composition, pose, lighting, and scene geometry; try 0.6–0.75 MP for stronger structural edits.\n\nAUTOMATIC PIPELINE\nSuperGemma rewrites the request, then compiles either the Qwen source analysis or the prompt-only instruction into one FLUX.2 prompt. Inspect FINAL COMPILED PROMPT when diagnosing behavior.\n\nOUTPUT\nThe result is generated at 2016 × 2688 and delivered at 3024 × 4032. With a reference selected, hover over the comparison to reveal the aligned source. With None selected, both comparison inputs use the generated result."
+        "text": "FINAL KURVA MAKER · QUICK GUIDE\n\nCONTROL PANEL\nUse OPTIONAL REFERENCE, REFERENCE CROP, REQUEST / PROMPT, and the FINAL RESULT slider.\n\nPROMPT-ONLY GENERATION\nChoose [None — prompt-only mode] in OPTIONAL REFERENCE. Describe the complete desired image in REQUEST / PROMPT. The crop, Qwen analysis, and reference latent branches are skipped automatically.\n\nREFERENCE EDITING\nSelect or upload a real image. In REFERENCE CROP, choose 3:4 from the ratio menu, keep the lock enabled, resize the rectangle from a corner, and drag it over the exact composition to preserve. The crop is normalized with crop-to-fill rather than stretching, then the same pixels go to Qwen, the FLUX.2 reference latent, and the comparison viewer. In REQUEST / PROMPT, describe only what should change. Leave it blank when you only want the fictional LoRA identity applied.\n\nAUTOMATIC PIPELINE\nSuperGemma rewrites the request, then compiles either the Qwen source analysis or the prompt-only instruction into one FLUX.2 prompt. Inspect FINAL COMPILED PROMPT when diagnosing behavior.\n\nOUTPUT\nThe result is generated at 2016 × 2688 and delivered at 3024 × 4032. With a reference selected, hover over the comparison to reveal the aligned cropped source. With None selected, both comparison inputs use the generated result."
       },
       "color": "#32353b",
       "bgcolor": "#484d55",
@@ -1785,7 +1785,7 @@
         -2260
       ],
       "size": [
-        500,
+        420,
         480
       ],
       "flags": {},
@@ -1808,9 +1808,7 @@
           "name": "image",
           "type": "IMAGE",
           "links": [
-            115,
-            122,
-            125
+            152
           ]
         },
         {
@@ -1918,7 +1916,7 @@
       "id": 57,
       "type": "Image Comparer (rgthree)",
       "pos": [
-        -780,
+        -400,
         -2260
       ],
       "size": [
@@ -2272,11 +2270,11 @@
       "id": 61,
       "type": "PrimitiveStringMultiline",
       "pos": [
-        -1600,
+        -1100,
         -2260
       ],
       "size": [
-        700,
+        620,
         360
       ],
       "flags": {},
@@ -2894,6 +2892,167 @@
       },
       "color": "#30363b",
       "bgcolor": "#454d54"
+    },
+    {
+      "id": 74,
+      "type": "ImageCropV2",
+      "pos": [
+        -1700,
+        -2260
+      ],
+      "size": [
+        520,
+        700
+      ],
+      "flags": {},
+      "order": 39,
+      "mode": 0,
+      "inputs": [
+        {
+          "localized_name": "image",
+          "name": "image",
+          "type": "IMAGE",
+          "link": 152
+        },
+        {
+          "localized_name": "crop_region",
+          "name": "crop_region",
+          "type": "BOUNDING_BOX",
+          "widget": {
+            "name": "crop_region"
+          },
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "localized_name": "IMAGE",
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            153
+          ]
+        }
+      ],
+      "title": "REFERENCE CROP · select 3:4, then drag/resize",
+      "properties": {
+        "Node name for S&R": "ImageCropV2",
+        "cnr_id": "comfy-core",
+        "ver": "0.35.0",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        {
+          "x": 0,
+          "y": 0,
+          "width": 768,
+          "height": 1024
+        },
+        0,
+        0,
+        768,
+        1024
+      ],
+      "widgets_values_named": {
+        "crop_region": {
+          "x": 0,
+          "y": 0,
+          "width": 768,
+          "height": 1024
+        }
+      },
+      "color": "#2d5361",
+      "bgcolor": "#3d7183"
+    },
+    {
+      "id": 75,
+      "type": "ImageScale",
+      "pos": [
+        -2200,
+        -350
+      ],
+      "size": [
+        360,
+        130
+      ],
+      "flags": {},
+      "order": 40,
+      "mode": 0,
+      "inputs": [
+        {
+          "localized_name": "image",
+          "name": "image",
+          "type": "IMAGE",
+          "link": 153
+        },
+        {
+          "localized_name": "upscale_method",
+          "name": "upscale_method",
+          "type": "COMBO",
+          "widget": {
+            "name": "upscale_method"
+          },
+          "link": null
+        },
+        {
+          "localized_name": "width",
+          "name": "width",
+          "type": "INT",
+          "widget": {
+            "name": "width"
+          },
+          "link": null
+        },
+        {
+          "localized_name": "height",
+          "name": "height",
+          "type": "INT",
+          "widget": {
+            "name": "height"
+          },
+          "link": null
+        },
+        {
+          "localized_name": "crop",
+          "name": "crop",
+          "type": "COMBO",
+          "widget": {
+            "name": "crop"
+          },
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "localized_name": "IMAGE",
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            115,
+            122,
+            125
+          ]
+        }
+      ],
+      "title": "Normalize reference · crop-to-fill 1008 × 1344 (3:4)",
+      "properties": {
+        "Node name for S&R": "ImageScale",
+        "cnr_id": "comfy-core",
+        "ver": "0.3.62",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "lanczos",
+        1008,
+        1344,
+        "center"
+      ],
+      "widgets_values_named": {
+        "upscale_method": "lanczos",
+        "width": 1008,
+        "height": 1344,
+        "crop": "center"
+      }
     }
   ],
   "links": [
@@ -3027,7 +3186,7 @@
     ],
     [
       115,
-      51,
+      75,
       0,
       52,
       0,
@@ -3083,7 +3242,7 @@
     ],
     [
       122,
-      51,
+      75,
       0,
       56,
       0,
@@ -3107,7 +3266,7 @@
     ],
     [
       125,
-      51,
+      75,
       0,
       58,
       0,
@@ -3288,6 +3447,22 @@
       72,
       1,
       "IMAGE"
+    ],
+    [
+      152,
+      51,
+      0,
+      74,
+      0,
+      "IMAGE"
+    ],
+    [
+      153,
+      74,
+      0,
+      75,
+      0,
+      "IMAGE"
     ]
   ],
   "groups": [
@@ -3297,7 +3472,7 @@
       "bounding": [
         -2280,
         -2360,
-        2260,
+        2640,
         930
       ],
       "color": "#315e80",
@@ -3321,9 +3496,9 @@
       "id": 2,
       "title": "02 · REFERENCE PREPARATION",
       "bounding": [
-        -1780,
+        -2280,
         -460,
-        970,
+        1470,
         620
       ],
       "color": "#3f5871",
