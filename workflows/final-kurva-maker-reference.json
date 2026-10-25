@@ -1,6 +1,6 @@
 {
   "id": "4bfcc5b5-7c82-4fe1-9121-4320bda7551e",
-  "revision": 9,
+  "revision": 10,
   "last_node_id": 75,
   "last_link_id": 153,
   "nodes": [
@@ -64,10 +64,14 @@
         "widget_ue_connectable": {}
       },
       "widgets_values": [
-        "FINAL KURVA MAKER · QUICK GUIDE\n\nCONTROL PANEL\nUse OPTIONAL REFERENCE + FIXED 3:4 CROP, REQUEST / PROMPT, and the FINAL RESULT slider.\n\nPROMPT-ONLY GENERATION\nChoose [None — prompt-only mode]. Describe the complete desired image in REQUEST / PROMPT. Qwen analysis and reference latent conditioning are skipped automatically.\n\nREFERENCE EDITING\nSelect or upload a real image. The crop frame is permanently locked to 3:4: drag inside it to reposition it and use the mouse wheel over it to zoom. There are no ratio or coordinate controls to configure. The exact framed pixels go to Qwen, the FLUX.2 reference latent, and the comparison viewer. In REQUEST / PROMPT, describe only what should change. Leave it blank when you only want the fictional LoRA identity applied.\n\nAUTOMATIC PIPELINE\nSuperGemma rewrites the request, then compiles either the Qwen source analysis or the prompt-only instruction into one FLUX.2 prompt. Inspect FINAL COMPILED PROMPT when diagnosing behavior.\n\nOUTPUT\nThe result is generated at 2016 × 2688 and delivered at 3024 × 4032. With a reference selected, hover over the comparison to reveal the aligned cropped source. With None selected, both comparison inputs use the generated result."
+        2016,
+        2688,
+        1
       ],
       "widgets_values_named": {
-        "text": "FINAL KURVA MAKER · QUICK GUIDE\n\nCONTROL PANEL\nUse OPTIONAL REFERENCE + FIXED 3:4 CROP, REQUEST / PROMPT, and the FINAL RESULT slider.\n\nPROMPT-ONLY GENERATION\nChoose [None — prompt-only mode]. Describe the complete desired image in REQUEST / PROMPT. Qwen analysis and reference latent conditioning are skipped automatically.\n\nREFERENCE EDITING\nSelect or upload a real image. The crop frame is permanently locked to 3:4: drag inside it to reposition it and use the mouse wheel over it to zoom. There are no ratio or coordinate controls to configure. The exact framed pixels go to Qwen, the FLUX.2 reference latent, and the comparison viewer. In REQUEST / PROMPT, describe only what should change. Leave it blank when you only want the fictional LoRA identity applied.\n\nAUTOMATIC PIPELINE\nSuperGemma rewrites the request, then compiles either the Qwen source analysis or the prompt-only instruction into one FLUX.2 prompt. Inspect FINAL COMPILED PROMPT when diagnosing behavior.\n\nOUTPUT\nThe result is generated at 2016 × 2688 and delivered at 3024 × 4032. With a reference selected, hover over the comparison to reveal the aligned cropped source. With None selected, both comparison inputs use the generated result."
+        "width": 2016,
+        "height": 2688,
+        "batch_size": 1
       },
       "title": "Generation canvas · 2016 × 2688"
     },
@@ -91,10 +95,10 @@
         "widget_ue_connectable": {}
       },
       "widgets_values": [
-        "FINAL KURVA MAKER · QUICK GUIDE\n\nCONTROL PANEL\nUse OPTIONAL REFERENCE, REFERENCE CROP, REQUEST / PROMPT, and the FINAL RESULT slider.\n\nPROMPT-ONLY GENERATION\nChoose [None — prompt-only mode] in OPTIONAL REFERENCE. Describe the complete desired image in REQUEST / PROMPT. The crop, Qwen analysis, and reference latent branches are skipped automatically.\n\nREFERENCE EDITING\nSelect or upload a real image. In REFERENCE CROP, choose 3:4 from the ratio menu, keep the lock enabled, resize the rectangle from a corner, and drag it over the exact composition to preserve. The crop is normalized with crop-to-fill rather than stretching, then the same pixels go to Qwen, the FLUX.2 reference latent, and the comparison viewer. In REQUEST / PROMPT, describe only what should change. Leave it blank when you only want the fictional LoRA identity applied.\n\nAUTOMATIC PIPELINE\nSuperGemma rewrites the request, then compiles either the Qwen source analysis or the prompt-only instruction into one FLUX.2 prompt. Inspect FINAL COMPILED PROMPT when diagnosing behavior.\n\nOUTPUT\nThe result is generated at 2016 × 2688 and delivered at 3024 × 4032. With a reference selected, hover over the comparison to reveal the aligned cropped source. With None selected, both comparison inputs use the generated result."
+        "FINAL KURVA MAKER · QUICK GUIDE\n\nCONTROL PANEL\nUse OPTIONAL REFERENCE + FIXED 3:4 CROP, REQUEST / PROMPT, and the FINAL RESULT slider.\n\nPROMPT-ONLY GENERATION\nChoose [None — prompt-only mode]. Describe the complete desired image in REQUEST / PROMPT. Qwen analysis and reference latent conditioning are skipped automatically.\n\nREFERENCE EDITING\nSelect or upload a real image. The crop frame is permanently locked to 3:4: drag inside it to reposition it and use the mouse wheel over it to zoom. There are no ratio or coordinate controls to configure. The exact framed pixels go to Qwen, the FLUX.2 reference latent, and the comparison viewer. In REQUEST / PROMPT, describe only what should change. Leave it blank when you only want the fictional LoRA identity applied.\n\nAUTOMATIC PIPELINE\nSuperGemma rewrites the request, then compiles either the Qwen source analysis or the prompt-only instruction into one FLUX.2 prompt. Inspect FINAL COMPILED PROMPT when diagnosing behavior.\n\nOUTPUT\nThe result is generated at 2016 × 2688 and delivered at 3024 × 4032. With a reference selected, hover over the comparison to reveal the aligned cropped source. With None selected, both comparison inputs use the generated result."
       ],
       "widgets_values_named": {
-        "text": "FINAL KURVA MAKER · QUICK GUIDE\n\nCONTROL PANEL\nUse OPTIONAL REFERENCE, REFERENCE CROP, REQUEST / PROMPT, and the FINAL RESULT slider.\n\nPROMPT-ONLY GENERATION\nChoose [None — prompt-only mode] in OPTIONAL REFERENCE. Describe the complete desired image in REQUEST / PROMPT. The crop, Qwen analysis, and reference latent branches are skipped automatically.\n\nREFERENCE EDITING\nSelect or upload a real image. In REFERENCE CROP, choose 3:4 from the ratio menu, keep the lock enabled, resize the rectangle from a corner, and drag it over the exact composition to preserve. The crop is normalized with crop-to-fill rather than stretching, then the same pixels go to Qwen, the FLUX.2 reference latent, and the comparison viewer. In REQUEST / PROMPT, describe only what should change. Leave it blank when you only want the fictional LoRA identity applied.\n\nAUTOMATIC PIPELINE\nSuperGemma rewrites the request, then compiles either the Qwen source analysis or the prompt-only instruction into one FLUX.2 prompt. Inspect FINAL COMPILED PROMPT when diagnosing behavior.\n\nOUTPUT\nThe result is generated at 2016 × 2688 and delivered at 3024 × 4032. With a reference selected, hover over the comparison to reveal the aligned cropped source. With None selected, both comparison inputs use the generated result."
+        "text": "FINAL KURVA MAKER · QUICK GUIDE\n\nCONTROL PANEL\nUse OPTIONAL REFERENCE + FIXED 3:4 CROP, REQUEST / PROMPT, and the FINAL RESULT slider.\n\nPROMPT-ONLY GENERATION\nChoose [None — prompt-only mode]. Describe the complete desired image in REQUEST / PROMPT. Qwen analysis and reference latent conditioning are skipped automatically.\n\nREFERENCE EDITING\nSelect or upload a real image. The crop frame is permanently locked to 3:4: drag inside it to reposition it and use the mouse wheel over it to zoom. There are no ratio or coordinate controls to configure. The exact framed pixels go to Qwen, the FLUX.2 reference latent, and the comparison viewer. In REQUEST / PROMPT, describe only what should change. Leave it blank when you only want the fictional LoRA identity applied.\n\nAUTOMATIC PIPELINE\nSuperGemma rewrites the request, then compiles either the Qwen source analysis or the prompt-only instruction into one FLUX.2 prompt. Inspect FINAL COMPILED PROMPT when diagnosing behavior.\n\nOUTPUT\nThe result is generated at 2016 × 2688 and delivered at 3024 × 4032. With a reference selected, hover over the comparison to reveal the aligned cropped source. With None selected, both comparison inputs use the generated result."
       },
       "color": "#32353b",
       "bgcolor": "#484d55",
@@ -1867,11 +1871,11 @@
       },
       "widgets_values": [
         "[None — prompt-only mode]",
-        "image",
         0.0,
         0.0,
         1.0,
-        1.0
+        1.0,
+        "image"
       ],
       "widgets_values_named": {
         "image": "[None — prompt-only mode]",
