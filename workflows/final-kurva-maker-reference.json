@@ -1,8 +1,8 @@
 {
   "id": "4bfcc5b5-7c82-4fe1-9121-4320bda7551e",
-  "revision": 13,
-  "last_node_id": 75,
-  "last_link_id": 153,
+  "revision": 14,
+  "last_node_id": 76,
+  "last_link_id": 155,
   "nodes": [
     {
       "id": 43,
@@ -95,10 +95,10 @@
         "widget_ue_connectable": {}
       },
       "widgets_values": [
-        "FINAL KURVA MAKER · QUICK GUIDE\n\nCONTROL PANEL\nUse OPTIONAL REFERENCE + FIXED 3:4 CROP, REQUEST / PROMPT, and the FINAL RESULT slider. The nested ADVANCED SETTINGS panel exposes seed mode, steps, CFG, sampler, scheduler, and all LoRA selections and strengths.\n\nPROMPT-ONLY GENERATION\nChoose [None — prompt-only mode]. Describe the complete desired image in REQUEST / PROMPT. Qwen analysis and reference latent conditioning are skipped automatically.\n\nREFERENCE EDITING\nSelect or upload a real image. The crop frame is permanently locked to 3:4: drag inside it to reposition it and use the mouse wheel over it to zoom. There are no ratio or coordinate controls to configure. The exact framed pixels go to Qwen, the FLUX.2 reference latent, and the comparison viewer. In REQUEST / PROMPT, describe only what should change. Leave it blank when you only want the fictional LoRA identity applied.\n\nAUTOMATIC PIPELINE\nSuperGemma rewrites the request, then compiles either the Qwen source analysis or the prompt-only instruction into one FLUX.2 prompt. Inspect FINAL COMPILED PROMPT when diagnosing behavior.\n\nOUTPUT\nThe result is generated at 2016 × 2688 and delivered at 3024 × 4032. Prompt compilation enforces a full-bleed rectilinear 3:4 frame without fisheye borders or black corners, and preserves source focus falloff and colorimetry unless requested otherwise. With a reference selected, hover over the comparison to reveal the aligned cropped source. With None selected, both comparison inputs use the generated result."
+        "FINAL KURVA MAKER · QUICK GUIDE\n\nCONTROL PANEL\nUse OPTIONAL REFERENCE + FIXED 3:4 CROP, REQUEST / PROMPT, and the FINAL RESULT slider. The nested ADVANCED SETTINGS panel exposes seed mode, steps, CFG, sampler, scheduler, and all LoRA selections and strengths. Instagram Reality's creator-recommended trigger phrases are automatically prefixed only while that LoRA has a non-zero strength.\n\nPROMPT-ONLY GENERATION\nChoose [None — prompt-only mode]. Describe the complete desired image in REQUEST / PROMPT. Qwen analysis and reference latent conditioning are skipped automatically.\n\nREFERENCE EDITING\nSelect or upload a real image. The crop frame is permanently locked to 3:4: drag inside it to reposition it and use the mouse wheel over it to zoom. There are no ratio or coordinate controls to configure. The exact framed pixels go to Qwen, the FLUX.2 reference latent, and the comparison viewer. In REQUEST / PROMPT, describe only what should change. Leave it blank when you only want the fictional LoRA identity applied.\n\nAUTOMATIC PIPELINE\nSuperGemma rewrites the request, then compiles either the Qwen source analysis or the prompt-only instruction into one FLUX.2 prompt. Inspect FINAL COMPILED PROMPT when diagnosing behavior.\n\nOUTPUT\nThe result is generated at 2016 × 2688 and delivered at 3024 × 4032. Prompt compilation enforces a full-bleed rectilinear 3:4 frame without fisheye borders or black corners, and preserves source focus falloff and colorimetry unless requested otherwise. With a reference selected, hover over the comparison to reveal the aligned cropped source. With None selected, both comparison inputs use the generated result."
       ],
       "widgets_values_named": {
-        "text": "FINAL KURVA MAKER · QUICK GUIDE\n\nCONTROL PANEL\nUse OPTIONAL REFERENCE + FIXED 3:4 CROP, REQUEST / PROMPT, and the FINAL RESULT slider. The nested ADVANCED SETTINGS panel exposes seed mode, steps, CFG, sampler, scheduler, and all LoRA selections and strengths.\n\nPROMPT-ONLY GENERATION\nChoose [None — prompt-only mode]. Describe the complete desired image in REQUEST / PROMPT. Qwen analysis and reference latent conditioning are skipped automatically.\n\nREFERENCE EDITING\nSelect or upload a real image. The crop frame is permanently locked to 3:4: drag inside it to reposition it and use the mouse wheel over it to zoom. There are no ratio or coordinate controls to configure. The exact framed pixels go to Qwen, the FLUX.2 reference latent, and the comparison viewer. In REQUEST / PROMPT, describe only what should change. Leave it blank when you only want the fictional LoRA identity applied.\n\nAUTOMATIC PIPELINE\nSuperGemma rewrites the request, then compiles either the Qwen source analysis or the prompt-only instruction into one FLUX.2 prompt. Inspect FINAL COMPILED PROMPT when diagnosing behavior.\n\nOUTPUT\nThe result is generated at 2016 × 2688 and delivered at 3024 × 4032. Prompt compilation enforces a full-bleed rectilinear 3:4 frame without fisheye borders or black corners, and preserves source focus falloff and colorimetry unless requested otherwise. With a reference selected, hover over the comparison to reveal the aligned cropped source. With None selected, both comparison inputs use the generated result."
+        "text": "FINAL KURVA MAKER · QUICK GUIDE\n\nCONTROL PANEL\nUse OPTIONAL REFERENCE + FIXED 3:4 CROP, REQUEST / PROMPT, and the FINAL RESULT slider. The nested ADVANCED SETTINGS panel exposes seed mode, steps, CFG, sampler, scheduler, and all LoRA selections and strengths. Instagram Reality's creator-recommended trigger phrases are automatically prefixed only while that LoRA has a non-zero strength.\n\nPROMPT-ONLY GENERATION\nChoose [None — prompt-only mode]. Describe the complete desired image in REQUEST / PROMPT. Qwen analysis and reference latent conditioning are skipped automatically.\n\nREFERENCE EDITING\nSelect or upload a real image. The crop frame is permanently locked to 3:4: drag inside it to reposition it and use the mouse wheel over it to zoom. There are no ratio or coordinate controls to configure. The exact framed pixels go to Qwen, the FLUX.2 reference latent, and the comparison viewer. In REQUEST / PROMPT, describe only what should change. Leave it blank when you only want the fictional LoRA identity applied.\n\nAUTOMATIC PIPELINE\nSuperGemma rewrites the request, then compiles either the Qwen source analysis or the prompt-only instruction into one FLUX.2 prompt. Inspect FINAL COMPILED PROMPT when diagnosing behavior.\n\nOUTPUT\nThe result is generated at 2016 × 2688 and delivered at 3024 × 4032. Prompt compilation enforces a full-bleed rectilinear 3:4 frame without fisheye borders or black corners, and preserves source focus falloff and colorimetry unless requested otherwise. With a reference selected, hover over the comparison to reveal the aligned cropped source. With None selected, both comparison inputs use the generated result."
       },
       "color": "#32353b",
       "bgcolor": "#484d55",
@@ -957,14 +957,14 @@
     },
     {
       "id": 49,
-      "type": "LoraLoaderModelOnly",
+      "type": "ASInfLoraLoaderModelOnlyWithTrigger",
       "pos": [
         -1290,
         -2800
       ],
       "size": [
         400,
-        110
+        190
       ],
       "flags": {},
       "order": 14,
@@ -993,30 +993,50 @@
             "name": "strength_model"
           },
           "link": null
+        },
+        {
+          "localized_name": "trigger_words",
+          "name": "trigger_words",
+          "type": "STRING",
+          "widget": {
+            "name": "trigger_words"
+          },
+          "link": null
         }
       ],
       "outputs": [
         {
-          "localized_name": "MODEL",
-          "name": "MODEL",
+          "localized_name": "model",
+          "name": "model",
           "type": "MODEL",
           "links": [
             113
           ]
+        },
+        {
+          "localized_name": "active_trigger_words",
+          "name": "active_trigger_words",
+          "type": "STRING",
+          "links": [
+            154
+          ]
         }
       ],
       "properties": {
-        "Node name for S&R": "LoraLoaderModelOnly"
+        "Node name for S&R": "ASInfLoraLoaderModelOnlyWithTrigger",
+        "cnr_id": "as-inf"
       },
       "widgets_values": [
         "klein_instagramreality_v2.safetensors",
-        0.9
+        0.9,
+        "Instagram photo, iPhone photo, amateur photo.\n\n"
       ],
       "widgets_values_named": {
         "lora_name": "klein_instagramreality_v2.safetensors",
-        "strength_model": 0.9
+        "strength_model": 0.9,
+        "trigger_words": "Instagram photo, iPhone photo, amateur photo.\n\n"
       },
-      "title": "LoRA · Instagram Reality"
+      "title": "LoRA · Instagram Reality · conditional trigger words"
     },
     {
       "id": 39,
@@ -1742,7 +1762,7 @@
       "type": "PreviewAny",
       "pos": [
         980,
-        850
+        890
       ],
       "size": [
         560,
@@ -2596,8 +2616,7 @@
           "name": "result",
           "type": "STRING",
           "links": [
-            138,
-            139
+            155
           ]
         },
         {
@@ -3026,6 +3045,78 @@
         "height": 1344,
         "crop": "center"
       }
+    },
+    {
+      "id": 76,
+      "type": "StringConcatenate",
+      "pos": [
+        980,
+        720
+      ],
+      "size": [
+        560,
+        130
+      ],
+      "flags": {},
+      "order": 41,
+      "mode": 0,
+      "inputs": [
+        {
+          "localized_name": "string_a",
+          "name": "string_a",
+          "type": "STRING",
+          "widget": {
+            "name": "string_a"
+          },
+          "link": 154
+        },
+        {
+          "localized_name": "string_b",
+          "name": "string_b",
+          "type": "STRING",
+          "widget": {
+            "name": "string_b"
+          },
+          "link": 155
+        },
+        {
+          "localized_name": "delimiter",
+          "name": "delimiter",
+          "type": "STRING",
+          "widget": {
+            "name": "delimiter"
+          },
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "localized_name": "STRING",
+          "name": "STRING",
+          "type": "STRING",
+          "links": [
+            138,
+            139
+          ]
+        }
+      ],
+      "title": "Apply active LoRA trigger words to final prompt",
+      "properties": {
+        "Node name for S&R": "StringConcatenate",
+        "cnr_id": "comfy-core"
+      },
+      "widgets_values": [
+        "",
+        "",
+        ""
+      ],
+      "widgets_values_named": {
+        "string_a": "",
+        "string_b": "",
+        "delimiter": ""
+      },
+      "color": "#4d3d61",
+      "bgcolor": "#6b5685"
     }
   ],
   "links": [
@@ -3311,7 +3402,7 @@
     ],
     [
       138,
-      67,
+      76,
       0,
       3,
       1,
@@ -3319,7 +3410,7 @@
     ],
     [
       139,
-      67,
+      76,
       0,
       59,
       0,
@@ -3428,6 +3519,22 @@
       75,
       0,
       "IMAGE"
+    ],
+    [
+      154,
+      49,
+      1,
+      76,
+      0,
+      "STRING"
+    ],
+    [
+      155,
+      67,
+      0,
+      76,
+      1,
+      "STRING"
     ]
   ],
   "groups": [

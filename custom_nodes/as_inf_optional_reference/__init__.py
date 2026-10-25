@@ -151,13 +151,60 @@ class OptionalReferenceCrop3x4(OptionalReferenceImage):
         return f"{base}|{crop_x!r},{crop_y!r},{crop_w!r},{crop_h!r}"
 
 
+class LoraLoaderModelOnlyWithTrigger(nodes.LoraLoaderModelOnly):
+    """Load a model-only LoRA and emit its activation text when enabled.
+
+    Keeping the trigger output on the same node as the strength prevents the
+    prompt and model state from drifting apart: strength zero produces an empty
+    string, while any non-zero strength prefixes the configured activation text.
+    """
+
+    @classmethod
+    def INPUT_TYPES(cls):
+        inputs = nodes.LoraLoaderModelOnly.INPUT_TYPES()
+        inputs["required"]["trigger_words"] = (
+            "STRING",
+            {
+                "default": "",
+                "multiline": True,
+                "tooltip": (
+                    "Prompt activation text emitted only while this LoRA has "
+                    "a non-zero model strength."
+                ),
+            },
+        )
+        return inputs
+
+    RETURN_TYPES = ("MODEL", "STRING")
+    RETURN_NAMES = ("model", "active_trigger_words")
+    FUNCTION = "load_lora_model_only_with_trigger"
+    CATEGORY = "AS-INF/model"
+    DESCRIPTION = (
+        "Loads a model-only LoRA and emits its configured trigger words only "
+        "when the LoRA strength is non-zero."
+    )
+
+    def load_lora_model_only_with_trigger(
+        self, model, lora_name, strength_model, trigger_words
+    ):
+        loaded_model = super().load_lora_model_only(
+            model, lora_name, strength_model
+        )[0]
+        active_trigger_words = (
+            str(trigger_words).strip() if abs(float(strength_model)) > 1e-8 else ""
+        )
+        return loaded_model, active_trigger_words
+
+
 NODE_CLASS_MAPPINGS = {
     "ASInfOptionalReferenceImage": OptionalReferenceImage,
     "ASInfOptionalReferenceCrop3x4": OptionalReferenceCrop3x4,
+    "ASInfLoraLoaderModelOnlyWithTrigger": LoraLoaderModelOnlyWithTrigger,
 }
 NODE_DISPLAY_NAME_MAPPINGS = {
     "ASInfOptionalReferenceImage": "Optional Reference Image",
     "ASInfOptionalReferenceCrop3x4": "Optional Reference + Fixed 3:4 Crop",
+    "ASInfLoraLoaderModelOnlyWithTrigger": "LoRA Loader + Conditional Trigger",
 }
 
 WEB_DIRECTORY = "./web"
