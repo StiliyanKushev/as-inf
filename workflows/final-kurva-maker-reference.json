@@ -1867,11 +1867,11 @@
       },
       "widgets_values": [
         "[None — prompt-only mode]",
+        "image",
         0.0,
         0.0,
         1.0,
-        1.0,
-        "image"
+        1.0
       ],
       "widgets_values_named": {
         "image": "[None — prompt-only mode]",
