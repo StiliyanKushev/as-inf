@@ -1,0 +1,9 @@
+directory	repository	commit
+ComfyUI	https://github.com/Comfy-Org/ComfyUI.git	1d48d9cf7bcecb6022a87b3cb13e0fb435bf9b8a
+ComfyUI-Angelo	https://github.com/shootthesound/ComfyUI-Angelo.git	5ead95f1902bf69dd00dba89a27dc020263f98ab
+ComfyUI-FlowMatching-Upscaler	https://github.com/ttulttul/ComfyUI-FlowMatching-Upscaler.git	028e51e2a699f546f4b991c2c050f989562f1dfd
+ComfyUI-QwenVL	https://github.com/1038lab/ComfyUI-QwenVL.git	1b67b443918801f571714bab636edc1845b7002a
+RES4LYF	https://github.com/ClownsharkBatwing/RES4LYF.git	56e44755d866c87ff9cb4b6608c8e42155db6ecc
+comfyui-crop-and-stitch	https://github.com/comfyorg/comfyui-crop-and-stitch.git	2abf837822d761110ac383d9a1cdffcc7ebfab36
+comfyui-ollama	https://github.com/stavsap/comfyui-ollama.git	6db7560576e5a59488708e6be13e07b5aba2432a
+rgthree-comfy	https://github.com/rgthree/rgthree-comfy.git	d7297b42f0fa78bec1c0411478f887423c249502

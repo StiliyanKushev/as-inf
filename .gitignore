@@ -1,0 +1,35 @@
+# Never commit credentials or machine-specific secrets.
+.env
+.env.*
+*.pem
+*.key
+id_rsa*
+id_ed25519*
+credentials*
+secrets*
+
+# Model weights belong on RunPod network storage.
+*.safetensors
+*.ckpt
+*.pt
+*.pth
+*.bin
+*.gguf
+
+# Generated and source media stay outside Git.
+input/
+output/
+images/
+*.png
+*.jpg
+*.jpeg
+*.webp
+*.mp4
+
+# Local/runtime files.
+.venv/
+__pycache__/
+*.pyc
+*.log
+*.pid
+.DS_Store
