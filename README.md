@@ -70,7 +70,9 @@ LFS.
 - `final-kurva-maker-reference.json` — main 4K portrait flow with a lazy
   reference on/off toggle. Reference mode includes Qwen3-VL analysis and image
   conditioning; prompt-only mode skips both. Both modes use two-pass SuperGemma
-  prompt compilation, FLUX.2 Klein generation, DyPE, and comparison review.
+  prompt compilation, FLUX.2 Klein generation, DyPE, and comparison review. It
+  opens in prompt-only mode using a generated `__NO_REFERENCE__.png` placeholder
+  so ComfyUI validation succeeds without a personal source photo.
 - `final-kurva-maker.json` — prompt-only predecessor.
 - `4k-local-repair-flux2-v2.json` — masked FLUX.2 repair flow.
 - `4k-masked-editor.json` — crop-and-stitch masked editor.
