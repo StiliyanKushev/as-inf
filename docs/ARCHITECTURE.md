@@ -26,10 +26,11 @@ the persistent ComfyUI checkout.
 
 ## Prompt path
 
-1. `ASInfOptionalReferenceImage` emits both the selected image and a Boolean
-   indicating whether the selector is `None`.
-2. A built-in `ImageCropV2` control provides a draggable, locked 3:4 crop. Its
-   result is normalized to 1008 × 1344 with crop-to-fill, so arbitrary source
+1. `ASInfOptionalReferenceCrop3x4` combines the optional reference picker with
+   a draggable crop overlay. The crop is permanently locked to 3:4; its saved
+   normalized coordinates remain hidden, and the backend enforces an exact
+   integer 3:4 rectangle again during execution.
+2. The crop is normalized to 1008 × 1344 with crop-to-fill, so arbitrary source
    aspect ratios are neither stretched nor padded.
 3. With a reference, the same cropped pixels reach Qwen3-VL, the encoded
    FLUX.2 reference latent, and the comparison viewer. With `None`, lazy
