@@ -20,6 +20,7 @@ required=(
   "$COMFY_DIR/custom_nodes/comfyui-ollama"
   "$COMFY_DIR/custom_nodes/RES4LYF"
   "$COMFY_DIR/custom_nodes/ComfyUI-Angelo"
+  "$COMFY_DIR/custom_nodes/as_inf_optional_reference/__init__.py"
   "$WORKSPACE/ollama/models"
   "$WORKSPACE/comfyui-venv/bin/python"
 )
