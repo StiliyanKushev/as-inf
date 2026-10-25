@@ -8,6 +8,9 @@ COMFY_DIR="${COMFY_DIR:-$WORKSPACE/ComfyUI}"
 mkdir -p "$COMFY_DIR/user/default/workflows"
 cp "$ROOT"/workflows/*.json "$COMFY_DIR/user/default/workflows/"
 
+mkdir -p "$COMFY_DIR/input"
+cp "$ROOT"/assets/persona_refs/*.png "$COMFY_DIR/input/"
+
 mkdir -p "$COMFY_DIR/custom_nodes"
 rm -rf "$COMFY_DIR/custom_nodes/as_inf_optional_reference"
 mkdir -p "$COMFY_DIR/custom_nodes/as_inf_optional_reference"

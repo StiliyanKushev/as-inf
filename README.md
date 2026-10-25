@@ -5,9 +5,11 @@ The repository contains workflows, pinned plugin revisions, integrity manifests,
 and scripts for recovering the existing RunPod network volume or provisioning a
 new one.
 
-The four LoRAs required by the saved workflows are stored with Git LFS. Large
-base-model weights, reference photos, generated images, API keys, and SSH
-private keys are intentionally excluded from Git.
+The four private/custom LoRAs required by the saved workflows are stored with
+Git LFS. The public BFS task LoRA is downloaded from its official Hugging Face
+repository and verified by SHA-256. Six canonical synthetic persona head views
+are stored with Git LFS. Large base-model weights, generated images, API keys,
+and SSH private keys are intentionally excluded from Git.
 
 ## Current deployment
 
@@ -84,6 +86,15 @@ under its MIT license.
 - `4k-local-repair-flux2-v2.json` — masked FLUX.2 repair flow.
 - `4k-masked-editor.json` — crop-and-stitch masked editor.
 - `4k-hand-repair-v2.json` — Angelo-based local hand repair.
+- `persona-face-finish.json` — optional second-pass BFS head/face finish for a
+  completed 4K image. Paint the replaceable face or head in MaskEditor, select
+  the closest bundled persona angle, and run the official FLUX.2 Klein 9B BFS
+  target-first/persona-second, four-step LCM path. Only the generated crop is
+  blended back; unmasked full-resolution pixels remain untouched.
+
+The persona references installed under `input/persona_refs` are selected from
+the existing fictional `face_dataset/03_dataset_candidates` set: neutral front,
+smiling front, left/right three-quarter, and left/right profile.
 
 ## Persistence and cost control
 

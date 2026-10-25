@@ -34,6 +34,11 @@ images/
 *.webp
 *.mp4
 
+# Canonical synthetic persona references are portable workflow inputs.
+!assets/
+!assets/persona_refs/
+!assets/persona_refs/*.png
+
 # Local/runtime files.
 .venv/
 __pycache__/

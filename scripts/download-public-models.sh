@@ -30,3 +30,8 @@ download_and_check \
   'https://huggingface.co/Comfy-Org/flux2-dev/resolve/main/split_files/vae/flux2-vae.safetensors' \
   "$COMFY_DIR/models/vae/flux2-vae.safetensors" \
   'd64f3a68e1cc4f9f4e29b6e0da38a0204fe9a49f2d4053f0ec1fa1ca02f9c4b5'
+
+download_and_check \
+  'https://huggingface.co/Alissonerdx/BFS-Best-Face-Swap/resolve/main/bfs_head_v1_flux-klein_9b_step3500_rank128.safetensors' \
+  "$COMFY_DIR/models/loras/bfs_head_v1_flux-klein_9b_step3500_rank128.safetensors" \
+  '70d8aaf332d710b905d5085afaa87c3ef577edffd54ffcfadeb8c47a854f9044'
