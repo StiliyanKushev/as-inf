@@ -196,15 +196,51 @@ class LoraLoaderModelOnlyWithTrigger(nodes.LoraLoaderModelOnly):
         return loaded_model, active_trigger_words
 
 
+class PrependLoraTriggers:
+    """Prepend enabled LoRA activation text to a compiled image prompt."""
+
+    @classmethod
+    def INPUT_TYPES(cls):
+        text = ("STRING", {"default": "", "multiline": True})
+        return {
+            "required": {
+                "trigger_1": text,
+                "trigger_2": text,
+                "trigger_3": text,
+                "prompt": text,
+            }
+        }
+
+    RETURN_TYPES = ("STRING",)
+    RETURN_NAMES = ("prompt",)
+    FUNCTION = "prepend"
+    CATEGORY = "AS-INF/text"
+    DESCRIPTION = (
+        "Prepends all non-empty conditional LoRA trigger strings to the final "
+        "compiled prompt."
+    )
+
+    @staticmethod
+    def prepend(trigger_1, trigger_2, trigger_3, prompt):
+        parts = [
+            str(value).strip()
+            for value in (trigger_1, trigger_2, trigger_3, prompt)
+            if str(value).strip()
+        ]
+        return ("\n\n".join(parts),)
+
+
 NODE_CLASS_MAPPINGS = {
     "ASInfOptionalReferenceImage": OptionalReferenceImage,
     "ASInfOptionalReferenceCrop3x4": OptionalReferenceCrop3x4,
     "ASInfLoraLoaderModelOnlyWithTrigger": LoraLoaderModelOnlyWithTrigger,
+    "ASInfPrependLoraTriggers": PrependLoraTriggers,
 }
 NODE_DISPLAY_NAME_MAPPINGS = {
     "ASInfOptionalReferenceImage": "Optional Reference Image",
     "ASInfOptionalReferenceCrop3x4": "Optional Reference + Fixed 3:4 Crop",
     "ASInfLoraLoaderModelOnlyWithTrigger": "LoRA Loader + Conditional Trigger",
+    "ASInfPrependLoraTriggers": "Prepend Active LoRA Triggers",
 }
 
 WEB_DIRECTORY = "./web"
