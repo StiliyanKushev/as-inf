@@ -1,8 +1,8 @@
 {
   "id": "4bfcc5b5-7c82-4fe1-9121-4320bda7551e",
-  "revision": 3,
-  "last_node_id": 67,
-  "last_link_id": 139,
+  "revision": 4,
+  "last_node_id": 73,
+  "last_link_id": 151,
   "nodes": [
     {
       "id": 43,
@@ -73,7 +73,7 @@
         "height": 2688,
         "batch_size": 1
       },
-      "title": "Generation canvas \u00b7 2016 \u00d7 2688"
+      "title": "Generation canvas · 2016 × 2688"
     },
     {
       "id": 44,
@@ -95,10 +95,10 @@
         "widget_ue_connectable": {}
       },
       "widgets_values": [
-        "FINAL KURVA MAKER REFERENCE \u00b7 OPERATING GUIDE\n\n1. REFERENCE\nChoose the source photograph in the blue REFERENCE PHOTO node. The 1.0 MP preparation preserves composition, pose, lighting and scene geometry. For a major structural change that resists the prompt, try 0.6\u20130.75 MP.\n\n2. OPTIONAL CHANGE\nWrite a plain-language request in the orange OPTIONAL CHANGE REQUEST node. Leave it blank when you only want the learned fictional identity applied to the reference.\n\n3. AUTOMATIC PROMPT PIPELINE\nQwen3-VL describes the reference. The first SuperGemma pass rewrites your request. The second pass compiles both into one contradiction-free FLUX.2 prompt, removing source attributes that your request replaces. Inspect the green FINAL COMPILED PROMPT when diagnosing prompt behavior.\n\n4. GENERATION\nThe saved model chain uses FLUX.2 Klein 9B, three optional LoRAs, DyPE, FLUX sampling shift and res_2s/simple sampling at 2016 \u00d7 2688. The result is resized to 3024 \u00d7 4032 for delivery.\n\n5. REVIEW\nThe generated preview and saved file appear on the upper-right. The comparison node shows the generated result by default; hover over it to reveal the aligned reference image."
+        "FINAL KURVA MAKER · REFERENCE OR PROMPT-ONLY GUIDE\n\n1. CHOOSE A MODE\nUse the blue USE REFERENCE PHOTO toggle. ON keeps the current reference-edit workflow. OFF makes the image optional: the reference latent, Qwen image analysis, and reference comparison branch are skipped lazily.\n\n2. REFERENCE MODE · TOGGLE ON\nChoose the source photograph in REFERENCE PHOTO. Write only the requested change in REQUEST / PROMPT. Leave it blank when you only want the fictional LoRA identity applied. The 1.0 MP preparation preserves composition, pose, lighting, and scene geometry; try 0.6–0.75 MP for stronger structural edits.\n\n3. PROMPT-ONLY MODE · TOGGLE OFF\nThe selected reference filename is ignored. Write a complete description of the new image in REQUEST / PROMPT: subject, pose, clothing, setting, camera/framing, and lighting. Qwen does not run and no reference latent is attached.\n\n4. AUTOMATIC PROMPT PIPELINE\nSuperGemma rewrites the request, then compiles either the Qwen source analysis or the prompt-only instruction into one FLUX.2 prompt. Inspect FINAL COMPILED PROMPT when diagnosing behavior.\n\n5. REVIEW\nThe result is generated at 2016 × 2688 and delivered at 3024 × 4032. With reference ON, hover over the comparison to reveal the aligned source. With reference OFF, both comparison inputs use the generated result."
       ],
       "widgets_values_named": {
-        "text": "FINAL KURVA MAKER REFERENCE \u00b7 OPERATING GUIDE\n\n1. REFERENCE\nChoose the source photograph in the blue REFERENCE PHOTO node. The 1.0 MP preparation preserves composition, pose, lighting and scene geometry. For a major structural change that resists the prompt, try 0.6\u20130.75 MP.\n\n2. OPTIONAL CHANGE\nWrite a plain-language request in the orange OPTIONAL CHANGE REQUEST node. Leave it blank when you only want the learned fictional identity applied to the reference.\n\n3. AUTOMATIC PROMPT PIPELINE\nQwen3-VL describes the reference. The first SuperGemma pass rewrites your request. The second pass compiles both into one contradiction-free FLUX.2 prompt, removing source attributes that your request replaces. Inspect the green FINAL COMPILED PROMPT when diagnosing prompt behavior.\n\n4. GENERATION\nThe saved model chain uses FLUX.2 Klein 9B, three optional LoRAs, DyPE, FLUX sampling shift and res_2s/simple sampling at 2016 \u00d7 2688. The result is resized to 3024 \u00d7 4032 for delivery.\n\n5. REVIEW\nThe generated preview and saved file appear on the upper-right. The comparison node shows the generated result by default; hover over it to reveal the aligned reference image."
+        "text": "FINAL KURVA MAKER · REFERENCE OR PROMPT-ONLY GUIDE\n\n1. CHOOSE A MODE\nUse the blue USE REFERENCE PHOTO toggle. ON keeps the current reference-edit workflow. OFF makes the image optional: the reference latent, Qwen image analysis, and reference comparison branch are skipped lazily.\n\n2. REFERENCE MODE · TOGGLE ON\nChoose the source photograph in REFERENCE PHOTO. Write only the requested change in REQUEST / PROMPT. Leave it blank when you only want the fictional LoRA identity applied. The 1.0 MP preparation preserves composition, pose, lighting, and scene geometry; try 0.6–0.75 MP for stronger structural edits.\n\n3. PROMPT-ONLY MODE · TOGGLE OFF\nThe selected reference filename is ignored. Write a complete description of the new image in REQUEST / PROMPT: subject, pose, clothing, setting, camera/framing, and lighting. Qwen does not run and no reference latent is attached.\n\n4. AUTOMATIC PROMPT PIPELINE\nSuperGemma rewrites the request, then compiles either the Qwen source analysis or the prompt-only instruction into one FLUX.2 prompt. Inspect FINAL COMPILED PROMPT when diagnosing behavior.\n\n5. REVIEW\nThe result is generated at 2016 × 2688 and delivered at 3024 × 4032. With reference ON, hover over the comparison to reveal the aligned source. With reference OFF, both comparison inputs use the generated result."
       },
       "color": "#32353b",
       "bgcolor": "#484d55",
@@ -245,7 +245,7 @@
           ]
         }
       ],
-      "title": "6 \u00b7 FLUX sampling shift",
+      "title": "6 · FLUX sampling shift",
       "properties": {
         "Node name for S&R": "ModelSamplingFlux"
       },
@@ -424,11 +424,12 @@
           "links": [
             108,
             109,
-            124
+            124,
+            150
           ]
         }
       ],
-      "title": "Delivery resize \u00b7 3024 \u00d7 4032",
+      "title": "Delivery resize · 3024 × 4032",
       "properties": {
         "Node name for S&R": "ImageScale",
         "cnr_id": "comfy-core",
@@ -487,7 +488,7 @@
           "links": []
         }
       ],
-      "title": "Save final portrait \u00b7 3024 \u00d7 4032",
+      "title": "Save final portrait · 3024 × 4032",
       "properties": {
         "Node name for S&R": "SaveImage",
         "cnr_id": "comfy-core",
@@ -561,7 +562,7 @@
         "unet_name": "flux-2-klein-9b.safetensors",
         "weight_dtype": "default"
       },
-      "title": "1 \u00b7 FLUX.2 Klein 9B base model"
+      "title": "1 · FLUX.2 Klein 9B base model"
     },
     {
       "id": 38,
@@ -743,7 +744,7 @@
           ]
         }
       ],
-      "title": "5 \u00b7 DyPE high-resolution patch",
+      "title": "5 · DyPE high-resolution patch",
       "properties": {
         "Node name for S&R": "DyPEFlux2",
         "cnr_id": "comfyui-flowmatching-upscaler",
@@ -816,11 +817,12 @@
           "name": "CONDITIONING",
           "type": "CONDITIONING",
           "links": [
-            99
+            99,
+            144
           ]
         }
       ],
-      "title": "Negative prompt \u00b7 anatomy and artifacts",
+      "title": "Negative prompt · anatomy and artifacts",
       "properties": {
         "Node name for S&R": "CLIPTextEncode",
         "cnr_id": "comfy-core",
@@ -871,7 +873,8 @@
           "name": "CONDITIONING",
           "type": "CONDITIONING",
           "links": [
-            98
+            98,
+            141
           ]
         }
       ],
@@ -950,7 +953,7 @@
         "lora_name": "HighDetail.safetensors",
         "strength_model": 0
       },
-      "title": "4 \u00b7 High Detail LoRA"
+      "title": "4 · High Detail LoRA"
     },
     {
       "id": 49,
@@ -1013,7 +1016,7 @@
         "lora_name": "FLUX2_KLEIN_UNLOCKED_V2.safetensors",
         "strength_model": 0.9
       },
-      "title": "3 \u00b7 Instagram Reality LoRA"
+      "title": "3 · Instagram Reality LoRA"
     },
     {
       "id": 39,
@@ -1143,7 +1146,7 @@
         "scheduler": "simple",
         "denoise": 1
       },
-      "title": "Primary sampler \u00b7 res_2s / simple",
+      "title": "Primary sampler · res_2s / simple",
       "color": "#3b3156",
       "bgcolor": "#514475"
     },
@@ -1206,7 +1209,7 @@
           ]
         }
       ],
-      "title": "Reference detail \u00b7 1.0 MP (0.6\u20130.75 for stronger edits)",
+      "title": "Reference detail · 1.0 MP (0.6–0.75 for stronger edits)",
       "properties": {
         "Node name for S&R": "ImageScaleToTotalPixels",
         "enableTabs": false,
@@ -1332,7 +1335,7 @@
           "name": "CONDITIONING",
           "type": "CONDITIONING",
           "links": [
-            120
+            142
           ]
         }
       ],
@@ -1392,7 +1395,7 @@
           "name": "CONDITIONING",
           "type": "CONDITIONING",
           "links": [
-            121
+            145
           ]
         }
       ],
@@ -1479,11 +1482,11 @@
           "name": "IMAGE",
           "type": "IMAGE",
           "links": [
-            123
+            151
           ]
         }
       ],
-      "title": "Prepare 3024 \u00d7 4032 comparison reference",
+      "title": "Prepare 3024 × 4032 comparison reference",
       "properties": {
         "Node name for S&R": "ImageScale",
         "cnr_id": "comfy-core",
@@ -1687,7 +1690,7 @@
           ]
         }
       ],
-      "title": "1 \u00b7 Analyze reference image \u00b7 Qwen3-VL",
+      "title": "1 · Analyze reference image · Qwen3-VL",
       "properties": {
         "Node name for S&R": "AILab_QwenVL_Advanced",
         "cnr_id": "ComfyUI-QwenVL",
@@ -1699,8 +1702,8 @@
         "sdpa",
         false,
         "cuda:0",
-        "\ud83d\uddbc\ufe0f Detailed Analysis",
-        "You are an expert visual analyst writing one production-ready source-description prompt for FLUX.2 Klein 9B image editing. Analyze the supplied reference photograph closely. Output only the finished prompt in English, with no heading, preamble, bullet list, quotation marks, or commentary.\n\nWrite 180 to 300 words. Treat the image as an edit source rather than loose inspiration. Describe the visible source state concretely and precisely: camera position and height, crop and aspect ratio, lens perspective, composition, foreground and background layout, architecture and geometry, subject count and exact placement, the main subject's pose and scale relative to nearby objects, natural body proportions, arm and leg positions, facial expression, hairstyle, clothing cut/material/opacity, footwear, lighting direction/color/intensity, flash character, exposure, shadows, background people and objects, colors, and surface condition. Give special attention to spatial relationships that prevent accidental redesign.\n\nRender the main foreground person as the fictional adult brunette identity learned by the loaded persona LoRA. Do not identify or name a real person. Preserve every other person and object by default.\n\nA separate SuperGemma instruction is appended after your output and may intentionally change clothing, nudity, accessories, pose, expression, camera position, framing, or another named attribute. Describe the reference accurately, but do not issue absolute prohibitions such as \u201cdo not modify clothing,\u201d \u201ckeep the exact outfit,\u201d or \u201cthe only alteration is identity.\u201d State instead that source details remain the default unless the later user-requested modification explicitly overrides them. The later instruction is authoritative for every attribute it names.\n\nEnd with concise safeguards against unintended extra people, extra or missing limbs or digits, malformed anatomy, inconsistent scene geometry, dirty or damaged surfaces absent from the source, and unrelated additions. Do not invent details that are not visible.",
+        "🖼️ Detailed Analysis",
+        "You are an expert visual analyst writing one production-ready source-description prompt for FLUX.2 Klein 9B image editing. Analyze the supplied reference photograph closely. Output only the finished prompt in English, with no heading, preamble, bullet list, quotation marks, or commentary.\n\nWrite 180 to 300 words. Treat the image as an edit source rather than loose inspiration. Describe the visible source state concretely and precisely: camera position and height, crop and aspect ratio, lens perspective, composition, foreground and background layout, architecture and geometry, subject count and exact placement, the main subject's pose and scale relative to nearby objects, natural body proportions, arm and leg positions, facial expression, hairstyle, clothing cut/material/opacity, footwear, lighting direction/color/intensity, flash character, exposure, shadows, background people and objects, colors, and surface condition. Give special attention to spatial relationships that prevent accidental redesign.\n\nRender the main foreground person as the fictional adult brunette identity learned by the loaded persona LoRA. Do not identify or name a real person. Preserve every other person and object by default.\n\nA separate SuperGemma instruction is appended after your output and may intentionally change clothing, nudity, accessories, pose, expression, camera position, framing, or another named attribute. Describe the reference accurately, but do not issue absolute prohibitions such as “do not modify clothing,” “keep the exact outfit,” or “the only alteration is identity.” State instead that source details remain the default unless the later user-requested modification explicitly overrides them. The later instruction is authoritative for every attribute it names.\n\nEnd with concise safeguards against unintended extra people, extra or missing limbs or digits, malformed anatomy, inconsistent scene geometry, dirty or damaged surfaces absent from the source, and unrelated additions. Do not invent details that are not visible.",
         900,
         0.2,
         0.9,
@@ -1718,8 +1721,8 @@
         "attention_mode": "sdpa",
         "use_torch_compile": false,
         "device": "cuda:0",
-        "preset_prompt": "\ud83d\uddbc\ufe0f Detailed Analysis",
-        "custom_prompt": "You are an expert visual analyst writing one production-ready source-description prompt for FLUX.2 Klein 9B image editing. Analyze the supplied reference photograph closely. Output only the finished prompt in English, with no heading, preamble, bullet list, quotation marks, or commentary.\n\nWrite 180 to 300 words. Treat the image as an edit source rather than loose inspiration. Describe the visible source state concretely and precisely: camera position and height, crop and aspect ratio, lens perspective, composition, foreground and background layout, architecture and geometry, subject count and exact placement, the main subject's pose and scale relative to nearby objects, natural body proportions, arm and leg positions, facial expression, hairstyle, clothing cut/material/opacity, footwear, lighting direction/color/intensity, flash character, exposure, shadows, background people and objects, colors, and surface condition. Give special attention to spatial relationships that prevent accidental redesign.\n\nRender the main foreground person as the fictional adult brunette identity learned by the loaded persona LoRA. Do not identify or name a real person. Preserve every other person and object by default.\n\nA separate SuperGemma instruction is appended after your output and may intentionally change clothing, nudity, accessories, pose, expression, camera position, framing, or another named attribute. Describe the reference accurately, but do not issue absolute prohibitions such as \u201cdo not modify clothing,\u201d \u201ckeep the exact outfit,\u201d or \u201cthe only alteration is identity.\u201d State instead that source details remain the default unless the later user-requested modification explicitly overrides them. The later instruction is authoritative for every attribute it names.\n\nEnd with concise safeguards against unintended extra people, extra or missing limbs or digits, malformed anatomy, inconsistent scene geometry, dirty or damaged surfaces absent from the source, and unrelated additions. Do not invent details that are not visible.",
+        "preset_prompt": "🖼️ Detailed Analysis",
+        "custom_prompt": "You are an expert visual analyst writing one production-ready source-description prompt for FLUX.2 Klein 9B image editing. Analyze the supplied reference photograph closely. Output only the finished prompt in English, with no heading, preamble, bullet list, quotation marks, or commentary.\n\nWrite 180 to 300 words. Treat the image as an edit source rather than loose inspiration. Describe the visible source state concretely and precisely: camera position and height, crop and aspect ratio, lens perspective, composition, foreground and background layout, architecture and geometry, subject count and exact placement, the main subject's pose and scale relative to nearby objects, natural body proportions, arm and leg positions, facial expression, hairstyle, clothing cut/material/opacity, footwear, lighting direction/color/intensity, flash character, exposure, shadows, background people and objects, colors, and surface condition. Give special attention to spatial relationships that prevent accidental redesign.\n\nRender the main foreground person as the fictional adult brunette identity learned by the loaded persona LoRA. Do not identify or name a real person. Preserve every other person and object by default.\n\nA separate SuperGemma instruction is appended after your output and may intentionally change clothing, nudity, accessories, pose, expression, camera position, framing, or another named attribute. Describe the reference accurately, but do not issue absolute prohibitions such as “do not modify clothing,” “keep the exact outfit,” or “the only alteration is identity.” State instead that source details remain the default unless the later user-requested modification explicitly overrides them. The later instruction is authoritative for every attribute it names.\n\nEnd with concise safeguards against unintended extra people, extra or missing limbs or digits, malformed anatomy, inconsistent scene geometry, dirty or damaged surfaces absent from the source, and unrelated additions. Do not invent details that are not visible.",
         "max_tokens": 900,
         "temperature": 0.2,
         "top_p": 0.9,
@@ -1764,7 +1767,7 @@
           "links": []
         }
       ],
-      "title": "FINAL COMPILED PROMPT \u00b7 inspect here",
+      "title": "FINAL COMPILED PROMPT · inspect here",
       "properties": {
         "Node name for S&R": "PreviewAny",
         "cnr_id": "comfy-core"
@@ -1826,7 +1829,7 @@
           "links": null
         }
       ],
-      "title": "REFERENCE PHOTO \u00b7 upload or select image",
+      "title": "REFERENCE PHOTO · used only when toggle is ON",
       "properties": {
         "Node name for S&R": "LoadImage",
         "enableTabs": false,
@@ -1904,11 +1907,11 @@
           "name": "STRING",
           "type": "STRING",
           "links": [
-            134
+            148
           ]
         }
       ],
-      "title": "2 \u00b7 Add identity and preservation rules",
+      "title": "Reference mode · add identity and preservation rules",
       "properties": {
         "Node name for S&R": "StringConcatenate",
         "cnr_id": "comfy-core"
@@ -1962,7 +1965,7 @@
           "links": []
         }
       ],
-      "title": "Generated / Reference \u00b7 generated shown by default",
+      "title": "Generated / Reference · B also generated when reference is OFF",
       "properties": {
         "comparer_mode": "Slide",
         "Node name for S&R": "Image Comparer (rgthree)",
@@ -2067,7 +2070,7 @@
           ]
         }
       ],
-      "title": "SuperGemma connection \u00b7 exact 26B Q4_K_M model",
+      "title": "SuperGemma connection · exact 26B Q4_K_M model",
       "properties": {
         "Node name for S&R": "OllamaConnectivityV2",
         "cnr_id": "comfyui-ollama",
@@ -2086,7 +2089,7 @@
         "model": "0xIbra/supergemma4-26b-uncensored-gguf-v2:Q4_K_M",
         "keep_alive": 10,
         "keep_alive_unit": "minutes",
-        "\ud83d\udd04 Reconnect": null
+        "🔄 Reconnect": null
       }
     },
     {
@@ -2214,7 +2217,7 @@
           "links": []
         }
       ],
-      "title": "3 \u00b7 Rewrite requested change \u00b7 SuperGemma",
+      "title": "3 · Rewrite requested change · SuperGemma",
       "properties": {
         "Node name for S&R": "OllamaGenerateV2",
         "cnr_id": "comfyui-ollama",
@@ -2222,14 +2225,14 @@
         "widget_ue_connectable": {}
       },
       "widgets_values": [
-        "You write the \u201cOPTIONAL MODIFICATIONS\u201d instruction for my FLUX.2 Klein image-editing workflow.\n\nThe user's message is an ordinary-language description of the change they want. Convert it into one precise, production-ready image-edit instruction.\n\nRules:\n- Output only the finished modification instruction, with no heading, explanation, quotation marks, or bullet points.\n\n- Treat the main subject as an adult woman. Never refer to her as a girl or imply that she is underage.\n- Preserve the user's requested adult content and visual details accurately; do not sanitize, euphemize, moralize, refuse, or replace the request with safer clothing.\n- State exactly what should change and which subject or object it applies to.\n- Preserve everything the user did not request to change, including identity, anatomy, pose, body proportions, surrounding people, background, architecture, lighting, image style, and composition.\n- If the user requests a camera change, specify the camera\u2019s position, height, direction, distance, lens perspective, framing, and the subject\u2019s placement in the new frame.\n- If a new camera angle reveals previously hidden areas, instruct FLUX.2 to infer them naturally and maintain consistent scene geometry.\n- If the user requests a clothing change, specify its color, material, cut, fit, length, opacity, and which existing garments or accessories remain.\n- If the user requests a pose or expression change, describe the exact limb placement or facial expression while maintaining natural anatomy.\n- Make the instruction direct and visually concrete. Avoid vague terms such as \u201cbetter,\u201d \u201ccooler,\u201d or \u201cmore attractive.\u201d\n- State that the requested change overrides preservation instructions only for the named attributes.\n- End by instructing the model to preserve all other visible details.\n- Keep the result between 60 and 140 words.",
+        "You write the “OPTIONAL MODIFICATIONS” instruction for my FLUX.2 Klein image-editing workflow.\n\nThe user's message is either a change requested for a reference photo or a complete text-to-image scene request. Convert it into one precise, production-ready visual instruction while retaining every concrete detail they supplied.\n\nRules:\n- Output only the finished modification instruction, with no heading, explanation, quotation marks, or bullet points.\n\n- Treat the main subject as an adult woman. Never refer to her as a girl or imply that she is underage.\n- Preserve the user's requested adult content and visual details accurately; do not sanitize, euphemize, moralize, refuse, or replace the request with safer clothing.\n- State exactly what should change and which subject or object it applies to.\n- In reference mode, preserve everything the user did not request to change, including identity, anatomy, pose, body proportions, surrounding people, background, architecture, lighting, image style, and composition. In prompt-only mode, make the requested subject, setting, composition, camera, lighting, clothing, pose, and style explicit whenever the user supplied them; do not invent constraints that conflict with the request.\n- If the user requests a camera change, specify the camera’s position, height, direction, distance, lens perspective, framing, and the subject’s placement in the new frame.\n- If a new camera angle reveals previously hidden areas, instruct FLUX.2 to infer them naturally and maintain consistent scene geometry.\n- If the user requests a clothing change, specify its color, material, cut, fit, length, opacity, and which existing garments or accessories remain.\n- If the user requests a pose or expression change, describe the exact limb placement or facial expression while maintaining natural anatomy.\n- Make the instruction direct and visually concrete. Avoid vague terms such as “better,” “cooler,” or “more attractive.”\n- State that the requested change overrides preservation instructions only for the named attributes.\n- End by instructing the model to preserve all other visible details.\n- Keep the result between 60 and 140 words.",
         "",
         false,
         false,
         "text"
       ],
       "widgets_values_named": {
-        "system": "You write the \u201cOPTIONAL MODIFICATIONS\u201d instruction for my FLUX.2 Klein image-editing workflow.\n\nThe user's message is an ordinary-language description of the change they want. Convert it into one precise, production-ready image-edit instruction.\n\nRules:\n- Output only the finished modification instruction, with no heading, explanation, quotation marks, or bullet points.\n- State exactly what should change and which subject or object it applies to.\n- Preserve everything the user did not request to change, including identity, anatomy, pose, body proportions, surrounding people, background, architecture, lighting, image style, and composition.\n- If the user requests a camera change, specify the camera\u2019s position, height, direction, distance, lens perspective, framing, and the subject\u2019s placement in the new frame.\n- If a new camera angle reveals previously hidden areas, instruct FLUX.2 to infer them naturally and maintain consistent scene geometry.\n- If the user requests a clothing change, specify its color, material, cut, fit, length, opacity, and which existing garments or accessories remain.\n- If the user requests a pose or expression change, describe the exact limb placement or facial expression while maintaining natural anatomy.\n- Make the instruction direct and visually concrete. Avoid vague terms such as \u201cbetter,\u201d \u201ccooler,\u201d or \u201cmore attractive.\u201d\n- State that the requested change overrides preservation instructions only for the named attributes.\n- End by instructing the model to preserve all other visible details.\n- Keep the result between 60 and 140 words.",
+        "system": "You write the “OPTIONAL MODIFICATIONS” instruction for my FLUX.2 Klein image-editing workflow.\n\nThe user's message is either a change requested for a reference photo or a complete text-to-image scene request. Convert it into one precise, production-ready visual instruction while retaining every concrete detail they supplied.\n\nRules:\n- Output only the finished modification instruction, with no heading, explanation, quotation marks, or bullet points.\n\n- Treat the main subject as an adult woman. Never refer to her as a girl or imply that she is underage.\n- Preserve the user's requested adult content and visual details accurately; do not sanitize, euphemize, moralize, refuse, or replace the request with safer clothing.\n- State exactly what should change and which subject or object it applies to.\n- In reference mode, preserve everything the user did not request to change, including identity, anatomy, pose, body proportions, surrounding people, background, architecture, lighting, image style, and composition. In prompt-only mode, make the requested subject, setting, composition, camera, lighting, clothing, pose, and style explicit whenever the user supplied them; do not invent constraints that conflict with the request.\n- If the user requests a camera change, specify the camera’s position, height, direction, distance, lens perspective, framing, and the subject’s placement in the new frame.\n- If a new camera angle reveals previously hidden areas, instruct FLUX.2 to infer them naturally and maintain consistent scene geometry.\n- If the user requests a clothing change, specify its color, material, cut, fit, length, opacity, and which existing garments or accessories remain.\n- If the user requests a pose or expression change, describe the exact limb placement or facial expression while maintaining natural anatomy.\n- Make the instruction direct and visually concrete. Avoid vague terms such as “better,” “cooler,” or “more attractive.”\n- State that the requested change overrides preservation instructions only for the named attributes.\n- End by instructing the model to preserve all other visible details.\n- Keep the result between 60 and 140 words.",
         "prompt": "",
         "think": false,
         "keep_context": false,
@@ -2268,7 +2271,7 @@
           "links": []
         }
       ],
-      "title": "Rewritten change \u00b7 intermediate preview",
+      "title": "Rewritten change · intermediate preview",
       "properties": {
         "Node name for S&R": "PreviewAny",
         "cnr_id": "comfy-core"
@@ -2313,7 +2316,7 @@
           ]
         }
       ],
-      "title": "OPTIONAL CHANGE REQUEST \u00b7 write naturally here",
+      "title": "REQUEST / PROMPT · change reference or describe a new image",
       "properties": {
         "Node name for S&R": "PrimitiveStringMultiline",
         "cnr_id": "comfy-core"
@@ -2391,7 +2394,7 @@
         "lora_name": "klein_instagramreality_v2.safetensors",
         "strength_model": 0
       },
-      "title": "2 \u00b7 Unlocked LoRA"
+      "title": "2 · Unlocked LoRA"
     },
     {
       "id": 66,
@@ -2446,7 +2449,7 @@
           ]
         }
       ],
-      "title": "4 \u00b7 Combine source analysis and requested change",
+      "title": "Combine selected source mode and requested image",
       "properties": {
         "Node name for S&R": "StringConcatenate",
         "cnr_id": "comfy-core"
@@ -2454,7 +2457,7 @@
       "widgets_values": [
         "",
         "",
-        "\n\nAUTHORITATIVE MODIFICATION \u2014 resolve this into the final visible state:\n"
+        "\n\nAUTHORITATIVE MODIFICATION — resolve this into the final visible state:\n"
       ],
       "widgets_values_named": {
         "string_a": "",
@@ -2587,7 +2590,7 @@
           "links": []
         }
       ],
-      "title": "5 \u00b7 Compile one conflict-free FLUX.2 prompt",
+      "title": "5 · Compile one conflict-free FLUX.2 prompt",
       "properties": {
         "Node name for S&R": "OllamaGenerateV2",
         "cnr_id": "comfyui-ollama",
@@ -2595,14 +2598,14 @@
         "widget_ue_connectable": {}
       },
       "widgets_values": [
-        "You compile one final production-ready prompt for FLUX.2 Klein image editing. The input contains a SOURCE DESCRIPTION followed by an AUTHORITATIVE MODIFICATION. Resolve them into one coherent description of the desired final image.\n\nRules:\n- Output only the finished final FLUX.2 prompt, with no heading, notes, quotation marks, or bullet points.\n- Treat the main subject as an adult woman. Never call her a girl or imply she is underage.\n- Apply every requested adult modification accurately. Do not sanitize, euphemize, moralize, refuse, censor, or substitute safer clothing.\n- For each attribute named by the modification, completely remove the superseded source-state wording. Never describe both the original and replacement state. For example, if clothing is removed or replaced, omit every mention of the original garments; if camera position changes, omit the original camera position.\n- Keep all source details that do not conflict with the modification: identity role, unaffected anatomy and pose, people, objects, architecture, spatial geometry, lighting, photographic style, colors, and surface condition.\n- Describe only the desired final visible state. Do not mention editing, overrides, instructions, source text, before/after states, or preservation rules in the output.\n- Retain concrete camera, composition, pose, scene, lighting, and texture detail useful to image generation.\n- Preserve natural adult anatomy and consistent scene geometry. Avoid extra or missing people, limbs, fingers, and toes, malformed anatomy, duplicated objects, unrelated additions, text, watermarks, or censoring.\n- Keep the result between 180 and 320 words.",
+        "You compile one final production-ready prompt for FLUX.2 Klein. The input begins with either a REFERENCE-MODE source description or a PROMPT-ONLY-MODE instruction, followed by an AUTHORITATIVE REQUEST. Resolve it into one coherent description of the desired final image.\n\nRules:\n- Output only the finished final FLUX.2 prompt, with no heading, notes, quotation marks, or bullet points.\n- Treat the main subject as an adult woman. Never call her a girl or imply she is underage.\n- Apply every requested adult modification accurately. Do not sanitize, euphemize, moralize, refuse, censor, or substitute safer clothing.\n- In reference mode, for each attribute named by the request, completely remove the superseded source-state wording. Never describe both the original and replacement state. For example, if clothing is removed or replaced, omit every mention of the original garments; if camera position changes, omit the original camera position.\n- In prompt-only mode, there is no source photograph. Treat the authoritative request as the complete scene specification, expand its concrete visual details into a self-contained generation prompt, and never mention a reference image or preservation.\n- Keep all source details that do not conflict with the modification: identity role, unaffected anatomy and pose, people, objects, architecture, spatial geometry, lighting, photographic style, colors, and surface condition.\n- Describe only the desired final visible state. Do not mention editing, overrides, instructions, source text, before/after states, or preservation rules in the output.\n- Retain concrete camera, composition, pose, scene, lighting, and texture detail useful to image generation.\n- Preserve natural adult anatomy and consistent scene geometry. Avoid extra or missing people, limbs, fingers, and toes, malformed anatomy, duplicated objects, unrelated additions, text, watermarks, or censoring.\n- Keep the result between 180 and 320 words.",
         "",
         false,
         false,
         "text"
       ],
       "widgets_values_named": {
-        "system": "You write the \u201cOPTIONAL MODIFICATIONS\u201d instruction for my FLUX.2 Klein image-editing workflow.\n\nThe user's message is an ordinary-language description of the change they want. Convert it into one precise, production-ready image-edit instruction.\n\nRules:\n- Output only the finished modification instruction, with no heading, explanation, quotation marks, or bullet points.\n- State exactly what should change and which subject or object it applies to.\n- Preserve everything the user did not request to change, including identity, anatomy, pose, body proportions, surrounding people, background, architecture, lighting, image style, and composition.\n- If the user requests a camera change, specify the camera\u2019s position, height, direction, distance, lens perspective, framing, and the subject\u2019s placement in the new frame.\n- If a new camera angle reveals previously hidden areas, instruct FLUX.2 to infer them naturally and maintain consistent scene geometry.\n- If the user requests a clothing change, specify its color, material, cut, fit, length, opacity, and which existing garments or accessories remain.\n- If the user requests a pose or expression change, describe the exact limb placement or facial expression while maintaining natural anatomy.\n- Make the instruction direct and visually concrete. Avoid vague terms such as \u201cbetter,\u201d \u201ccooler,\u201d or \u201cmore attractive.\u201d\n- State that the requested change overrides preservation instructions only for the named attributes.\n- End by instructing the model to preserve all other visible details.\n- Keep the result between 60 and 140 words.",
+        "system": "You compile one final production-ready prompt for FLUX.2 Klein. The input begins with either a REFERENCE-MODE source description or a PROMPT-ONLY-MODE instruction, followed by an AUTHORITATIVE REQUEST. Resolve it into one coherent description of the desired final image.\n\nRules:\n- Output only the finished final FLUX.2 prompt, with no heading, notes, quotation marks, or bullet points.\n- Treat the main subject as an adult woman. Never call her a girl or imply she is underage.\n- Apply every requested adult modification accurately. Do not sanitize, euphemize, moralize, refuse, censor, or substitute safer clothing.\n- In reference mode, for each attribute named by the request, completely remove the superseded source-state wording. Never describe both the original and replacement state. For example, if clothing is removed or replaced, omit every mention of the original garments; if camera position changes, omit the original camera position.\n- In prompt-only mode, there is no source photograph. Treat the authoritative request as the complete scene specification, expand its concrete visual details into a self-contained generation prompt, and never mention a reference image or preservation.\n- Keep all source details that do not conflict with the modification: identity role, unaffected anatomy and pose, people, objects, architecture, spatial geometry, lighting, photographic style, colors, and surface condition.\n- Describe only the desired final visible state. Do not mention editing, overrides, instructions, source text, before/after states, or preservation rules in the output.\n- Retain concrete camera, composition, pose, scene, lighting, and texture detail useful to image generation.\n- Preserve natural adult anatomy and consistent scene geometry. Avoid extra or missing people, limbs, fingers, and toes, malformed anatomy, duplicated objects, unrelated additions, text, watermarks, or censoring.\n- Keep the result between 180 and 320 words.",
         "prompt": "",
         "think": false,
         "keep_context": false,
@@ -2610,6 +2613,354 @@
       },
       "color": "#314157",
       "bgcolor": "#233248"
+    },
+    {
+      "id": 68,
+      "type": "PrimitiveBoolean",
+      "pos": [
+        -2200,
+        -950
+      ],
+      "size": [
+        420,
+        70
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [
+        {
+          "localized_name": "value",
+          "name": "value",
+          "type": "BOOLEAN",
+          "widget": {
+            "name": "value"
+          },
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "localized_name": "BOOLEAN",
+          "name": "BOOLEAN",
+          "type": "BOOLEAN",
+          "links": [
+            140,
+            143,
+            146,
+            149
+          ]
+        }
+      ],
+      "title": "USE REFERENCE PHOTO · ON = reference / OFF = prompt-only",
+      "properties": {
+        "Node name for S&R": "PrimitiveBoolean",
+        "cnr_id": "comfy-core",
+        "ver": "0.35.0",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        true
+      ],
+      "widgets_values_named": {
+        "value": true
+      },
+      "color": "#23435c",
+      "bgcolor": "#315e80"
+    },
+    {
+      "id": 69,
+      "type": "ComfySwitchNode",
+      "pos": [
+        260,
+        -850
+      ],
+      "size": [
+        300,
+        130
+      ],
+      "flags": {},
+      "order": 34,
+      "mode": 0,
+      "inputs": [
+        {
+          "localized_name": "on_false",
+          "name": "on_false",
+          "type": "CONDITIONING",
+          "link": 141
+        },
+        {
+          "localized_name": "on_true",
+          "name": "on_true",
+          "type": "CONDITIONING",
+          "link": 142
+        },
+        {
+          "localized_name": "switch",
+          "name": "switch",
+          "type": "BOOLEAN",
+          "widget": {
+            "name": "switch"
+          },
+          "link": 140
+        }
+      ],
+      "outputs": [
+        {
+          "localized_name": "output",
+          "name": "output",
+          "type": "CONDITIONING",
+          "links": [
+            120
+          ]
+        }
+      ],
+      "title": "Positive conditioning · reference optional",
+      "properties": {
+        "Node name for S&R": "ComfySwitchNode",
+        "cnr_id": "comfy-core",
+        "ver": "0.35.0",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        true
+      ],
+      "widgets_values_named": {
+        "switch": true
+      }
+    },
+    {
+      "id": 70,
+      "type": "ComfySwitchNode",
+      "pos": [
+        260,
+        -600
+      ],
+      "size": [
+        300,
+        130
+      ],
+      "flags": {},
+      "order": 35,
+      "mode": 0,
+      "inputs": [
+        {
+          "localized_name": "on_false",
+          "name": "on_false",
+          "type": "CONDITIONING",
+          "link": 144
+        },
+        {
+          "localized_name": "on_true",
+          "name": "on_true",
+          "type": "CONDITIONING",
+          "link": 145
+        },
+        {
+          "localized_name": "switch",
+          "name": "switch",
+          "type": "BOOLEAN",
+          "widget": {
+            "name": "switch"
+          },
+          "link": 143
+        }
+      ],
+      "outputs": [
+        {
+          "localized_name": "output",
+          "name": "output",
+          "type": "CONDITIONING",
+          "links": [
+            121
+          ]
+        }
+      ],
+      "title": "Negative conditioning · reference optional",
+      "properties": {
+        "Node name for S&R": "ComfySwitchNode",
+        "cnr_id": "comfy-core",
+        "ver": "0.35.0",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        true
+      ],
+      "widgets_values_named": {
+        "switch": true
+      }
+    },
+    {
+      "id": 71,
+      "type": "ComfySwitchNode",
+      "pos": [
+        -850,
+        280
+      ],
+      "size": [
+        340,
+        130
+      ],
+      "flags": {},
+      "order": 36,
+      "mode": 0,
+      "inputs": [
+        {
+          "localized_name": "on_false",
+          "name": "on_false",
+          "type": "STRING",
+          "link": 147
+        },
+        {
+          "localized_name": "on_true",
+          "name": "on_true",
+          "type": "STRING",
+          "link": 148
+        },
+        {
+          "localized_name": "switch",
+          "name": "switch",
+          "type": "BOOLEAN",
+          "widget": {
+            "name": "switch"
+          },
+          "link": 146
+        }
+      ],
+      "outputs": [
+        {
+          "localized_name": "output",
+          "name": "output",
+          "type": "STRING",
+          "links": [
+            134
+          ]
+        }
+      ],
+      "title": "Prompt source · Qwen reference or prompt-only",
+      "properties": {
+        "Node name for S&R": "ComfySwitchNode",
+        "cnr_id": "comfy-core",
+        "ver": "0.35.0",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        true
+      ],
+      "widgets_values_named": {
+        "switch": true
+      }
+    },
+    {
+      "id": 72,
+      "type": "ComfySwitchNode",
+      "pos": [
+        2200,
+        -300
+      ],
+      "size": [
+        400,
+        130
+      ],
+      "flags": {},
+      "order": 37,
+      "mode": 0,
+      "inputs": [
+        {
+          "localized_name": "on_false",
+          "name": "on_false",
+          "type": "IMAGE",
+          "link": 150
+        },
+        {
+          "localized_name": "on_true",
+          "name": "on_true",
+          "type": "IMAGE",
+          "link": 151
+        },
+        {
+          "localized_name": "switch",
+          "name": "switch",
+          "type": "BOOLEAN",
+          "widget": {
+            "name": "switch"
+          },
+          "link": 149
+        }
+      ],
+      "outputs": [
+        {
+          "localized_name": "output",
+          "name": "output",
+          "type": "IMAGE",
+          "links": [
+            123
+          ]
+        }
+      ],
+      "title": "Comparison B · reference or generated fallback",
+      "properties": {
+        "Node name for S&R": "ComfySwitchNode",
+        "cnr_id": "comfy-core",
+        "ver": "0.35.0",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        true
+      ],
+      "widgets_values_named": {
+        "switch": true
+      }
+    },
+    {
+      "id": 73,
+      "type": "PrimitiveStringMultiline",
+      "pos": [
+        -1570,
+        900
+      ],
+      "size": [
+        390,
+        300
+      ],
+      "flags": {},
+      "order": 38,
+      "mode": 0,
+      "inputs": [
+        {
+          "localized_name": "value",
+          "name": "value",
+          "type": "STRING",
+          "widget": {
+            "name": "value"
+          },
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "localized_name": "STRING",
+          "name": "STRING",
+          "type": "STRING",
+          "links": [
+            147
+          ]
+        }
+      ],
+      "title": "PROMPT-ONLY MODE · internal base instruction",
+      "properties": {
+        "Node name for S&R": "PrimitiveStringMultiline",
+        "cnr_id": "comfy-core",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "PROMPT-ONLY MODE: Generate a new image from scratch. There is no source photograph, no reference composition, and no source appearance to preserve. Render the main subject as the fictional adult brunette identity learned by the loaded persona LoRA. Treat the AUTHORITATIVE REQUEST that follows as the complete desired scene specification. Expand its concrete subject, pose, anatomy, clothing, setting, camera position, lens perspective, framing, lighting, photographic style, and visible details into a coherent self-contained FLUX.2 prompt without referring to a source image or an edit. Preserve natural adult anatomy and consistent scene geometry; avoid extra or missing people, limbs, fingers, or toes, malformed anatomy, duplicated objects, text, watermarks, and unrelated additions."
+      ],
+      "widgets_values_named": {
+        "value": "PROMPT-ONLY MODE: Generate a new image from scratch. There is no source photograph, no reference composition, and no source appearance to preserve. Render the main subject as the fictional adult brunette identity learned by the loaded persona LoRA. Treat the AUTHORITATIVE REQUEST that follows as the complete desired scene specification. Expand its concrete subject, pose, anatomy, clothing, setting, camera position, lens perspective, framing, lighting, photographic style, and visible details into a coherent self-contained FLUX.2 prompt without referring to a source image or an edit. Preserve natural adult anatomy and consistent scene geometry; avoid extra or missing people, limbs, fingers, or toes, malformed anatomy, duplicated objects, text, watermarks, and unrelated additions."
+      },
+      "color": "#30363b",
+      "bgcolor": "#454d54"
     }
   ],
   "links": [
@@ -2783,7 +3134,7 @@
     ],
     [
       120,
-      54,
+      69,
       0,
       39,
       1,
@@ -2791,7 +3142,7 @@
     ],
     [
       121,
-      55,
+      70,
       0,
       39,
       2,
@@ -2807,7 +3158,7 @@
     ],
     [
       123,
-      56,
+      72,
       0,
       57,
       1,
@@ -2863,7 +3214,7 @@
     ],
     [
       134,
-      60,
+      71,
       0,
       66,
       0,
@@ -2908,12 +3259,108 @@
       59,
       0,
       "STRING"
+    ],
+    [
+      140,
+      68,
+      0,
+      69,
+      2,
+      "BOOLEAN"
+    ],
+    [
+      141,
+      3,
+      0,
+      69,
+      0,
+      "CONDITIONING"
+    ],
+    [
+      142,
+      54,
+      0,
+      69,
+      1,
+      "CONDITIONING"
+    ],
+    [
+      143,
+      68,
+      0,
+      70,
+      2,
+      "BOOLEAN"
+    ],
+    [
+      144,
+      5,
+      0,
+      70,
+      0,
+      "CONDITIONING"
+    ],
+    [
+      145,
+      55,
+      0,
+      70,
+      1,
+      "CONDITIONING"
+    ],
+    [
+      146,
+      68,
+      0,
+      71,
+      2,
+      "BOOLEAN"
+    ],
+    [
+      147,
+      73,
+      0,
+      71,
+      0,
+      "STRING"
+    ],
+    [
+      148,
+      60,
+      0,
+      71,
+      1,
+      "STRING"
+    ],
+    [
+      149,
+      68,
+      0,
+      72,
+      2,
+      "BOOLEAN"
+    ],
+    [
+      150,
+      47,
+      0,
+      72,
+      0,
+      "IMAGE"
+    ],
+    [
+      151,
+      56,
+      0,
+      72,
+      1,
+      "IMAGE"
     ]
   ],
   "groups": [
     {
       "id": 1,
-      "title": "01 \u00b7 MODEL STACK",
+      "title": "01 · MODEL STACK",
       "bounding": [
         -2280,
         -1560,
@@ -2926,7 +3373,7 @@
     },
     {
       "id": 2,
-      "title": "02 \u00b7 REFERENCE PREPARATION",
+      "title": "02 · REFERENCE PREPARATION",
       "bounding": [
         -2280,
         -960,
@@ -2939,11 +3386,11 @@
     },
     {
       "id": 3,
-      "title": "03 \u00b7 CONDITIONING",
+      "title": "03 · CONDITIONING",
       "bounding": [
         -780,
         -960,
-        1280,
+        1360,
         750
       ],
       "color": "#3f655d",
@@ -2952,7 +3399,7 @@
     },
     {
       "id": 4,
-      "title": "04 \u00b7 GENERATION, DELIVERY & REVIEW",
+      "title": "04 · GENERATION, DELIVERY & REVIEW",
       "bounding": [
         560,
         -980,
@@ -2965,7 +3412,7 @@
     },
     {
       "id": 5,
-      "title": "05 \u00b7 AUTOMATED PROMPT BUILDER",
+      "title": "05 · AUTOMATED PROMPT BUILDER",
       "bounding": [
         -2280,
         130,
