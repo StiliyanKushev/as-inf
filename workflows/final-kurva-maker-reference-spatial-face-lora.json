@@ -2895,18 +2895,18 @@
           ]
         }
       ],
-      "title": "LoRA 3 · FACE-LOCAL identity hook",
+      "title": "LoRA 3 · FACE-LOCAL Alex Sparks identity",
       "properties": {
         "Node name for S&R": "CreateHookLoraModelOnly",
         "cnr_id": "comfy-core",
         "ver": "0.35.0"
       },
       "widgets_values": [
-        "vexa_person_klein9b_v1.safetensors",
+        "alexsparks.safetensors",
         0.7
       ],
       "widgets_values_named": {
-        "lora_name": "vexa_person_klein9b_v1.safetensors",
+        "lora_name": "alexsparks.safetensors",
         "strength_model": 0.7
       }
     },

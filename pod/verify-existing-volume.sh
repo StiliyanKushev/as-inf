@@ -6,6 +6,7 @@ COMFY_DIR="$WORKSPACE/ComfyUI"
 
 required=(
   "$COMFY_DIR/main.py"
+  "$COMFY_DIR/user/default/workflows/final-kurva-maker-reference-spatial-face-lora.json"
   "$COMFY_DIR/user/default/workflows/final-kurva-maker-reference.json"
   "$COMFY_DIR/user/default/workflows/final-kurva-maker.json"
   "$COMFY_DIR/models/diffusion_models/flux-2-klein-9b.safetensors"
@@ -43,10 +44,17 @@ for path in files:
 print(f"Validated {len(files)} workflow JSON files.")
 PY
 
-expected_alexsparks=332548896
+expected_alexsparks=165704328
 actual_alexsparks="$(stat -c %s "$COMFY_DIR/models/loras/alexsparks.safetensors")"
 [[ "$actual_alexsparks" == "$expected_alexsparks" ]] || {
   echo "ERROR: alexsparks.safetensors has unexpected size $actual_alexsparks" >&2
+  exit 1
+}
+
+expected_alexsparks_sha256=072f0184a52cc00de330e7f863951d44120a2412a9369d8ba0c76118d2e345ad
+actual_alexsparks_sha256="$(sha256sum "$COMFY_DIR/models/loras/alexsparks.safetensors" | cut -d' ' -f1)"
+[[ "$actual_alexsparks_sha256" == "$expected_alexsparks_sha256" ]] || {
+  echo "ERROR: alexsparks.safetensors checksum mismatch" >&2
   exit 1
 }
 

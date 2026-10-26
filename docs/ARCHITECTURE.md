@@ -48,3 +48,9 @@ or can contain private material. The four required workflow LoRAs are stored in
 Git LFS. `manifests/model-sha256.txt` records the exact expected filenames and
 checksums. The repository never stores a RunPod API key, GitHub token, SSH
 private key, reference photo, or generated image.
+
+The fictional Alex Sparks identity LoRA is the selected step-1500 training
+checkpoint, committed as `models/loras/alexsparks.safetensors`. The original
+training codename and activation token `vexa_person` remain in the training
+configuration because changing a filename cannot change a token learned by the
+weights.

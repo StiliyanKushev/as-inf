@@ -14,7 +14,9 @@ and SSH private keys are intentionally excluded from Git.
 The repository also contains a reproducible FLUX.2 Klein 9B persona-LoRA
 training package under [`training/`](training/README.md), including the 30-image
 synthetic dataset in Git LFS, its captions, a high-memory-GPU AI Toolkit config,
-and persistent RunPod install/run scripts.
+and persistent RunPod install/run scripts. The selected step-1500 identity
+checkpoint for the fictional Alex Sparks persona is stored through Git LFS as
+`models/loras/alexsparks.safetensors`; its trained trigger is `vexa_person`.
 
 ## Current deployment
 
@@ -26,7 +28,7 @@ and persistent RunPod install/run scripts.
 | Network volume | `final-kurva-maker-storage` (`3e71bw1e12`) |
 | Network-volume mount | `/workspace` |
 | Ports | `8188/http,22/tcp` |
-| Main workflow | `final-kurva-maker-reference.json` |
+| Main persona workflow | `final-kurva-maker-reference-spatial-face-lora.json` |
 | ComfyUI | `0.35.0`, commit `1d48d9cf7bcecb6022a87b3cb13e0fb435bf9b8a` |
 | Prompt model | `0xIbra/supergemma4-26b-uncensored-gguf-v2:Q4_K_M` |
 
@@ -82,6 +84,12 @@ LFS.
 
 ## Workflows
 
+- `final-kurva-maker-reference-spatial-face-lora.json` — Alex Sparks persona
+  workflow. It performs a no-identity scout pass, detects the face, then repeats
+  the full-canvas render from the same seed with `alexsparks.safetensors`
+  spatially conditioned inside the softened face mask. This avoids a separately
+  rendered crop being pasted back with mismatched lighting or texture.
+
 - `final-kurva-maker-reference.json` — main 4K portrait flow with one optional
   reference selector. Choosing an image enables Qwen3-VL analysis and image
   conditioning; choosing `None` skips both. Both modes use two-pass SuperGemma
@@ -118,6 +126,10 @@ pod when it is idle; GPU billing continues while it is running.
 
 See [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) for the file layout and exact
 recovery behavior.
+
+See [docs/PERSISTENCE_AUDIT.md](docs/PERSISTENCE_AUDIT.md) for the exact
+boundary between Git-backed deployment state, reproducible public downloads,
+and private runtime data retained only on the network volume.
 
 For a complete new-computer procedure covering pod creation, state validation,
 Hugging Face login, Klein 9B LoRA training, checkpoint selection, and cost-safe

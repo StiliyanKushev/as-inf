@@ -1,6 +1,7 @@
-# Vexa persona LoRA training
+# Alex Sparks persona LoRA training
 
-This is a separate training pipeline for the fictional `vexa_person` identity.
+This is a separate training pipeline for the fictional Alex Sparks identity.
+The internal training codename and embedded trigger are `vexa_person`.
 It is not a ComfyUI generation workflow. It trains a LoRA once; ComfyUI then
 loads the selected `.safetensors` checkpoint during normal image generation.
 
@@ -75,6 +76,8 @@ Inspect the preview images under
 ```
 
 Refresh the ComfyUI model list. Put the LoRA in an available LoRA slot, enter
-`vexa_person` as its trigger, and begin around strength `0.70`. Test roughly
+`vexa_person` as its trigger, and begin around strength `0.70`. The selected
+step-1500 checkpoint is committed through Git LFS as
+`models/loras/alexsparks.safetensors`. Test roughly
 `0.55` through `0.90`; higher strength can improve resemblance while reducing
 prompt flexibility or importing dataset composition.

@@ -8,7 +8,7 @@ fi
 
 WORKSPACE="${WORKSPACE:-/workspace}"
 SOURCE="$1"
-DEST="$WORKSPACE/ComfyUI/models/loras/vexa_person_klein9b_v1.safetensors"
+DEST="$WORKSPACE/ComfyUI/models/loras/alexsparks.safetensors"
 
 if [[ ! -s "$SOURCE" || "$SOURCE" != *.safetensors ]]; then
   echo "ERROR: checkpoint is not a non-empty .safetensors file: $SOURCE" >&2
@@ -19,4 +19,4 @@ mkdir -p "$(dirname "$DEST")"
 cp -f "$SOURCE" "$DEST"
 sha256sum "$DEST"
 echo "Installed selected checkpoint as $DEST"
-echo "Refresh ComfyUI's model list, select vexa_person_klein9b_v1.safetensors, and use trigger: vexa_person"
+echo "Refresh ComfyUI's model list, select alexsparks.safetensors, and use trigger: vexa_person"

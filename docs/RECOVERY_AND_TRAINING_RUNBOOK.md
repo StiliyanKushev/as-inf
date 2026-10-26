@@ -1,7 +1,8 @@
 # Fresh-machine recovery and persona-LoRA training
 
 This runbook reconstructs the AS-INF ComfyUI environment and continues the
-`vexa_person` FLUX.2 Klein 9B LoRA project from a new computer. Pod IDs, public
+Alex Sparks FLUX.2 Klein 9B LoRA project from a new computer. Its internal
+training codename and embedded trigger remain `vexa_person`. Pod IDs, public
 proxy URLs, SSH ports, and IP addresses are temporary and must be discovered on
 each run. The GitHub repository and RunPod network-volume ID are durable.
 
@@ -15,8 +16,10 @@ each run. The GitHub repository and RunPod network-volume ID are durable.
 | Volume size | 150 GB |
 | GPU | One secure-cloud GPU selected per session; H100 80 GB is the test default |
 | Container | `runpod/comfyui:1.3.3-comfyuiv0.30.0-cuda13.0` |
-| Main workflow | `final-kurva-maker-reference.json` |
+| Main persona workflow | `final-kurva-maker-reference-spatial-face-lora.json` |
 | Training config | `training/configs/vexa-person-klein9b-b200.yaml` |
+| Persona | Alex Sparks |
+| Selected identity LoRA | `models/loras/alexsparks.safetensors` (step 1500) |
 | Identity trigger | `vexa_person` |
 
 Never commit RunPod API keys, SSH private keys, Hugging Face tokens, or other
@@ -141,8 +144,8 @@ find /workspace/training/output/vexa_person_klein9b_v1 \
   /workspace/training/output/vexa_person_klein9b_v1/CHOSEN_CHECKPOINT.safetensors
 ```
 
-Refresh ComfyUI's model list, select
-`vexa_person_klein9b_v1.safetensors`, use trigger `vexa_person`, and begin near
+Refresh ComfyUI's model list, select `alexsparks.safetensors`, use trigger
+`vexa_person`, and begin near
 LoRA strength `0.70`. Compare approximately `0.55` through `0.90`.
 
 ## Stop spending without losing state
