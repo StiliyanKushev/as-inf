@@ -6,6 +6,7 @@ REPO_DIR="${AS_INF_DIR:-$WORKSPACE/as-inf}"
 TOOLKIT_DIR="${AI_TOOLKIT_DIR:-$WORKSPACE/ai-toolkit}"
 VENV_DIR="${AI_TOOLKIT_VENV:-$WORKSPACE/ai-toolkit-venv}"
 EXPECTED_COMMIT="73ebae13a468942ded8b47991b5d56eeeea25c36"
+MIN_GPU_MEMORY_GB="${MIN_GPU_MEMORY_GB:-75}"
 
 export HF_HOME="${HF_HOME:-$WORKSPACE/huggingface}"
 
@@ -20,7 +21,9 @@ if [[ "$actual_commit" != "$EXPECTED_COMMIT" ]]; then
 fi
 echo "AI Toolkit commit OK: $actual_commit"
 
-"$VENV_DIR/bin/python" - "$REPO_DIR/training/configs/vexa-person-klein9b-b200.yaml" <<'PY'
+"$VENV_DIR/bin/python" - \
+  "$REPO_DIR/training/configs/vexa-person-klein9b-b200.yaml" \
+  "$MIN_GPU_MEMORY_GB" <<'PY'
 import sys
 import accelerate
 import bitsandbytes
@@ -38,9 +41,17 @@ assert process["trigger_word"] == "vexa_person"
 assert process["train"]["steps"] == 2000
 assert torch.cuda.is_available()
 gpu = torch.cuda.get_device_name(0)
-if "B200" not in gpu:
-    raise RuntimeError(f"Expected an NVIDIA B200, found {gpu}")
-print(f"PyTorch {torch.__version__}; CUDA {torch.version.cuda}; GPU {gpu}")
+total_gb = torch.cuda.get_device_properties(0).total_memory / 1024**3
+minimum_gb = float(sys.argv[2])
+if total_gb < minimum_gb:
+    raise RuntimeError(
+        f"Training requires at least {minimum_gb:g} GB VRAM; "
+        f"found {gpu} with {total_gb:.1f} GB"
+    )
+print(
+    f"PyTorch {torch.__version__}; CUDA {torch.version.cuda}; "
+    f"GPU {gpu} ({total_gb:.1f} GB)"
+)
 print(f"diffusers {diffusers.__version__}; transformers {transformers.__version__}; accelerate {accelerate.__version__}")
 print("Klein 9B training config OK.")
 PY

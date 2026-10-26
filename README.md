@@ -13,8 +13,8 @@ and SSH private keys are intentionally excluded from Git.
 
 The repository also contains a reproducible FLUX.2 Klein 9B persona-LoRA
 training package under [`training/`](training/README.md), including the 30-image
-synthetic dataset in Git LFS, its captions, a B200-tuned AI Toolkit config, and
-persistent RunPod install/run scripts.
+synthetic dataset in Git LFS, its captions, a high-memory-GPU AI Toolkit config,
+and persistent RunPod install/run scripts.
 
 ## Current deployment
 

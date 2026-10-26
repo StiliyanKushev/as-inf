@@ -34,7 +34,7 @@ config:
         gradient_accumulation_steps: 1
         train_unet: true
         train_text_encoder: false
-        # The B200 has enough VRAM to avoid checkpointing and model offloading.
+        # High-memory GPUs (H100/H200/B200) can avoid checkpointing and offload.
         gradient_checkpointing: false
         noise_scheduler: "flowmatch"
         timestep_type: "weighted"
@@ -48,7 +48,7 @@ config:
       model:
         name_or_path: "black-forest-labs/FLUX.2-klein-base-9B"
         arch: "flux2_klein_9b"
-        # Full BF16 is intentional on the 180 GB B200.
+        # Full BF16 is intentional for GPUs with at least 80 GB VRAM.
         quantize: false
         quantize_te: false
         low_vram: false
