@@ -57,6 +57,7 @@ cd /workspace/as-inf
 git pull --ff-only
 git lfs pull
 ./training/scripts/install-ai-toolkit.sh
+./training/scripts/verify-training-runtime.sh
 ./training/scripts/train-vexa-klein9b.sh
 ```
 

@@ -112,6 +112,7 @@ logs, samples, and checkpoints all stay under `/workspace`:
 ```bash
 cd /workspace/as-inf
 ./training/scripts/install-ai-toolkit.sh
+./training/scripts/verify-training-runtime.sh
 ./training/scripts/train-vexa-klein9b.sh
 ```
 
