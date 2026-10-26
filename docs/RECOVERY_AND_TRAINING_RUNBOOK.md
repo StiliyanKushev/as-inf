@@ -13,7 +13,7 @@ each run. The GitHub repository and RunPod network-volume ID are durable.
 | RunPod network volume | `final-kurva-maker-storage` (`3e71bw1e12`) |
 | Volume region and mount | `US-CA-2`, `/workspace` |
 | Volume size | 150 GB |
-| GPU | One secure-cloud NVIDIA B200 180 GB |
+| GPU | One secure-cloud GPU selected per session; H100 80 GB is the test default |
 | Container | `runpod/comfyui:1.3.3-comfyuiv0.30.0-cuda13.0` |
 | Main workflow | `final-kurva-maker-reference.json` |
 | Training config | `training/configs/vexa-person-klein9b-b200.yaml` |
@@ -42,13 +42,22 @@ runpodctl config --apiKey "$key"
 unset key
 ```
 
-## Create and recover a B200 pod
+## Create and recover a GPU pod
 
 The creation script attaches network volume `3e71bw1e12` at `/workspace`:
 
 ```bash
-./scripts/create-b200.sh
+./scripts/create-gpu-pod.sh
 runpodctl pod list -o json
+```
+
+The generic script defaults to one secure-cloud H100 SXM 80 GB because it is
+the better value while testing. Override `GPU_ID` and `POD_NAME` when B200
+speed is worth the higher hourly price:
+
+```bash
+GPU_ID='NVIDIA B200' POD_NAME='final-kurva-maker-b200' \
+  ./scripts/create-gpu-pod.sh
 ```
 
 Wait until `runtimeStatus` is `running`, then obtain current SSH details:

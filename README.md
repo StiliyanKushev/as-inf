@@ -20,7 +20,7 @@ persistent RunPod install/run scripts.
 
 | Setting | Value |
 |---|---|
-| GPU | NVIDIA B200 180 GB |
+| GPU | Selected per session; H100 80 GB is the economical test default |
 | Container image | `runpod/comfyui:1.3.3-comfyuiv0.30.0-cuda13.0` |
 | Region | `US-CA-2` |
 | Network volume | `final-kurva-maker-storage` (`3e71bw1e12`) |
@@ -41,10 +41,18 @@ runpodctl config --apiKey "$key"
 unset key
 ```
 
-Create a B200 attached to the existing volume:
+Create an H100 attached to the existing volume (the economical testing
+default):
 
 ```bash
-./scripts/create-b200.sh
+./scripts/create-gpu-pod.sh
+```
+
+Select another GPU without changing the script:
+
+```bash
+GPU_ID='NVIDIA B200' POD_NAME='final-kurva-maker-b200' \
+  ./scripts/create-gpu-pod.sh
 ```
 
 When `runpodctl pod get POD_ID` reports an SSH host and port, recover the saved
