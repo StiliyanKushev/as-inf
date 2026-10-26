@@ -232,7 +232,7 @@ class PrependLoraTriggers:
 
 
 class SamplerSettings:
-    """Expose the sampler controls used by the two synchronized passes.
+    """Expose sampling and batch controls used by the synchronized passes.
 
     The rgthree KSampler Config node also exposes an SDXL refiner split point.
     This workflow has no refiner stage, so keeping that setting visible was
@@ -254,6 +254,10 @@ class SamplerSettings:
                 ),
                 "sampler_name": (comfy.samplers.KSampler.SAMPLERS,),
                 "scheduler": (comfy.samplers.KSampler.SCHEDULERS,),
+                "batch_size": (
+                    "INT",
+                    {"default": 1, "min": 1, "max": 16, "step": 1},
+                ),
             }
         }
 
@@ -262,15 +266,16 @@ class SamplerSettings:
         "FLOAT",
         comfy.samplers.KSampler.SAMPLERS,
         comfy.samplers.KSampler.SCHEDULERS,
+        "INT",
     )
-    RETURN_NAMES = ("STEPS", "CFG", "SAMPLER", "SCHEDULER")
+    RETURN_NAMES = ("STEPS", "CFG", "SAMPLER", "SCHEDULER", "BATCH_SIZE")
     FUNCTION = "settings"
     CATEGORY = "AS-INF/sampling"
-    DESCRIPTION = "Shared sampler settings with no unused refiner control."
+    DESCRIPTION = "Shared sampler and latent-batch settings with no unused refiner control."
 
     @staticmethod
-    def settings(steps, cfg, sampler_name, scheduler):
-        return steps, cfg, sampler_name, scheduler
+    def settings(steps, cfg, sampler_name, scheduler, batch_size):
+        return steps, cfg, sampler_name, scheduler, batch_size
 
 
 NODE_CLASS_MAPPINGS = {

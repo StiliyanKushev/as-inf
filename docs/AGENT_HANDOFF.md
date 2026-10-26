@@ -23,6 +23,10 @@ Use this repository as the source of truth:
   - `final-kurva-maker-reference-spatial-face-lora.json`
 - The spatial workflow selects `alexsparks.safetensors` at strength `0.70` and
   uses its trained trigger `vexa_person` only inside the detected face mask.
+- Its shared Advanced settings include a true latent `Batch Size` control.
+  Batch size 1 is the tested default; batch size 2 produces two independent
+  face masks and two output files but does not materially improve B200
+  per-image throughput at 2016×2688.
 - Qwen3-VL, SuperGemma, custom nodes, public model weights, and all private
   workflow LoRAs are available.
 

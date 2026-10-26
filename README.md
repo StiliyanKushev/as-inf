@@ -88,7 +88,11 @@ LFS.
   workflow. It performs a no-identity scout pass, detects the face, then repeats
   the full-canvas render from the same seed with `alexsparks.safetensors`
   spatially conditioned inside the softened face mask. This avoids a separately
-  rendered crop being pasted back with mismatched lighting or texture.
+  rendered crop being pasted back with mismatched lighting or texture. Its
+  Advanced settings expose a true latent `Batch Size`; MediaPipe creates a
+  separate face mask and the save node writes a separate 3024×4032 file for
+  every batch item. Batch size 1 remains the default because a B200 test at
+  batch size 2 showed essentially unchanged per-image throughput.
 
 - `final-kurva-maker-reference.json` — main 4K portrait flow with one optional
   reference selector. Choosing an image enables Qwen3-VL analysis and image

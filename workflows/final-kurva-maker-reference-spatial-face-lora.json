@@ -2,7 +2,7 @@
   "id": "4bfcc5b5-7c82-4fe1-9121-4320bda7551e",
   "revision": 15,
   "last_node_id": 97,
-  "last_link_id": 204,
+  "last_link_id": 205,
   "nodes": [
     {
       "id": 43,
@@ -44,7 +44,7 @@
           "widget": {
             "name": "batch_size"
           },
-          "link": null
+          "link": 205
         }
       ],
       "outputs": [
@@ -3002,7 +3002,7 @@
       ],
       "size": [
         390,
-        210
+        250
       ],
       "flags": {},
       "order": 33,
@@ -3038,6 +3038,14 @@
           "link": null,
           "widget": {
             "name": "scheduler"
+          }
+        },
+        {
+          "name": "batch_size",
+          "type": "INT",
+          "link": null,
+          "widget": {
+            "name": "batch_size"
           }
         }
       ],
@@ -3150,9 +3158,16 @@
             175,
             198
           ]
+        },
+        {
+          "name": "BATCH_SIZE",
+          "type": "INT",
+          "links": [
+            205
+          ]
         }
       ],
-      "title": "SHARED SAMPLER SETTINGS · scout + final",
+      "title": "SHARED SETTINGS · scout + final + batch",
       "properties": {
         "Node name for S&R": "ASInfSamplerSettings",
         "cnr_id": "as-inf"
@@ -3161,13 +3176,15 @@
         12,
         1.3,
         "res_2s",
-        "simple"
+        "simple",
+        1
       ],
       "widgets_values_named": {
         "steps": 12,
         "cfg": 1.3,
         "sampler_name": "res_2s",
-        "scheduler": "simple"
+        "scheduler": "simple",
+        "batch_size": 1
       },
       "color": "#3b3156",
       "bgcolor": "#514475"
@@ -5448,6 +5465,14 @@
       96,
       1,
       "IMAGE"
+    ],
+    [
+      205,
+      39,
+      4,
+      43,
+      2,
+      "INT"
     ]
   ],
   "groups": [
