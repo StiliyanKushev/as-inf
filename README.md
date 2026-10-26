@@ -121,6 +121,9 @@ See [docs/PERSISTENCE_AUDIT.md](docs/PERSISTENCE_AUDIT.md) for the exact
 boundary between Git-backed deployment state, reproducible public downloads,
 and private runtime data retained only on the network volume.
 
+For a short instruction that can be pasted into a future Codex session, see
+[docs/AGENT_HANDOFF.md](docs/AGENT_HANDOFF.md).
+
 For a complete new-computer procedure covering pod creation, state validation,
 Hugging Face login, Klein 9B LoRA training, checkpoint selection, and cost-safe
 shutdown, see
