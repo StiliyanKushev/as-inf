@@ -5,6 +5,7 @@ from __future__ import annotations
 import os
 
 import comfy.model_management
+import comfy.samplers
 import folder_paths
 import nodes
 import torch
@@ -230,17 +231,61 @@ class PrependLoraTriggers:
         return ("\n\n".join(parts),)
 
 
+class SamplerSettings:
+    """Expose the sampler controls used by the two synchronized passes.
+
+    The rgthree KSampler Config node also exposes an SDXL refiner split point.
+    This workflow has no refiner stage, so keeping that setting visible was
+    misleading. This compact equivalent intentionally exposes only values that
+    are consumed by the workflow.
+    """
+
+    @classmethod
+    def INPUT_TYPES(cls):
+        return {
+            "required": {
+                "steps": (
+                    "INT",
+                    {"default": 12, "min": 1, "max": 10000, "step": 1},
+                ),
+                "cfg": (
+                    "FLOAT",
+                    {"default": 1.3, "min": 0.0, "max": 100.0, "step": 0.1},
+                ),
+                "sampler_name": (comfy.samplers.KSampler.SAMPLERS,),
+                "scheduler": (comfy.samplers.KSampler.SCHEDULERS,),
+            }
+        }
+
+    RETURN_TYPES = (
+        "INT",
+        "FLOAT",
+        comfy.samplers.KSampler.SAMPLERS,
+        comfy.samplers.KSampler.SCHEDULERS,
+    )
+    RETURN_NAMES = ("STEPS", "CFG", "SAMPLER", "SCHEDULER")
+    FUNCTION = "settings"
+    CATEGORY = "AS-INF/sampling"
+    DESCRIPTION = "Shared sampler settings with no unused refiner control."
+
+    @staticmethod
+    def settings(steps, cfg, sampler_name, scheduler):
+        return steps, cfg, sampler_name, scheduler
+
+
 NODE_CLASS_MAPPINGS = {
     "ASInfOptionalReferenceImage": OptionalReferenceImage,
     "ASInfOptionalReferenceCrop3x4": OptionalReferenceCrop3x4,
     "ASInfLoraLoaderModelOnlyWithTrigger": LoraLoaderModelOnlyWithTrigger,
     "ASInfPrependLoraTriggers": PrependLoraTriggers,
+    "ASInfSamplerSettings": SamplerSettings,
 }
 NODE_DISPLAY_NAME_MAPPINGS = {
     "ASInfOptionalReferenceImage": "Optional Reference Image",
     "ASInfOptionalReferenceCrop3x4": "Optional Reference + Fixed 3:4 Crop",
     "ASInfLoraLoaderModelOnlyWithTrigger": "LoRA Loader + Conditional Trigger",
     "ASInfPrependLoraTriggers": "Prepend Active LoRA Triggers",
+    "ASInfSamplerSettings": "Sampler Settings",
 }
 
 WEB_DIRECTORY = "./web"
