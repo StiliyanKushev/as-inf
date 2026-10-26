@@ -2,6 +2,11 @@
 
 Copy these JSON files to `/workspace/ComfyUI/user/default/workflows/`.
 
+The repository intentionally maintains exactly two workflows:
+
+- `final-kurva-maker-reference.json`
+- `final-kurva-maker-reference-spatial-face-lora.json`
+
 The workflows contain model filenames and node settings but no model weights,
 API credentials, or source/reference images. A `LoadImage` node may remember a
 filename from the last machine; choose a valid image after opening the workflow.

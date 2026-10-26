@@ -103,19 +103,9 @@ LFS.
 The fixed crop interaction is adapted from
 [ComfyUI-LoadImageCrop](https://github.com/domg73/ComfyUI-LoadImageCrop)
 under its MIT license.
-- `final-kurva-maker.json` — prompt-only predecessor.
-- `4k-local-repair-flux2-v2.json` — masked FLUX.2 repair flow.
-- `4k-masked-editor.json` — crop-and-stitch masked editor.
-- `4k-hand-repair-v2.json` — Angelo-based local hand repair.
-- `persona-face-finish.json` — optional second-pass BFS head/face finish for a
-  completed 4K image. Paint the replaceable face or head in MaskEditor, select
-  the closest bundled persona angle, and run the official FLUX.2 Klein 9B BFS
-  target-first/persona-second, four-step LCM path. Only the generated crop is
-  blended back; unmasked full-resolution pixels remain untouched.
 
-The persona references installed under `input/persona_refs` are selected from
-the existing fictional `face_dataset/03_dataset_candidates` set: neutral front,
-smiling front, left/right three-quarter, and left/right profile.
+These are the only maintained workflow files in the repository. Earlier repair,
+face-finish, and prompt-only experiments remain available through Git history.
 
 ## Persistence and cost control
 

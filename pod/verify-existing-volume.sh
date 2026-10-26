@@ -8,7 +8,6 @@ required=(
   "$COMFY_DIR/main.py"
   "$COMFY_DIR/user/default/workflows/final-kurva-maker-reference-spatial-face-lora.json"
   "$COMFY_DIR/user/default/workflows/final-kurva-maker-reference.json"
-  "$COMFY_DIR/user/default/workflows/final-kurva-maker.json"
   "$COMFY_DIR/models/diffusion_models/flux-2-klein-9b.safetensors"
   "$COMFY_DIR/models/text_encoders/qwen_3_8b_fp4mixed.safetensors"
   "$COMFY_DIR/models/vae/flux2-vae.safetensors"
