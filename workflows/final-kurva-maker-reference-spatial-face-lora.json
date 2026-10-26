@@ -1,0 +1,5593 @@
+{
+  "id": "4bfcc5b5-7c82-4fe1-9121-4320bda7551e",
+  "revision": 15,
+  "last_node_id": 97,
+  "last_link_id": 204,
+  "nodes": [
+    {
+      "id": 43,
+      "type": "EmptyFlux2LatentImage",
+      "pos": [
+        -100,
+        100
+      ],
+      "size": [
+        270,
+        106
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [
+        {
+          "localized_name": "width",
+          "name": "width",
+          "type": "INT",
+          "widget": {
+            "name": "width"
+          },
+          "link": null
+        },
+        {
+          "localized_name": "height",
+          "name": "height",
+          "type": "INT",
+          "widget": {
+            "name": "height"
+          },
+          "link": null
+        },
+        {
+          "localized_name": "batch_size",
+          "name": "batch_size",
+          "type": "INT",
+          "widget": {
+            "name": "batch_size"
+          },
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "localized_name": "LATENT",
+          "name": "LATENT",
+          "type": "LATENT",
+          "links": [
+            170,
+            193
+          ]
+        }
+      ],
+      "title": "Generation canvas · 2016 × 2688",
+      "properties": {
+        "Node name for S&R": "EmptyFlux2LatentImage",
+        "cnr_id": "comfy-core",
+        "ver": "0.3.68",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        2016,
+        2688,
+        1
+      ],
+      "widgets_values_named": {
+        "width": 2016,
+        "height": 2688,
+        "batch_size": 1
+      }
+    },
+    {
+      "id": 44,
+      "type": "Note",
+      "pos": [
+        980,
+        1350
+      ],
+      "size": [
+        900,
+        430
+      ],
+      "flags": {},
+      "order": 1,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [],
+      "title": "WORKFLOW GUIDE",
+      "properties": {
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "FINAL KURVA MAKER · QUICK GUIDE\n\nCONTROL PANEL\nUse OPTIONAL REFERENCE + FIXED 3:4 CROP, REQUEST / PROMPT, and the FINAL RESULT slider. The nested ADVANCED SETTINGS panel exposes seed mode, steps, CFG, sampler, scheduler, and all LoRA selections and strengths. Each LoRA has an optional editable trigger-word field directly beneath it. A field is prefixed to the final prompt only while its corresponding LoRA has a non-zero strength.\n\nPROMPT-ONLY GENERATION\nChoose [None — prompt-only mode]. Describe the complete desired image in REQUEST / PROMPT. Qwen analysis and reference latent conditioning are skipped automatically.\n\nREFERENCE EDITING\nSelect or upload a real image. The crop frame is permanently locked to 3:4: drag inside it to reposition it and use the mouse wheel over it to zoom. There are no ratio or coordinate controls to configure. The exact framed pixels go to Qwen, the FLUX.2 reference latent, and the comparison viewer. In REQUEST / PROMPT, describe only what should change. Leave it blank when you only want the fictional LoRA identity applied.\n\nAUTOMATIC PIPELINE\nSuperGemma rewrites the request, then compiles either the Qwen source analysis or the prompt-only instruction into one FLUX.2 prompt. Inspect FINAL COMPILED PROMPT when diagnosing behavior.\n\nOUTPUT\nThe result is generated at 2016 × 2688 and delivered at 3024 × 4032. Prompt compilation enforces a full-bleed rectilinear 3:4 frame without fisheye borders or black corners, and preserves source focus falloff and colorimetry unless requested otherwise. With a reference selected, hover over the comparison to reveal the aligned cropped source. With None selected, both comparison inputs use the generated result."
+      ],
+      "widgets_values_named": {
+        "text": "FINAL KURVA MAKER · QUICK GUIDE\n\nCONTROL PANEL\nUse OPTIONAL REFERENCE + FIXED 3:4 CROP, REQUEST / PROMPT, and the FINAL RESULT slider. The nested ADVANCED SETTINGS panel exposes seed mode, steps, CFG, sampler, scheduler, and all LoRA selections and strengths. Each LoRA has an optional editable trigger-word field directly beneath it. A field is prefixed to the final prompt only while its corresponding LoRA has a non-zero strength.\n\nPROMPT-ONLY GENERATION\nChoose [None — prompt-only mode]. Describe the complete desired image in REQUEST / PROMPT. Qwen analysis and reference latent conditioning are skipped automatically.\n\nREFERENCE EDITING\nSelect or upload a real image. The crop frame is permanently locked to 3:4: drag inside it to reposition it and use the mouse wheel over it to zoom. There are no ratio or coordinate controls to configure. The exact framed pixels go to Qwen, the FLUX.2 reference latent, and the comparison viewer. In REQUEST / PROMPT, describe only what should change. Leave it blank when you only want the fictional LoRA identity applied.\n\nAUTOMATIC PIPELINE\nSuperGemma rewrites the request, then compiles either the Qwen source analysis or the prompt-only instruction into one FLUX.2 prompt. Inspect FINAL COMPILED PROMPT when diagnosing behavior.\n\nOUTPUT\nThe result is generated at 2016 × 2688 and delivered at 3024 × 4032. Prompt compilation enforces a full-bleed rectilinear 3:4 frame without fisheye borders or black corners, and preserves source focus falloff and colorimetry unless requested otherwise. With a reference selected, hover over the comparison to reveal the aligned cropped source. With None selected, both comparison inputs use the generated result."
+      },
+      "color": "#32353b",
+      "bgcolor": "#484d55"
+    },
+    {
+      "id": 4,
+      "type": "CLIPLoader",
+      "pos": [
+        -2200,
+        -790
+      ],
+      "size": [
+        270,
+        106
+      ],
+      "flags": {},
+      "order": 2,
+      "mode": 0,
+      "inputs": [
+        {
+          "localized_name": "clip_name",
+          "name": "clip_name",
+          "type": "COMBO",
+          "widget": {
+            "name": "clip_name"
+          },
+          "link": null
+        },
+        {
+          "localized_name": "type",
+          "name": "type",
+          "type": "COMBO",
+          "widget": {
+            "name": "type"
+          },
+          "link": null
+        },
+        {
+          "localized_name": "device",
+          "name": "device",
+          "shape": 7,
+          "type": "COMBO",
+          "widget": {
+            "name": "device"
+          },
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "localized_name": "CLIP",
+          "name": "CLIP",
+          "type": "CLIP",
+          "links": [
+            3,
+            112,
+            160
+          ]
+        }
+      ],
+      "title": "Qwen3 8B text encoder",
+      "properties": {
+        "Node name for S&R": "CLIPLoader",
+        "cnr_id": "comfy-core",
+        "ver": "0.3.62",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "qwen_3_8b_fp4mixed.safetensors",
+        "flux2",
+        "default"
+      ],
+      "widgets_values_named": {
+        "clip_name": "qwen_3_8b_fp4mixed.safetensors",
+        "type": "flux2",
+        "device": "default"
+      }
+    },
+    {
+      "id": 46,
+      "type": "ModelSamplingFlux",
+      "pos": [
+        -420,
+        -960
+      ],
+      "size": [
+        315.401953125,
+        194
+      ],
+      "flags": {},
+      "order": 24,
+      "mode": 0,
+      "inputs": [
+        {
+          "localized_name": "model",
+          "name": "model",
+          "type": "MODEL",
+          "link": 107
+        },
+        {
+          "localized_name": "max_shift",
+          "name": "max_shift",
+          "type": "FLOAT",
+          "widget": {
+            "name": "max_shift"
+          },
+          "link": null
+        },
+        {
+          "localized_name": "base_shift",
+          "name": "base_shift",
+          "type": "FLOAT",
+          "widget": {
+            "name": "base_shift"
+          },
+          "link": null
+        },
+        {
+          "localized_name": "width",
+          "name": "width",
+          "type": "INT",
+          "widget": {
+            "name": "width"
+          },
+          "link": null
+        },
+        {
+          "localized_name": "height",
+          "name": "height",
+          "type": "INT",
+          "widget": {
+            "name": "height"
+          },
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "localized_name": "MODEL",
+          "name": "MODEL",
+          "type": "MODEL",
+          "links": [
+            167,
+            190
+          ]
+        }
+      ],
+      "title": "6 · FLUX sampling shift",
+      "properties": {
+        "Node name for S&R": "ModelSamplingFlux"
+      },
+      "widgets_values": [
+        2.35,
+        2.35,
+        2016,
+        2688
+      ],
+      "widgets_values_named": {
+        "max_shift": 2.35,
+        "base_shift": 2.35,
+        "width": 2016,
+        "height": 2688
+      }
+    },
+    {
+      "id": 11,
+      "type": "VAELoader",
+      "pos": [
+        -1860,
+        -790
+      ],
+      "size": [
+        270,
+        58
+      ],
+      "flags": {},
+      "order": 3,
+      "mode": 0,
+      "inputs": [
+        {
+          "localized_name": "vae_name",
+          "name": "vae_name",
+          "type": "COMBO",
+          "widget": {
+            "name": "vae_name"
+          },
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "localized_name": "VAE",
+          "name": "VAE",
+          "type": "VAE",
+          "links": [
+            102,
+            117,
+            200
+          ]
+        }
+      ],
+      "title": "FLUX.2 VAE",
+      "properties": {
+        "Node name for S&R": "VAELoader",
+        "cnr_id": "comfy-core",
+        "ver": "0.3.62",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "flux2-vae.safetensors"
+      ],
+      "widgets_values_named": {
+        "vae_name": "flux2-vae.safetensors"
+      }
+    },
+    {
+      "id": 47,
+      "type": "ImageScale",
+      "pos": [
+        1190,
+        -360
+      ],
+      "size": [
+        310,
+        130
+      ],
+      "flags": {},
+      "order": 35,
+      "mode": 0,
+      "inputs": [
+        {
+          "localized_name": "image",
+          "name": "image",
+          "type": "IMAGE",
+          "link": 201
+        },
+        {
+          "localized_name": "upscale_method",
+          "name": "upscale_method",
+          "type": "COMBO",
+          "widget": {
+            "name": "upscale_method"
+          },
+          "link": null
+        },
+        {
+          "localized_name": "width",
+          "name": "width",
+          "type": "INT",
+          "widget": {
+            "name": "width"
+          },
+          "link": null
+        },
+        {
+          "localized_name": "height",
+          "name": "height",
+          "type": "INT",
+          "widget": {
+            "name": "height"
+          },
+          "link": null
+        },
+        {
+          "localized_name": "crop",
+          "name": "crop",
+          "type": "COMBO",
+          "widget": {
+            "name": "crop"
+          },
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "localized_name": "IMAGE",
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            108,
+            109,
+            124,
+            150,
+            203
+          ]
+        }
+      ],
+      "title": "Delivery resize · 3024 × 4032",
+      "properties": {
+        "Node name for S&R": "ImageScale",
+        "cnr_id": "comfy-core",
+        "ver": "0.3.62",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "lanczos",
+        3024,
+        4032,
+        "disabled"
+      ],
+      "widgets_values_named": {
+        "upscale_method": "lanczos",
+        "width": 3024,
+        "height": 4032,
+        "crop": "disabled"
+      }
+    },
+    {
+      "id": 48,
+      "type": "SaveImage",
+      "pos": [
+        2200,
+        -400
+      ],
+      "size": [
+        460,
+        480
+      ],
+      "flags": {},
+      "order": 37,
+      "mode": 0,
+      "inputs": [
+        {
+          "localized_name": "images",
+          "name": "images",
+          "type": "IMAGE",
+          "link": 109
+        },
+        {
+          "localized_name": "filename_prefix",
+          "name": "filename_prefix",
+          "type": "STRING",
+          "widget": {
+            "name": "filename_prefix"
+          },
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "localized_name": "images",
+          "name": "images",
+          "type": "IMAGE",
+          "links": []
+        }
+      ],
+      "title": "Save final face-local portrait · 3024 × 4032",
+      "properties": {
+        "Node name for S&R": "SaveImage",
+        "cnr_id": "comfy-core",
+        "ver": "0.3.62",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "FinalKurvaMakerSpatialFace/portrait_3024x4032"
+      ],
+      "widgets_values_named": {
+        "filename_prefix": "FinalKurvaMakerReference/portrait_3024x4032"
+      },
+      "color": "#284532",
+      "bgcolor": "#3d684c"
+    },
+    {
+      "id": 2,
+      "type": "UNETLoader",
+      "pos": [
+        -2200,
+        -960
+      ],
+      "size": [
+        270,
+        82
+      ],
+      "flags": {},
+      "order": 4,
+      "mode": 0,
+      "inputs": [
+        {
+          "localized_name": "unet_name",
+          "name": "unet_name",
+          "type": "COMBO",
+          "widget": {
+            "name": "unet_name"
+          },
+          "link": null
+        },
+        {
+          "localized_name": "weight_dtype",
+          "name": "weight_dtype",
+          "type": "COMBO",
+          "widget": {
+            "name": "weight_dtype"
+          },
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "localized_name": "MODEL",
+          "name": "MODEL",
+          "type": "MODEL",
+          "links": [
+            7
+          ]
+        }
+      ],
+      "title": "1 · FLUX.2 Klein 9B base model",
+      "properties": {
+        "Node name for S&R": "UNETLoader",
+        "cnr_id": "comfy-core",
+        "ver": "0.3.62",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "flux-2-klein-9b.safetensors",
+        "default"
+      ],
+      "widgets_values_named": {
+        "unet_name": "flux-2-klein-9b.safetensors",
+        "weight_dtype": "default"
+      }
+    },
+    {
+      "id": 38,
+      "type": "PreviewImage",
+      "pos": [
+        1570,
+        -400
+      ],
+      "size": [
+        557.9518683600836,
+        723.0897502889334
+      ],
+      "flags": {},
+      "order": 36,
+      "mode": 0,
+      "inputs": [
+        {
+          "localized_name": "images",
+          "name": "images",
+          "type": "IMAGE",
+          "link": 108
+        }
+      ],
+      "outputs": [
+        {
+          "localized_name": "images",
+          "name": "images",
+          "type": "IMAGE",
+          "links": []
+        }
+      ],
+      "title": "Final face-local image preview",
+      "properties": {
+        "Node name for S&R": "PreviewImage",
+        "cnr_id": "comfy-core",
+        "ver": "0.3.62",
+        "widget_ue_connectable": {}
+      }
+    },
+    {
+      "id": 41,
+      "type": "DyPEFlux2",
+      "pos": [
+        -840,
+        -1000
+      ],
+      "size": [
+        346.5396484375,
+        322
+      ],
+      "flags": {},
+      "order": 21,
+      "mode": 0,
+      "inputs": [
+        {
+          "localized_name": "model",
+          "name": "model",
+          "type": "MODEL",
+          "link": 158
+        },
+        {
+          "localized_name": "width",
+          "name": "width",
+          "type": "INT",
+          "widget": {
+            "name": "width"
+          },
+          "link": null
+        },
+        {
+          "localized_name": "height",
+          "name": "height",
+          "type": "INT",
+          "widget": {
+            "name": "height"
+          },
+          "link": null
+        },
+        {
+          "localized_name": "auto_detect",
+          "name": "auto_detect",
+          "type": "BOOLEAN",
+          "widget": {
+            "name": "auto_detect"
+          },
+          "link": null
+        },
+        {
+          "localized_name": "base_width",
+          "name": "base_width",
+          "type": "INT",
+          "widget": {
+            "name": "base_width"
+          },
+          "link": null
+        },
+        {
+          "localized_name": "base_height",
+          "name": "base_height",
+          "type": "INT",
+          "widget": {
+            "name": "base_height"
+          },
+          "link": null
+        },
+        {
+          "localized_name": "method",
+          "name": "method",
+          "type": "COMBO",
+          "widget": {
+            "name": "method"
+          },
+          "link": null
+        },
+        {
+          "localized_name": "enable_dype",
+          "name": "enable_dype",
+          "type": "BOOLEAN",
+          "widget": {
+            "name": "enable_dype"
+          },
+          "link": null
+        },
+        {
+          "localized_name": "dype_exponent",
+          "name": "dype_exponent",
+          "type": "FLOAT",
+          "widget": {
+            "name": "dype_exponent"
+          },
+          "link": null
+        },
+        {
+          "localized_name": "base_shift",
+          "name": "base_shift",
+          "type": "FLOAT",
+          "widget": {
+            "name": "base_shift"
+          },
+          "link": null
+        },
+        {
+          "localized_name": "max_shift",
+          "name": "max_shift",
+          "type": "FLOAT",
+          "widget": {
+            "name": "max_shift"
+          },
+          "link": null
+        },
+        {
+          "localized_name": "editing_strength",
+          "name": "editing_strength",
+          "type": "FLOAT",
+          "widget": {
+            "name": "editing_strength"
+          },
+          "link": null
+        },
+        {
+          "localized_name": "editing_mode",
+          "name": "editing_mode",
+          "type": "COMBO",
+          "widget": {
+            "name": "editing_mode"
+          },
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "localized_name": "model",
+          "name": "model",
+          "type": "MODEL",
+          "links": [
+            107
+          ]
+        }
+      ],
+      "title": "5 · DyPE high-resolution patch",
+      "properties": {
+        "Node name for S&R": "DyPEFlux2",
+        "cnr_id": "comfyui-flowmatching-upscaler",
+        "ver": "f2e56bb41cb9bb1ec97c79d7bf4764f355064f18",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        2016,
+        2688,
+        false,
+        1008,
+        1344,
+        "yarn",
+        true,
+        2,
+        2.02,
+        2.35,
+        1,
+        "adaptive"
+      ],
+      "widgets_values_named": {
+        "width": 2016,
+        "height": 2688,
+        "auto_detect": false,
+        "base_width": 1008,
+        "base_height": 1344,
+        "method": "yarn",
+        "enable_dype": true,
+        "dype_exponent": 2,
+        "base_shift": 2.02,
+        "max_shift": 2.35,
+        "editing_strength": 1,
+        "editing_mode": "adaptive"
+      }
+    },
+    {
+      "id": 5,
+      "type": "CLIPTextEncode",
+      "pos": [
+        -700,
+        -90
+      ],
+      "size": [
+        400,
+        200
+      ],
+      "flags": {},
+      "order": 9,
+      "mode": 0,
+      "inputs": [
+        {
+          "localized_name": "clip",
+          "name": "clip",
+          "type": "CLIP",
+          "link": 112
+        },
+        {
+          "localized_name": "text",
+          "name": "text",
+          "type": "STRING",
+          "widget": {
+            "name": "text"
+          },
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "localized_name": "CONDITIONING",
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "links": [
+            99,
+            144
+          ]
+        }
+      ],
+      "title": "Negative prompt · anatomy and artifacts",
+      "properties": {
+        "Node name for S&R": "CLIPTextEncode",
+        "cnr_id": "comfy-core",
+        "ver": "0.3.62",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "deformed hands, malformed hands, bad hands, extra fingers, missing fingers, fused fingers, duplicated fingers, incorrect finger count, extra digits, missing digits, deformed feet, malformed feet, extra toes, missing toes, bad anatomy, extra limbs, missing limbs, duplicated limbs, disfigured, elongated body, distorted proportions, duplicate person, changed identity, visible edit seam, fisheye lens, circular fisheye projection, barrel distortion, extreme wide-angle distortion, curved horizon, curved architecture, warped straight lines, lens hood, black borders, black frame, black corners, rounded corners, circular image mask, heavy vignette, letterboxing, pillarboxing, censored, censorship, mosaic censor, black censor bars, text overlay, watermark"
+      ],
+      "widgets_values_named": {
+        "text": "deformed hands, malformed hands, bad hands, extra fingers, missing fingers, fused fingers, duplicated fingers, incorrect finger count, extra digits, missing digits, deformed feet, malformed feet, extra toes, missing toes, bad anatomy, extra limbs, missing limbs, duplicated limbs, disfigured, elongated body, distorted proportions, duplicate person, changed identity, visible edit seam, fisheye lens, circular fisheye projection, barrel distortion, extreme wide-angle distortion, curved horizon, curved architecture, warped straight lines, lens hood, black borders, black frame, black corners, rounded corners, circular image mask, heavy vignette, letterboxing, pillarboxing, censored, censorship, mosaic censor, black censor bars, text overlay, watermark"
+      }
+    },
+    {
+      "id": 3,
+      "type": "CLIPTextEncode",
+      "pos": [
+        -700,
+        -360
+      ],
+      "size": [
+        513.603125,
+        200
+      ],
+      "flags": {},
+      "order": 29,
+      "mode": 0,
+      "inputs": [
+        {
+          "localized_name": "clip",
+          "name": "clip",
+          "type": "CLIP",
+          "link": 3
+        },
+        {
+          "localized_name": "text",
+          "name": "text",
+          "type": "STRING",
+          "widget": {
+            "name": "text"
+          },
+          "link": 138
+        }
+      ],
+      "outputs": [
+        {
+          "localized_name": "CONDITIONING",
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "links": [
+            98,
+            141
+          ]
+        }
+      ],
+      "title": "Encode compiled positive prompt",
+      "properties": {
+        "Node name for S&R": "CLIPTextEncode",
+        "cnr_id": "comfy-core",
+        "ver": "0.3.62",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "Edit the supplied reference photo while preserving its composition and spatial geometry as strictly as possible. Keep the exact camera position, 3:4 crop, perspective, short shallow staircase, visible step spacing, diagonal polished dark-wood handrail, sparse hanging gold discs on the left, large plain dark wall on the right, bright warm opening at upper left, and the small woman in red on the upper landing. Keep the foreground woman's exact place beside the rail, pose, average height, compact natural body proportions, leg length, arm placement, and scale relative to each stair.\n\nRender the foreground woman as the fictional brunette identity learned by the loaded persona LoRA, without changing the source pose or body scale. Preserve the outfit from the source: a solid opaque black fitted mini dress with a clean off-the-shoulder neckline, narrow lace trim, and opaque fitted long sleeves; sheer black tights; simple black ankle boots. No shoulder straps, transparent sleeves, garter bands, or redesigned clothing.\n\nMatch the source illumination: warm amber ambient light from the bright upper-left opening, deep soft room shadows, and restrained direct phone flash on the foreground woman. Preserve the candid low-light nightlife snapshot character. Keep the black stairs, silver step edges, wall, and handrail clean, smooth, modern, and well maintained."
+      ],
+      "widgets_values_named": {
+        "text": "Edit the supplied reference photo while preserving its composition and spatial geometry as strictly as possible. Keep the exact camera position, 3:4 crop, perspective, short shallow staircase, visible step spacing, diagonal polished dark-wood handrail, sparse hanging gold discs on the left, large plain dark wall on the right, bright warm opening at upper left, and the small woman in red on the upper landing. Keep the foreground woman's exact place beside the rail, pose, average height, compact natural body proportions, leg length, arm placement, and scale relative to each stair.\n\nRender the foreground woman as the fictional brunette identity learned by the loaded persona LoRA, without changing the source pose or body scale. Preserve the outfit from the source: a solid opaque black fitted mini dress with a clean off-the-shoulder neckline, narrow lace trim, and opaque fitted long sleeves; sheer black tights; simple black ankle boots. No shoulder straps, transparent sleeves, garter bands, or redesigned clothing.\n\nMatch the source illumination: warm amber ambient light from the bright upper-left opening, deep soft room shadows, and restrained direct phone flash on the foreground woman. Preserve the candid low-light nightlife snapshot character. Keep the black stairs, silver step edges, wall, and handrail clean, smooth, modern, and well maintained."
+      }
+    },
+    {
+      "id": 52,
+      "type": "ImageScaleToTotalPixels",
+      "pos": [
+        -1710,
+        -350
+      ],
+      "size": [
+        391.321875,
+        140
+      ],
+      "flags": {},
+      "order": 14,
+      "mode": 0,
+      "inputs": [
+        {
+          "localized_name": "image",
+          "name": "image",
+          "type": "IMAGE",
+          "link": 115
+        },
+        {
+          "localized_name": "upscale_method",
+          "name": "upscale_method",
+          "type": "COMBO",
+          "widget": {
+            "name": "upscale_method"
+          },
+          "link": null
+        },
+        {
+          "localized_name": "megapixels",
+          "name": "megapixels",
+          "type": "FLOAT",
+          "widget": {
+            "name": "megapixels"
+          },
+          "link": null
+        },
+        {
+          "localized_name": "resolution_steps",
+          "name": "resolution_steps",
+          "type": "INT",
+          "widget": {
+            "name": "resolution_steps"
+          },
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "localized_name": "IMAGE",
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            116
+          ]
+        }
+      ],
+      "title": "Reference detail · 1.0 MP (0.6–0.75 for stronger edits)",
+      "properties": {
+        "Node name for S&R": "ImageScaleToTotalPixels",
+        "enableTabs": false,
+        "tabWidth": 65,
+        "tabXOffset": 10,
+        "hasSecondTab": false,
+        "secondTabText": "Send Back",
+        "secondTabOffset": 80,
+        "secondTabWidth": 65,
+        "cnr_id": "comfy-core",
+        "ver": "0.8.2",
+        "ue_properties": {
+          "widget_ue_connectable": {},
+          "version": "7.7",
+          "input_ue_unconnectable": {}
+        }
+      },
+      "widgets_values": [
+        "lanczos",
+        1,
+        1
+      ],
+      "widgets_values_named": {
+        "upscale_method": "lanczos",
+        "megapixels": 1,
+        "resolution_steps": 1
+      }
+    },
+    {
+      "id": 53,
+      "type": "VAEEncode",
+      "pos": [
+        -1290,
+        -350
+      ],
+      "size": [
+        343.853125,
+        100
+      ],
+      "flags": {
+        "collapsed": false
+      },
+      "order": 19,
+      "mode": 0,
+      "inputs": [
+        {
+          "localized_name": "pixels",
+          "name": "pixels",
+          "type": "IMAGE",
+          "link": 116
+        },
+        {
+          "localized_name": "vae",
+          "name": "vae",
+          "type": "VAE",
+          "link": 117
+        }
+      ],
+      "outputs": [
+        {
+          "localized_name": "LATENT",
+          "name": "LATENT",
+          "type": "LATENT",
+          "links": [
+            118,
+            119,
+            163
+          ]
+        }
+      ],
+      "title": "Encode reference with FLUX.2 VAE",
+      "properties": {
+        "Node name for S&R": "VAEEncode",
+        "enableTabs": false,
+        "tabWidth": 65,
+        "tabXOffset": 10,
+        "hasSecondTab": false,
+        "secondTabText": "Send Back",
+        "secondTabOffset": 80,
+        "secondTabWidth": 65,
+        "cnr_id": "comfy-core",
+        "ver": "0.8.2",
+        "ue_properties": {
+          "widget_ue_connectable": {},
+          "version": "7.7",
+          "input_ue_unconnectable": {}
+        }
+      }
+    },
+    {
+      "id": 54,
+      "type": "ReferenceLatent",
+      "pos": [
+        -100,
+        -350
+      ],
+      "size": [
+        307.991796875,
+        100
+      ],
+      "flags": {
+        "collapsed": false
+      },
+      "order": 31,
+      "mode": 0,
+      "inputs": [
+        {
+          "localized_name": "conditioning",
+          "name": "conditioning",
+          "type": "CONDITIONING",
+          "link": 98
+        },
+        {
+          "localized_name": "latent",
+          "name": "latent",
+          "shape": 7,
+          "type": "LATENT",
+          "link": 118
+        }
+      ],
+      "outputs": [
+        {
+          "localized_name": "CONDITIONING",
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "links": [
+            142
+          ]
+        }
+      ],
+      "title": "Attach reference to positive conditioning",
+      "properties": {
+        "Node name for S&R": "ReferenceLatent",
+        "enableTabs": false,
+        "tabWidth": 65,
+        "tabXOffset": 10,
+        "hasSecondTab": false,
+        "secondTabText": "Send Back",
+        "secondTabOffset": 80,
+        "secondTabWidth": 65,
+        "cnr_id": "comfy-core",
+        "ver": "0.8.2",
+        "ue_properties": {
+          "widget_ue_connectable": {},
+          "version": "7.7",
+          "input_ue_unconnectable": {}
+        }
+      }
+    },
+    {
+      "id": 55,
+      "type": "ReferenceLatent",
+      "pos": [
+        -100,
+        -90
+      ],
+      "size": [
+        313.1255859375,
+        100
+      ],
+      "flags": {
+        "collapsed": false
+      },
+      "order": 22,
+      "mode": 0,
+      "inputs": [
+        {
+          "localized_name": "conditioning",
+          "name": "conditioning",
+          "type": "CONDITIONING",
+          "link": 99
+        },
+        {
+          "localized_name": "latent",
+          "name": "latent",
+          "shape": 7,
+          "type": "LATENT",
+          "link": 119
+        }
+      ],
+      "outputs": [
+        {
+          "localized_name": "CONDITIONING",
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "links": [
+            145
+          ]
+        }
+      ],
+      "title": "Attach reference to negative conditioning",
+      "properties": {
+        "Node name for S&R": "ReferenceLatent",
+        "enableTabs": false,
+        "tabWidth": 65,
+        "tabXOffset": 10,
+        "hasSecondTab": false,
+        "secondTabText": "Send Back",
+        "secondTabOffset": 80,
+        "secondTabWidth": 65,
+        "cnr_id": "comfy-core",
+        "ver": "0.8.2",
+        "ue_properties": {
+          "widget_ue_connectable": {},
+          "version": "7.7",
+          "input_ue_unconnectable": {}
+        }
+      }
+    },
+    {
+      "id": 56,
+      "type": "ImageScale",
+      "pos": [
+        -1710,
+        -130
+      ],
+      "size": [
+        354.2095703125,
+        130
+      ],
+      "flags": {},
+      "order": 15,
+      "mode": 0,
+      "inputs": [
+        {
+          "localized_name": "image",
+          "name": "image",
+          "type": "IMAGE",
+          "link": 122
+        },
+        {
+          "localized_name": "upscale_method",
+          "name": "upscale_method",
+          "type": "COMBO",
+          "widget": {
+            "name": "upscale_method"
+          },
+          "link": null
+        },
+        {
+          "localized_name": "width",
+          "name": "width",
+          "type": "INT",
+          "widget": {
+            "name": "width"
+          },
+          "link": null
+        },
+        {
+          "localized_name": "height",
+          "name": "height",
+          "type": "INT",
+          "widget": {
+            "name": "height"
+          },
+          "link": null
+        },
+        {
+          "localized_name": "crop",
+          "name": "crop",
+          "type": "COMBO",
+          "widget": {
+            "name": "crop"
+          },
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "localized_name": "IMAGE",
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            151
+          ]
+        }
+      ],
+      "title": "Prepare 3024 × 4032 comparison reference",
+      "properties": {
+        "Node name for S&R": "ImageScale",
+        "cnr_id": "comfy-core",
+        "ver": "0.3.62",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "lanczos",
+        3024,
+        4032,
+        "disabled"
+      ],
+      "widgets_values_named": {
+        "upscale_method": "lanczos",
+        "width": 3024,
+        "height": 4032,
+        "crop": "disabled"
+      }
+    },
+    {
+      "id": 58,
+      "type": "AILab_QwenVL_Advanced",
+      "pos": [
+        -2200,
+        740
+      ],
+      "size": [
+        560,
+        650
+      ],
+      "flags": {},
+      "order": 16,
+      "mode": 0,
+      "inputs": [
+        {
+          "localized_name": "image",
+          "name": "image",
+          "shape": 7,
+          "type": "IMAGE",
+          "link": 125
+        },
+        {
+          "localized_name": "video",
+          "name": "video",
+          "shape": 7,
+          "type": "IMAGE",
+          "link": null
+        },
+        {
+          "localized_name": "model_name",
+          "name": "model_name",
+          "type": "COMBO",
+          "widget": {
+            "name": "model_name"
+          },
+          "link": null
+        },
+        {
+          "localized_name": "quantization",
+          "name": "quantization",
+          "type": "COMBO",
+          "widget": {
+            "name": "quantization"
+          },
+          "link": null
+        },
+        {
+          "localized_name": "attention_mode",
+          "name": "attention_mode",
+          "type": "COMBO",
+          "widget": {
+            "name": "attention_mode"
+          },
+          "link": null
+        },
+        {
+          "localized_name": "use_torch_compile",
+          "name": "use_torch_compile",
+          "type": "BOOLEAN",
+          "widget": {
+            "name": "use_torch_compile"
+          },
+          "link": null
+        },
+        {
+          "localized_name": "device",
+          "name": "device",
+          "type": "COMBO",
+          "widget": {
+            "name": "device"
+          },
+          "link": null
+        },
+        {
+          "localized_name": "preset_prompt",
+          "name": "preset_prompt",
+          "type": "COMBO",
+          "widget": {
+            "name": "preset_prompt"
+          },
+          "link": null
+        },
+        {
+          "localized_name": "custom_prompt",
+          "name": "custom_prompt",
+          "type": "STRING",
+          "widget": {
+            "name": "custom_prompt"
+          },
+          "link": null
+        },
+        {
+          "localized_name": "max_tokens",
+          "name": "max_tokens",
+          "type": "INT",
+          "widget": {
+            "name": "max_tokens"
+          },
+          "link": null
+        },
+        {
+          "localized_name": "temperature",
+          "name": "temperature",
+          "type": "FLOAT",
+          "widget": {
+            "name": "temperature"
+          },
+          "link": null
+        },
+        {
+          "localized_name": "top_p",
+          "name": "top_p",
+          "type": "FLOAT",
+          "widget": {
+            "name": "top_p"
+          },
+          "link": null
+        },
+        {
+          "localized_name": "num_beams",
+          "name": "num_beams",
+          "type": "INT",
+          "widget": {
+            "name": "num_beams"
+          },
+          "link": null
+        },
+        {
+          "localized_name": "repetition_penalty",
+          "name": "repetition_penalty",
+          "type": "FLOAT",
+          "widget": {
+            "name": "repetition_penalty"
+          },
+          "link": null
+        },
+        {
+          "localized_name": "frame_count",
+          "name": "frame_count",
+          "type": "INT",
+          "widget": {
+            "name": "frame_count"
+          },
+          "link": null
+        },
+        {
+          "localized_name": "video_frame_size",
+          "name": "video_frame_size",
+          "type": "COMBO",
+          "widget": {
+            "name": "video_frame_size"
+          },
+          "link": null
+        },
+        {
+          "localized_name": "keep_model_loaded",
+          "name": "keep_model_loaded",
+          "type": "BOOLEAN",
+          "widget": {
+            "name": "keep_model_loaded"
+          },
+          "link": null
+        },
+        {
+          "localized_name": "seed",
+          "name": "seed",
+          "type": "INT",
+          "widget": {
+            "name": "seed"
+          },
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "localized_name": "RESPONSE",
+          "name": "RESPONSE",
+          "type": "STRING",
+          "links": [
+            126
+          ]
+        }
+      ],
+      "title": "1 · Analyze reference image · Qwen3-VL",
+      "properties": {
+        "Node name for S&R": "AILab_QwenVL_Advanced",
+        "cnr_id": "ComfyUI-QwenVL",
+        "ver": "1b67b44"
+      },
+      "widgets_values": [
+        "Qwen3-VL-8B-Instruct",
+        "None (FP16)",
+        "sdpa",
+        false,
+        "cuda:0",
+        "🖼️ Detailed Analysis",
+        "You are an expert visual analyst writing one production-ready source-description prompt for FLUX.2 Klein 9B image editing. Analyze the supplied reference photograph closely. Output only the finished prompt in English, with no heading, preamble, bullet list, quotation marks, or commentary.\n\nWrite 180 to 300 words. Treat the image as an edit source rather than loose inspiration. Describe the visible source state concretely and precisely: camera position and height, crop, rectilinear perspective, composition, foreground and background layout, architecture and geometry, subject count and exact placement, the main subject's pose and scale relative to nearby objects, natural body proportions, arm and leg positions, facial expression, hairstyle, clothing cut/material/opacity, footwear, lighting direction/color/intensity, flash character, exposure, shadows, background people and objects, colors, and surface condition. Give special attention to spatial relationships that prevent accidental redesign.\n\nAnalyze photographic rendering as measurable source attributes rather than improving it. State exactly which plane is in focus, how strongly and how quickly the background loses focus, and whether architecture, people, or foliage are sharp or blurred. Preserve the source depth of field and optical focus falloff. Describe its colorimetry precisely: white balance, exposure, contrast, saturation, sky hue and intensity, dominant warm and cool colors, and the colors of major garments and objects. Do not normalize, mute, beautify, recolor, sharpen, or modernize the source look.\n\nThe generation canvas is permanently a full-bleed vertical 3:4 rectangle. Always describe the desired final framing as vertical 3:4, regardless of the source file's original ratio or any inferred ratio. Use a normal rectilinear photographic perspective. Never request fisheye, circular projection, barrel distortion, curved frame edges, black corners, rounded masks, lens-hood intrusion, heavy vignette, letterboxing, pillarboxing, or borders. Do not mistake a broad field of view for fisheye distortion. Straight architectural lines and the rectangular image boundary must remain straight, and the photograph must fill every corner of the canvas.\n\nRender the main foreground person as the fictional adult brunette identity learned by the loaded persona LoRA. Do not identify or name a real person. Preserve every other person and object by default.\n\nA separate SuperGemma instruction is appended after your output and may intentionally add, remove, or change clothing, nudity, accessories, pose, expression, camera position, framing, or another named attribute. Describe the reference accurately, but do not issue absolute prohibitions such as “do not modify clothing,” “keep the exact outfit,” or “the only alteration is identity.” State instead that source details remain the default unless the later user-requested modification explicitly overrides them. The later instruction is authoritative for every attribute it names.\n\nEnd with concise safeguards against unintended extra people, extra or missing limbs or digits, malformed anatomy, inconsistent scene geometry, dirty or damaged surfaces absent from the source, and unrelated additions. Do not invent details that are not visible.",
+        900,
+        0.2,
+        0.9,
+        1,
+        1.1,
+        16,
+        "auto",
+        true,
+        1,
+        "fixed"
+      ],
+      "widgets_values_named": {
+        "model_name": "Qwen3-VL-8B-Instruct",
+        "quantization": "None (FP16)",
+        "attention_mode": "sdpa",
+        "use_torch_compile": false,
+        "device": "cuda:0",
+        "preset_prompt": "🖼️ Detailed Analysis",
+        "custom_prompt": "You are an expert visual analyst writing one production-ready source-description prompt for FLUX.2 Klein 9B image editing. Analyze the supplied reference photograph closely. Output only the finished prompt in English, with no heading, preamble, bullet list, quotation marks, or commentary.\n\nWrite 180 to 300 words. Treat the image as an edit source rather than loose inspiration. Describe the visible source state concretely and precisely: camera position and height, crop, rectilinear perspective, composition, foreground and background layout, architecture and geometry, subject count and exact placement, the main subject's pose and scale relative to nearby objects, natural body proportions, arm and leg positions, facial expression, hairstyle, clothing cut/material/opacity, footwear, lighting direction/color/intensity, flash character, exposure, shadows, background people and objects, colors, and surface condition. Give special attention to spatial relationships that prevent accidental redesign.\n\nAnalyze photographic rendering as measurable source attributes rather than improving it. State exactly which plane is in focus, how strongly and how quickly the background loses focus, and whether architecture, people, or foliage are sharp or blurred. Preserve the source depth of field and optical focus falloff. Describe its colorimetry precisely: white balance, exposure, contrast, saturation, sky hue and intensity, dominant warm and cool colors, and the colors of major garments and objects. Do not normalize, mute, beautify, recolor, sharpen, or modernize the source look.\n\nThe generation canvas is permanently a full-bleed vertical 3:4 rectangle. Always describe the desired final framing as vertical 3:4, regardless of the source file's original ratio or any inferred ratio. Use a normal rectilinear photographic perspective. Never request fisheye, circular projection, barrel distortion, curved frame edges, black corners, rounded masks, lens-hood intrusion, heavy vignette, letterboxing, pillarboxing, or borders. Do not mistake a broad field of view for fisheye distortion. Straight architectural lines and the rectangular image boundary must remain straight, and the photograph must fill every corner of the canvas.\n\nRender the main foreground person as the fictional adult brunette identity learned by the loaded persona LoRA. Do not identify or name a real person. Preserve every other person and object by default.\n\nA separate SuperGemma instruction is appended after your output and may intentionally add, remove, or change clothing, nudity, accessories, pose, expression, camera position, framing, or another named attribute. Describe the reference accurately, but do not issue absolute prohibitions such as “do not modify clothing,” “keep the exact outfit,” or “the only alteration is identity.” State instead that source details remain the default unless the later user-requested modification explicitly overrides them. The later instruction is authoritative for every attribute it names.\n\nEnd with concise safeguards against unintended extra people, extra or missing limbs or digits, malformed anatomy, inconsistent scene geometry, dirty or damaged surfaces absent from the source, and unrelated additions. Do not invent details that are not visible.",
+        "max_tokens": 900,
+        "temperature": 0.2,
+        "top_p": 0.9,
+        "num_beams": 1,
+        "repetition_penalty": 1.1,
+        "frame_count": 16,
+        "video_frame_size": "auto",
+        "keep_model_loaded": true,
+        "seed": 1,
+        "control_after_generate": "fixed"
+      },
+      "color": "#28403f",
+      "bgcolor": "#28403f"
+    },
+    {
+      "id": 59,
+      "type": "PreviewAny",
+      "pos": [
+        980,
+        890
+      ],
+      "size": [
+        560,
+        430
+      ],
+      "flags": {},
+      "order": 30,
+      "mode": 0,
+      "inputs": [
+        {
+          "localized_name": "source",
+          "name": "source",
+          "type": "*",
+          "link": 139
+        }
+      ],
+      "outputs": [
+        {
+          "localized_name": "STRING",
+          "name": "STRING",
+          "type": "STRING",
+          "links": []
+        }
+      ],
+      "title": "FINAL COMPILED PROMPT · inspect here",
+      "properties": {
+        "Node name for S&R": "PreviewAny",
+        "cnr_id": "comfy-core"
+      },
+      "widgets_values": [],
+      "widgets_values_named": {},
+      "color": "#284532",
+      "bgcolor": "#3d684c"
+    },
+    {
+      "id": 60,
+      "type": "StringConcatenate",
+      "pos": [
+        -1570,
+        740
+      ],
+      "size": [
+        560,
+        300
+      ],
+      "flags": {},
+      "order": 20,
+      "mode": 0,
+      "inputs": [
+        {
+          "localized_name": "string_a",
+          "name": "string_a",
+          "type": "STRING",
+          "widget": {
+            "name": "string_a"
+          },
+          "link": 126
+        },
+        {
+          "localized_name": "string_b",
+          "name": "string_b",
+          "type": "STRING",
+          "widget": {
+            "name": "string_b"
+          },
+          "link": null
+        },
+        {
+          "localized_name": "delimiter",
+          "name": "delimiter",
+          "type": "STRING",
+          "widget": {
+            "name": "delimiter"
+          },
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "localized_name": "STRING",
+          "name": "STRING",
+          "type": "STRING",
+          "links": [
+            148
+          ]
+        }
+      ],
+      "title": "Reference mode · add identity and preservation rules",
+      "properties": {
+        "Node name for S&R": "StringConcatenate",
+        "cnr_id": "comfy-core"
+      },
+      "widgets_values": [
+        "",
+        "Mandatory base edit instruction: use the supplied photograph as a strict reference latent and treat visible pixels as authoritative for attributes that the final modification does not change. Preserve every other person and object. Preserve the source's exact depth of field, focal plane, background blur strength, focus falloff, white balance, exposure, contrast, saturation, sky hue and intensity, and major object colors unless the final modification explicitly changes one of them. Do not make a blurred background sharp, mute vivid colors, or apply a different color grade. Render the main foreground person as the fictional adult brunette identity learned by the loaded persona LoRA; do not copy, identify, or name a real person. The exact selected crop defines the composition, but the generated result must be a full-bleed vertical 3:4 rectangular photograph with normal rectilinear perspective. Fill every corner of the canvas. Do not introduce fisheye or circular projection, barrel distortion, curved frame edges, black corners, rounded masks, heavy vignette, letterboxing, pillarboxing, or borders. The final SUPERGEMMA-REWRITTEN USER MODIFICATION is authoritative and overrides every earlier source-state description or preservation instruction for each attribute it names, including additions and removals of clothing, eyewear, accessories, objects, pose, expression, camera, framing, and lighting. When it removes something, that element must be completely absent from the final image and the revealed area must be reconstructed naturally; never restore or retain any part of the removed element. Preserve the subject's adult identity, natural anatomy, body proportions, and all unnamed scene details. No extra or missing people, limbs, fingers, or toes. Do not add unrelated objects.",
+        "\\n\\n"
+      ],
+      "widgets_values_named": {
+        "string_a": "",
+        "string_b": "Mandatory base edit instruction: use the supplied photograph as a strict reference latent and treat visible pixels as authoritative for attributes that the final modification does not change. Preserve every other person and object. Preserve the source's exact depth of field, focal plane, background blur strength, focus falloff, white balance, exposure, contrast, saturation, sky hue and intensity, and major object colors unless the final modification explicitly changes one of them. Do not make a blurred background sharp, mute vivid colors, or apply a different color grade. Render the main foreground person as the fictional adult brunette identity learned by the loaded persona LoRA; do not copy, identify, or name a real person. The exact selected crop defines the composition, but the generated result must be a full-bleed vertical 3:4 rectangular photograph with normal rectilinear perspective. Fill every corner of the canvas. Do not introduce fisheye or circular projection, barrel distortion, curved frame edges, black corners, rounded masks, heavy vignette, letterboxing, pillarboxing, or borders. The final SUPERGEMMA-REWRITTEN USER MODIFICATION is authoritative and overrides every earlier source-state description or preservation instruction for each attribute it names, including additions and removals of clothing, eyewear, accessories, objects, pose, expression, camera, framing, and lighting. When it removes something, that element must be completely absent from the final image and the revealed area must be reconstructed naturally; never restore or retain any part of the removed element. Preserve the subject's adult identity, natural anatomy, body proportions, and all unnamed scene details. No extra or missing people, limbs, fingers, or toes. Do not add unrelated objects.",
+        "delimiter": "\\n\\n"
+      }
+    },
+    {
+      "id": 57,
+      "type": "Image Comparer (rgthree)",
+      "pos": [
+        -740,
+        -2260
+      ],
+      "size": [
+        680,
+        760
+      ],
+      "flags": {},
+      "order": 39,
+      "mode": 0,
+      "inputs": [
+        {
+          "dir": 3,
+          "name": "image_a",
+          "shape": 7,
+          "type": "IMAGE",
+          "link": 124
+        },
+        {
+          "dir": 3,
+          "name": "image_b",
+          "shape": 7,
+          "type": "IMAGE",
+          "link": 123
+        }
+      ],
+      "outputs": [
+        {
+          "dir": 4,
+          "name": "images",
+          "type": "IMAGE",
+          "links": []
+        }
+      ],
+      "title": "FINAL RESULT · generated / reference slider",
+      "properties": {
+        "comparer_mode": "Slide",
+        "Node name for S&R": "Image Comparer (rgthree)",
+        "cnr_id": "rgthree-comfy",
+        "ver": "d7297b4"
+      },
+      "widgets_values": [
+        [
+          {
+            "name": "A",
+            "selected": true,
+            "url": ""
+          },
+          {
+            "name": "B",
+            "selected": true,
+            "url": ""
+          }
+        ]
+      ],
+      "widgets_values_named": {
+        "rgthree_comparer": {
+          "images": [
+            {
+              "name": "A",
+              "selected": true,
+              "url": ""
+            },
+            {
+              "name": "B",
+              "selected": true,
+              "url": ""
+            }
+          ]
+        }
+      },
+      "color": "#284532",
+      "bgcolor": "#3d684c"
+    },
+    {
+      "id": 63,
+      "type": "OllamaConnectivityV2",
+      "pos": [
+        -1570,
+        1120
+      ],
+      "size": [
+        390.159765625,
+        170
+      ],
+      "flags": {},
+      "order": 5,
+      "mode": 0,
+      "inputs": [
+        {
+          "localized_name": "url",
+          "name": "url",
+          "type": "STRING",
+          "widget": {
+            "name": "url"
+          },
+          "link": null
+        },
+        {
+          "localized_name": "model",
+          "name": "model",
+          "type": "COMBO",
+          "widget": {
+            "name": "model"
+          },
+          "link": null
+        },
+        {
+          "localized_name": "keep_alive",
+          "name": "keep_alive",
+          "type": "INT",
+          "widget": {
+            "name": "keep_alive"
+          },
+          "link": null
+        },
+        {
+          "localized_name": "keep_alive_unit",
+          "name": "keep_alive_unit",
+          "type": "COMBO",
+          "widget": {
+            "name": "keep_alive_unit"
+          },
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "localized_name": "connection",
+          "name": "connection",
+          "type": "OLLAMA_CONNECTIVITY",
+          "links": [
+            131,
+            136
+          ]
+        }
+      ],
+      "title": "SuperGemma connection · exact 26B Q4_K_M model",
+      "properties": {
+        "Node name for S&R": "OllamaConnectivityV2",
+        "cnr_id": "comfyui-ollama",
+        "ver": "current",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "http://127.0.0.1:11434",
+        "0xIbra/supergemma4-26b-uncensored-gguf-v2:Q4_K_M",
+        10,
+        "minutes",
+        null
+      ],
+      "widgets_values_named": {
+        "url": "http://127.0.0.1:11434",
+        "model": "0xIbra/supergemma4-26b-uncensored-gguf-v2:Q4_K_M",
+        "keep_alive": 10,
+        "keep_alive_unit": "minutes",
+        "🔄 Reconnect": null
+      }
+    },
+    {
+      "id": 64,
+      "type": "OllamaGenerateV2",
+      "pos": [
+        -1100,
+        1120
+      ],
+      "size": [
+        600,
+        610
+      ],
+      "flags": {},
+      "order": 12,
+      "mode": 0,
+      "inputs": [
+        {
+          "localized_name": "connectivity",
+          "name": "connectivity",
+          "shape": 7,
+          "type": "OLLAMA_CONNECTIVITY",
+          "link": 131
+        },
+        {
+          "localized_name": "options",
+          "name": "options",
+          "shape": 7,
+          "type": "OLLAMA_OPTIONS",
+          "link": null
+        },
+        {
+          "localized_name": "images",
+          "name": "images",
+          "shape": 7,
+          "type": "IMAGE",
+          "link": null
+        },
+        {
+          "localized_name": "context",
+          "name": "context",
+          "shape": 7,
+          "type": "OLLAMA_CONTEXT",
+          "link": null
+        },
+        {
+          "localized_name": "meta",
+          "name": "meta",
+          "shape": 7,
+          "type": "OLLAMA_META",
+          "link": null
+        },
+        {
+          "localized_name": "system",
+          "name": "system",
+          "type": "STRING",
+          "widget": {
+            "name": "system"
+          },
+          "link": null
+        },
+        {
+          "localized_name": "prompt",
+          "name": "prompt",
+          "type": "STRING",
+          "widget": {
+            "name": "prompt"
+          },
+          "link": 132
+        },
+        {
+          "localized_name": "think",
+          "name": "think",
+          "type": "BOOLEAN",
+          "widget": {
+            "name": "think"
+          },
+          "link": null
+        },
+        {
+          "localized_name": "keep_context",
+          "name": "keep_context",
+          "type": "BOOLEAN",
+          "widget": {
+            "name": "keep_context"
+          },
+          "link": null
+        },
+        {
+          "localized_name": "format",
+          "name": "format",
+          "type": "COMBO",
+          "widget": {
+            "name": "format"
+          },
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "localized_name": "result",
+          "name": "result",
+          "type": "STRING",
+          "links": [
+            133,
+            135
+          ]
+        },
+        {
+          "localized_name": "thinking",
+          "name": "thinking",
+          "type": "STRING",
+          "links": []
+        },
+        {
+          "localized_name": "context",
+          "name": "context",
+          "type": "OLLAMA_CONTEXT",
+          "links": []
+        },
+        {
+          "localized_name": "meta",
+          "name": "meta",
+          "type": "OLLAMA_META",
+          "links": []
+        }
+      ],
+      "title": "3 · Rewrite requested change · SuperGemma",
+      "properties": {
+        "Node name for S&R": "OllamaGenerateV2",
+        "cnr_id": "comfyui-ollama",
+        "ver": "current",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "You write the “OPTIONAL MODIFICATIONS” instruction for my FLUX.2 Klein image-editing workflow.\n\nThe user's message is either a change requested for a reference photo or a complete text-to-image scene request. Convert it into one precise, production-ready visual instruction while retaining every concrete detail they supplied.\n\nRules:\n- Output only the finished modification instruction, with no heading, explanation, quotation marks, or bullet points.\n\n- Treat the main subject as an adult woman. Never refer to her as a girl or imply that she is underage.\n- Preserve the user's requested adult content and visual details accurately; do not sanitize, euphemize, moralize, refuse, or replace the request with safer clothing.\n- State exactly what should change and which subject or object it applies to.\n- In reference mode, preserve everything the user did not request to change, including identity, anatomy, pose, body proportions, surrounding people, background, architecture, lighting, image style, and composition. In prompt-only mode, make the requested subject, setting, composition, camera, lighting, clothing, pose, and style explicit whenever the user supplied them; do not invent constraints that conflict with the request.\n- If the user requests a camera change, specify the camera’s position, height, direction, distance, lens perspective, framing, and the subject’s placement in the new frame.\n- If a new camera angle reveals previously hidden areas, instruct FLUX.2 to infer them naturally and maintain consistent scene geometry.\n- If the user requests a clothing change, specify its color, material, cut, fit, length, opacity, and which existing garments or accessories remain.\n- If the user requests a pose or expression change, describe the exact limb placement or facial expression while maintaining natural anatomy.\n- Make the instruction direct and visually concrete. Avoid vague terms such as “better,” “cooler,” or “more attractive.”\n- State that the requested change overrides preservation instructions only for the named attributes.\n- End by instructing the model to preserve all other visible details.\n- Keep the result between 60 and 140 words.",
+        "",
+        false,
+        false,
+        "text"
+      ],
+      "widgets_values_named": {
+        "system": "You write the “OPTIONAL MODIFICATIONS” instruction for my FLUX.2 Klein image-editing workflow.\n\nThe user's message is either a change requested for a reference photo or a complete text-to-image scene request. Convert it into one precise, production-ready visual instruction while retaining every concrete detail they supplied.\n\nRules:\n- Output only the finished modification instruction, with no heading, explanation, quotation marks, or bullet points.\n\n- Treat the main subject as an adult woman. Never refer to her as a girl or imply that she is underage.\n- Preserve the user's requested adult content and visual details accurately; do not sanitize, euphemize, moralize, refuse, or replace the request with safer clothing.\n- State exactly what should change and which subject or object it applies to.\n- In reference mode, preserve everything the user did not request to change, including identity, anatomy, pose, body proportions, surrounding people, background, architecture, lighting, image style, and composition. In prompt-only mode, make the requested subject, setting, composition, camera, lighting, clothing, pose, and style explicit whenever the user supplied them; do not invent constraints that conflict with the request.\n- If the user requests a camera change, specify the camera’s position, height, direction, distance, lens perspective, framing, and the subject’s placement in the new frame.\n- If a new camera angle reveals previously hidden areas, instruct FLUX.2 to infer them naturally and maintain consistent scene geometry.\n- If the user requests a clothing change, specify its color, material, cut, fit, length, opacity, and which existing garments or accessories remain.\n- If the user requests a pose or expression change, describe the exact limb placement or facial expression while maintaining natural anatomy.\n- Make the instruction direct and visually concrete. Avoid vague terms such as “better,” “cooler,” or “more attractive.”\n- State that the requested change overrides preservation instructions only for the named attributes.\n- End by instructing the model to preserve all other visible details.\n- Keep the result between 60 and 140 words.",
+        "prompt": "",
+        "think": false,
+        "keep_context": false,
+        "format": "text"
+      },
+      "color": "#314157",
+      "bgcolor": "#233248"
+    },
+    {
+      "id": 65,
+      "type": "PreviewAny",
+      "pos": [
+        -430,
+        1380
+      ],
+      "size": [
+        600,
+        430
+      ],
+      "flags": {},
+      "order": 17,
+      "mode": 0,
+      "inputs": [
+        {
+          "localized_name": "source",
+          "name": "source",
+          "type": "*",
+          "link": 133
+        }
+      ],
+      "outputs": [
+        {
+          "localized_name": "STRING",
+          "name": "STRING",
+          "type": "STRING",
+          "links": []
+        }
+      ],
+      "title": "Rewritten change · intermediate preview",
+      "properties": {
+        "Node name for S&R": "PreviewAny",
+        "cnr_id": "comfy-core"
+      },
+      "widgets_values": [],
+      "widgets_values_named": {},
+      "color": "#314157",
+      "bgcolor": "#233248"
+    },
+    {
+      "id": 7,
+      "type": "ASInfLoraLoaderModelOnlyWithTrigger",
+      "pos": [
+        -1740,
+        -2800
+      ],
+      "size": [
+        400,
+        190
+      ],
+      "flags": {},
+      "order": 10,
+      "mode": 0,
+      "inputs": [
+        {
+          "localized_name": "model",
+          "name": "model",
+          "type": "MODEL",
+          "link": 7
+        },
+        {
+          "localized_name": "lora_name",
+          "name": "lora_name",
+          "type": "COMBO",
+          "widget": {
+            "name": "lora_name"
+          },
+          "link": null
+        },
+        {
+          "localized_name": "strength_model",
+          "name": "strength_model",
+          "type": "FLOAT",
+          "widget": {
+            "name": "strength_model"
+          },
+          "link": null
+        },
+        {
+          "localized_name": "trigger_words",
+          "name": "trigger_words",
+          "type": "STRING",
+          "widget": {
+            "name": "trigger_words"
+          },
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "localized_name": "model",
+          "name": "model",
+          "type": "MODEL",
+          "links": [
+            110
+          ]
+        },
+        {
+          "localized_name": "active_trigger_words",
+          "name": "active_trigger_words",
+          "type": "STRING",
+          "links": [
+            154
+          ]
+        }
+      ],
+      "title": "LoRA 1",
+      "properties": {
+        "Node name for S&R": "ASInfLoraLoaderModelOnlyWithTrigger",
+        "cnr_id": "as-inf"
+      },
+      "widgets_values": [
+        "FLUX2_KLEIN_UNLOCKED_V2.safetensors",
+        0,
+        ""
+      ],
+      "widgets_values_named": {
+        "lora_name": "FLUX2_KLEIN_UNLOCKED_V2.safetensors",
+        "strength_model": 0,
+        "trigger_words": ""
+      }
+    },
+    {
+      "id": 66,
+      "type": "StringConcatenate",
+      "pos": [
+        -430,
+        740
+      ],
+      "size": [
+        600,
+        330
+      ],
+      "flags": {},
+      "order": 26,
+      "mode": 0,
+      "inputs": [
+        {
+          "localized_name": "string_a",
+          "name": "string_a",
+          "type": "STRING",
+          "widget": {
+            "name": "string_a"
+          },
+          "link": 134
+        },
+        {
+          "localized_name": "string_b",
+          "name": "string_b",
+          "type": "STRING",
+          "widget": {
+            "name": "string_b"
+          },
+          "link": 135
+        },
+        {
+          "localized_name": "delimiter",
+          "name": "delimiter",
+          "type": "STRING",
+          "widget": {
+            "name": "delimiter"
+          },
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "localized_name": "STRING",
+          "name": "STRING",
+          "type": "STRING",
+          "links": [
+            137
+          ]
+        }
+      ],
+      "title": "Combine selected source mode and requested image",
+      "properties": {
+        "Node name for S&R": "StringConcatenate",
+        "cnr_id": "comfy-core"
+      },
+      "widgets_values": [
+        "",
+        "",
+        "\n\nAUTHORITATIVE MODIFICATION — resolve this into the final visible state:\n"
+      ],
+      "widgets_values_named": {
+        "string_a": "",
+        "string_b": "",
+        "delimiter": "\n\nAUTHORITATIVE MODIFICATION — resolve this into the final visible state:\n"
+      }
+    },
+    {
+      "id": 67,
+      "type": "OllamaGenerateV2",
+      "pos": [
+        250,
+        740
+      ],
+      "size": [
+        650,
+        690
+      ],
+      "flags": {},
+      "order": 27,
+      "mode": 0,
+      "inputs": [
+        {
+          "localized_name": "connectivity",
+          "name": "connectivity",
+          "shape": 7,
+          "type": "OLLAMA_CONNECTIVITY",
+          "link": 136
+        },
+        {
+          "localized_name": "options",
+          "name": "options",
+          "shape": 7,
+          "type": "OLLAMA_OPTIONS",
+          "link": null
+        },
+        {
+          "localized_name": "images",
+          "name": "images",
+          "shape": 7,
+          "type": "IMAGE",
+          "link": null
+        },
+        {
+          "localized_name": "context",
+          "name": "context",
+          "shape": 7,
+          "type": "OLLAMA_CONTEXT",
+          "link": null
+        },
+        {
+          "localized_name": "meta",
+          "name": "meta",
+          "shape": 7,
+          "type": "OLLAMA_META",
+          "link": null
+        },
+        {
+          "localized_name": "system",
+          "name": "system",
+          "type": "STRING",
+          "widget": {
+            "name": "system"
+          },
+          "link": null
+        },
+        {
+          "localized_name": "prompt",
+          "name": "prompt",
+          "type": "STRING",
+          "widget": {
+            "name": "prompt"
+          },
+          "link": 137
+        },
+        {
+          "localized_name": "think",
+          "name": "think",
+          "type": "BOOLEAN",
+          "widget": {
+            "name": "think"
+          },
+          "link": null
+        },
+        {
+          "localized_name": "keep_context",
+          "name": "keep_context",
+          "type": "BOOLEAN",
+          "widget": {
+            "name": "keep_context"
+          },
+          "link": null
+        },
+        {
+          "localized_name": "format",
+          "name": "format",
+          "type": "COMBO",
+          "widget": {
+            "name": "format"
+          },
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "localized_name": "result",
+          "name": "result",
+          "type": "STRING",
+          "links": [
+            157
+          ]
+        },
+        {
+          "localized_name": "thinking",
+          "name": "thinking",
+          "type": "STRING",
+          "links": []
+        },
+        {
+          "localized_name": "context",
+          "name": "context",
+          "type": "OLLAMA_CONTEXT",
+          "links": []
+        },
+        {
+          "localized_name": "meta",
+          "name": "meta",
+          "type": "OLLAMA_META",
+          "links": []
+        }
+      ],
+      "title": "5 · Compile one conflict-free FLUX.2 prompt",
+      "properties": {
+        "Node name for S&R": "OllamaGenerateV2",
+        "cnr_id": "comfyui-ollama",
+        "ver": "current",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "You compile one final production-ready prompt for FLUX.2 Klein. The input begins with either a REFERENCE-MODE source description or a PROMPT-ONLY-MODE instruction, followed by an AUTHORITATIVE REQUEST. Resolve it into one coherent description of the desired final image.\n\nRules:\n- Output only the finished final FLUX.2 prompt, with no heading, notes, quotation marks, or bullet points.\n- Treat the main subject as an adult woman. Never call her a girl or imply she is underage.\n- Apply every requested adult modification accurately. Do not sanitize, euphemize, moralize, refuse, censor, or substitute safer clothing.\n- Put the requested modification in the opening sentence so it has maximum priority. Describe the complete desired final state, then preserve the remaining source details.\n- For every removal, state the absence explicitly and unambiguously in the final prompt: say that the named element is completely absent and that no instance or close synonym of it remains. Describe the naturally reconstructed pixels revealed beneath it. Reassert the absence briefly in the final sentence. Never merely imply a removal by describing only what has been revealed.\n- In reference mode, for each attribute named by the request, completely remove the superseded source-state wording. Never describe both the original and replacement state. If clothing is removed or replaced, omit every positive description of the original garments; if camera position changes, omit the original camera position.\n- In prompt-only mode, there is no source photograph. Treat the authoritative request as the complete scene specification, expand its concrete visual details into a self-contained generation prompt, and never mention a reference image or preservation.\n- Keep all source details that do not conflict with the modification: identity role, unaffected anatomy and pose, people, objects, architecture, spatial geometry, lighting, photographic style, colors, and surface condition.\n- Preserve the source photograph's exact focal plane, depth of field, background blur strength and falloff, white balance, exposure, contrast, saturation, sky hue and intensity, and named object colors unless the request changes them. Do not sharpen a blurred background, mute vivid colors, or substitute a new color grade. Describe these attributes concretely rather than saying only “preserve them.”\n- Describe only the desired final visible state. Do not mention editing, overrides, instructions, source text, before/after states, or preservation rules in the output.\n- Retain concrete camera, composition, pose, scene, lighting, and texture detail useful to image generation.\n- The output geometry is non-negotiable: specify a full-bleed vertical 3:4 rectangular photograph with normal rectilinear perspective that fills all four corners. Replace any source-analysis claim of 4:5 or another ratio with 3:4. Replace fisheye, circular projection, barrel distortion, or extreme wide-angle wording with a normal rectilinear perspective while retaining the intended composition and field of view. Never request black corners, a black frame, rounded or circular masks, lens-hood intrusion, heavy vignette, letterboxing, pillarboxing, borders, curved architecture, or warped straight lines.\n- Preserve natural adult anatomy and consistent scene geometry. Avoid extra or missing people, limbs, fingers, and toes, malformed anatomy, duplicated objects, unrelated additions, text, watermarks, or censoring.\n- Keep the result between 200 and 340 words.",
+        "",
+        false,
+        false,
+        "text"
+      ],
+      "widgets_values_named": {
+        "system": "You compile one final production-ready prompt for FLUX.2 Klein. The input begins with either a REFERENCE-MODE source description or a PROMPT-ONLY-MODE instruction, followed by an AUTHORITATIVE REQUEST. Resolve it into one coherent description of the desired final image.\n\nRules:\n- Output only the finished final FLUX.2 prompt, with no heading, notes, quotation marks, or bullet points.\n- Treat the main subject as an adult woman. Never call her a girl or imply she is underage.\n- Apply every requested adult modification accurately. Do not sanitize, euphemize, moralize, refuse, censor, or substitute safer clothing.\n- Put the requested modification in the opening sentence so it has maximum priority. Describe the complete desired final state, then preserve the remaining source details.\n- For every removal, state the absence explicitly and unambiguously in the final prompt: say that the named element is completely absent and that no instance or close synonym of it remains. Describe the naturally reconstructed pixels revealed beneath it. Reassert the absence briefly in the final sentence. Never merely imply a removal by describing only what has been revealed.\n- In reference mode, for each attribute named by the request, completely remove the superseded source-state wording. Never describe both the original and replacement state. If clothing is removed or replaced, omit every positive description of the original garments; if camera position changes, omit the original camera position.\n- In prompt-only mode, there is no source photograph. Treat the authoritative request as the complete scene specification, expand its concrete visual details into a self-contained generation prompt, and never mention a reference image or preservation.\n- Keep all source details that do not conflict with the modification: identity role, unaffected anatomy and pose, people, objects, architecture, spatial geometry, lighting, photographic style, colors, and surface condition.\n- Preserve the source photograph's exact focal plane, depth of field, background blur strength and falloff, white balance, exposure, contrast, saturation, sky hue and intensity, and named object colors unless the request changes them. Do not sharpen a blurred background, mute vivid colors, or substitute a new color grade. Describe these attributes concretely rather than saying only “preserve them.”\n- Describe only the desired final visible state. Do not mention editing, overrides, instructions, source text, before/after states, or preservation rules in the output.\n- Retain concrete camera, composition, pose, scene, lighting, and texture detail useful to image generation.\n- The output geometry is non-negotiable: specify a full-bleed vertical 3:4 rectangular photograph with normal rectilinear perspective that fills all four corners. Replace any source-analysis claim of 4:5 or another ratio with 3:4. Replace fisheye, circular projection, barrel distortion, or extreme wide-angle wording with a normal rectilinear perspective while retaining the intended composition and field of view. Never request black corners, a black frame, rounded or circular masks, lens-hood intrusion, heavy vignette, letterboxing, pillarboxing, borders, curved architecture, or warped straight lines.\n- Preserve natural adult anatomy and consistent scene geometry. Avoid extra or missing people, limbs, fingers, and toes, malformed anatomy, duplicated objects, unrelated additions, text, watermarks, or censoring.\n- Keep the result between 200 and 340 words.",
+        "prompt": "",
+        "think": false,
+        "keep_context": false,
+        "format": "text"
+      },
+      "color": "#314157",
+      "bgcolor": "#233248"
+    },
+    {
+      "id": 69,
+      "type": "ComfySwitchNode",
+      "pos": [
+        260,
+        -350
+      ],
+      "size": [
+        309.5845703125,
+        130
+      ],
+      "flags": {},
+      "order": 32,
+      "mode": 0,
+      "inputs": [
+        {
+          "localized_name": "on_false",
+          "name": "on_false",
+          "shape": 7,
+          "type": "CONDITIONING",
+          "link": 141
+        },
+        {
+          "localized_name": "on_true",
+          "name": "on_true",
+          "shape": 7,
+          "type": "CONDITIONING",
+          "link": 142
+        },
+        {
+          "localized_name": "switch",
+          "name": "switch",
+          "type": "BOOLEAN",
+          "widget": {
+            "name": "switch"
+          },
+          "link": 140
+        }
+      ],
+      "outputs": [
+        {
+          "localized_name": "output",
+          "name": "output",
+          "type": "CONDITIONING",
+          "links": [
+            168,
+            189
+          ]
+        }
+      ],
+      "title": "Positive conditioning · reference optional",
+      "properties": {
+        "Node name for S&R": "ComfySwitchNode",
+        "cnr_id": "comfy-core",
+        "ver": "0.35.0",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        true
+      ],
+      "widgets_values_named": {
+        "switch": true
+      }
+    },
+    {
+      "id": 70,
+      "type": "ComfySwitchNode",
+      "pos": [
+        260,
+        -100
+      ],
+      "size": [
+        316.70078125,
+        130
+      ],
+      "flags": {},
+      "order": 25,
+      "mode": 0,
+      "inputs": [
+        {
+          "localized_name": "on_false",
+          "name": "on_false",
+          "shape": 7,
+          "type": "CONDITIONING",
+          "link": 144
+        },
+        {
+          "localized_name": "on_true",
+          "name": "on_true",
+          "shape": 7,
+          "type": "CONDITIONING",
+          "link": 145
+        },
+        {
+          "localized_name": "switch",
+          "name": "switch",
+          "type": "BOOLEAN",
+          "widget": {
+            "name": "switch"
+          },
+          "link": 143
+        }
+      ],
+      "outputs": [
+        {
+          "localized_name": "output",
+          "name": "output",
+          "type": "CONDITIONING",
+          "links": [
+            169,
+            192
+          ]
+        }
+      ],
+      "title": "Negative conditioning · reference optional",
+      "properties": {
+        "Node name for S&R": "ComfySwitchNode",
+        "cnr_id": "comfy-core",
+        "ver": "0.35.0",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        true
+      ],
+      "widgets_values_named": {
+        "switch": true
+      }
+    },
+    {
+      "id": 71,
+      "type": "ComfySwitchNode",
+      "pos": [
+        -850,
+        780
+      ],
+      "size": [
+        357.9625,
+        130
+      ],
+      "flags": {},
+      "order": 23,
+      "mode": 0,
+      "inputs": [
+        {
+          "localized_name": "on_false",
+          "name": "on_false",
+          "shape": 7,
+          "type": "STRING",
+          "link": 147
+        },
+        {
+          "localized_name": "on_true",
+          "name": "on_true",
+          "shape": 7,
+          "type": "STRING",
+          "link": 148
+        },
+        {
+          "localized_name": "switch",
+          "name": "switch",
+          "type": "BOOLEAN",
+          "widget": {
+            "name": "switch"
+          },
+          "link": 146
+        }
+      ],
+      "outputs": [
+        {
+          "localized_name": "output",
+          "name": "output",
+          "type": "STRING",
+          "links": [
+            134
+          ]
+        }
+      ],
+      "title": "Prompt source · Qwen reference or prompt-only",
+      "properties": {
+        "Node name for S&R": "ComfySwitchNode",
+        "cnr_id": "comfy-core",
+        "ver": "0.35.0",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        true
+      ],
+      "widgets_values_named": {
+        "switch": true
+      }
+    },
+    {
+      "id": 72,
+      "type": "ComfySwitchNode",
+      "pos": [
+        2200,
+        200
+      ],
+      "size": [
+        400,
+        130
+      ],
+      "flags": {},
+      "order": 38,
+      "mode": 0,
+      "inputs": [
+        {
+          "localized_name": "on_false",
+          "name": "on_false",
+          "shape": 7,
+          "type": "IMAGE",
+          "link": 150
+        },
+        {
+          "localized_name": "on_true",
+          "name": "on_true",
+          "shape": 7,
+          "type": "IMAGE",
+          "link": 151
+        },
+        {
+          "localized_name": "switch",
+          "name": "switch",
+          "type": "BOOLEAN",
+          "widget": {
+            "name": "switch"
+          },
+          "link": 149
+        }
+      ],
+      "outputs": [
+        {
+          "localized_name": "output",
+          "name": "output",
+          "type": "IMAGE",
+          "links": [
+            123
+          ]
+        }
+      ],
+      "title": "Comparison B · reference or generated fallback",
+      "properties": {
+        "Node name for S&R": "ComfySwitchNode",
+        "cnr_id": "comfy-core",
+        "ver": "0.35.0",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        true
+      ],
+      "widgets_values_named": {
+        "switch": true
+      }
+    },
+    {
+      "id": 73,
+      "type": "PrimitiveStringMultiline",
+      "pos": [
+        -1570,
+        1400
+      ],
+      "size": [
+        390,
+        300
+      ],
+      "flags": {},
+      "order": 6,
+      "mode": 0,
+      "inputs": [
+        {
+          "localized_name": "value",
+          "name": "value",
+          "type": "STRING",
+          "widget": {
+            "name": "value"
+          },
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "localized_name": "STRING",
+          "name": "STRING",
+          "type": "STRING",
+          "links": [
+            147
+          ]
+        }
+      ],
+      "title": "PROMPT-ONLY MODE · internal base instruction",
+      "properties": {
+        "Node name for S&R": "PrimitiveStringMultiline",
+        "cnr_id": "comfy-core",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "PROMPT-ONLY MODE: Generate a new image from scratch. There is no source photograph, no reference composition, and no source appearance to preserve. Render the main subject as the fictional adult brunette identity learned by the loaded persona LoRA. Treat the AUTHORITATIVE REQUEST that follows as the complete desired scene specification. Expand its concrete subject, pose, anatomy, clothing, setting, camera position, lens perspective, framing, lighting, photographic style, and visible details into a coherent self-contained FLUX.2 prompt without referring to a source image or an edit. The result must be a full-bleed vertical 3:4 rectangular photograph with normal rectilinear perspective and content filling every corner. Do not use fisheye or circular projection, barrel distortion, curved frame edges, black corners, rounded masks, heavy vignette, letterboxing, pillarboxing, or borders. Preserve natural adult anatomy and consistent scene geometry; avoid extra or missing people, limbs, fingers, or toes, malformed anatomy, duplicated objects, text, watermarks, and unrelated additions."
+      ],
+      "widgets_values_named": {
+        "value": "PROMPT-ONLY MODE: Generate a new image from scratch. There is no source photograph, no reference composition, and no source appearance to preserve. Render the main subject as the fictional adult brunette identity learned by the loaded persona LoRA. Treat the AUTHORITATIVE REQUEST that follows as the complete desired scene specification. Expand its concrete subject, pose, anatomy, clothing, setting, camera position, lens perspective, framing, lighting, photographic style, and visible details into a coherent self-contained FLUX.2 prompt without referring to a source image or an edit. The result must be a full-bleed vertical 3:4 rectangular photograph with normal rectilinear perspective and content filling every corner. Do not use fisheye or circular projection, barrel distortion, curved frame edges, black corners, rounded masks, heavy vignette, letterboxing, pillarboxing, or borders. Preserve natural adult anatomy and consistent scene geometry; avoid extra or missing people, limbs, fingers, or toes, malformed anatomy, duplicated objects, text, watermarks, and unrelated additions."
+      },
+      "color": "#30363b",
+      "bgcolor": "#454d54"
+    },
+    {
+      "id": 75,
+      "type": "ImageScale",
+      "pos": [
+        -2200,
+        -350
+      ],
+      "size": [
+        379.0103515625,
+        130
+      ],
+      "flags": {},
+      "order": 11,
+      "mode": 0,
+      "inputs": [
+        {
+          "localized_name": "image",
+          "name": "image",
+          "type": "IMAGE",
+          "link": 153
+        },
+        {
+          "localized_name": "upscale_method",
+          "name": "upscale_method",
+          "type": "COMBO",
+          "widget": {
+            "name": "upscale_method"
+          },
+          "link": null
+        },
+        {
+          "localized_name": "width",
+          "name": "width",
+          "type": "INT",
+          "widget": {
+            "name": "width"
+          },
+          "link": null
+        },
+        {
+          "localized_name": "height",
+          "name": "height",
+          "type": "INT",
+          "widget": {
+            "name": "height"
+          },
+          "link": null
+        },
+        {
+          "localized_name": "crop",
+          "name": "crop",
+          "type": "COMBO",
+          "widget": {
+            "name": "crop"
+          },
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "localized_name": "IMAGE",
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            115,
+            122,
+            125
+          ]
+        }
+      ],
+      "title": "Normalize reference · crop-to-fill 1008 × 1344 (3:4)",
+      "properties": {
+        "Node name for S&R": "ImageScale",
+        "cnr_id": "comfy-core",
+        "ver": "0.3.62",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "lanczos",
+        1008,
+        1344,
+        "center"
+      ],
+      "widgets_values_named": {
+        "upscale_method": "lanczos",
+        "width": 1008,
+        "height": 1344,
+        "crop": "center"
+      }
+    },
+    {
+      "id": 76,
+      "type": "ASInfPrependLoraTriggers",
+      "pos": [
+        980,
+        720
+      ],
+      "size": [
+        560,
+        250
+      ],
+      "flags": {},
+      "order": 28,
+      "mode": 0,
+      "inputs": [
+        {
+          "localized_name": "trigger_1",
+          "name": "trigger_1",
+          "type": "STRING",
+          "widget": {
+            "name": "trigger_1"
+          },
+          "link": 154
+        },
+        {
+          "localized_name": "trigger_2",
+          "name": "trigger_2",
+          "type": "STRING",
+          "widget": {
+            "name": "trigger_2"
+          },
+          "link": 155
+        },
+        {
+          "localized_name": "trigger_3",
+          "name": "trigger_3",
+          "type": "STRING",
+          "widget": {
+            "name": "trigger_3"
+          },
+          "link": null
+        },
+        {
+          "localized_name": "prompt",
+          "name": "prompt",
+          "type": "STRING",
+          "widget": {
+            "name": "prompt"
+          },
+          "link": 157
+        }
+      ],
+      "outputs": [
+        {
+          "localized_name": "prompt",
+          "name": "prompt",
+          "type": "STRING",
+          "links": [
+            138,
+            139,
+            159
+          ]
+        }
+      ],
+      "title": "Apply active LoRA trigger words to final prompt",
+      "properties": {
+        "Node name for S&R": "ASInfPrependLoraTriggers",
+        "cnr_id": "as-inf"
+      },
+      "widgets_values": [
+        "",
+        "",
+        "",
+        ""
+      ],
+      "widgets_values_named": {
+        "trigger_1": "",
+        "trigger_2": "",
+        "trigger_3": "",
+        "prompt": ""
+      },
+      "color": "#4d3d61",
+      "bgcolor": "#6b5685"
+    },
+    {
+      "id": 37,
+      "type": "VAEDecode",
+      "pos": [
+        915.1017093207195,
+        -360.95438523056015
+      ],
+      "size": [
+        203.3677734375,
+        46
+      ],
+      "flags": {},
+      "order": 34,
+      "mode": 0,
+      "inputs": [
+        {
+          "localized_name": "samples",
+          "name": "samples",
+          "type": "LATENT",
+          "link": 176
+        },
+        {
+          "localized_name": "vae",
+          "name": "vae",
+          "type": "VAE",
+          "link": 102
+        }
+      ],
+      "outputs": [
+        {
+          "localized_name": "IMAGE",
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            178,
+            202
+          ]
+        }
+      ],
+      "title": "Decode generated latent",
+      "properties": {
+        "Node name for S&R": "VAEDecode",
+        "cnr_id": "comfy-core",
+        "ver": "0.3.62",
+        "widget_ue_connectable": {}
+      }
+    },
+    {
+      "id": 51,
+      "type": "ASInfOptionalReferenceCrop3x4",
+      "pos": [
+        -2200,
+        -2260
+      ],
+      "size": [
+        680,
+        760
+      ],
+      "flags": {},
+      "order": 7,
+      "mode": 0,
+      "inputs": [
+        {
+          "localized_name": "upload",
+          "name": "upload",
+          "type": "IMAGEUPLOAD",
+          "widget": {
+            "name": "upload"
+          },
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "localized_name": "image",
+          "name": "image",
+          "type": "IMAGE",
+          "links": [
+            153
+          ]
+        },
+        {
+          "localized_name": "mask",
+          "name": "mask",
+          "type": "MASK",
+          "links": []
+        },
+        {
+          "localized_name": "has_reference",
+          "name": "has_reference",
+          "type": "BOOLEAN",
+          "links": [
+            140,
+            143,
+            146,
+            149,
+            166
+          ]
+        }
+      ],
+      "title": "OPTIONAL REFERENCE + FIXED 3:4 CROP · None = prompt-only",
+      "properties": {
+        "Node name for S&R": "ASInfOptionalReferenceCrop3x4"
+      },
+      "widgets_values": [
+        "Screenshot From 2026-10-25 21-06-03.png",
+        0.01475409836065572,
+        0,
+        0.9704918032786886,
+        1,
+        "image"
+      ],
+      "widgets_values_named": {
+        "image": "Screenshot From 2026-10-25 21-06-03.png",
+        "crop_x": 0.01475409836065572,
+        "crop_y": 0,
+        "crop_w": 0.9704918032786886,
+        "crop_h": 1,
+        "upload": "image"
+      },
+      "color": "#23435c",
+      "bgcolor": "#315e80"
+    },
+    {
+      "id": 61,
+      "type": "PrimitiveStringMultiline",
+      "pos": [
+        -1440,
+        -2260
+      ],
+      "size": [
+        620,
+        360
+      ],
+      "flags": {},
+      "order": 8,
+      "mode": 0,
+      "inputs": [
+        {
+          "localized_name": "value",
+          "name": "value",
+          "type": "STRING",
+          "widget": {
+            "name": "value"
+          },
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "localized_name": "STRING",
+          "name": "STRING",
+          "type": "STRING",
+          "links": [
+            132
+          ]
+        }
+      ],
+      "title": "REQUEST / PROMPT · full scene with None, changes with reference",
+      "properties": {
+        "Node name for S&R": "PrimitiveStringMultiline",
+        "cnr_id": "comfy-core"
+      },
+      "widgets_values": [
+        "remove her hat"
+      ],
+      "widgets_values_named": {
+        "value": "remove her hat"
+      },
+      "color": "#4b3525",
+      "bgcolor": "#6b4b32"
+    },
+    {
+      "id": 50,
+      "type": "CreateHookLoraModelOnly",
+      "pos": [
+        -840,
+        -2800
+      ],
+      "size": [
+        400,
+        150
+      ],
+      "flags": {},
+      "order": 18,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "lora_name",
+          "type": "COMBO",
+          "link": null,
+          "widget": {
+            "name": "lora_name"
+          }
+        },
+        {
+          "name": "strength_model",
+          "type": "FLOAT",
+          "link": null,
+          "widget": {
+            "name": "strength_model"
+          }
+        },
+        {
+          "name": "prev_hooks",
+          "type": "HOOKS",
+          "link": null,
+          "shape": 7
+        }
+      ],
+      "outputs": [
+        {
+          "name": "HOOKS",
+          "type": "HOOKS",
+          "links": [
+            187
+          ]
+        }
+      ],
+      "title": "LoRA 3 · FACE-LOCAL identity hook",
+      "properties": {
+        "Node name for S&R": "CreateHookLoraModelOnly",
+        "cnr_id": "comfy-core",
+        "ver": "0.35.0"
+      },
+      "widgets_values": [
+        "vexa_person_klein9b_v1.safetensors",
+        0.7
+      ],
+      "widgets_values_named": {
+        "lora_name": "vexa_person_klein9b_v1.safetensors",
+        "strength_model": 0.7
+      }
+    },
+    {
+      "id": 49,
+      "type": "ASInfLoraLoaderModelOnlyWithTrigger",
+      "pos": [
+        -1290,
+        -2800
+      ],
+      "size": [
+        400,
+        190
+      ],
+      "flags": {},
+      "order": 13,
+      "mode": 0,
+      "inputs": [
+        {
+          "localized_name": "model",
+          "name": "model",
+          "type": "MODEL",
+          "link": 110
+        },
+        {
+          "localized_name": "lora_name",
+          "name": "lora_name",
+          "type": "COMBO",
+          "widget": {
+            "name": "lora_name"
+          },
+          "link": null
+        },
+        {
+          "localized_name": "strength_model",
+          "name": "strength_model",
+          "type": "FLOAT",
+          "widget": {
+            "name": "strength_model"
+          },
+          "link": null
+        },
+        {
+          "localized_name": "trigger_words",
+          "name": "trigger_words",
+          "type": "STRING",
+          "widget": {
+            "name": "trigger_words"
+          },
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "localized_name": "model",
+          "name": "model",
+          "type": "MODEL",
+          "links": [
+            158
+          ]
+        },
+        {
+          "localized_name": "active_trigger_words",
+          "name": "active_trigger_words",
+          "type": "STRING",
+          "links": [
+            155
+          ]
+        }
+      ],
+      "title": "LoRA 2",
+      "properties": {
+        "Node name for S&R": "ASInfLoraLoaderModelOnlyWithTrigger",
+        "cnr_id": "as-inf"
+      },
+      "widgets_values": [
+        "klein_instagramreality_v2.safetensors",
+        0.7,
+        "Instagram photo, iPhone photo, amateur photo"
+      ],
+      "widgets_values_named": {
+        "lora_name": "klein_instagramreality_v2.safetensors",
+        "strength_model": 0.7,
+        "trigger_words": "Instagram photo, iPhone photo, amateur photo"
+      }
+    },
+    {
+      "id": 39,
+      "type": "KSampler Config (rgthree)",
+      "pos": [
+        -2200,
+        -2800
+      ],
+      "size": [
+        390,
+        240
+      ],
+      "flags": {},
+      "order": 33,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "steps_total",
+          "type": "INT",
+          "link": null,
+          "widget": {
+            "name": "steps_total"
+          }
+        },
+        {
+          "name": "refiner_step",
+          "type": "INT",
+          "link": null,
+          "widget": {
+            "name": "refiner_step"
+          }
+        },
+        {
+          "name": "cfg",
+          "type": "FLOAT",
+          "link": null,
+          "widget": {
+            "name": "cfg"
+          }
+        },
+        {
+          "name": "sampler_name",
+          "type": "COMBO",
+          "link": null,
+          "widget": {
+            "name": "sampler_name"
+          }
+        },
+        {
+          "name": "scheduler",
+          "type": "COMBO",
+          "link": null,
+          "widget": {
+            "name": "scheduler"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "STEPS",
+          "type": "INT",
+          "links": [
+            172,
+            195
+          ]
+        },
+        {
+          "name": "REFINER_STEP",
+          "type": "INT",
+          "links": []
+        },
+        {
+          "name": "CFG",
+          "type": "FLOAT",
+          "links": [
+            173,
+            196
+          ]
+        },
+        {
+          "name": "SAMPLER",
+          "type": [
+            "euler",
+            "euler_cfg_pp",
+            "euler_ancestral",
+            "euler_ancestral_cfg_pp",
+            "heun",
+            "heunpp2",
+            "exp_heun_2_x0",
+            "exp_heun_2_x0_sde",
+            "dpm_2",
+            "dpm_2_ancestral",
+            "lms",
+            "dpm_fast",
+            "dpm_adaptive",
+            "dpmpp_2s_ancestral",
+            "dpmpp_2s_ancestral_cfg_pp",
+            "dpmpp_sde",
+            "dpmpp_sde_gpu",
+            "dpmpp_2m",
+            "dpmpp_2m_cfg_pp",
+            "dpmpp_2m_sde",
+            "dpmpp_2m_sde_gpu",
+            "dpmpp_2m_sde_heun",
+            "dpmpp_2m_sde_heun_gpu",
+            "dpmpp_3m_sde",
+            "dpmpp_3m_sde_gpu",
+            "ddpm",
+            "lcm",
+            "ipndm",
+            "ipndm_v",
+            "deis",
+            "cfgpp_ud10_ab",
+            "res_multistep",
+            "res_multistep_cfg_pp",
+            "res_multistep_ancestral",
+            "res_multistep_ancestral_cfg_pp",
+            "gradient_estimation",
+            "gradient_estimation_cfg_pp",
+            "er_sde",
+            "seeds_2",
+            "seeds_3",
+            "sa_solver",
+            "sa_solver_pece",
+            "ddim",
+            "uni_pc",
+            "uni_pc_bh2",
+            "legacy_rk",
+            "rk",
+            "rk_beta",
+            "deis_3m_ode",
+            "deis_2m_ode",
+            "deis_3m",
+            "deis_2m",
+            "res_6s_ode",
+            "res_5s_ode",
+            "res_3s_ode",
+            "res_2s_ode",
+            "res_3m_ode",
+            "res_2m_ode",
+            "res_6s",
+            "res_5s",
+            "res_3s",
+            "res_2s",
+            "res_3m",
+            "res_2m"
+          ],
+          "links": [
+            174,
+            197
+          ]
+        },
+        {
+          "name": "SCHEDULER",
+          "type": [
+            "simple",
+            "sgm_uniform",
+            "karras",
+            "exponential",
+            "ddim_uniform",
+            "beta",
+            "normal",
+            "linear_quadratic",
+            "kl_optimal",
+            "bong_tangent",
+            "beta57"
+          ],
+          "links": [
+            175,
+            198
+          ]
+        }
+      ],
+      "title": "SHARED SAMPLER SETTINGS · scout + final",
+      "properties": {
+        "Node name for S&R": "KSampler Config (rgthree)",
+        "cnr_id": "rgthree-comfy",
+        "ver": "current"
+      },
+      "widgets_values": [
+        12,
+        12,
+        1.3,
+        "res_2s",
+        "simple"
+      ],
+      "widgets_values_named": {
+        "steps_total": 12,
+        "refiner_step": 12,
+        "cfg": 1.3,
+        "sampler_name": "res_2s",
+        "scheduler": "simple"
+      },
+      "color": "#3b3156",
+      "bgcolor": "#514475"
+    },
+    {
+      "id": 77,
+      "type": "StringConcatenate",
+      "pos": [
+        820,
+        2630
+      ],
+      "size": [
+        460,
+        180
+      ],
+      "flags": {},
+      "order": 42,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "string_a",
+          "type": "STRING",
+          "link": 159,
+          "widget": {
+            "name": "string_a"
+          }
+        },
+        {
+          "name": "string_b",
+          "type": "STRING",
+          "link": null,
+          "widget": {
+            "name": "string_b"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "STRING",
+          "type": "STRING",
+          "links": [
+            161
+          ]
+        }
+      ],
+      "title": "Face-region prompt · add identity trigger only here",
+      "properties": {
+        "Node name for S&R": "StringConcatenate",
+        "cnr_id": "comfy-core",
+        "ver": "0.35.0"
+      },
+      "widgets_values": [
+        "",
+        "vexa_person",
+        ", "
+      ],
+      "widgets_values_named": {
+        "string_a": "",
+        "string_b": "vexa_person",
+        "delimiter": ", "
+      },
+      "color": "#4f3d58",
+      "bgcolor": "#362940"
+    },
+    {
+      "id": 78,
+      "type": "CLIPTextEncode",
+      "pos": [
+        1320,
+        2630
+      ],
+      "size": [
+        410,
+        190
+      ],
+      "flags": {},
+      "order": 43,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "clip",
+          "type": "CLIP",
+          "link": 160
+        },
+        {
+          "name": "text",
+          "type": "STRING",
+          "link": 161,
+          "widget": {
+            "name": "text"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "links": [
+            162,
+            164
+          ]
+        }
+      ],
+      "title": "Encode face-local identity prompt",
+      "properties": {
+        "Node name for S&R": "CLIPTextEncode",
+        "cnr_id": "comfy-core",
+        "ver": "0.35.0"
+      },
+      "widgets_values": [
+        "vexa_person"
+      ]
+    },
+    {
+      "id": 79,
+      "type": "ReferenceLatent",
+      "pos": [
+        1320,
+        2870
+      ],
+      "size": [
+        410,
+        100
+      ],
+      "flags": {},
+      "order": 44,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "conditioning",
+          "type": "CONDITIONING",
+          "link": 162
+        },
+        {
+          "name": "latent",
+          "type": "LATENT",
+          "link": 163
+        }
+      ],
+      "outputs": [
+        {
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "links": [
+            165
+          ]
+        }
+      ],
+      "title": "Attach optional reference to face conditioning",
+      "properties": {
+        "Node name for S&R": "ReferenceLatent",
+        "cnr_id": "comfy-core",
+        "ver": "0.35.0"
+      },
+      "widgets_values": []
+    },
+    {
+      "id": 80,
+      "type": "ComfySwitchNode",
+      "pos": [
+        1790,
+        2710
+      ],
+      "size": [
+        330,
+        150
+      ],
+      "flags": {},
+      "order": 45,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "on_false",
+          "type": "CONDITIONING",
+          "link": 164,
+          "shape": 7
+        },
+        {
+          "name": "on_true",
+          "type": "CONDITIONING",
+          "link": 165,
+          "shape": 7
+        },
+        {
+          "name": "switch",
+          "type": "BOOLEAN",
+          "link": 166,
+          "widget": {
+            "name": "switch"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "output",
+          "type": "CONDITIONING",
+          "links": [
+            185
+          ]
+        }
+      ],
+      "title": "Face conditioning · reference optional",
+      "properties": {
+        "Node name for S&R": "ComfySwitchNode",
+        "cnr_id": "comfy-core",
+        "ver": "current"
+      },
+      "widgets_values": [
+        false
+      ],
+      "widgets_values_named": {
+        "switch": false
+      }
+    },
+    {
+      "id": 81,
+      "type": "LoadMediaPipeFaceLandmarker",
+      "pos": [
+        -1740,
+        2390
+      ],
+      "size": [
+        370,
+        140
+      ],
+      "flags": {},
+      "order": 46,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model_name",
+          "type": "COMBO",
+          "link": null,
+          "widget": {
+            "name": "model_name"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "FACE_DETECTION_MODEL",
+          "type": "FACE_DETECTION_MODEL",
+          "links": [
+            177
+          ]
+        }
+      ],
+      "title": "Load official MediaPipe face detector",
+      "properties": {
+        "Node name for S&R": "LoadMediaPipeFaceLandmarker",
+        "cnr_id": "comfy-core",
+        "ver": "0.35.0",
+        "models": [
+          {
+            "name": "mediapipe_face_fp32.safetensors",
+            "url": "https://huggingface.co/Comfy-Org/mediapipe/resolve/main/detection/mediapipe_face_fp32.safetensors",
+            "directory": "detection"
+          }
+        ]
+      },
+      "widgets_values": [
+        "mediapipe_face_fp32.safetensors"
+      ],
+      "widgets_values_named": {
+        "model_name": "mediapipe_face_fp32.safetensors"
+      }
+    },
+    {
+      "id": 82,
+      "type": "MediaPipeFaceLandmarker",
+      "pos": [
+        -1290,
+        2390
+      ],
+      "size": [
+        410,
+        240
+      ],
+      "flags": {},
+      "order": 47,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "face_detection_model",
+          "type": "FACE_DETECTION_MODEL",
+          "link": 177
+        },
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "link": 178
+        },
+        {
+          "name": "detector_variant",
+          "type": "COMBO",
+          "link": null,
+          "widget": {
+            "name": "detector_variant"
+          }
+        },
+        {
+          "name": "num_faces",
+          "type": "INT",
+          "link": null,
+          "widget": {
+            "name": "num_faces"
+          }
+        },
+        {
+          "name": "min_confidence",
+          "type": "FLOAT",
+          "link": null,
+          "widget": {
+            "name": "min_confidence"
+          }
+        },
+        {
+          "name": "missing_frame_fallback",
+          "type": "COMBO",
+          "link": null,
+          "widget": {
+            "name": "missing_frame_fallback"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "face_landmarks",
+          "type": "FACE_LANDMARKS",
+          "links": [
+            179
+          ]
+        },
+        {
+          "name": "bboxes",
+          "type": "BOUNDING_BOX",
+          "links": []
+        }
+      ],
+      "title": "Detect primary face in scout render",
+      "properties": {
+        "Node name for S&R": "MediaPipeFaceLandmarker",
+        "cnr_id": "comfy-core",
+        "ver": "0.35.0"
+      },
+      "widgets_values": [
+        "both",
+        1,
+        0.35,
+        "empty"
+      ],
+      "widgets_values_named": {
+        "detector_variant": "both",
+        "num_faces": 1,
+        "min_confidence": 0.35,
+        "missing_frame_fallback": "empty"
+      }
+    },
+    {
+      "id": 83,
+      "type": "MediaPipeFaceMask",
+      "pos": [
+        -810,
+        2390
+      ],
+      "size": [
+        380,
+        250
+      ],
+      "flags": {},
+      "order": 48,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "face_landmarks",
+          "type": "FACE_LANDMARKS",
+          "link": 179
+        },
+        {
+          "name": "regions",
+          "type": "COMFY_DYNAMICCOMBO_V3",
+          "link": null,
+          "widget": {
+            "name": "regions"
+          }
+        },
+        {
+          "name": "regions.face_oval",
+          "type": "BOOLEAN",
+          "link": null,
+          "widget": {
+            "name": "regions.face_oval"
+          }
+        },
+        {
+          "name": "regions.lips",
+          "type": "BOOLEAN",
+          "link": null,
+          "widget": {
+            "name": "regions.lips"
+          }
+        },
+        {
+          "name": "regions.left_eye",
+          "type": "BOOLEAN",
+          "link": null,
+          "widget": {
+            "name": "regions.left_eye"
+          }
+        },
+        {
+          "name": "regions.right_eye",
+          "type": "BOOLEAN",
+          "link": null,
+          "widget": {
+            "name": "regions.right_eye"
+          }
+        },
+        {
+          "name": "regions.irises",
+          "type": "BOOLEAN",
+          "link": null,
+          "widget": {
+            "name": "regions.irises"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "MASK",
+          "type": "MASK",
+          "links": [
+            180
+          ]
+        }
+      ],
+      "title": "Face oval mask",
+      "properties": {
+        "Node name for S&R": "MediaPipeFaceMask",
+        "cnr_id": "comfy-core",
+        "ver": "0.35.0"
+      },
+      "widgets_values": [
+        "custom",
+        true,
+        false,
+        false,
+        false,
+        false
+      ],
+      "widgets_values_named": {
+        "regions": "custom",
+        "regions.face_oval": true,
+        "regions.lips": false,
+        "regions.left_eye": false,
+        "regions.right_eye": false,
+        "regions.irises": false
+      }
+    },
+    {
+      "id": 84,
+      "type": "GrowMask",
+      "pos": [
+        -360,
+        2390
+      ],
+      "size": [
+        300,
+        130
+      ],
+      "flags": {},
+      "order": 49,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "mask",
+          "type": "MASK",
+          "link": 180
+        },
+        {
+          "name": "expand",
+          "type": "INT",
+          "link": null,
+          "widget": {
+            "name": "expand"
+          }
+        },
+        {
+          "name": "tapered_corners",
+          "type": "BOOLEAN",
+          "link": null,
+          "widget": {
+            "name": "tapered_corners"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "MASK",
+          "type": "MASK",
+          "links": [
+            181
+          ]
+        }
+      ],
+      "title": "Expand face influence slightly",
+      "properties": {
+        "Node name for S&R": "GrowMask",
+        "cnr_id": "comfy-core",
+        "ver": "0.35.0"
+      },
+      "widgets_values": [
+        48,
+        true
+      ],
+      "widgets_values_named": {
+        "expand": 48,
+        "tapered_corners": true
+      }
+    },
+    {
+      "id": 85,
+      "type": "MaskToImage",
+      "pos": [
+        0,
+        2390
+      ],
+      "size": [
+        250,
+        70
+      ],
+      "flags": {},
+      "order": 50,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "mask",
+          "type": "MASK",
+          "link": 181
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            182
+          ]
+        }
+      ],
+      "title": "Mask to image",
+      "properties": {
+        "Node name for S&R": "MaskToImage",
+        "cnr_id": "comfy-core",
+        "ver": "0.35.0"
+      },
+      "widgets_values": []
+    },
+    {
+      "id": 86,
+      "type": "ImageBlur",
+      "pos": [
+        300,
+        2390
+      ],
+      "size": [
+        280,
+        120
+      ],
+      "flags": {},
+      "order": 51,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "link": 182
+        },
+        {
+          "name": "blur_radius",
+          "type": "INT",
+          "link": null,
+          "widget": {
+            "name": "blur_radius"
+          }
+        },
+        {
+          "name": "sigma",
+          "type": "FLOAT",
+          "link": null,
+          "widget": {
+            "name": "sigma"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            183,
+            184
+          ]
+        }
+      ],
+      "title": "Soft face-mask transition",
+      "properties": {
+        "Node name for S&R": "ImageBlur",
+        "cnr_id": "comfy-core",
+        "ver": "0.35.0"
+      },
+      "widgets_values": [
+        31,
+        10.0
+      ],
+      "widgets_values_named": {
+        "blur_radius": 31,
+        "sigma": 10.0
+      }
+    },
+    {
+      "id": 87,
+      "type": "ImageToMask",
+      "pos": [
+        640,
+        2390
+      ],
+      "size": [
+        260,
+        100
+      ],
+      "flags": {},
+      "order": 52,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "link": 183
+        },
+        {
+          "name": "channel",
+          "type": "COMBO",
+          "link": null,
+          "widget": {
+            "name": "channel"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "MASK",
+          "type": "MASK",
+          "links": [
+            186
+          ]
+        }
+      ],
+      "title": "Final soft spatial mask",
+      "properties": {
+        "Node name for S&R": "ImageToMask",
+        "cnr_id": "comfy-core",
+        "ver": "0.35.0"
+      },
+      "widgets_values": [
+        "red"
+      ],
+      "widgets_values_named": {
+        "channel": "red"
+      }
+    },
+    {
+      "id": 88,
+      "type": "PreviewImage",
+      "pos": [
+        -810,
+        2710
+      ],
+      "size": [
+        520,
+        390
+      ],
+      "flags": {},
+      "order": 53,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 184
+        }
+      ],
+      "outputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "links": []
+        }
+      ],
+      "title": "FACE MASK PREVIEW · white = identity LoRA region",
+      "properties": {
+        "Node name for S&R": "PreviewImage",
+        "cnr_id": "comfy-core",
+        "ver": "0.35.0"
+      },
+      "widgets_values": [],
+      "color": "#50354b",
+      "bgcolor": "#352332"
+    },
+    {
+      "id": 89,
+      "type": "ConditioningSetProperties",
+      "pos": [
+        2180,
+        2390
+      ],
+      "size": [
+        400,
+        220
+      ],
+      "flags": {},
+      "order": 54,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "cond_NEW",
+          "type": "CONDITIONING",
+          "link": 185
+        },
+        {
+          "name": "strength",
+          "type": "FLOAT",
+          "link": null,
+          "widget": {
+            "name": "strength"
+          }
+        },
+        {
+          "name": "set_cond_area",
+          "type": "COMBO",
+          "link": null,
+          "widget": {
+            "name": "set_cond_area"
+          }
+        },
+        {
+          "name": "mask",
+          "type": "MASK",
+          "link": 186,
+          "shape": 7
+        },
+        {
+          "name": "hooks",
+          "type": "HOOKS",
+          "link": 187,
+          "shape": 7
+        },
+        {
+          "name": "timesteps",
+          "type": "TIMESTEPS_RANGE",
+          "link": null,
+          "shape": 7
+        }
+      ],
+      "outputs": [
+        {
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "links": [
+            188
+          ]
+        }
+      ],
+      "title": "Apply identity LoRA only inside face mask",
+      "properties": {
+        "Node name for S&R": "ConditioningSetProperties",
+        "cnr_id": "comfy-core",
+        "ver": "0.35.0"
+      },
+      "widgets_values": [
+        1.0,
+        "default"
+      ],
+      "widgets_values_named": {
+        "strength": 1.0,
+        "set_cond_area": "default"
+      }
+    },
+    {
+      "id": 90,
+      "type": "ConditioningSetDefaultCombine",
+      "pos": [
+        2180,
+        2670
+      ],
+      "size": [
+        400,
+        150
+      ],
+      "flags": {},
+      "order": 55,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "cond",
+          "type": "CONDITIONING",
+          "link": 188
+        },
+        {
+          "name": "cond_DEFAULT",
+          "type": "CONDITIONING",
+          "link": 189
+        },
+        {
+          "name": "hooks",
+          "type": "HOOKS",
+          "link": null,
+          "shape": 7
+        }
+      ],
+      "outputs": [
+        {
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "links": [
+            191
+          ]
+        }
+      ],
+      "title": "Base conditioning outside face",
+      "properties": {
+        "Node name for S&R": "ConditioningSetDefaultCombine",
+        "cnr_id": "comfy-core",
+        "ver": "0.35.0"
+      },
+      "widgets_values": []
+    },
+    {
+      "id": 91,
+      "type": "KSampler",
+      "pos": [
+        2660,
+        2390
+      ],
+      "size": [
+        410,
+        474
+      ],
+      "flags": {},
+      "order": 56,
+      "mode": 0,
+      "inputs": [
+        {
+          "localized_name": "model",
+          "name": "model",
+          "type": "MODEL",
+          "link": 190
+        },
+        {
+          "localized_name": "positive",
+          "name": "positive",
+          "type": "CONDITIONING",
+          "link": 191
+        },
+        {
+          "localized_name": "negative",
+          "name": "negative",
+          "type": "CONDITIONING",
+          "link": 192
+        },
+        {
+          "localized_name": "latent_image",
+          "name": "latent_image",
+          "type": "LATENT",
+          "link": 193
+        },
+        {
+          "localized_name": "seed",
+          "name": "seed",
+          "type": "INT",
+          "widget": {
+            "name": "seed"
+          },
+          "link": 194
+        },
+        {
+          "localized_name": "steps",
+          "name": "steps",
+          "type": "INT",
+          "widget": {
+            "name": "steps"
+          },
+          "link": 195
+        },
+        {
+          "localized_name": "cfg",
+          "name": "cfg",
+          "type": "FLOAT",
+          "widget": {
+            "name": "cfg"
+          },
+          "link": 196
+        },
+        {
+          "localized_name": "sampler_name",
+          "name": "sampler_name",
+          "type": "COMBO",
+          "widget": {
+            "name": "sampler_name"
+          },
+          "link": 197
+        },
+        {
+          "localized_name": "scheduler",
+          "name": "scheduler",
+          "type": "COMBO",
+          "widget": {
+            "name": "scheduler"
+          },
+          "link": 198
+        },
+        {
+          "localized_name": "denoise",
+          "name": "denoise",
+          "type": "FLOAT",
+          "widget": {
+            "name": "denoise"
+          },
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "localized_name": "LATENT",
+          "name": "LATENT",
+          "type": "LATENT",
+          "links": [
+            199
+          ]
+        }
+      ],
+      "title": "FINAL RENDER · same seed, face-local LoRA",
+      "properties": {
+        "Node name for S&R": "KSampler",
+        "cnr_id": "comfy-core",
+        "ver": "0.3.62",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        394781884134779,
+        "fixed",
+        12,
+        1.3,
+        "res_2s",
+        "simple",
+        1.0
+      ],
+      "widgets_values_named": {
+        "seed": 394781884134779,
+        "steps": 12,
+        "cfg": 1.3,
+        "sampler_name": "res_2s",
+        "scheduler": "simple",
+        "denoise": 1.0
+      },
+      "color": "#3b3156",
+      "bgcolor": "#514475"
+    },
+    {
+      "id": 92,
+      "type": "VAEDecode",
+      "pos": [
+        3130,
+        2390
+      ],
+      "size": [
+        203.3677734375,
+        46
+      ],
+      "flags": {},
+      "order": 57,
+      "mode": 0,
+      "inputs": [
+        {
+          "localized_name": "samples",
+          "name": "samples",
+          "type": "LATENT",
+          "link": 199
+        },
+        {
+          "localized_name": "vae",
+          "name": "vae",
+          "type": "VAE",
+          "link": 200
+        }
+      ],
+      "outputs": [
+        {
+          "localized_name": "IMAGE",
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            201
+          ]
+        }
+      ],
+      "title": "Decode final face-local render",
+      "properties": {
+        "Node name for S&R": "VAEDecode",
+        "cnr_id": "comfy-core",
+        "ver": "0.3.62",
+        "widget_ue_connectable": {}
+      }
+    },
+    {
+      "id": 93,
+      "type": "PrimitiveInt",
+      "pos": [
+        -2200,
+        -2520
+      ],
+      "size": [
+        390,
+        120
+      ],
+      "flags": {},
+      "order": 13,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "value",
+          "type": "INT",
+          "link": null,
+          "widget": {
+            "name": "value"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "INT",
+          "type": "INT",
+          "links": [
+            171,
+            194
+          ]
+        }
+      ],
+      "title": "SHARED SEED · guaranteed identical passes",
+      "properties": {
+        "Node name for S&R": "PrimitiveInt",
+        "cnr_id": "comfy-core",
+        "ver": "0.35.0"
+      },
+      "widgets_values": [
+        394781884134779,
+        "fixed"
+      ],
+      "widgets_values_named": {
+        "value": 394781884134779
+      },
+      "color": "#493c5b",
+      "bgcolor": "#31293e"
+    },
+    {
+      "id": 94,
+      "type": "KSampler",
+      "pos": [
+        -2200,
+        2390
+      ],
+      "size": [
+        390,
+        474
+      ],
+      "flags": {},
+      "order": 41,
+      "mode": 0,
+      "inputs": [
+        {
+          "localized_name": "model",
+          "name": "model",
+          "type": "MODEL",
+          "link": 167
+        },
+        {
+          "localized_name": "positive",
+          "name": "positive",
+          "type": "CONDITIONING",
+          "link": 168
+        },
+        {
+          "localized_name": "negative",
+          "name": "negative",
+          "type": "CONDITIONING",
+          "link": 169
+        },
+        {
+          "localized_name": "latent_image",
+          "name": "latent_image",
+          "type": "LATENT",
+          "link": 170
+        },
+        {
+          "localized_name": "seed",
+          "name": "seed",
+          "type": "INT",
+          "widget": {
+            "name": "seed"
+          },
+          "link": 171
+        },
+        {
+          "localized_name": "steps",
+          "name": "steps",
+          "type": "INT",
+          "widget": {
+            "name": "steps"
+          },
+          "link": 172
+        },
+        {
+          "localized_name": "cfg",
+          "name": "cfg",
+          "type": "FLOAT",
+          "widget": {
+            "name": "cfg"
+          },
+          "link": 173
+        },
+        {
+          "localized_name": "sampler_name",
+          "name": "sampler_name",
+          "type": "COMBO",
+          "widget": {
+            "name": "sampler_name"
+          },
+          "link": 174
+        },
+        {
+          "localized_name": "scheduler",
+          "name": "scheduler",
+          "type": "COMBO",
+          "widget": {
+            "name": "scheduler"
+          },
+          "link": 175
+        },
+        {
+          "localized_name": "denoise",
+          "name": "denoise",
+          "type": "FLOAT",
+          "widget": {
+            "name": "denoise"
+          },
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "localized_name": "LATENT",
+          "name": "LATENT",
+          "type": "LATENT",
+          "links": [
+            176
+          ]
+        }
+      ],
+      "title": "SCOUT RENDER · no identity LoRA",
+      "properties": {
+        "Node name for S&R": "KSampler",
+        "cnr_id": "comfy-core",
+        "ver": "0.3.62",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        394781884134779,
+        "fixed",
+        12,
+        1.3,
+        "res_2s",
+        "simple",
+        1.0
+      ],
+      "widgets_values_named": {
+        "seed": 394781884134779,
+        "steps": 12,
+        "cfg": 1.3,
+        "sampler_name": "res_2s",
+        "scheduler": "simple",
+        "denoise": 1.0
+      },
+      "color": "#3b3156",
+      "bgcolor": "#514475"
+    },
+    {
+      "id": 95,
+      "type": "ImageScale",
+      "pos": [
+        3130,
+        2530
+      ],
+      "size": [
+        310,
+        130
+      ],
+      "flags": {},
+      "order": 58,
+      "mode": 0,
+      "inputs": [
+        {
+          "localized_name": "image",
+          "name": "image",
+          "type": "IMAGE",
+          "link": 202
+        },
+        {
+          "localized_name": "upscale_method",
+          "name": "upscale_method",
+          "type": "COMBO",
+          "widget": {
+            "name": "upscale_method"
+          },
+          "link": null
+        },
+        {
+          "localized_name": "width",
+          "name": "width",
+          "type": "INT",
+          "widget": {
+            "name": "width"
+          },
+          "link": null
+        },
+        {
+          "localized_name": "height",
+          "name": "height",
+          "type": "INT",
+          "widget": {
+            "name": "height"
+          },
+          "link": null
+        },
+        {
+          "localized_name": "crop",
+          "name": "crop",
+          "type": "COMBO",
+          "widget": {
+            "name": "crop"
+          },
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "localized_name": "IMAGE",
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            204
+          ]
+        }
+      ],
+      "title": "Scout comparison resize · 3024 × 4032",
+      "properties": {
+        "Node name for S&R": "ImageScale",
+        "cnr_id": "comfy-core",
+        "ver": "0.3.62",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "lanczos",
+        3024,
+        4032,
+        "disabled"
+      ],
+      "widgets_values_named": {
+        "upscale_method": "lanczos",
+        "width": 3024,
+        "height": 4032,
+        "crop": "disabled"
+      }
+    },
+    {
+      "id": 96,
+      "type": "Image Comparer (rgthree)",
+      "pos": [
+        3500,
+        2320
+      ],
+      "size": [
+        650,
+        760
+      ],
+      "flags": {},
+      "order": 59,
+      "mode": 0,
+      "inputs": [
+        {
+          "dir": 3,
+          "name": "image_a",
+          "shape": 7,
+          "type": "IMAGE",
+          "link": 203
+        },
+        {
+          "dir": 3,
+          "name": "image_b",
+          "shape": 7,
+          "type": "IMAGE",
+          "link": 204
+        }
+      ],
+      "outputs": [
+        {
+          "dir": 4,
+          "name": "images",
+          "type": "IMAGE",
+          "links": []
+        }
+      ],
+      "title": "IDENTITY EFFECT · final face-local / scout slider",
+      "properties": {
+        "comparer_mode": "Slide",
+        "Node name for S&R": "Image Comparer (rgthree)",
+        "cnr_id": "rgthree-comfy",
+        "ver": "d7297b4"
+      },
+      "widgets_values": [
+        [
+          {
+            "name": "A",
+            "selected": true,
+            "url": ""
+          },
+          {
+            "name": "B",
+            "selected": true,
+            "url": ""
+          }
+        ]
+      ],
+      "widgets_values_named": {
+        "rgthree_comparer": {
+          "images": [
+            {
+              "name": "A",
+              "selected": true,
+              "url": ""
+            },
+            {
+              "name": "B",
+              "selected": true,
+              "url": ""
+            }
+          ]
+        }
+      },
+      "color": "#284532",
+      "bgcolor": "#3d684c"
+    },
+    {
+      "id": 97,
+      "type": "Note",
+      "pos": [
+        930,
+        2880
+      ],
+      "size": [
+        650,
+        210
+      ],
+      "flags": {},
+      "order": 1,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [],
+      "title": "How this avoids the pasted-face look",
+      "properties": {
+        "Node name for S&R": "Note",
+        "cnr_id": "comfy-core",
+        "ver": "0.35.0"
+      },
+      "widgets_values": [
+        "This workflow does not crop, repaint, or paste a separate face. It first renders a scout without the identity LoRA, detects the face location, then repeats the same seed from noise. ComfyUI applies the LoRA weight hook only to softly masked face conditioning during that final full-canvas render. Global lighting, style, texture, scene context, and geometry remain in the same denoising process."
+      ],
+      "color": "#50354b",
+      "bgcolor": "#352332"
+    }
+  ],
+  "links": [
+    [
+      3,
+      4,
+      0,
+      3,
+      0,
+      "CLIP"
+    ],
+    [
+      7,
+      2,
+      0,
+      7,
+      0,
+      "MODEL"
+    ],
+    [
+      98,
+      3,
+      0,
+      54,
+      0,
+      "CONDITIONING"
+    ],
+    [
+      99,
+      5,
+      0,
+      55,
+      0,
+      "CONDITIONING"
+    ],
+    [
+      102,
+      11,
+      0,
+      37,
+      1,
+      "VAE"
+    ],
+    [
+      107,
+      41,
+      0,
+      46,
+      0,
+      "MODEL"
+    ],
+    [
+      108,
+      47,
+      0,
+      38,
+      0,
+      "IMAGE"
+    ],
+    [
+      109,
+      47,
+      0,
+      48,
+      0,
+      "IMAGE"
+    ],
+    [
+      110,
+      7,
+      0,
+      49,
+      0,
+      "MODEL"
+    ],
+    [
+      112,
+      4,
+      0,
+      5,
+      0,
+      "CLIP"
+    ],
+    [
+      115,
+      75,
+      0,
+      52,
+      0,
+      "IMAGE"
+    ],
+    [
+      116,
+      52,
+      0,
+      53,
+      0,
+      "IMAGE"
+    ],
+    [
+      117,
+      11,
+      0,
+      53,
+      1,
+      "VAE"
+    ],
+    [
+      118,
+      53,
+      0,
+      54,
+      1,
+      "LATENT"
+    ],
+    [
+      119,
+      53,
+      0,
+      55,
+      1,
+      "LATENT"
+    ],
+    [
+      122,
+      75,
+      0,
+      56,
+      0,
+      "IMAGE"
+    ],
+    [
+      123,
+      72,
+      0,
+      57,
+      1,
+      "IMAGE"
+    ],
+    [
+      124,
+      47,
+      0,
+      57,
+      0,
+      "IMAGE"
+    ],
+    [
+      125,
+      75,
+      0,
+      58,
+      0,
+      "IMAGE"
+    ],
+    [
+      126,
+      58,
+      0,
+      60,
+      0,
+      "STRING"
+    ],
+    [
+      131,
+      63,
+      0,
+      64,
+      0,
+      "OLLAMA_CONNECTIVITY"
+    ],
+    [
+      132,
+      61,
+      0,
+      64,
+      6,
+      "STRING"
+    ],
+    [
+      133,
+      64,
+      0,
+      65,
+      0,
+      "STRING"
+    ],
+    [
+      134,
+      71,
+      0,
+      66,
+      0,
+      "STRING"
+    ],
+    [
+      135,
+      64,
+      0,
+      66,
+      1,
+      "STRING"
+    ],
+    [
+      136,
+      63,
+      0,
+      67,
+      0,
+      "OLLAMA_CONNECTIVITY"
+    ],
+    [
+      137,
+      66,
+      0,
+      67,
+      6,
+      "STRING"
+    ],
+    [
+      138,
+      76,
+      0,
+      3,
+      1,
+      "STRING"
+    ],
+    [
+      139,
+      76,
+      0,
+      59,
+      0,
+      "STRING"
+    ],
+    [
+      140,
+      51,
+      2,
+      69,
+      2,
+      "BOOLEAN"
+    ],
+    [
+      141,
+      3,
+      0,
+      69,
+      0,
+      "CONDITIONING"
+    ],
+    [
+      142,
+      54,
+      0,
+      69,
+      1,
+      "CONDITIONING"
+    ],
+    [
+      143,
+      51,
+      2,
+      70,
+      2,
+      "BOOLEAN"
+    ],
+    [
+      144,
+      5,
+      0,
+      70,
+      0,
+      "CONDITIONING"
+    ],
+    [
+      145,
+      55,
+      0,
+      70,
+      1,
+      "CONDITIONING"
+    ],
+    [
+      146,
+      51,
+      2,
+      71,
+      2,
+      "BOOLEAN"
+    ],
+    [
+      147,
+      73,
+      0,
+      71,
+      0,
+      "STRING"
+    ],
+    [
+      148,
+      60,
+      0,
+      71,
+      1,
+      "STRING"
+    ],
+    [
+      149,
+      51,
+      2,
+      72,
+      2,
+      "BOOLEAN"
+    ],
+    [
+      150,
+      47,
+      0,
+      72,
+      0,
+      "IMAGE"
+    ],
+    [
+      151,
+      56,
+      0,
+      72,
+      1,
+      "IMAGE"
+    ],
+    [
+      153,
+      51,
+      0,
+      75,
+      0,
+      "IMAGE"
+    ],
+    [
+      154,
+      7,
+      1,
+      76,
+      0,
+      "STRING"
+    ],
+    [
+      155,
+      49,
+      1,
+      76,
+      1,
+      "STRING"
+    ],
+    [
+      157,
+      67,
+      0,
+      76,
+      3,
+      "STRING"
+    ],
+    [
+      158,
+      49,
+      0,
+      41,
+      0,
+      "MODEL"
+    ],
+    [
+      159,
+      76,
+      0,
+      77,
+      0,
+      "STRING"
+    ],
+    [
+      160,
+      4,
+      0,
+      78,
+      0,
+      "CLIP"
+    ],
+    [
+      161,
+      77,
+      0,
+      78,
+      1,
+      "STRING"
+    ],
+    [
+      162,
+      78,
+      0,
+      79,
+      0,
+      "CONDITIONING"
+    ],
+    [
+      163,
+      53,
+      0,
+      79,
+      1,
+      "LATENT"
+    ],
+    [
+      164,
+      78,
+      0,
+      80,
+      0,
+      "CONDITIONING"
+    ],
+    [
+      165,
+      79,
+      0,
+      80,
+      1,
+      "CONDITIONING"
+    ],
+    [
+      166,
+      51,
+      2,
+      80,
+      2,
+      "BOOLEAN"
+    ],
+    [
+      167,
+      46,
+      0,
+      94,
+      0,
+      "MODEL"
+    ],
+    [
+      168,
+      69,
+      0,
+      94,
+      1,
+      "CONDITIONING"
+    ],
+    [
+      169,
+      70,
+      0,
+      94,
+      2,
+      "CONDITIONING"
+    ],
+    [
+      170,
+      43,
+      0,
+      94,
+      3,
+      "LATENT"
+    ],
+    [
+      171,
+      93,
+      0,
+      94,
+      4,
+      "INT"
+    ],
+    [
+      172,
+      39,
+      0,
+      94,
+      5,
+      "INT"
+    ],
+    [
+      173,
+      39,
+      2,
+      94,
+      6,
+      "FLOAT"
+    ],
+    [
+      174,
+      39,
+      3,
+      94,
+      7,
+      [
+        "euler",
+        "euler_cfg_pp",
+        "euler_ancestral",
+        "euler_ancestral_cfg_pp",
+        "heun",
+        "heunpp2",
+        "exp_heun_2_x0",
+        "exp_heun_2_x0_sde",
+        "dpm_2",
+        "dpm_2_ancestral",
+        "lms",
+        "dpm_fast",
+        "dpm_adaptive",
+        "dpmpp_2s_ancestral",
+        "dpmpp_2s_ancestral_cfg_pp",
+        "dpmpp_sde",
+        "dpmpp_sde_gpu",
+        "dpmpp_2m",
+        "dpmpp_2m_cfg_pp",
+        "dpmpp_2m_sde",
+        "dpmpp_2m_sde_gpu",
+        "dpmpp_2m_sde_heun",
+        "dpmpp_2m_sde_heun_gpu",
+        "dpmpp_3m_sde",
+        "dpmpp_3m_sde_gpu",
+        "ddpm",
+        "lcm",
+        "ipndm",
+        "ipndm_v",
+        "deis",
+        "cfgpp_ud10_ab",
+        "res_multistep",
+        "res_multistep_cfg_pp",
+        "res_multistep_ancestral",
+        "res_multistep_ancestral_cfg_pp",
+        "gradient_estimation",
+        "gradient_estimation_cfg_pp",
+        "er_sde",
+        "seeds_2",
+        "seeds_3",
+        "sa_solver",
+        "sa_solver_pece",
+        "ddim",
+        "uni_pc",
+        "uni_pc_bh2",
+        "legacy_rk",
+        "rk",
+        "rk_beta",
+        "deis_3m_ode",
+        "deis_2m_ode",
+        "deis_3m",
+        "deis_2m",
+        "res_6s_ode",
+        "res_5s_ode",
+        "res_3s_ode",
+        "res_2s_ode",
+        "res_3m_ode",
+        "res_2m_ode",
+        "res_6s",
+        "res_5s",
+        "res_3s",
+        "res_2s",
+        "res_3m",
+        "res_2m"
+      ]
+    ],
+    [
+      175,
+      39,
+      4,
+      94,
+      8,
+      [
+        "simple",
+        "sgm_uniform",
+        "karras",
+        "exponential",
+        "ddim_uniform",
+        "beta",
+        "normal",
+        "linear_quadratic",
+        "kl_optimal",
+        "bong_tangent",
+        "beta57"
+      ]
+    ],
+    [
+      176,
+      94,
+      0,
+      37,
+      0,
+      "LATENT"
+    ],
+    [
+      177,
+      81,
+      0,
+      82,
+      0,
+      "FACE_DETECTION_MODEL"
+    ],
+    [
+      178,
+      37,
+      0,
+      82,
+      1,
+      "IMAGE"
+    ],
+    [
+      179,
+      82,
+      0,
+      83,
+      0,
+      "FACE_LANDMARKS"
+    ],
+    [
+      180,
+      83,
+      0,
+      84,
+      0,
+      "MASK"
+    ],
+    [
+      181,
+      84,
+      0,
+      85,
+      0,
+      "MASK"
+    ],
+    [
+      182,
+      85,
+      0,
+      86,
+      0,
+      "IMAGE"
+    ],
+    [
+      183,
+      86,
+      0,
+      87,
+      0,
+      "IMAGE"
+    ],
+    [
+      184,
+      86,
+      0,
+      88,
+      0,
+      "IMAGE"
+    ],
+    [
+      185,
+      80,
+      0,
+      89,
+      0,
+      "CONDITIONING"
+    ],
+    [
+      186,
+      87,
+      0,
+      89,
+      3,
+      "MASK"
+    ],
+    [
+      187,
+      50,
+      0,
+      89,
+      4,
+      "HOOKS"
+    ],
+    [
+      188,
+      89,
+      0,
+      90,
+      0,
+      "CONDITIONING"
+    ],
+    [
+      189,
+      69,
+      0,
+      90,
+      1,
+      "CONDITIONING"
+    ],
+    [
+      190,
+      46,
+      0,
+      91,
+      0,
+      "MODEL"
+    ],
+    [
+      191,
+      90,
+      0,
+      91,
+      1,
+      "CONDITIONING"
+    ],
+    [
+      192,
+      70,
+      0,
+      91,
+      2,
+      "CONDITIONING"
+    ],
+    [
+      193,
+      43,
+      0,
+      91,
+      3,
+      "LATENT"
+    ],
+    [
+      194,
+      93,
+      0,
+      91,
+      4,
+      "INT"
+    ],
+    [
+      195,
+      39,
+      0,
+      91,
+      5,
+      "INT"
+    ],
+    [
+      196,
+      39,
+      2,
+      91,
+      6,
+      "FLOAT"
+    ],
+    [
+      197,
+      39,
+      3,
+      91,
+      7,
+      [
+        "euler",
+        "euler_cfg_pp",
+        "euler_ancestral",
+        "euler_ancestral_cfg_pp",
+        "heun",
+        "heunpp2",
+        "exp_heun_2_x0",
+        "exp_heun_2_x0_sde",
+        "dpm_2",
+        "dpm_2_ancestral",
+        "lms",
+        "dpm_fast",
+        "dpm_adaptive",
+        "dpmpp_2s_ancestral",
+        "dpmpp_2s_ancestral_cfg_pp",
+        "dpmpp_sde",
+        "dpmpp_sde_gpu",
+        "dpmpp_2m",
+        "dpmpp_2m_cfg_pp",
+        "dpmpp_2m_sde",
+        "dpmpp_2m_sde_gpu",
+        "dpmpp_2m_sde_heun",
+        "dpmpp_2m_sde_heun_gpu",
+        "dpmpp_3m_sde",
+        "dpmpp_3m_sde_gpu",
+        "ddpm",
+        "lcm",
+        "ipndm",
+        "ipndm_v",
+        "deis",
+        "cfgpp_ud10_ab",
+        "res_multistep",
+        "res_multistep_cfg_pp",
+        "res_multistep_ancestral",
+        "res_multistep_ancestral_cfg_pp",
+        "gradient_estimation",
+        "gradient_estimation_cfg_pp",
+        "er_sde",
+        "seeds_2",
+        "seeds_3",
+        "sa_solver",
+        "sa_solver_pece",
+        "ddim",
+        "uni_pc",
+        "uni_pc_bh2",
+        "legacy_rk",
+        "rk",
+        "rk_beta",
+        "deis_3m_ode",
+        "deis_2m_ode",
+        "deis_3m",
+        "deis_2m",
+        "res_6s_ode",
+        "res_5s_ode",
+        "res_3s_ode",
+        "res_2s_ode",
+        "res_3m_ode",
+        "res_2m_ode",
+        "res_6s",
+        "res_5s",
+        "res_3s",
+        "res_2s",
+        "res_3m",
+        "res_2m"
+      ]
+    ],
+    [
+      198,
+      39,
+      4,
+      91,
+      8,
+      [
+        "simple",
+        "sgm_uniform",
+        "karras",
+        "exponential",
+        "ddim_uniform",
+        "beta",
+        "normal",
+        "linear_quadratic",
+        "kl_optimal",
+        "bong_tangent",
+        "beta57"
+      ]
+    ],
+    [
+      199,
+      91,
+      0,
+      92,
+      0,
+      "LATENT"
+    ],
+    [
+      200,
+      11,
+      0,
+      92,
+      1,
+      "VAE"
+    ],
+    [
+      201,
+      92,
+      0,
+      47,
+      0,
+      "IMAGE"
+    ],
+    [
+      202,
+      37,
+      0,
+      95,
+      0,
+      "IMAGE"
+    ],
+    [
+      203,
+      47,
+      0,
+      96,
+      0,
+      "IMAGE"
+    ],
+    [
+      204,
+      95,
+      0,
+      96,
+      1,
+      "IMAGE"
+    ]
+  ],
+  "groups": [
+    {
+      "id": 6,
+      "title": "00 · CONTROL PANEL — START HERE",
+      "bounding": [
+        -2280,
+        -2940,
+        2340,
+        1510
+      ],
+      "color": "#315e80",
+      "flags": {}
+    },
+    {
+      "id": 1,
+      "title": "01 · MODEL STACK",
+      "bounding": [
+        -2280,
+        -1060,
+        2220,
+        490
+      ],
+      "color": "#46545c",
+      "flags": {}
+    },
+    {
+      "id": 2,
+      "title": "02 · REFERENCE PREPARATION",
+      "bounding": [
+        -2280,
+        -460,
+        1470,
+        620
+      ],
+      "color": "#3f5871",
+      "flags": {}
+    },
+    {
+      "id": 3,
+      "title": "03 · CONDITIONING",
+      "bounding": [
+        -780,
+        -460,
+        1360,
+        750
+      ],
+      "color": "#3f655d",
+      "flags": {}
+    },
+    {
+      "id": 4,
+      "title": "04 · GENERATION, DELIVERY & REVIEW",
+      "bounding": [
+        560,
+        -480,
+        2880,
+        880
+      ],
+      "color": "#5b4b76",
+      "flags": {}
+    },
+    {
+      "id": 5,
+      "title": "05 · AUTOMATED PROMPT BUILDER",
+      "bounding": [
+        -2280,
+        630,
+        4200,
+        1510
+      ],
+      "color": "#6a5740",
+      "flags": {}
+    },
+    {
+      "id": 7,
+      "title": "ADVANCED SETTINGS · SAMPLER & LoRAs",
+      "bounding": [
+        -2240,
+        -2870,
+        2220,
+        560
+      ],
+      "color": "#594b70",
+      "flags": {}
+    },
+    {
+      "id": 8,
+      "title": "06 · SCOUT & AUTOMATIC FACE MAP",
+      "bounding": [
+        -2280,
+        2260,
+        3140,
+        970
+      ],
+      "color": "#68475f",
+      "flags": {}
+    },
+    {
+      "id": 9,
+      "title": "07 · FULL-CANVAS SPATIAL LoRA RENDER · NO CROP/PASTE",
+      "bounding": [
+        880,
+        2260,
+        3380,
+        970
+      ],
+      "color": "#5a3f6e",
+      "flags": {}
+    }
+  ],
+  "config": {},
+  "extra": {
+    "ue_links": [],
+    "links_added_by_ue": [],
+    "ds": {
+      "scale": 0.8390545288824014,
+      "offset": [
+        3467.7932915486244,
+        3482.9759163589265
+      ]
+    },
+    "frontendVersion": "1.29.1"
+  },
+  "version": 0.4
+}
