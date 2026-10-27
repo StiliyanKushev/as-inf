@@ -13,7 +13,7 @@ each run. The GitHub repository and RunPod network-volume ID are durable.
 | GitHub repository | `https://github.com/StiliyanKushev/as-inf` |
 | RunPod network volume | `final-kurva-maker-storage` (`3e71bw1e12`) |
 | Volume region and mount | `US-CA-2`, `/workspace` |
-| Volume size | 150 GB |
+| Volume size | 300 GB |
 | GPU | One secure-cloud GPU selected per session; H100 80 GB is the test default |
 | Container | `runpod/comfyui:1.3.3-comfyuiv0.30.0-cuda13.0` |
 | Main persona workflow | `final-kurva-maker-reference-spatial-face-lora.json` |

@@ -9,8 +9,8 @@ Use this repository as the source of truth:
 > Clone or update `https://github.com/StiliyanKushev/as-inf`, read
 > `docs/RECOVERY_AND_TRAINING_RUNBOOK.md` and `docs/PERSISTENCE_AUDIT.md`, then
 > create one secure-cloud NVIDIA B200 RunPod attached to the existing network
-> volume `3e71bw1e12` in `US-CA-2` at `/workspace`. Do not create, resize, or
-> delete the network volume. Use `scripts/create-b200.sh`, discover the new pod's
+> volume `3e71bw1e12` in `US-CA-2` at `/workspace`. It is already 300 GB; do not
+> create, resize, or delete the network volume. Use `scripts/create-b200.sh`, discover the new pod's
 > SSH address, run `scripts/recover-over-ssh.sh`, verify the persistent state,
 > and give me the `https://POD_ID-8188.proxy.runpod.net` ComfyUI URL. Keep the
 > pod running unless I explicitly ask you to stop it.

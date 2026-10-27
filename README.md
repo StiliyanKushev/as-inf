@@ -25,7 +25,7 @@ checkpoint for the fictional Alex Sparks persona is stored through Git LFS as
 | GPU | Selected per session; H100 80 GB is the economical test default |
 | Container image | `runpod/comfyui:1.3.3-comfyuiv0.30.0-cuda13.0` |
 | Region | `US-CA-2` |
-| Network volume | `final-kurva-maker-storage` (`3e71bw1e12`) |
+| Network volume | `final-kurva-maker-storage` (`3e71bw1e12`, 300 GB) |
 | Network-volume mount | `/workspace` |
 | Ports | `8188/http,22/tcp` |
 | Main persona workflow | `final-kurva-maker-reference-spatial-face-lora.json` |
