@@ -54,13 +54,15 @@ and sharper but produced sparse colored flecks at native 4K. The next controlled
 test is the same Distilled seed, prompt, and references with ComfyUI started
 using `--fp32-vae`; do not change another variable in that comparison.
 
-The newer cross-model study changes the production recommendation. Before
-renting another GPU, blind-test GPT Image 2.5 Sunburst, Nano Banana 2.1 at 4K,
-and the existing FLUX 3 Klein Base workflow. Nano Banana 2.1 is the provisional
-default for a recurring character at genuine 3:4 high resolution; Sunburst is
-the raw-realism benchmark and localized editor; FLUX 3 Base remains the local,
-fine-tunable fallback. The study contains the exact reference pack, prompting,
-review rubric, and ten-scene benchmark needed to make that choice from evidence.
+The newer cross-model and practitioner-workflow study changes the production
+recommendation. Reproduce the public PixelAI Krea 2 Edit Carousel first, then
+A/B its General Edit V2 path against Krea 2 Identity Edit V2 and a newly trained
+Krea-compatible Alex LoRA. The existing Alex LoRA belongs to another model
+family and cannot be reused. Treat its 2 MP social output as the realism-first
+product; use Nano Banana 2.1 and FLUX 3 only as native-high-resolution
+challengers. Sunburst remains the raw-realism benchmark and localized editor.
+The study contains the exact public workflow settings, licensing caveat,
+reference pack, prompting, review rubric, and benchmark plan.
 
 ## Credentials that are deliberately outside Git
 
