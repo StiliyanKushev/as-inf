@@ -37,6 +37,15 @@ for 18 measured Anuxq, Ananya, and Krea2 runs. Krea2 General Edit is the current
 identity-first recommendation at a true 1280×1600 native render; Anuxq remains
 the better casual-phone baseline.
 
+The measured Krea2 winner is now available as a full Kurva Maker-style workflow:
+[`workflows/final-kurva-maker-krea2.json`](workflows/final-kurva-maker-krea2.json).
+It preserves the large workflow's control panel and prompt automation while
+replacing the FLUX backend with Krea 2 Turbo, General Edit V2, FameGrid, Realism
+Engine, and FameGrid Color Finish. Install its pinned runtime and public model
+files with `scripts/install-krea2-production-stack.sh` after the normal volume
+bootstrap. The native render is 1280×1600; the 1080×1350 file is a separate
+Instagram delivery resize.
+
 ## Current deployment
 
 | Setting | Value |
@@ -102,6 +111,13 @@ pulls the exact SuperGemma model, and restores the four workflow LoRAs from Git
 LFS.
 
 ## Workflows
+
+- `final-kurva-maker-krea2.json` — Krea 2 Turbo production candidate with the
+  same optional-reference control panel, SuperGemma/Qwen prompt pipeline,
+  advanced seed/sampler/batch controls, three LoRA slots, and before/after
+  slider as the largest FLUX workflow. Reference mode uses the measured Krea2
+  General Edit stack; prompt-only mode bypasses the edit patch. It does not load
+  the FLUX-trained Alex LoRA.
 
 - `research-flux3-native-4k.json` — research candidate using FLUX 3 Klein Base
   BF16, the official Qwen3.5 prompt upsampler, Qwen3-VL, and three Alex identity

@@ -94,20 +94,32 @@ class OptionalReferenceCrop3x4(OptionalReferenceImage):
         "or zoom the fixed 3:4 crop rectangle. Crop coordinates stay hidden."
     )
 
-    @staticmethod
-    def _crop_box(width, height, crop_x, crop_y, crop_w, crop_h):
+    ASPECT_WIDTH = 3
+    ASPECT_HEIGHT = 4
+    NEUTRAL_WIDTH = 48
+    NEUTRAL_HEIGHT = 64
+
+    @classmethod
+    def _crop_box(cls, width, height, crop_x, crop_y, crop_w, crop_h):
         x0 = max(0, min(width - 1, round(float(crop_x) * width)))
         y0 = max(0, min(height - 1, round(float(crop_y) * height)))
         x1 = max(x0 + 1, min(width, round((float(crop_x) + float(crop_w)) * width)))
         y1 = max(y0 + 1, min(height, round((float(crop_y) + float(crop_h)) * height)))
 
-        # Select the largest exact 3:4 integer rectangle inside the requested
+        # Select the largest exact-ratio integer rectangle inside the requested
         # area and keep it centered. This is crop-only: no padding or stretch.
-        units = min((x1 - x0) // 3, (y1 - y0) // 4)
+        units = min(
+            (x1 - x0) // cls.ASPECT_WIDTH,
+            (y1 - y0) // cls.ASPECT_HEIGHT,
+        )
         if units < 1:
-            units = min(width // 3, height // 4)
+            units = min(
+                width // cls.ASPECT_WIDTH,
+                height // cls.ASPECT_HEIGHT,
+            )
             x0, y0, x1, y1 = 0, 0, width, height
-        crop_width, crop_height = 3 * units, 4 * units
+        crop_width = cls.ASPECT_WIDTH * units
+        crop_height = cls.ASPECT_HEIGHT * units
         left = x0 + ((x1 - x0) - crop_width) // 2
         top = y0 + ((y1 - y0) - crop_height) // 2
         return left, top, left + crop_width, top + crop_height
@@ -127,9 +139,16 @@ class OptionalReferenceCrop3x4(OptionalReferenceImage):
             dtype = comfy.model_management.intermediate_dtype()
             device = comfy.model_management.intermediate_device()
             neutral = torch.full(
-                (1, 64, 48, 3), 96.0 / 255.0, dtype=dtype, device=device
+                (1, self.NEUTRAL_HEIGHT, self.NEUTRAL_WIDTH, 3),
+                96.0 / 255.0,
+                dtype=dtype,
+                device=device,
             )
-            mask = torch.zeros((1, 64, 48), dtype=dtype, device=device)
+            mask = torch.zeros(
+                (1, self.NEUTRAL_HEIGHT, self.NEUTRAL_WIDTH),
+                dtype=dtype,
+                device=device,
+            )
             return neutral, mask, False
 
         loaded, mask = nodes.LoadImage.load_image(self, image)
@@ -150,6 +169,19 @@ class OptionalReferenceCrop3x4(OptionalReferenceImage):
     def IS_CHANGED(cls, image, crop_x, crop_y, crop_w, crop_h):
         base = super().IS_CHANGED(image)
         return f"{base}|{crop_x!r},{crop_y!r},{crop_w!r},{crop_h!r}"
+
+
+class OptionalReferenceCrop4x5(OptionalReferenceCrop3x4):
+    """Optional image loader with a visually selected, fixed 4:5 crop."""
+
+    ASPECT_WIDTH = 4
+    ASPECT_HEIGHT = 5
+    NEUTRAL_WIDTH = 64
+    NEUTRAL_HEIGHT = 80
+    DESCRIPTION = (
+        "Select None for prompt-only generation, or choose an image and move "
+        "or zoom the fixed 4:5 crop rectangle. Crop coordinates stay hidden."
+    )
 
 
 class LoraLoaderModelOnlyWithTrigger(nodes.LoraLoaderModelOnly):
@@ -281,6 +313,7 @@ class SamplerSettings:
 NODE_CLASS_MAPPINGS = {
     "ASInfOptionalReferenceImage": OptionalReferenceImage,
     "ASInfOptionalReferenceCrop3x4": OptionalReferenceCrop3x4,
+    "ASInfOptionalReferenceCrop4x5": OptionalReferenceCrop4x5,
     "ASInfLoraLoaderModelOnlyWithTrigger": LoraLoaderModelOnlyWithTrigger,
     "ASInfPrependLoraTriggers": PrependLoraTriggers,
     "ASInfSamplerSettings": SamplerSettings,
@@ -288,6 +321,7 @@ NODE_CLASS_MAPPINGS = {
 NODE_DISPLAY_NAME_MAPPINGS = {
     "ASInfOptionalReferenceImage": "Optional Reference Image",
     "ASInfOptionalReferenceCrop3x4": "Optional Reference + Fixed 3:4 Crop",
+    "ASInfOptionalReferenceCrop4x5": "Optional Reference + Fixed 4:5 Crop",
     "ASInfLoraLoaderModelOnlyWithTrigger": "LoRA Loader + Conditional Trigger",
     "ASInfPrependLoraTriggers": "Prepend Active LoRA Triggers",
     "ASInfSamplerSettings": "Sampler Settings",

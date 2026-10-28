@@ -41,12 +41,22 @@
  *    behavior is identical in both modes.
  */
 const LIRC = {
-  NODE_NAME: "ASInfOptionalReferenceCrop3x4",
+  NODE_NAMES: new Set([
+    "ASInfOptionalReferenceCrop3x4",
+    "ASInfOptionalReferenceCrop4x5",
+  ]),
   PREVIEW_WIDGET: "$$canvas-image-preview",
   CROP_KEYS: ["crop_x", "crop_y", "crop_w", "crop_h"],
   FLIP_WIDGET: "flip",
-  TAG: "[ASInfReferenceCrop3x4]"
+  TAG: "[ASInfReferenceCrop]"
 };
+
+function isCropNode(nodeOrName) {
+  const name = typeof nodeOrName === "string"
+    ? nodeOrName
+    : nodeOrName && nodeOrName.type;
+  return LIRC.NODE_NAMES.has(name);
+}
 
 let lircApp = null;
 
@@ -157,10 +167,10 @@ async function applyFlip(node, flip) {
 
 /** Aspect-ratio mode: null ("Original" = no crop), "free" (user-shaped
  * box), or a positive number for the preset "W:H" entries. */
-function ratioOf(_node) {
-  // This workflow always renders 3:4 portraits. Keep the visual selection
+function ratioOf(node) {
+  // Each node class has one fixed delivery ratio. Keep the visual selection
   // locked so its saved crop and backend output can never drift in shape.
-  return 3 / 4;
+  return node && node.type === "ASInfOptionalReferenceCrop4x5" ? 4 / 5 : 3 / 4;
 }
 
 function imgOf(node) {
@@ -618,7 +628,7 @@ function wrapPreviewWidget(node) {
 
 function initNode(node) {
   try {
-    if (!node || node.type !== LIRC.NODE_NAME) return;
+    if (!node || !isCropNode(node)) return;
     const st = getState(node);
     // remove unlinked FLOAT slots: this node has no linkable inputs
     const inputs = node.inputs;
@@ -1101,7 +1111,7 @@ function startVuePoller(app) {
       if (!app || !app.graph) return;
       const vue = isVueMode();
       for (const n of app.graph.nodes || []) {
-        if (!n || n.type !== LIRC.NODE_NAME || !n.__lirc || !n.__lirc.inited)
+        if (!n || !isCropNode(n) || !n.__lirc || !n.__lirc.inited)
           continue;
         if (vue) {
           layoutVueOverlay(n);
@@ -1134,7 +1144,7 @@ function installWheelInterceptor(app) {
         if (!pos) return;
         const nodes = app.graph.nodes || [];
         for (const n of nodes) {
-          if (n.type !== LIRC.NODE_NAME || !n.__lirc) continue;
+          if (!isCropNode(n) || !n.__lirc) continue;
           const st = n.__lirc;
           // 2.0: the wheel may never reach the DOM overlay (the Vue layer
           // forwards it to the canvas), so the zoom is handled here, at
@@ -1277,11 +1287,11 @@ async function pasteFromClipboard(node) {
 function register(app) {
   lircApp = app;
   app.registerExtension({
-    name: "ASInf.Fixed3x4ReferenceCrop",
+    name: "ASInf.FixedReferenceCrop",
     nodeCreated: (node) => initNode(node),
     loadedGraphNode: (node) => initNode(node),
     beforeRegisterNodeDef: (nodeType, nodeData) => {
-      if (nodeData && nodeData.name !== LIRC.NODE_NAME) return;
+      if (nodeData && !isCropNode(nodeData.name)) return;
       const proto = nodeType.prototype;
       const prevConfigure = proto.onConfigure;
       proto.onConfigure = function (data) {
