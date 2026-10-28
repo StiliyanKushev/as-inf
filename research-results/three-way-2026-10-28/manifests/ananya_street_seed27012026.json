@@ -1,0 +1,85 @@
+{
+  "run": "ananya_street_seed27012026",
+  "method": "ananya",
+  "scene": "street",
+  "seed": 27012026,
+  "prompt_id": "b96d0853-fafb-4227-9baf-60f0da303ad8",
+  "elapsed_seconds": 16.071,
+  "outputs": {
+    "8": {
+      "images": [
+        {
+          "filename": "before_swap_00001_.png",
+          "subfolder": "research-three-way/ananya_street_seed27012026",
+          "type": "output",
+          "metadata": {
+            "kind": "image",
+            "width": 1024,
+            "height": 1280
+          }
+        }
+      ]
+    },
+    "10": {
+      "images": [
+        {
+          "filename": "native_1024x1280_00001_.png",
+          "subfolder": "research-three-way/ananya_street_seed27012026",
+          "type": "output",
+          "metadata": {
+            "kind": "image",
+            "width": 1024,
+            "height": 1280
+          }
+        }
+      ]
+    },
+    "12": {
+      "images": [
+        {
+          "filename": "instagram_1080x1350_00001_.png",
+          "subfolder": "research-three-way/ananya_street_seed27012026",
+          "type": "output",
+          "metadata": {
+            "kind": "image",
+            "width": 1080,
+            "height": 1350
+          }
+        }
+      ]
+    }
+  },
+  "status": {
+    "status_str": "success",
+    "completed": true,
+    "messages": [
+      [
+        "execution_start",
+        {
+          "prompt_id": "b96d0853-fafb-4227-9baf-60f0da303ad8",
+          "timestamp": 1793201624910
+        }
+      ],
+      [
+        "execution_cached",
+        {
+          "nodes": [
+            "1",
+            "2",
+            "4",
+            "5"
+          ],
+          "prompt_id": "b96d0853-fafb-4227-9baf-60f0da303ad8",
+          "timestamp": 1793201624924
+        }
+      ],
+      [
+        "execution_success",
+        {
+          "prompt_id": "b96d0853-fafb-4227-9baf-60f0da303ad8",
+          "timestamp": 1793201640099
+        }
+      ]
+    ]
+  }
+}

@@ -1,0 +1,999 @@
+[
+  {
+    "run": "anuxq_cafe_seed27012026",
+    "method": "anuxq",
+    "scene": "cafe",
+    "seed": 27012026,
+    "prompt_id": "fffbfb9b-7d95-4c46-923a-67cd392cc172",
+    "elapsed_seconds": 76.392,
+    "outputs": {
+      "12": {
+        "images": [
+          {
+            "filename": "native_1024x1280_00002_.png",
+            "subfolder": "research-three-way/anuxq_cafe_seed27012026",
+            "type": "output",
+            "metadata": {
+              "kind": "image",
+              "width": 1024,
+              "height": 1280
+            }
+          }
+        ]
+      },
+      "14": {
+        "images": [
+          {
+            "filename": "instagram_1080x1350_00002_.png",
+            "subfolder": "research-three-way/anuxq_cafe_seed27012026",
+            "type": "output",
+            "metadata": {
+              "kind": "image",
+              "width": 1080,
+              "height": 1350
+            }
+          }
+        ]
+      }
+    },
+    "status": {
+      "status_str": "success",
+      "completed": true,
+      "messages": [
+        [
+          "execution_start",
+          {
+            "prompt_id": "fffbfb9b-7d95-4c46-923a-67cd392cc172",
+            "timestamp": 1793201488113
+          }
+        ],
+        [
+          "execution_cached",
+          {
+            "nodes": [
+              "2"
+            ],
+            "prompt_id": "fffbfb9b-7d95-4c46-923a-67cd392cc172",
+            "timestamp": 1793201488133
+          }
+        ],
+        [
+          "execution_success",
+          {
+            "prompt_id": "fffbfb9b-7d95-4c46-923a-67cd392cc172",
+            "timestamp": 1793201563312
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "run": "anuxq_cafe_seed27012027",
+    "method": "anuxq",
+    "scene": "cafe",
+    "seed": 27012027,
+    "prompt_id": "7cebf023-f3f9-4ffe-8630-3c635ddd4f0e",
+    "elapsed_seconds": 10.01,
+    "outputs": {
+      "12": {
+        "images": [
+          {
+            "filename": "native_1024x1280_00001_.png",
+            "subfolder": "research-three-way/anuxq_cafe_seed27012027",
+            "type": "output",
+            "metadata": {
+              "kind": "image",
+              "width": 1024,
+              "height": 1280
+            }
+          }
+        ]
+      },
+      "14": {
+        "images": [
+          {
+            "filename": "instagram_1080x1350_00001_.png",
+            "subfolder": "research-three-way/anuxq_cafe_seed27012027",
+            "type": "output",
+            "metadata": {
+              "kind": "image",
+              "width": 1080,
+              "height": 1350
+            }
+          }
+        ]
+      }
+    },
+    "status": {
+      "status_str": "success",
+      "completed": true,
+      "messages": [
+        [
+          "execution_start",
+          {
+            "prompt_id": "7cebf023-f3f9-4ffe-8630-3c635ddd4f0e",
+            "timestamp": 1793201564527
+          }
+        ],
+        [
+          "execution_cached",
+          {
+            "nodes": [
+              "1",
+              "2",
+              "3",
+              "4",
+              "5",
+              "6",
+              "7",
+              "8",
+              "9"
+            ],
+            "prompt_id": "7cebf023-f3f9-4ffe-8630-3c635ddd4f0e",
+            "timestamp": 1793201564539
+          }
+        ],
+        [
+          "execution_success",
+          {
+            "prompt_id": "7cebf023-f3f9-4ffe-8630-3c635ddd4f0e",
+            "timestamp": 1793201573135
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "run": "anuxq_street_seed27012026",
+    "method": "anuxq",
+    "scene": "street",
+    "seed": 27012026,
+    "prompt_id": "c7b8e6c6-d1b7-4f8b-9629-ce674d4a2ebe",
+    "elapsed_seconds": 10.022,
+    "outputs": {
+      "12": {
+        "images": [
+          {
+            "filename": "native_1024x1280_00001_.png",
+            "subfolder": "research-three-way/anuxq_street_seed27012026",
+            "type": "output",
+            "metadata": {
+              "kind": "image",
+              "width": 1024,
+              "height": 1280
+            }
+          }
+        ]
+      },
+      "14": {
+        "images": [
+          {
+            "filename": "instagram_1080x1350_00001_.png",
+            "subfolder": "research-three-way/anuxq_street_seed27012026",
+            "type": "output",
+            "metadata": {
+              "kind": "image",
+              "width": 1080,
+              "height": 1350
+            }
+          }
+        ]
+      }
+    },
+    "status": {
+      "status_str": "success",
+      "completed": true,
+      "messages": [
+        [
+          "execution_start",
+          {
+            "prompt_id": "c7b8e6c6-d1b7-4f8b-9629-ce674d4a2ebe",
+            "timestamp": 1793201574559
+          }
+        ],
+        [
+          "execution_cached",
+          {
+            "nodes": [
+              "1",
+              "2",
+              "3",
+              "4",
+              "5",
+              "6",
+              "8",
+              "9"
+            ],
+            "prompt_id": "c7b8e6c6-d1b7-4f8b-9629-ce674d4a2ebe",
+            "timestamp": 1793201574568
+          }
+        ],
+        [
+          "execution_success",
+          {
+            "prompt_id": "c7b8e6c6-d1b7-4f8b-9629-ce674d4a2ebe",
+            "timestamp": 1793201583538
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "run": "anuxq_street_seed27012027",
+    "method": "anuxq",
+    "scene": "street",
+    "seed": 27012027,
+    "prompt_id": "b84cb6e6-c4cf-4f29-8c73-856578b70ec1",
+    "elapsed_seconds": 10.011,
+    "outputs": {
+      "12": {
+        "images": [
+          {
+            "filename": "native_1024x1280_00001_.png",
+            "subfolder": "research-three-way/anuxq_street_seed27012027",
+            "type": "output",
+            "metadata": {
+              "kind": "image",
+              "width": 1024,
+              "height": 1280
+            }
+          }
+        ]
+      },
+      "14": {
+        "images": [
+          {
+            "filename": "instagram_1080x1350_00001_.png",
+            "subfolder": "research-three-way/anuxq_street_seed27012027",
+            "type": "output",
+            "metadata": {
+              "kind": "image",
+              "width": 1080,
+              "height": 1350
+            }
+          }
+        ]
+      }
+    },
+    "status": {
+      "status_str": "success",
+      "completed": true,
+      "messages": [
+        [
+          "execution_start",
+          {
+            "prompt_id": "b84cb6e6-c4cf-4f29-8c73-856578b70ec1",
+            "timestamp": 1793201584599
+          }
+        ],
+        [
+          "execution_cached",
+          {
+            "nodes": [
+              "1",
+              "2",
+              "3",
+              "4",
+              "5",
+              "6",
+              "7",
+              "8",
+              "9"
+            ],
+            "prompt_id": "b84cb6e6-c4cf-4f29-8c73-856578b70ec1",
+            "timestamp": 1793201584619
+          }
+        ],
+        [
+          "execution_success",
+          {
+            "prompt_id": "b84cb6e6-c4cf-4f29-8c73-856578b70ec1",
+            "timestamp": 1793201593293
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "run": "ananya_cafe_seed27012026",
+    "method": "ananya",
+    "scene": "cafe",
+    "seed": 27012026,
+    "prompt_id": "ec9c5081-7aa2-4e1a-82d5-af83e70b4374",
+    "elapsed_seconds": 14.199,
+    "outputs": {
+      "8": {
+        "images": [
+          {
+            "filename": "before_swap_00002_.png",
+            "subfolder": "research-three-way/ananya_cafe_seed27012026",
+            "type": "output",
+            "metadata": {
+              "kind": "image",
+              "width": 1024,
+              "height": 1280
+            }
+          }
+        ]
+      },
+      "10": {
+        "images": [
+          {
+            "filename": "native_1024x1280_00002_.png",
+            "subfolder": "research-three-way/ananya_cafe_seed27012026",
+            "type": "output",
+            "metadata": {
+              "kind": "image",
+              "width": 1024,
+              "height": 1280
+            }
+          }
+        ]
+      },
+      "12": {
+        "images": [
+          {
+            "filename": "instagram_1080x1350_00002_.png",
+            "subfolder": "research-three-way/ananya_cafe_seed27012026",
+            "type": "output",
+            "metadata": {
+              "kind": "image",
+              "width": 1080,
+              "height": 1350
+            }
+          }
+        ]
+      }
+    },
+    "status": {
+      "status_str": "success",
+      "completed": true,
+      "messages": [
+        [
+          "execution_start",
+          {
+            "prompt_id": "ec9c5081-7aa2-4e1a-82d5-af83e70b4374",
+            "timestamp": 1793201594630
+          }
+        ],
+        [
+          "execution_cached",
+          {
+            "nodes": [
+              "1",
+              "2",
+              "4",
+              "5"
+            ],
+            "prompt_id": "ec9c5081-7aa2-4e1a-82d5-af83e70b4374",
+            "timestamp": 1793201594645
+          }
+        ],
+        [
+          "execution_success",
+          {
+            "prompt_id": "ec9c5081-7aa2-4e1a-82d5-af83e70b4374",
+            "timestamp": 1793201608451
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "run": "ananya_cafe_seed27012027",
+    "method": "ananya",
+    "scene": "cafe",
+    "seed": 27012027,
+    "prompt_id": "3e68a63e-ddc3-462a-aaa1-49aeb660991e",
+    "elapsed_seconds": 16.031,
+    "outputs": {
+      "8": {
+        "images": [
+          {
+            "filename": "before_swap_00001_.png",
+            "subfolder": "research-three-way/ananya_cafe_seed27012027",
+            "type": "output",
+            "metadata": {
+              "kind": "image",
+              "width": 1024,
+              "height": 1280
+            }
+          }
+        ]
+      },
+      "10": {
+        "images": [
+          {
+            "filename": "native_1024x1280_00001_.png",
+            "subfolder": "research-three-way/ananya_cafe_seed27012027",
+            "type": "output",
+            "metadata": {
+              "kind": "image",
+              "width": 1024,
+              "height": 1280
+            }
+          }
+        ]
+      },
+      "12": {
+        "images": [
+          {
+            "filename": "instagram_1080x1350_00001_.png",
+            "subfolder": "research-three-way/ananya_cafe_seed27012027",
+            "type": "output",
+            "metadata": {
+              "kind": "image",
+              "width": 1080,
+              "height": 1350
+            }
+          }
+        ]
+      }
+    },
+    "status": {
+      "status_str": "success",
+      "completed": true,
+      "messages": [
+        [
+          "execution_start",
+          {
+            "prompt_id": "3e68a63e-ddc3-462a-aaa1-49aeb660991e",
+            "timestamp": 1793201608850
+          }
+        ],
+        [
+          "execution_cached",
+          {
+            "nodes": [
+              "1",
+              "2",
+              "3",
+              "4",
+              "5"
+            ],
+            "prompt_id": "3e68a63e-ddc3-462a-aaa1-49aeb660991e",
+            "timestamp": 1793201608859
+          }
+        ],
+        [
+          "execution_success",
+          {
+            "prompt_id": "3e68a63e-ddc3-462a-aaa1-49aeb660991e",
+            "timestamp": 1793201624372
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "run": "ananya_street_seed27012026",
+    "method": "ananya",
+    "scene": "street",
+    "seed": 27012026,
+    "prompt_id": "b96d0853-fafb-4227-9baf-60f0da303ad8",
+    "elapsed_seconds": 16.071,
+    "outputs": {
+      "8": {
+        "images": [
+          {
+            "filename": "before_swap_00001_.png",
+            "subfolder": "research-three-way/ananya_street_seed27012026",
+            "type": "output",
+            "metadata": {
+              "kind": "image",
+              "width": 1024,
+              "height": 1280
+            }
+          }
+        ]
+      },
+      "10": {
+        "images": [
+          {
+            "filename": "native_1024x1280_00001_.png",
+            "subfolder": "research-three-way/ananya_street_seed27012026",
+            "type": "output",
+            "metadata": {
+              "kind": "image",
+              "width": 1024,
+              "height": 1280
+            }
+          }
+        ]
+      },
+      "12": {
+        "images": [
+          {
+            "filename": "instagram_1080x1350_00001_.png",
+            "subfolder": "research-three-way/ananya_street_seed27012026",
+            "type": "output",
+            "metadata": {
+              "kind": "image",
+              "width": 1080,
+              "height": 1350
+            }
+          }
+        ]
+      }
+    },
+    "status": {
+      "status_str": "success",
+      "completed": true,
+      "messages": [
+        [
+          "execution_start",
+          {
+            "prompt_id": "b96d0853-fafb-4227-9baf-60f0da303ad8",
+            "timestamp": 1793201624910
+          }
+        ],
+        [
+          "execution_cached",
+          {
+            "nodes": [
+              "1",
+              "2",
+              "4",
+              "5"
+            ],
+            "prompt_id": "b96d0853-fafb-4227-9baf-60f0da303ad8",
+            "timestamp": 1793201624924
+          }
+        ],
+        [
+          "execution_success",
+          {
+            "prompt_id": "b96d0853-fafb-4227-9baf-60f0da303ad8",
+            "timestamp": 1793201640099
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "run": "ananya_street_seed27012027",
+    "method": "ananya",
+    "scene": "street",
+    "seed": 27012027,
+    "prompt_id": "575c906a-7b9f-4611-a1a6-3323e5bbab92",
+    "elapsed_seconds": 16.165,
+    "outputs": {
+      "8": {
+        "images": [
+          {
+            "filename": "before_swap_00001_.png",
+            "subfolder": "research-three-way/ananya_street_seed27012027",
+            "type": "output",
+            "metadata": {
+              "kind": "image",
+              "width": 1024,
+              "height": 1280
+            }
+          }
+        ]
+      },
+      "10": {
+        "images": [
+          {
+            "filename": "native_1024x1280_00001_.png",
+            "subfolder": "research-three-way/ananya_street_seed27012027",
+            "type": "output",
+            "metadata": {
+              "kind": "image",
+              "width": 1024,
+              "height": 1280
+            }
+          }
+        ]
+      },
+      "12": {
+        "images": [
+          {
+            "filename": "instagram_1080x1350_00001_.png",
+            "subfolder": "research-three-way/ananya_street_seed27012027",
+            "type": "output",
+            "metadata": {
+              "kind": "image",
+              "width": 1080,
+              "height": 1350
+            }
+          }
+        ]
+      }
+    },
+    "status": {
+      "status_str": "success",
+      "completed": true,
+      "messages": [
+        [
+          "execution_start",
+          {
+            "prompt_id": "575c906a-7b9f-4611-a1a6-3323e5bbab92",
+            "timestamp": 1793201641017
+          }
+        ],
+        [
+          "execution_cached",
+          {
+            "nodes": [
+              "1",
+              "2",
+              "3",
+              "4",
+              "5"
+            ],
+            "prompt_id": "575c906a-7b9f-4611-a1a6-3323e5bbab92",
+            "timestamp": 1793201641033
+          }
+        ],
+        [
+          "execution_success",
+          {
+            "prompt_id": "575c906a-7b9f-4611-a1a6-3323e5bbab92",
+            "timestamp": 1793201656023
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "run": "krea_cafe_seed27012026",
+    "method": "krea",
+    "scene": "cafe",
+    "seed": 27012026,
+    "prompt_id": "dddfba8a-135a-420c-8926-23149168ce5f",
+    "elapsed_seconds": 138.269,
+    "outputs": {
+      "15": {
+        "images": [
+          {
+            "filename": "before_finish_00002_.png",
+            "subfolder": "research-three-way/krea_cafe_seed27012026",
+            "type": "output",
+            "metadata": {
+              "kind": "image",
+              "width": 1280,
+              "height": 1600
+            }
+          }
+        ]
+      },
+      "17": {
+        "images": [
+          {
+            "filename": "native_1280x1600_00002_.png",
+            "subfolder": "research-three-way/krea_cafe_seed27012026",
+            "type": "output",
+            "metadata": {
+              "kind": "image",
+              "width": 1280,
+              "height": 1600
+            }
+          }
+        ]
+      },
+      "19": {
+        "images": [
+          {
+            "filename": "instagram_1080x1350_00002_.png",
+            "subfolder": "research-three-way/krea_cafe_seed27012026",
+            "type": "output",
+            "metadata": {
+              "kind": "image",
+              "width": 1080,
+              "height": 1350
+            }
+          }
+        ]
+      }
+    },
+    "status": {
+      "status_str": "success",
+      "completed": true,
+      "messages": [
+        [
+          "execution_start",
+          {
+            "prompt_id": "dddfba8a-135a-420c-8926-23149168ce5f",
+            "timestamp": 1793201657218
+          }
+        ],
+        [
+          "execution_cached",
+          {
+            "nodes": [
+              "7"
+            ],
+            "prompt_id": "dddfba8a-135a-420c-8926-23149168ce5f",
+            "timestamp": 1793201657238
+          }
+        ],
+        [
+          "execution_success",
+          {
+            "prompt_id": "dddfba8a-135a-420c-8926-23149168ce5f",
+            "timestamp": 1793201793723
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "run": "krea_cafe_seed27012027",
+    "method": "krea",
+    "scene": "cafe",
+    "seed": 27012027,
+    "prompt_id": "e41f3efe-393e-4c09-8ed1-d1a8e931472f",
+    "elapsed_seconds": 76.114,
+    "outputs": {
+      "15": {
+        "images": [
+          {
+            "filename": "before_finish_00001_.png",
+            "subfolder": "research-three-way/krea_cafe_seed27012027",
+            "type": "output",
+            "metadata": {
+              "kind": "image",
+              "width": 1280,
+              "height": 1600
+            }
+          }
+        ]
+      },
+      "17": {
+        "images": [
+          {
+            "filename": "native_1280x1600_00001_.png",
+            "subfolder": "research-three-way/krea_cafe_seed27012027",
+            "type": "output",
+            "metadata": {
+              "kind": "image",
+              "width": 1280,
+              "height": 1600
+            }
+          }
+        ]
+      },
+      "19": {
+        "images": [
+          {
+            "filename": "instagram_1080x1350_00001_.png",
+            "subfolder": "research-three-way/krea_cafe_seed27012027",
+            "type": "output",
+            "metadata": {
+              "kind": "image",
+              "width": 1080,
+              "height": 1350
+            }
+          }
+        ]
+      }
+    },
+    "status": {
+      "status_str": "success",
+      "completed": true,
+      "messages": [
+        [
+          "execution_start",
+          {
+            "prompt_id": "e41f3efe-393e-4c09-8ed1-d1a8e931472f",
+            "timestamp": 1793201795566
+          }
+        ],
+        [
+          "execution_cached",
+          {
+            "nodes": [
+              "1",
+              "2",
+              "3",
+              "4",
+              "5",
+              "6",
+              "7",
+              "8",
+              "9",
+              "10",
+              "11",
+              "12"
+            ],
+            "prompt_id": "e41f3efe-393e-4c09-8ed1-d1a8e931472f",
+            "timestamp": 1793201795598
+          }
+        ],
+        [
+          "execution_success",
+          {
+            "prompt_id": "e41f3efe-393e-4c09-8ed1-d1a8e931472f",
+            "timestamp": 1793201870714
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "run": "krea_street_seed27012026",
+    "method": "krea",
+    "scene": "street",
+    "seed": 27012026,
+    "prompt_id": "b8e6621a-6d82-4588-96a2-d5bf065b6381",
+    "elapsed_seconds": 78.143,
+    "outputs": {
+      "15": {
+        "images": [
+          {
+            "filename": "before_finish_00001_.png",
+            "subfolder": "research-three-way/krea_street_seed27012026",
+            "type": "output",
+            "metadata": {
+              "kind": "image",
+              "width": 1280,
+              "height": 1600
+            }
+          }
+        ]
+      },
+      "17": {
+        "images": [
+          {
+            "filename": "native_1280x1600_00001_.png",
+            "subfolder": "research-three-way/krea_street_seed27012026",
+            "type": "output",
+            "metadata": {
+              "kind": "image",
+              "width": 1280,
+              "height": 1600
+            }
+          }
+        ]
+      },
+      "19": {
+        "images": [
+          {
+            "filename": "instagram_1080x1350_00001_.png",
+            "subfolder": "research-three-way/krea_street_seed27012026",
+            "type": "output",
+            "metadata": {
+              "kind": "image",
+              "width": 1080,
+              "height": 1350
+            }
+          }
+        ]
+      }
+    },
+    "status": {
+      "status_str": "success",
+      "completed": true,
+      "messages": [
+        [
+          "execution_start",
+          {
+            "prompt_id": "b8e6621a-6d82-4588-96a2-d5bf065b6381",
+            "timestamp": 1793201871735
+          }
+        ],
+        [
+          "execution_cached",
+          {
+            "nodes": [
+              "1",
+              "2",
+              "3",
+              "4",
+              "5",
+              "6",
+              "7",
+              "8",
+              "9",
+              "10",
+              "12"
+            ],
+            "prompt_id": "b8e6621a-6d82-4588-96a2-d5bf065b6381",
+            "timestamp": 1793201871763
+          }
+        ],
+        [
+          "execution_success",
+          {
+            "prompt_id": "b8e6621a-6d82-4588-96a2-d5bf065b6381",
+            "timestamp": 1793201948854
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "run": "krea_street_seed27012027",
+    "method": "krea",
+    "scene": "street",
+    "seed": 27012027,
+    "prompt_id": "b5c0ea81-db2e-4f79-8d14-9f075609e101",
+    "elapsed_seconds": 76.154,
+    "outputs": {
+      "15": {
+        "images": [
+          {
+            "filename": "before_finish_00001_.png",
+            "subfolder": "research-three-way/krea_street_seed27012027",
+            "type": "output",
+            "metadata": {
+              "kind": "image",
+              "width": 1280,
+              "height": 1600
+            }
+          }
+        ]
+      },
+      "17": {
+        "images": [
+          {
+            "filename": "native_1280x1600_00001_.png",
+            "subfolder": "research-three-way/krea_street_seed27012027",
+            "type": "output",
+            "metadata": {
+              "kind": "image",
+              "width": 1280,
+              "height": 1600
+            }
+          }
+        ]
+      },
+      "19": {
+        "images": [
+          {
+            "filename": "instagram_1080x1350_00001_.png",
+            "subfolder": "research-three-way/krea_street_seed27012027",
+            "type": "output",
+            "metadata": {
+              "kind": "image",
+              "width": 1080,
+              "height": 1350
+            }
+          }
+        ]
+      }
+    },
+    "status": {
+      "status_str": "success",
+      "completed": true,
+      "messages": [
+        [
+          "execution_start",
+          {
+            "prompt_id": "b5c0ea81-db2e-4f79-8d14-9f075609e101",
+            "timestamp": 1793201949927
+          }
+        ],
+        [
+          "execution_cached",
+          {
+            "nodes": [
+              "1",
+              "2",
+              "3",
+              "4",
+              "5",
+              "6",
+              "7",
+              "8",
+              "9",
+              "10",
+              "11",
+              "12"
+            ],
+            "prompt_id": "b5c0ea81-db2e-4f79-8d14-9f075609e101",
+            "timestamp": 1793201949956
+          }
+        ],
+        [
+          "execution_success",
+          {
+            "prompt_id": "b5c0ea81-db2e-4f79-8d14-9f075609e101",
+            "timestamp": 1793202025276
+          }
+        ]
+      ]
+    }
+  }
+]

@@ -1,0 +1,88 @@
+{
+  "run": "krea_phone_core_street_seed27012026",
+  "seed": 27012026,
+  "prompt_id": "ce7765e2-0eed-4f61-a255-f0c9cbd3afb6",
+  "elapsed_seconds": 84.121,
+  "outputs": {
+    "15": {
+      "images": [
+        {
+          "filename": "before_finish_00001_.png",
+          "subfolder": "research-three-way-ablation/krea_phone_core_street_seed27012026",
+          "type": "output",
+          "metadata": {
+            "kind": "image",
+            "width": 1280,
+            "height": 1600
+          }
+        }
+      ]
+    },
+    "17": {
+      "images": [
+        {
+          "filename": "native_1280x1600_00001_.png",
+          "subfolder": "research-three-way-ablation/krea_phone_core_street_seed27012026",
+          "type": "output",
+          "metadata": {
+            "kind": "image",
+            "width": 1280,
+            "height": 1600
+          }
+        }
+      ]
+    },
+    "19": {
+      "images": [
+        {
+          "filename": "instagram_1080x1350_00001_.png",
+          "subfolder": "research-three-way-ablation/krea_phone_core_street_seed27012026",
+          "type": "output",
+          "metadata": {
+            "kind": "image",
+            "width": 1080,
+            "height": 1350
+          }
+        }
+      ]
+    }
+  },
+  "status": {
+    "status_str": "success",
+    "completed": true,
+    "messages": [
+      [
+        "execution_start",
+        {
+          "prompt_id": "ce7765e2-0eed-4f61-a255-f0c9cbd3afb6",
+          "timestamp": 1793208164962
+        }
+      ],
+      [
+        "execution_cached",
+        {
+          "nodes": [
+            "1",
+            "2",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10",
+            "12"
+          ],
+          "prompt_id": "ce7765e2-0eed-4f61-a255-f0c9cbd3afb6",
+          "timestamp": 1793208164982
+        }
+      ],
+      [
+        "execution_success",
+        {
+          "prompt_id": "ce7765e2-0eed-4f61-a255-f0c9cbd3afb6",
+          "timestamp": 1793208248220
+        }
+      ]
+    ]
+  }
+}

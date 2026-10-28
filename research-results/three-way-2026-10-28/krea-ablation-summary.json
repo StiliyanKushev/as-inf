@@ -1,0 +1,364 @@
+[
+  {
+    "run": "krea_single_full_street_seed27012026",
+    "variant": "krea_single_full",
+    "seed": 27012026,
+    "prompt_id": "1fadc68b-2f7b-4722-b4e9-1a04a25ab9e5",
+    "elapsed_seconds": 78.137,
+    "outputs": {
+      "15": {
+        "images": [
+          {
+            "filename": "before_finish_00001_.png",
+            "subfolder": "research-three-way-ablation/krea_single_full_street_seed27012026",
+            "type": "output",
+            "metadata": {
+              "kind": "image",
+              "width": 1280,
+              "height": 1600
+            }
+          }
+        ]
+      },
+      "17": {
+        "images": [
+          {
+            "filename": "native_1280x1600_00001_.png",
+            "subfolder": "research-three-way-ablation/krea_single_full_street_seed27012026",
+            "type": "output",
+            "metadata": {
+              "kind": "image",
+              "width": 1280,
+              "height": 1600
+            }
+          }
+        ]
+      },
+      "19": {
+        "images": [
+          {
+            "filename": "instagram_1080x1350_00001_.png",
+            "subfolder": "research-three-way-ablation/krea_single_full_street_seed27012026",
+            "type": "output",
+            "metadata": {
+              "kind": "image",
+              "width": 1080,
+              "height": 1350
+            }
+          }
+        ]
+      }
+    },
+    "status": {
+      "status_str": "success",
+      "completed": true,
+      "messages": [
+        [
+          "execution_start",
+          {
+            "prompt_id": "1fadc68b-2f7b-4722-b4e9-1a04a25ab9e5",
+            "timestamp": 1793207660480
+          }
+        ],
+        [
+          "execution_cached",
+          {
+            "nodes": [
+              "1",
+              "2",
+              "3",
+              "4",
+              "5",
+              "6",
+              "7",
+              "8",
+              "9",
+              "10",
+              "12"
+            ],
+            "prompt_id": "1fadc68b-2f7b-4722-b4e9-1a04a25ab9e5",
+            "timestamp": 1793207660502
+          }
+        ],
+        [
+          "execution_success",
+          {
+            "prompt_id": "1fadc68b-2f7b-4722-b4e9-1a04a25ab9e5",
+            "timestamp": 1793207738222
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "run": "krea_single_full_street_seed27012027",
+    "variant": "krea_single_full",
+    "seed": 27012027,
+    "prompt_id": "79ff6730-5d35-4227-a764-9a6699d9b3aa",
+    "elapsed_seconds": 78.099,
+    "outputs": {
+      "15": {
+        "images": [
+          {
+            "filename": "before_finish_00001_.png",
+            "subfolder": "research-three-way-ablation/krea_single_full_street_seed27012027",
+            "type": "output",
+            "metadata": {
+              "kind": "image",
+              "width": 1280,
+              "height": 1600
+            }
+          }
+        ]
+      },
+      "17": {
+        "images": [
+          {
+            "filename": "native_1280x1600_00001_.png",
+            "subfolder": "research-three-way-ablation/krea_single_full_street_seed27012027",
+            "type": "output",
+            "metadata": {
+              "kind": "image",
+              "width": 1280,
+              "height": 1600
+            }
+          }
+        ]
+      },
+      "19": {
+        "images": [
+          {
+            "filename": "instagram_1080x1350_00001_.png",
+            "subfolder": "research-three-way-ablation/krea_single_full_street_seed27012027",
+            "type": "output",
+            "metadata": {
+              "kind": "image",
+              "width": 1080,
+              "height": 1350
+            }
+          }
+        ]
+      }
+    },
+    "status": {
+      "status_str": "success",
+      "completed": true,
+      "messages": [
+        [
+          "execution_start",
+          {
+            "prompt_id": "79ff6730-5d35-4227-a764-9a6699d9b3aa",
+            "timestamp": 1793207738654
+          }
+        ],
+        [
+          "execution_cached",
+          {
+            "nodes": [
+              "1",
+              "2",
+              "3",
+              "4",
+              "5",
+              "6",
+              "7",
+              "8",
+              "9",
+              "10",
+              "11",
+              "12"
+            ],
+            "prompt_id": "79ff6730-5d35-4227-a764-9a6699d9b3aa",
+            "timestamp": 1793207738671
+          }
+        ],
+        [
+          "execution_success",
+          {
+            "prompt_id": "79ff6730-5d35-4227-a764-9a6699d9b3aa",
+            "timestamp": 1793207815256
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "run": "krea_single_core_street_seed27012026",
+    "variant": "krea_single_core",
+    "seed": 27012026,
+    "prompt_id": "4d5329ed-2211-428e-978c-4f12ed317955",
+    "elapsed_seconds": 84.107,
+    "outputs": {
+      "15": {
+        "images": [
+          {
+            "filename": "before_finish_00001_.png",
+            "subfolder": "research-three-way-ablation/krea_single_core_street_seed27012026",
+            "type": "output",
+            "metadata": {
+              "kind": "image",
+              "width": 1280,
+              "height": 1600
+            }
+          }
+        ]
+      },
+      "17": {
+        "images": [
+          {
+            "filename": "native_1280x1600_00001_.png",
+            "subfolder": "research-three-way-ablation/krea_single_core_street_seed27012026",
+            "type": "output",
+            "metadata": {
+              "kind": "image",
+              "width": 1280,
+              "height": 1600
+            }
+          }
+        ]
+      },
+      "19": {
+        "images": [
+          {
+            "filename": "instagram_1080x1350_00001_.png",
+            "subfolder": "research-three-way-ablation/krea_single_core_street_seed27012026",
+            "type": "output",
+            "metadata": {
+              "kind": "image",
+              "width": 1080,
+              "height": 1350
+            }
+          }
+        ]
+      }
+    },
+    "status": {
+      "status_str": "success",
+      "completed": true,
+      "messages": [
+        [
+          "execution_start",
+          {
+            "prompt_id": "4d5329ed-2211-428e-978c-4f12ed317955",
+            "timestamp": 1793207816774
+          }
+        ],
+        [
+          "execution_cached",
+          {
+            "nodes": [
+              "1",
+              "2",
+              "5",
+              "6",
+              "7",
+              "8",
+              "9",
+              "11",
+              "12"
+            ],
+            "prompt_id": "4d5329ed-2211-428e-978c-4f12ed317955",
+            "timestamp": 1793207816794
+          }
+        ],
+        [
+          "execution_success",
+          {
+            "prompt_id": "4d5329ed-2211-428e-978c-4f12ed317955",
+            "timestamp": 1793207899340
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "run": "krea_single_core_street_seed27012027",
+    "variant": "krea_single_core",
+    "seed": 27012027,
+    "prompt_id": "1d91b082-8c49-4da3-b3e7-cc069428ef35",
+    "elapsed_seconds": 78.098,
+    "outputs": {
+      "15": {
+        "images": [
+          {
+            "filename": "before_finish_00001_.png",
+            "subfolder": "research-three-way-ablation/krea_single_core_street_seed27012027",
+            "type": "output",
+            "metadata": {
+              "kind": "image",
+              "width": 1280,
+              "height": 1600
+            }
+          }
+        ]
+      },
+      "17": {
+        "images": [
+          {
+            "filename": "native_1280x1600_00001_.png",
+            "subfolder": "research-three-way-ablation/krea_single_core_street_seed27012027",
+            "type": "output",
+            "metadata": {
+              "kind": "image",
+              "width": 1280,
+              "height": 1600
+            }
+          }
+        ]
+      },
+      "19": {
+        "images": [
+          {
+            "filename": "instagram_1080x1350_00001_.png",
+            "subfolder": "research-three-way-ablation/krea_single_core_street_seed27012027",
+            "type": "output",
+            "metadata": {
+              "kind": "image",
+              "width": 1080,
+              "height": 1350
+            }
+          }
+        ]
+      }
+    },
+    "status": {
+      "status_str": "success",
+      "completed": true,
+      "messages": [
+        [
+          "execution_start",
+          {
+            "prompt_id": "1d91b082-8c49-4da3-b3e7-cc069428ef35",
+            "timestamp": 1793207900913
+          }
+        ],
+        [
+          "execution_cached",
+          {
+            "nodes": [
+              "1",
+              "2",
+              "5",
+              "6",
+              "7",
+              "8",
+              "9",
+              "10",
+              "11",
+              "12"
+            ],
+            "prompt_id": "1d91b082-8c49-4da3-b3e7-cc069428ef35",
+            "timestamp": 1793207900933
+          }
+        ],
+        [
+          "execution_success",
+          {
+            "prompt_id": "1d91b082-8c49-4da3-b3e7-cc069428ef35",
+            "timestamp": 1793207977432
+          }
+        ]
+      ]
+    }
+  }
+]

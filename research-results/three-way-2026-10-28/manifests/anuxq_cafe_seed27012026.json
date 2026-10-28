@@ -1,0 +1,68 @@
+{
+  "run": "anuxq_cafe_seed27012026",
+  "method": "anuxq",
+  "scene": "cafe",
+  "seed": 27012026,
+  "prompt_id": "fffbfb9b-7d95-4c46-923a-67cd392cc172",
+  "elapsed_seconds": 76.392,
+  "outputs": {
+    "12": {
+      "images": [
+        {
+          "filename": "native_1024x1280_00002_.png",
+          "subfolder": "research-three-way/anuxq_cafe_seed27012026",
+          "type": "output",
+          "metadata": {
+            "kind": "image",
+            "width": 1024,
+            "height": 1280
+          }
+        }
+      ]
+    },
+    "14": {
+      "images": [
+        {
+          "filename": "instagram_1080x1350_00002_.png",
+          "subfolder": "research-three-way/anuxq_cafe_seed27012026",
+          "type": "output",
+          "metadata": {
+            "kind": "image",
+            "width": 1080,
+            "height": 1350
+          }
+        }
+      ]
+    }
+  },
+  "status": {
+    "status_str": "success",
+    "completed": true,
+    "messages": [
+      [
+        "execution_start",
+        {
+          "prompt_id": "fffbfb9b-7d95-4c46-923a-67cd392cc172",
+          "timestamp": 1793201488113
+        }
+      ],
+      [
+        "execution_cached",
+        {
+          "nodes": [
+            "2"
+          ],
+          "prompt_id": "fffbfb9b-7d95-4c46-923a-67cd392cc172",
+          "timestamp": 1793201488133
+        }
+      ],
+      [
+        "execution_success",
+        {
+          "prompt_id": "fffbfb9b-7d95-4c46-923a-67cd392cc172",
+          "timestamp": 1793201563312
+        }
+      ]
+    ]
+  }
+}

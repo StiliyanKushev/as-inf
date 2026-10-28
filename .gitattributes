@@ -1,3 +1,5 @@
 models/loras/*.safetensors filter=lfs diff=lfs merge=lfs -text
 assets/persona_refs/*.png filter=lfs diff=lfs merge=lfs -text
 training/datasets/**/*.png filter=lfs diff=lfs merge=lfs -text
+research-results/**/*.png filter=lfs diff=lfs merge=lfs -text
+research-results/**/*.jpg filter=lfs diff=lfs merge=lfs -text

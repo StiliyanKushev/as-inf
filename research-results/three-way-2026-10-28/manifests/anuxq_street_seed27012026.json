@@ -1,0 +1,75 @@
+{
+  "run": "anuxq_street_seed27012026",
+  "method": "anuxq",
+  "scene": "street",
+  "seed": 27012026,
+  "prompt_id": "c7b8e6c6-d1b7-4f8b-9629-ce674d4a2ebe",
+  "elapsed_seconds": 10.022,
+  "outputs": {
+    "12": {
+      "images": [
+        {
+          "filename": "native_1024x1280_00001_.png",
+          "subfolder": "research-three-way/anuxq_street_seed27012026",
+          "type": "output",
+          "metadata": {
+            "kind": "image",
+            "width": 1024,
+            "height": 1280
+          }
+        }
+      ]
+    },
+    "14": {
+      "images": [
+        {
+          "filename": "instagram_1080x1350_00001_.png",
+          "subfolder": "research-three-way/anuxq_street_seed27012026",
+          "type": "output",
+          "metadata": {
+            "kind": "image",
+            "width": 1080,
+            "height": 1350
+          }
+        }
+      ]
+    }
+  },
+  "status": {
+    "status_str": "success",
+    "completed": true,
+    "messages": [
+      [
+        "execution_start",
+        {
+          "prompt_id": "c7b8e6c6-d1b7-4f8b-9629-ce674d4a2ebe",
+          "timestamp": 1793201574559
+        }
+      ],
+      [
+        "execution_cached",
+        {
+          "nodes": [
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "8",
+            "9"
+          ],
+          "prompt_id": "c7b8e6c6-d1b7-4f8b-9629-ce674d4a2ebe",
+          "timestamp": 1793201574568
+        }
+      ],
+      [
+        "execution_success",
+        {
+          "prompt_id": "c7b8e6c6-d1b7-4f8b-9629-ce674d4a2ebe",
+          "timestamp": 1793201583538
+        }
+      ]
+    ]
+  }
+}

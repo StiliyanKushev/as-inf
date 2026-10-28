@@ -1,0 +1,10 @@
+GPU=NVIDIA A40 48GB
+ComfyUI=0.43.0
+Python=3.11
+Torch=2.9.1+cu128
+Torchvision=0.24.1+cu128
+Torchaudio=2.9.1+cu128
+CUDA=12.8
+native_sdxl=1024x1280
+native_krea2=1280x1600
+instagram_export=1080x1350

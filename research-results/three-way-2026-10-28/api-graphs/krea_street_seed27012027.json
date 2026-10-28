@@ -1,0 +1,237 @@
+{
+  "1": {
+    "class_type": "UNETLoader",
+    "inputs": {
+      "unet_name": "krea2_turbo_fp8_scaled.safetensors",
+      "weight_dtype": "default"
+    }
+  },
+  "2": {
+    "class_type": "LoraLoaderModelOnly",
+    "inputs": {
+      "model": [
+        "1",
+        0
+      ],
+      "lora_name": "krea2_general_edit_v2.safetensors",
+      "strength_model": 1.0
+    }
+  },
+  "3": {
+    "class_type": "LoraLoaderModelOnly",
+    "inputs": {
+      "model": [
+        "2",
+        0
+      ],
+      "lora_name": "famegrid_spicy.safetensors",
+      "strength_model": 0.5
+    }
+  },
+  "4": {
+    "class_type": "LoraLoaderModelOnly",
+    "inputs": {
+      "model": [
+        "3",
+        0
+      ],
+      "lora_name": "realism_engine_krea2_v3.1.safetensors",
+      "strength_model": 0.5
+    }
+  },
+  "5": {
+    "class_type": "CLIPLoader",
+    "inputs": {
+      "clip_name": "qwen3vl_4b_fp8_scaled.safetensors",
+      "type": "krea2",
+      "device": "default"
+    }
+  },
+  "6": {
+    "class_type": "VAELoader",
+    "inputs": {
+      "vae_name": "qwen_image_vae.safetensors"
+    }
+  },
+  "7": {
+    "class_type": "LoadImage",
+    "inputs": {
+      "image": "persona_front_neutral.png"
+    }
+  },
+  "8": {
+    "class_type": "VAEEncode",
+    "inputs": {
+      "pixels": [
+        "7",
+        0
+      ],
+      "vae": [
+        "6",
+        0
+      ]
+    }
+  },
+  "9": {
+    "class_type": "EmptySD3LatentImage",
+    "inputs": {
+      "width": 1280,
+      "height": 1600,
+      "batch_size": 1
+    }
+  },
+  "10": {
+    "class_type": "Krea2EditModelPatch",
+    "inputs": {
+      "model": [
+        "4",
+        0
+      ],
+      "source_latent": [
+        "8",
+        0
+      ],
+      "ref_boost": 2.0,
+      "fit_mode": "fit",
+      "vae": [
+        "6",
+        0
+      ],
+      "source_image": [
+        "7",
+        0
+      ],
+      "target_latent": [
+        "9",
+        0
+      ],
+      "ref_position": "beside (right of target)"
+    }
+  },
+  "11": {
+    "class_type": "Krea2EditGroundedEncode",
+    "inputs": {
+      "clip": [
+        "5",
+        0
+      ],
+      "prompt": "Create a new candid full-body iPhone photograph of this same fictional woman walking along a quiet European side street in soft afternoon daylight. Preserve her exact facial identity, eye color, facial proportions, and long center-parted dark-blonde hair. A friend photographs her from eye level during an ordinary mid-step while she glances toward the phone with a relaxed closed-mouth expression. She wears a plain charcoal T-shirt, straight-leg blue jeans and worn white sneakers. One hand holds a small canvas shoulder-bag strap; the other hangs naturally. Include parked bicycles, stucco walls and two distant pedestrians. Use an ordinary 26 mm equivalent phone lens, casual off-center composition, realistic body proportions and fabric folds, natural skin texture, restrained smartphone processing, no beauty filter. The result is an authentic personal Instagram post. famegrid",
+      "image": [
+        "7",
+        0
+      ],
+      "grounding_px": 768,
+      "system_prompt": ""
+    }
+  },
+  "12": {
+    "class_type": "Krea2EditGroundedEncode",
+    "inputs": {
+      "clip": [
+        "5",
+        0
+      ],
+      "prompt": "",
+      "image": [
+        "7",
+        0
+      ],
+      "grounding_px": 768,
+      "system_prompt": ""
+    }
+  },
+  "13": {
+    "class_type": "KSampler",
+    "inputs": {
+      "model": [
+        "10",
+        0
+      ],
+      "seed": 27012027,
+      "steps": 10,
+      "cfg": 1.0,
+      "sampler_name": "euler",
+      "scheduler": "simple",
+      "positive": [
+        "11",
+        0
+      ],
+      "negative": [
+        "12",
+        0
+      ],
+      "latent_image": [
+        "9",
+        0
+      ],
+      "denoise": 1.0
+    }
+  },
+  "14": {
+    "class_type": "VAEDecode",
+    "inputs": {
+      "samples": [
+        "13",
+        0
+      ],
+      "vae": [
+        "6",
+        0
+      ]
+    }
+  },
+  "15": {
+    "class_type": "SaveImage",
+    "inputs": {
+      "images": [
+        "14",
+        0
+      ],
+      "filename_prefix": "research-three-way/krea_street_seed27012027/before_finish"
+    }
+  },
+  "16": {
+    "class_type": "FameGridColorFinish",
+    "inputs": {
+      "image": [
+        "14",
+        0
+      ],
+      "color_strength": 0.6,
+      "sharpen_strength": 0.2
+    }
+  },
+  "17": {
+    "class_type": "SaveImage",
+    "inputs": {
+      "images": [
+        "16",
+        0
+      ],
+      "filename_prefix": "research-three-way/krea_street_seed27012027/native_1280x1600"
+    }
+  },
+  "18": {
+    "class_type": "ImageScale",
+    "inputs": {
+      "image": [
+        "16",
+        0
+      ],
+      "upscale_method": "lanczos",
+      "width": 1080,
+      "height": 1350,
+      "crop": "disabled"
+    }
+  },
+  "19": {
+    "class_type": "SaveImage",
+    "inputs": {
+      "images": [
+        "18",
+        0
+      ],
+      "filename_prefix": "research-three-way/krea_street_seed27012027/instagram_1080x1350"
+    }
+  }
+}

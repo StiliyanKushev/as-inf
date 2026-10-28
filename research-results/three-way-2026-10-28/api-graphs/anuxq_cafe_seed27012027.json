@@ -1,0 +1,162 @@
+{
+  "1": {
+    "class_type": "CheckpointLoaderSimple",
+    "inputs": {
+      "ckpt_name": "Juggernaut-XL_v9_RunDiffusionPhoto_v2.safetensors"
+    }
+  },
+  "2": {
+    "class_type": "LoadImage",
+    "inputs": {
+      "image": "persona_front_neutral.png"
+    }
+  },
+  "3": {
+    "class_type": "PulidModelLoader",
+    "inputs": {
+      "pulid_file": "pulid_v1.1.safetensors"
+    }
+  },
+  "4": {
+    "class_type": "PulidEvaClipLoader",
+    "inputs": {}
+  },
+  "5": {
+    "class_type": "PulidInsightFaceLoader",
+    "inputs": {
+      "provider": "CPU"
+    }
+  },
+  "6": {
+    "class_type": "ApplyPulidAdvanced",
+    "inputs": {
+      "model": [
+        "1",
+        0
+      ],
+      "pulid": [
+        "3",
+        0
+      ],
+      "eva_clip": [
+        "4",
+        0
+      ],
+      "face_analysis": [
+        "5",
+        0
+      ],
+      "image": [
+        "2",
+        0
+      ],
+      "weight": 0.55,
+      "projection": "none",
+      "fidelity": 12,
+      "noise": 0.0,
+      "start_at": 0.0,
+      "end_at": 0.8
+    }
+  },
+  "7": {
+    "class_type": "CLIPTextEncode",
+    "inputs": {
+      "text": "A casual unposed iPhone photo of one 25-year-old woman with long center-parted dark-blonde hair seated at a small outdoor neighborhood cafe in late morning. She leans slightly toward the camera with a subtle closed-mouth smile. One hand loosely holds a plain ceramic coffee cup on the table and her other forearm rests naturally beside it. She wears a simple white linen sleeveless top and blue jeans. A few empty wicker chairs, small tables, and leafy plants sit behind her. Eye-level phone camera, ordinary 26 mm equivalent lens, slightly imperfect framing, believable daylight and highlight roll-off, natural pores and fine facial texture, restrained smartphone sharpening, no beauty filter, no staged fashion lighting, an authentic everyday Instagram post.",
+      "clip": [
+        "1",
+        1
+      ]
+    }
+  },
+  "8": {
+    "class_type": "CLIPTextEncode",
+    "inputs": {
+      "text": "cgi, 3d render, illustration, painting, beauty filter, plastic skin, waxy skin, airbrushed skin, studio glamour, overprocessed, oversharpened, deformed hands, extra fingers, fused fingers, duplicate limbs, bad anatomy, text, watermark, logo",
+      "clip": [
+        "1",
+        1
+      ]
+    }
+  },
+  "9": {
+    "class_type": "EmptyLatentImage",
+    "inputs": {
+      "width": 1024,
+      "height": 1280,
+      "batch_size": 1
+    }
+  },
+  "10": {
+    "class_type": "KSampler",
+    "inputs": {
+      "model": [
+        "6",
+        0
+      ],
+      "seed": 27012027,
+      "steps": 25,
+      "cfg": 4.0,
+      "sampler_name": "dpmpp_2m",
+      "scheduler": "karras",
+      "positive": [
+        "7",
+        0
+      ],
+      "negative": [
+        "8",
+        0
+      ],
+      "latent_image": [
+        "9",
+        0
+      ],
+      "denoise": 1.0
+    }
+  },
+  "11": {
+    "class_type": "VAEDecode",
+    "inputs": {
+      "samples": [
+        "10",
+        0
+      ],
+      "vae": [
+        "1",
+        2
+      ]
+    }
+  },
+  "12": {
+    "class_type": "SaveImage",
+    "inputs": {
+      "images": [
+        "11",
+        0
+      ],
+      "filename_prefix": "research-three-way/anuxq_cafe_seed27012027/native_1024x1280"
+    }
+  },
+  "13": {
+    "class_type": "ImageScale",
+    "inputs": {
+      "image": [
+        "11",
+        0
+      ],
+      "upscale_method": "lanczos",
+      "width": 1080,
+      "height": 1350,
+      "crop": "disabled"
+    }
+  },
+  "14": {
+    "class_type": "SaveImage",
+    "inputs": {
+      "images": [
+        "13",
+        0
+      ],
+      "filename_prefix": "research-three-way/anuxq_cafe_seed27012027/instagram_1080x1350"
+    }
+  }
+}

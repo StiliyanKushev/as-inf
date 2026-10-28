@@ -64,6 +64,17 @@ challengers. Sunburst remains the raw-realism benchmark and localized editor.
 The study contains the exact public workflow settings, licensing caveat,
 reference pack, prompting, review rubric, and benchmark plan.
 
+That first practitioner benchmark has now been run. Read
+`docs/THREE_WAY_INSTAGRAM_BENCHMARK_2026-10-28.md` and inspect
+`research-results/three-way-2026-10-28/contact-sheet-instagram.jpg` before
+spending more credit. Across 12 controlled primary runs and six Krea ablations,
+Krea2 Turbo + General Edit V2 preserved Alex best. Its original street prompt
+duplicated her in both seeds; explicit one-subject/out-of-frame-photographer
+wording fixed both. Anuxq produced the most casual phone look but weaker Alex
+identity. The tested Ananya ReActor finish did not recover identity reliably.
+All graphs, timings, hashes, scripts, and curated images are committed on the
+`research/realism-native-4k` branch.
+
 ## Credentials that are deliberately outside Git
 
 The machine running the automation must have:

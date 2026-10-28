@@ -1,0 +1,149 @@
+{
+  "1": {
+    "class_type": "CheckpointLoaderSimple",
+    "inputs": {
+      "ckpt_name": "Juggernaut-XL_v9_RunDiffusionPhoto_v2.safetensors"
+    }
+  },
+  "2": {
+    "class_type": "LoadImage",
+    "inputs": {
+      "image": "persona_front_neutral.png"
+    }
+  },
+  "3": {
+    "class_type": "CLIPTextEncode",
+    "inputs": {
+      "text": "A casual unposed iPhone photo of one 25-year-old woman with long center-parted dark-blonde hair seated at a small outdoor neighborhood cafe in late morning. She leans slightly toward the camera with a subtle closed-mouth smile. One hand loosely holds a plain ceramic coffee cup on the table and her other forearm rests naturally beside it. She wears a simple white linen sleeveless top and blue jeans. A few empty wicker chairs, small tables, and leafy plants sit behind her. Eye-level phone camera, ordinary 26 mm equivalent lens, slightly imperfect framing, believable daylight and highlight roll-off, natural pores and fine facial texture, restrained smartphone sharpening, no beauty filter, no staged fashion lighting, an authentic everyday Instagram post.",
+      "clip": [
+        "1",
+        1
+      ]
+    }
+  },
+  "4": {
+    "class_type": "CLIPTextEncode",
+    "inputs": {
+      "text": "cgi, 3d render, illustration, painting, beauty filter, plastic skin, waxy skin, airbrushed skin, studio glamour, overprocessed, oversharpened, deformed hands, extra fingers, fused fingers, duplicate limbs, bad anatomy, text, watermark, logo",
+      "clip": [
+        "1",
+        1
+      ]
+    }
+  },
+  "5": {
+    "class_type": "EmptyLatentImage",
+    "inputs": {
+      "width": 1024,
+      "height": 1280,
+      "batch_size": 1
+    }
+  },
+  "6": {
+    "class_type": "KSampler",
+    "inputs": {
+      "model": [
+        "1",
+        0
+      ],
+      "seed": 27012026,
+      "steps": 30,
+      "cfg": 8.0,
+      "sampler_name": "dpmpp_2m",
+      "scheduler": "karras",
+      "positive": [
+        "3",
+        0
+      ],
+      "negative": [
+        "4",
+        0
+      ],
+      "latent_image": [
+        "5",
+        0
+      ],
+      "denoise": 1.0
+    }
+  },
+  "7": {
+    "class_type": "VAEDecode",
+    "inputs": {
+      "samples": [
+        "6",
+        0
+      ],
+      "vae": [
+        "1",
+        2
+      ]
+    }
+  },
+  "8": {
+    "class_type": "SaveImage",
+    "inputs": {
+      "images": [
+        "7",
+        0
+      ],
+      "filename_prefix": "research-three-way/ananya_cafe_seed27012026/before_swap"
+    }
+  },
+  "9": {
+    "class_type": "ReActorFaceSwap",
+    "inputs": {
+      "enabled": true,
+      "input_image": [
+        "7",
+        0
+      ],
+      "source_image": [
+        "2",
+        0
+      ],
+      "swap_model": "inswapper_128.onnx",
+      "facedetection": "retinaface_resnet50",
+      "face_restore_model": "none",
+      "face_restore_visibility": 1.0,
+      "codeformer_weight": 0.5,
+      "detect_gender_input": "no",
+      "detect_gender_source": "no",
+      "input_faces_index": "0",
+      "source_faces_index": "0",
+      "console_log_level": 1
+    }
+  },
+  "10": {
+    "class_type": "SaveImage",
+    "inputs": {
+      "images": [
+        "9",
+        0
+      ],
+      "filename_prefix": "research-three-way/ananya_cafe_seed27012026/native_1024x1280"
+    }
+  },
+  "11": {
+    "class_type": "ImageScale",
+    "inputs": {
+      "image": [
+        "9",
+        0
+      ],
+      "upscale_method": "lanczos",
+      "width": 1080,
+      "height": 1350,
+      "crop": "disabled"
+    }
+  },
+  "12": {
+    "class_type": "SaveImage",
+    "inputs": {
+      "images": [
+        "11",
+        0
+      ],
+      "filename_prefix": "research-three-way/ananya_cafe_seed27012026/instagram_1080x1350"
+    }
+  }
+}

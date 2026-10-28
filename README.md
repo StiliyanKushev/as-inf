@@ -8,8 +8,10 @@ new one.
 The four private/custom LoRAs required by the saved workflows are stored with
 Git LFS. The public BFS task LoRA is downloaded from its official Hugging Face
 repository and verified by SHA-256. Six canonical synthetic persona head views
-are stored with Git LFS. Large base-model weights, generated images, API keys,
-and SSH private keys are intentionally excluded from Git.
+are stored with Git LFS. Large base-model weights, routine generated images,
+API keys, and SSH private keys are intentionally excluded from Git. Curated
+research benchmark outputs are retained under `research-results/` through Git
+LFS so claims can be checked visually.
 
 The repository also contains a reproducible FLUX.2 Klein 9B persona-LoRA
 training package under [`training/`](training/README.md), including the 30-image
@@ -28,6 +30,12 @@ The current cross-model recommendation is documented in
 [`docs/INSTAGRAM_REALISM_MODEL_WORKFLOW_RESEARCH_2026-10-28.md`](docs/INSTAGRAM_REALISM_MODEL_WORKFLOW_RESEARCH_2026-10-28.md).
 It compares the October 2026 frontier models and specifies a blind benchmark for
 GPT Image 2.5 Sunburst, Nano Banana 2.1, FLUX 3 Klein Base, and one challenger.
+
+The first public-workflow benchmark is complete. See
+[`docs/THREE_WAY_INSTAGRAM_BENCHMARK_2026-10-28.md`](docs/THREE_WAY_INSTAGRAM_BENCHMARK_2026-10-28.md)
+for 18 measured Anuxq, Ananya, and Krea2 runs. Krea2 General Edit is the current
+identity-first recommendation at a true 1280×1600 native render; Anuxq remains
+the better casual-phone baseline.
 
 ## Current deployment
 

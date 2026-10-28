@@ -44,6 +44,8 @@ images/
 !training/datasets/
 !training/datasets/vexa_person/
 !training/datasets/vexa_person/*.png
+!research-results/three-way-2026-10-28/**/*.png
+!research-results/three-way-2026-10-28/**/*.jpg
 
 # Local/runtime files.
 .venv/
@@ -52,3 +54,5 @@ __pycache__/
 *.log
 *.pid
 .DS_Store
+# Public upstream repositories cloned only for workflow inspection.
+vendor/

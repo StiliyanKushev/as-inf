@@ -1,0 +1,7 @@
+component	repository	revision
+ComfyUI	https://github.com/Comfy-Org/ComfyUI.git	4845e7a3ffc48a6961f15824239e9042cc7d4ad1
+comfyui-krea2edit	https://github.com/lbouaraba/comfyui-krea2edit.git	13ef60f20828949becada815d3cbc371eb5ccaab
+ComfyUI-Krea2-Edit-Carousel	https://github.com/Pixelailabs/ComfyUI-Krea2-Edit-Carousel.git	a5c3eff64e9740e9ffc38ba0b7775961fa618614
+ComfyUI-FameGridColorFinish	https://github.com/Elevenheights/ComfyUI-FameGridColorFinish.git	944c14e53fffee3e9e6dbedad36ab95b0e1629f7
+ComfyUI-PuLID	https://github.com/yashikawa3/ComfyUI-PuLID.git	c672e2a88580afe59773bde1576ce1838abd1a0f
+ComfyUI-ReActor	https://github.com/Gourieff/ComfyUI-ReActor.git	0763f707e3f791323f2e7450d100a25860df546c

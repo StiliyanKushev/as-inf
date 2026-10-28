@@ -1,0 +1,93 @@
+{
+  "run": "krea_street_seed27012027",
+  "method": "krea",
+  "scene": "street",
+  "seed": 27012027,
+  "prompt_id": "b5c0ea81-db2e-4f79-8d14-9f075609e101",
+  "elapsed_seconds": 76.154,
+  "outputs": {
+    "15": {
+      "images": [
+        {
+          "filename": "before_finish_00001_.png",
+          "subfolder": "research-three-way/krea_street_seed27012027",
+          "type": "output",
+          "metadata": {
+            "kind": "image",
+            "width": 1280,
+            "height": 1600
+          }
+        }
+      ]
+    },
+    "17": {
+      "images": [
+        {
+          "filename": "native_1280x1600_00001_.png",
+          "subfolder": "research-three-way/krea_street_seed27012027",
+          "type": "output",
+          "metadata": {
+            "kind": "image",
+            "width": 1280,
+            "height": 1600
+          }
+        }
+      ]
+    },
+    "19": {
+      "images": [
+        {
+          "filename": "instagram_1080x1350_00001_.png",
+          "subfolder": "research-three-way/krea_street_seed27012027",
+          "type": "output",
+          "metadata": {
+            "kind": "image",
+            "width": 1080,
+            "height": 1350
+          }
+        }
+      ]
+    }
+  },
+  "status": {
+    "status_str": "success",
+    "completed": true,
+    "messages": [
+      [
+        "execution_start",
+        {
+          "prompt_id": "b5c0ea81-db2e-4f79-8d14-9f075609e101",
+          "timestamp": 1793201949927
+        }
+      ],
+      [
+        "execution_cached",
+        {
+          "nodes": [
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10",
+            "11",
+            "12"
+          ],
+          "prompt_id": "b5c0ea81-db2e-4f79-8d14-9f075609e101",
+          "timestamp": 1793201949956
+        }
+      ],
+      [
+        "execution_success",
+        {
+          "prompt_id": "b5c0ea81-db2e-4f79-8d14-9f075609e101",
+          "timestamp": 1793202025276
+        }
+      ]
+    ]
+  }
+}
