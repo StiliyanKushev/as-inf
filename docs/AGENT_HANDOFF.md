@@ -35,6 +35,7 @@ Use this repository as the source of truth:
 The research branch is `research/realism-native-4k`. Read these before spending
 more GPU credit:
 
+- `docs/INSTAGRAM_REALISM_MODEL_WORKFLOW_RESEARCH_2026-10-28.md`
 - `docs/TRUE_4K_INSTAGRAM_RESEARCH_2026-10-27.md`
 - `docs/FLUX3_EXPERIMENT_LOG_2026-10-28.md`
 - `workflows/research-flux3-native-4k.json`
@@ -52,6 +53,14 @@ cropped to 3024×4032. It took 513 seconds on an H200. Distilled was much faster
 and sharper but produced sparse colored flecks at native 4K. The next controlled
 test is the same Distilled seed, prompt, and references with ComfyUI started
 using `--fp32-vae`; do not change another variable in that comparison.
+
+The newer cross-model study changes the production recommendation. Before
+renting another GPU, blind-test GPT Image 2.5 Sunburst, Nano Banana 2.1 at 4K,
+and the existing FLUX 3 Klein Base workflow. Nano Banana 2.1 is the provisional
+default for a recurring character at genuine 3:4 high resolution; Sunburst is
+the raw-realism benchmark and localized editor; FLUX 3 Base remains the local,
+fine-tunable fallback. The study contains the exact reference pack, prompting,
+review rubric, and ten-scene benchmark needed to make that choice from evidence.
 
 ## Credentials that are deliberately outside Git
 

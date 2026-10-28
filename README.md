@@ -24,6 +24,11 @@ there is no resize or upscale stage. See
 [`docs/FLUX3_EXPERIMENT_LOG_2026-10-28.md`](docs/FLUX3_EXPERIMENT_LOG_2026-10-28.md)
 for measured H200 results and the remaining controlled tests.
 
+The current cross-model recommendation is documented in
+[`docs/INSTAGRAM_REALISM_MODEL_WORKFLOW_RESEARCH_2026-10-28.md`](docs/INSTAGRAM_REALISM_MODEL_WORKFLOW_RESEARCH_2026-10-28.md).
+It compares the October 2026 frontier models and specifies a blind benchmark for
+GPT Image 2.5 Sunburst, Nano Banana 2.1, FLUX 3 Klein Base, and one challenger.
+
 ## Current deployment
 
 | Setting | Value |
