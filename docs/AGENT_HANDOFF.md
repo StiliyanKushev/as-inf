@@ -30,6 +30,29 @@ Use this repository as the source of truth:
 - Qwen3-VL, SuperGemma, custom nodes, public model weights, and all private
   workflow LoRAs are available.
 
+## FLUX 3 native-4K research state
+
+The research branch is `research/realism-native-4k`. Read these before spending
+more GPU credit:
+
+- `docs/TRUE_4K_INSTAGRAM_RESEARCH_2026-10-27.md`
+- `docs/FLUX3_EXPERIMENT_LOG_2026-10-28.md`
+- `workflows/research-flux3-native-4k.json`
+- `scripts/run-flux3-research.py`
+- `scripts/install-flux3-research.sh`
+
+The existing network volume also contains the isolated runtime at
+`/workspace/ComfyUI-flux3`, downloaded FLUX 3 Base and Distilled BF16 weights,
+Qwen text encoders, persona references, workflow, and original outputs. The
+last H200 pod is gone, but network volume `3e71bw1e12` still exists.
+
+The best clean test used FLUX 3 Base BF16, the official prompt upsampler, three
+Alex references, 50 steps, CFG 3.5, Euler/simple, and a native 3072×4096 latent
+cropped to 3024×4032. It took 513 seconds on an H200. Distilled was much faster
+and sharper but produced sparse colored flecks at native 4K. The next controlled
+test is the same Distilled seed, prompt, and references with ComfyUI started
+using `--fp32-vae`; do not change another variable in that comparison.
+
 ## Credentials that are deliberately outside Git
 
 The machine running the automation must have:

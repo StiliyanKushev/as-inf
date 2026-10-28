@@ -18,6 +18,12 @@ and persistent RunPod install/run scripts. The selected step-1500 identity
 checkpoint for the fictional Alex Sparks persona is stored through Git LFS as
 `models/loras/alexsparks.safetensors`; its trained trigger is `vexa_person`.
 
+The `research/realism-native-4k` branch also contains a reproducible FLUX 3
+native-4K candidate. It generates at 3072×4096 and center-crops to 3024×4032;
+there is no resize or upscale stage. See
+[`docs/FLUX3_EXPERIMENT_LOG_2026-10-28.md`](docs/FLUX3_EXPERIMENT_LOG_2026-10-28.md)
+for measured H200 results and the remaining controlled tests.
+
 ## Current deployment
 
 | Setting | Value |
@@ -84,6 +90,13 @@ LFS.
 
 ## Workflows
 
+- `research-flux3-native-4k.json` — research candidate using FLUX 3 Klein Base
+  BF16, the official Qwen3.5 prompt upsampler, Qwen3-VL, and three Alex identity
+  references. Its current quality preset is 50 steps, CFG 3.5, Euler/simple. It
+  performs a real 3072×4096 diffusion pass and crops to exact 3024×4032 without
+  resampling. The Base result was the cleanest native-4K test, although it was
+  softer and took about 8.5 minutes on an H200.
+
 - `final-kurva-maker-reference-spatial-face-lora.json` — Alex Sparks persona
   workflow. It performs a no-identity scout pass, detects the face, then repeats
   the full-canvas render from the same seed with `alexsparks.safetensors`
@@ -108,8 +121,9 @@ The fixed crop interaction is adapted from
 [ComfyUI-LoadImageCrop](https://github.com/domg73/ComfyUI-LoadImageCrop)
 under its MIT license.
 
-These are the only maintained workflow files in the repository. Earlier repair,
-face-finish, and prompt-only experiments remain available through Git history.
+The two FLUX.2 files remain the maintained production workflows. The FLUX 3
+file is a reproducible research candidate. Earlier repair, face-finish, and
+prompt-only experiments remain available through Git history.
 
 ## Persistence and cost control
 

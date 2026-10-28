@@ -12,7 +12,9 @@ No model can guarantee that every image will be indistinguishable from a real ph
 
 ## Main conclusion
 
-The current FLUX.2 Klein 9B workflow is no longer the best base. The first **local, reproducible ComfyUI implementation** should use **FLUX 3 Image Klein distilled in BF16**, with its official Qwen3.5 prompt upsampler and Qwen3-VL-4B encoder. It supports text-to-image, editing, up to ten reference images, bounding-box layout, and native generation up to 4K in one model.
+The current FLUX.2 Klein 9B workflow is no longer the best base. The local, reproducible ComfyUI implementation uses **FLUX 3 Image Klein**, with its official Qwen3.5 prompt upsampler and Qwen3-VL-4B encoder. It supports text-to-image, editing, up to ten reference images, bounding-box layout, and native generation up to 4K in one model.
+
+The first H200 experiments changed the production default from distilled to **FLUX 3 Image Klein Base in BF16**. Distilled was fast and sharper, but both 3024 × 4032 distilled tests contained sparse colored flecks at full-size inspection. Base at 50 steps and CFG 3.5 produced the cleanest native-4K Alex image, with a correct hand and no obvious confetti on the tested seed. It required 513 seconds and was softer, so this is a provisional quality default rather than a final victory. The exact run ledger is in `docs/FLUX3_EXPERIMENT_LOG_2026-10-28.md`.
 
 For absolute output quality, local Klein must be compared with two hosted native-4K models: **Nano Banana 2.1** and **full FLUX 3 Image**. Nano Banana 2.1 currently ranks above Klein in general blind preference and supports more references; full FLUX 3 is the higher-capacity version of the same family. Hosted moderation, lack of a portable LoRA, and separate API billing may make either unsuitable for the final system, but excluding them without a controlled comparison would not satisfy the “best possible” requirement.
 
@@ -20,9 +22,9 @@ The exact portrait canvas should be **3072 × 4096**. This is a standard 3:4, 12
 
 The strongest practical pipeline is:
 
-1. Generate eight 1 MP drafts for composition, anatomy, and expression.
+1. Generate eight 1 MP distilled drafts for composition, anatomy, and expression.
 2. Select one draft.
-3. Generate the final image directly at 3072 × 4096, using the selected draft for composition and two or three curated Alex references for identity.
+3. Generate the final image with Base directly at 3072 × 4096, using the selected draft for composition and two or three curated Alex references for identity.
 4. Crop to 3024 × 4032 without scaling.
 5. If required, perform one bounded local edit for a hand, face, or object while preserving the rest of the pixels.
 
@@ -32,8 +34,8 @@ This is not an upscale workflow. The draft only guides the final full-resolution
 
 | Model | Local/open | Native output | Identity/editing | Best use here | Decision |
 |---|---:|---:|---|---|---|
-| FLUX 3 Image Klein distilled | Yes | Up to 4K | Up to 10 references; boxes | Main local generator | Test first |
-| FLUX 3 Image Klein Base | Yes | Up to 4K | Up to 10 references; boxes; trainable | Quality control and Alex LoRA training | Test against distilled |
+| FLUX 3 Image Klein distilled | Yes | Up to 4K | Up to 10 references; boxes | Fast draft generator; FP32-VAE test pending | Native tests showed colored flecks |
+| FLUX 3 Image Klein Base | Yes | Up to 4K | Up to 10 references; boxes; trainable | Current clean true-4K generator and LoRA base | Provisional quality default |
 | Full FLUX 3 Image API | No | Native 4K tier, about 16 MP | Up to 10 references; pixel-preserving edits | Likely highest-quality FLUX result | Test later with API credentials |
 | Nano Banana 2.1 | No | Native 4K; 3584 × 4800 at 3:4 | Up to 14 references | Strong hosted quality/identity control | Valuable external control |
 | Krea 3 | No | Native 2K | Up to 6 references; editing-first | Fast identity-preserving edits | Repair/control only |
