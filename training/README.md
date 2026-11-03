@@ -18,9 +18,11 @@ cd /workspace/as-inf
 ./training/scripts/train-alexsparks-krea2.sh
 ```
 
-The full run uses rank/alpha 32, 1024 px images, 1,000 steps, BF16 Krea2 Raw
-weights, and no quantization or layer offloading. Checkpoints are saved every
-200 steps under `/workspace/training/output/alexsparks_krea2_v1/`.
+The full run uses rank/alpha 32, 1024 px images, 1,000 steps, the public BF16
+Krea2 Raw checkpoint from `Comfy-Org/Krea-2`, and no quantization or layer
+offloading. The download is verified by SHA-256 and shared with ComfyUI.
+Checkpoints are saved every 200 steps under
+`/workspace/training/output/alexsparks_krea2_v1/`.
 
 This is a separate training pipeline for the fictional Alex Sparks identity.
 The internal training codename and embedded trigger are `vexa_person`.
