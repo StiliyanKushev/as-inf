@@ -11,6 +11,15 @@ The `research/realism-native-4k` branch also contains:
 
 - `research-realism-base-alex-reference-4k.json`
 - `final-kurva-maker-krea2.json`
+- `final-kurva-maker-krea2-scene-identity.json`
+
+`final-kurva-maker-krea2-scene-identity.json` is the recommended Alex workflow.
+It gives General Edit V2 two distinct inputs: a cropped scene inspiration and
+one selected Alex identity photograph. Three identity angles remain visible in
+the control panel, while an angle selector forwards only one to Krea2. Sending
+several identity photographs as equal subjects produced twins and collages in
+live tests. Select the face angle closest to the head angle in the scene. This
+workflow does not load the experimental Alex Krea2 character LoRA.
 
 `final-kurva-maker-krea2.json` is the production-style Krea 2 Turbo version of
 the largest Kurva Maker control panel. It retains the optional WYSIWYG
@@ -26,8 +35,8 @@ The optional crop is locked to 4:5 for this workflow. General Edit V2 and its
 Krea2 source patch are bypassed automatically in prompt-only mode. The existing
 `alexsparks.safetensors` is intentionally absent because it was trained for
 FLUX.2 Klein and is not compatible with Krea 2. Reference mode gets identity
-from the selected source image; prompt-only mode needs a future Krea2-trained
-Alex character LoRA for persistent identity.
+from the selected source image. For reusable Alex identity, use
+`final-kurva-maker-krea2-scene-identity.json` and its separate identity bank.
 
 On a bootstrapped volume, install the pinned Krea2 nodes and public weights:
 

@@ -46,6 +46,13 @@ files with `scripts/install-krea2-production-stack.sh` after the normal volume
 bootstrap. The native render is 1280×1600; the 1080×1350 file is a separate
 Instagram delivery resize.
 
+For Alex identity, use
+[`workflows/final-kurva-maker-krea2-scene-identity.json`](workflows/final-kurva-maker-krea2-scene-identity.json).
+It separates the scene inspiration from an Alex identity bank and sends one
+selected identity angle through General Edit V2's trained second-reference
+path. Live tests preserved one subject and the source composition; feeding
+several face references simultaneously created duplicate women.
+
 ## Current deployment
 
 | Setting | Value |
@@ -118,6 +125,11 @@ LFS.
   slider as the largest FLUX workflow. Reference mode uses the measured Krea2
   General Edit stack; prompt-only mode bypasses the edit patch. It does not load
   the FLUX-trained Alex LoRA.
+
+- `final-kurva-maker-krea2-scene-identity.json` — recommended Krea2 Alex
+  workflow. Upload one scene inspiration, keep the three Alex identity views,
+  and select the face angle closest to the source pose. It generates natively
+  at 1280×1600 and saves a separate 1080×1350 Instagram copy.
 
 - `research-flux3-native-4k.json` — research candidate using FLUX 3 Klein Base
   BF16, the official Qwen3.5 prompt upsampler, Qwen3-VL, and three Alex identity

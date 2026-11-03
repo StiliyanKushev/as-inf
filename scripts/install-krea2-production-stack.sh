@@ -105,10 +105,22 @@ download_and_check \
 mkdir -p "$COMFY_DIR/user/default/workflows"
 cp -f "$ROOT/workflows/final-kurva-maker-krea2.json" \
   "$COMFY_DIR/user/default/workflows/final-kurva-maker-krea2.json"
+cp -f "$ROOT/workflows/final-kurva-maker-krea2-scene-identity.json" \
+  "$COMFY_DIR/user/default/workflows/final-kurva-maker-krea2-scene-identity.json"
+
+mkdir -p "$COMFY_DIR/input/alexsparks"
+cp -f "$ROOT/assets/persona_refs/persona_front_neutral.png" \
+  "$COMFY_DIR/input/alexsparks/front.png"
+cp -f "$ROOT/assets/persona_refs/persona_three_quarter_left.png" \
+  "$COMFY_DIR/input/alexsparks/three-quarter-left.png"
+cp -f "$ROOT/assets/persona_refs/persona_three_quarter_right.png" \
+  "$COMFY_DIR/input/alexsparks/three-quarter-right.png"
+cp -f "$ROOT/research-results/distilled_baseline_seed27012026/native_00001_.png" \
+  "$COMFY_DIR/input/scene-inspiration.png"
 
 cat <<EOF
 Krea 2 production stack is installed.
-Restart ComfyUI, then open final-kurva-maker-krea2.json.
+Restart ComfyUI, then open final-kurva-maker-krea2-scene-identity.json.
 Native output: 1280 x 1600
 Instagram copy: 1080 x 1350
 EOF

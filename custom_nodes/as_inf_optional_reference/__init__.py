@@ -311,6 +311,48 @@ class SamplerSettings:
         return steps, cfg, sampler_name, scheduler, batch_size
 
 
+class SelectIdentityReference:
+    """Choose one identity view for Krea2's single subject-reference slot.
+
+    Krea2 General Edit accepts one scene image and one subject image. Sending
+    several face images as independent subjects commonly creates twins or a
+    collage, so this node keeps a small angle bank visible while forwarding
+    exactly one image to the edit model.
+    """
+
+    @classmethod
+    def INPUT_TYPES(cls):
+        return {
+            "required": {
+                "front": ("IMAGE",),
+                "three_quarter_left": ("IMAGE",),
+                "three_quarter_right": ("IMAGE",),
+                "selected_view": (
+                    ["front", "three-quarter left", "three-quarter right"],
+                    {"default": "front"},
+                ),
+            }
+        }
+
+    RETURN_TYPES = ("IMAGE",)
+    RETURN_NAMES = ("identity_image",)
+    FUNCTION = "select"
+    CATEGORY = "AS-INF/image"
+    DESCRIPTION = (
+        "Selects one identity photo from three angle references. Use the view "
+        "closest to the pose in the scene inspiration."
+    )
+
+    @staticmethod
+    def select(front, three_quarter_left, three_quarter_right, selected_view):
+        images = {
+            "front": front,
+            "three-quarter left": three_quarter_left,
+            "three-quarter right": three_quarter_right,
+        }
+        return (images[selected_view],)
+
+
 NODE_CLASS_MAPPINGS = {
     "ASInfOptionalReferenceImage": OptionalReferenceImage,
     "ASInfOptionalReferenceCrop3x4": OptionalReferenceCrop3x4,
@@ -318,6 +360,7 @@ NODE_CLASS_MAPPINGS = {
     "ASInfLoraLoaderModelOnlyWithTrigger": LoraLoaderModelOnlyWithTrigger,
     "ASInfPrependLoraTriggers": PrependLoraTriggers,
     "ASInfSamplerSettings": SamplerSettings,
+    "ASInfSelectIdentityReference": SelectIdentityReference,
 }
 NODE_DISPLAY_NAME_MAPPINGS = {
     "ASInfOptionalReferenceImage": "Optional Reference Image",
@@ -326,6 +369,7 @@ NODE_DISPLAY_NAME_MAPPINGS = {
     "ASInfLoraLoaderModelOnlyWithTrigger": "LoRA Loader + Conditional Trigger",
     "ASInfPrependLoraTriggers": "Prepend Active LoRA Triggers",
     "ASInfSamplerSettings": "Sampler Settings",
+    "ASInfSelectIdentityReference": "Select Identity Reference",
 }
 
 WEB_DIRECTORY = "./web"

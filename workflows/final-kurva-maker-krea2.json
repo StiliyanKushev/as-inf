@@ -3352,20 +3352,20 @@
           ]
         }
       ],
-      "title": "LoRA 4 · Alex Sparks identity (Krea2)",
+      "title": "Experimental Alex Krea2 LoRA · disabled (quality regression)",
       "properties": {
         "Node name for S&R": "ASInfLoraLoaderModelOnlyWithTrigger",
         "cnr_id": "as-inf"
       },
       "widgets_values": [
         "alexsparks_krea2.safetensors",
-        0.65,
+        0.0,
         "alexsparks"
       ],
       "widgets_values_named": {
-        "lora_name": "realism_engine_krea2_v3.1.safetensors",
-        "strength_model": 0.5,
-        "trigger_words": ""
+        "lora_name": "alexsparks_krea2.safetensors",
+        "strength_model": 0.0,
+        "trigger_words": "alexsparks"
       }
     }
   ],
