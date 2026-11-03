@@ -16,13 +16,14 @@ secrets*
 *.bin
 *.gguf
 
-# The four workflow LoRAs are versioned with Git LFS.
+# Workflow LoRAs are versioned with Git LFS.
 !models/
 !models/loras/
 !models/loras/FLUX2_KLEIN_UNLOCKED_V2.safetensors
 !models/loras/klein_instagramreality_v2.safetensors
 !models/loras/HighDetail.safetensors
 !models/loras/alexsparks.safetensors
+!models/loras/alexsparks_krea2.safetensors
 
 # Generated and source media stay outside Git.
 input/

@@ -24,6 +24,19 @@ offloading. The download is verified by SHA-256 and shared with ComfyUI.
 Checkpoints are saved every 200 steps under
 `/workspace/training/output/alexsparks_krea2_v1/`.
 
+The completed comparison selected the final step-1000 checkpoint. It is
+versioned through Git LFS as `models/loras/alexsparks_krea2.safetensors`; its
+hash and selection notes are recorded in `KREA2_SELECTED_CHECKPOINT.md`.
+Install any selected Krea2 checkpoint into ComfyUI with:
+
+```bash
+./training/scripts/install-selected-krea2-lora.sh \
+  /workspace/training/output/alexsparks_krea2_v1/alexsparks_krea2_v1.safetensors
+```
+
+Use trigger `alexsparks`. The Krea2 workflow starts at strength `0.65`; test
+roughly `0.50` through `0.80` when balancing resemblance and prompt freedom.
+
 This is a separate training pipeline for the fictional Alex Sparks identity.
 The internal training codename and embedded trigger are `vexa_person`.
 It is not a ComfyUI generation workflow. It trains a LoRA once; ComfyUI then

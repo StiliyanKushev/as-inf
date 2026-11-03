@@ -1,8 +1,8 @@
 {
   "id": "7a9e995d-ba78-4f17-8b7d-16978bd168df",
-  "revision": 0,
-  "last_node_id": 43,
-  "last_link_id": 70,
+  "revision": 1,
+  "last_node_id": 44,
+  "last_link_id": 74,
   "nodes": [
     {
       "id": 1,
@@ -671,8 +671,7 @@
           "name": "model",
           "type": "MODEL",
           "links": [
-            7,
-            8
+            71
           ]
         },
         {
@@ -1104,7 +1103,7 @@
         {
           "name": "model",
           "type": "MODEL",
-          "link": 7
+          "link": 72
         },
         {
           "name": "source_latent",
@@ -1196,7 +1195,7 @@
           "name": "on_false",
           "shape": 7,
           "type": "MODEL",
-          "link": 8
+          "link": 73
         },
         {
           "localized_name": "on_true",
@@ -2344,6 +2343,15 @@
             "name": "prompt"
           },
           "link": 35
+        },
+        {
+          "localized_name": "trigger_4",
+          "name": "trigger_4",
+          "type": "STRING",
+          "widget": {
+            "name": "trigger_4"
+          },
+          "link": 74
         }
       ],
       "outputs": [
@@ -3275,6 +3283,90 @@
       "widgets_values_named": {
         "switch": true
       }
+    },
+    {
+      "id": 44,
+      "type": "ASInfLoraLoaderModelOnlyWithTrigger",
+      "pos": [
+        -410,
+        -2800
+      ],
+      "size": [
+        400,
+        190
+      ],
+      "flags": {},
+      "order": 7,
+      "mode": 0,
+      "inputs": [
+        {
+          "localized_name": "model",
+          "name": "model",
+          "type": "MODEL",
+          "link": 71
+        },
+        {
+          "localized_name": "lora_name",
+          "name": "lora_name",
+          "type": "COMBO",
+          "widget": {
+            "name": "lora_name"
+          },
+          "link": null
+        },
+        {
+          "localized_name": "strength_model",
+          "name": "strength_model",
+          "type": "FLOAT",
+          "widget": {
+            "name": "strength_model"
+          },
+          "link": null
+        },
+        {
+          "localized_name": "trigger_words",
+          "name": "trigger_words",
+          "type": "STRING",
+          "widget": {
+            "name": "trigger_words"
+          },
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "localized_name": "model",
+          "name": "model",
+          "type": "MODEL",
+          "links": [
+            72,
+            73
+          ]
+        },
+        {
+          "localized_name": "active_trigger_words",
+          "name": "active_trigger_words",
+          "type": "STRING",
+          "links": [
+            74
+          ]
+        }
+      ],
+      "title": "LoRA 4 · Alex Sparks identity (Krea2)",
+      "properties": {
+        "Node name for S&R": "ASInfLoraLoaderModelOnlyWithTrigger",
+        "cnr_id": "as-inf"
+      },
+      "widgets_values": [
+        "alexsparks_krea2.safetensors",
+        0.65,
+        "alexsparks"
+      ],
+      "widgets_values_named": {
+        "lora_name": "realism_engine_krea2_v3.1.safetensors",
+        "strength_model": 0.5,
+        "trigger_words": ""
+      }
     }
   ],
   "links": [
@@ -3323,22 +3415,6 @@
       7,
       0,
       8,
-      0,
-      "MODEL"
-    ],
-    [
-      7,
-      8,
-      0,
-      16,
-      0,
-      "MODEL"
-    ],
-    [
-      8,
-      8,
-      0,
-      17,
       0,
       "MODEL"
     ],
@@ -3914,6 +3990,38 @@
       3,
       1,
       "IMAGE"
+    ],
+    [
+      71,
+      8,
+      0,
+      44,
+      0,
+      "MODEL"
+    ],
+    [
+      72,
+      44,
+      0,
+      16,
+      0,
+      "MODEL"
+    ],
+    [
+      73,
+      44,
+      0,
+      17,
+      0,
+      "MODEL"
+    ],
+    [
+      74,
+      44,
+      1,
+      28,
+      4,
+      "STRING"
     ]
   ],
   "groups": [
@@ -3936,7 +4044,7 @@
       "bounding": [
         -2240,
         -2870,
-        2200,
+        2230,
         560
       ],
       "color": "#4c3f73",

@@ -241,7 +241,8 @@ class PrependLoraTriggers:
                 "trigger_2": text,
                 "trigger_3": text,
                 "prompt": text,
-            }
+            },
+            "optional": {"trigger_4": text},
         }
 
     RETURN_TYPES = ("STRING",)
@@ -254,10 +255,10 @@ class PrependLoraTriggers:
     )
 
     @staticmethod
-    def prepend(trigger_1, trigger_2, trigger_3, prompt):
+    def prepend(trigger_1, trigger_2, trigger_3, prompt, trigger_4=""):
         parts = [
             str(value).strip()
-            for value in (trigger_1, trigger_2, trigger_3, prompt)
+            for value in (trigger_1, trigger_2, trigger_3, trigger_4, prompt)
             if str(value).strip()
         ]
         return ("\n\n".join(parts),)
