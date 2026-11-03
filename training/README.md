@@ -1,5 +1,27 @@
 # Alex Sparks persona LoRA training
 
+## Krea2 Raw → Turbo training
+
+The current Instagram workflow uses Krea2 Turbo. Its identity LoRA must be
+trained separately from the older FLUX.2 Klein adapter. Krea recommends
+training adapters on Krea2 Raw and applying them to Turbo for inference.
+
+The reproducible B200 configuration is
+`configs/alexsparks-krea2-b200.yaml`. It uses the existing 30-image curated
+dataset, rewrites its captions into natural-language Krea2 captions with the
+`alexsparks` trigger, and stores all downloads, logs, previews, and checkpoints
+on the persistent `/workspace` network volume.
+
+```bash
+cd /workspace/as-inf
+./training/scripts/prepare-alexsparks-krea2-dataset.sh
+./training/scripts/train-alexsparks-krea2.sh
+```
+
+The full run uses rank/alpha 32, 1024 px images, 1,000 steps, BF16 Krea2 Raw
+weights, and no quantization or layer offloading. Checkpoints are saved every
+200 steps under `/workspace/training/output/alexsparks_krea2_v1/`.
+
 This is a separate training pipeline for the fictional Alex Sparks identity.
 The internal training codename and embedded trigger are `vexa_person`.
 It is not a ComfyUI generation workflow. It trains a LoRA once; ComfyUI then

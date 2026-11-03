@@ -1,0 +1,75 @@
+---
+job: extension
+config:
+  name: "alexsparks_krea2_v1"
+  process:
+    - type: "sd_trainer"
+      training_folder: "/workspace/training/output"
+      device: cuda:0
+      trigger_word: "alexsparks"
+
+      network:
+        type: "lora"
+        linear: 32
+        linear_alpha: 32
+
+      save:
+        dtype: float16
+        save_every: 200
+        max_step_saves_to_keep: 5
+        push_to_hub: false
+
+      datasets:
+        - folder_path: "/workspace/training/datasets/alexsparks_krea2"
+          caption_ext: "txt"
+          caption_dropout_rate: 0.0
+          shuffle_tokens: false
+          cache_latents_to_disk: true
+          resolution: [1024]
+
+      train:
+        batch_size: 1
+        steps: 1000
+        gradient_accumulation_steps: 1
+        train_unet: true
+        train_text_encoder: false
+        gradient_checkpointing: false
+        noise_scheduler: "flowmatch"
+        timestep_type: "weighted"
+        optimizer: "adamw8bit"
+        lr: 3e-4
+        dtype: bf16
+        ema_config:
+          use_ema: false
+          ema_decay: 0.99
+
+      model:
+        name_or_path: "krea/Krea-2-Raw"
+        arch: "krea2"
+        quantize: false
+        quantize_te: false
+        low_vram: false
+
+      sample:
+        sampler: "flowmatch"
+        sample_every: 200
+        sample_start_step: 200
+        width: 1024
+        height: 1024
+        prompts:
+          - "A realistic close-up iPhone photograph of alexsparks, front view, neutral expression, soft window daylight, ordinary apartment background."
+          - "A candid Instagram photograph of alexsparks seated at an outdoor European cafe in natural morning light."
+          - "A realistic waist-up street photograph of alexsparks, three-quarter view, casual clothing, overcast daylight, softly blurred city background."
+          - "A realistic full-body photograph of alexsparks standing naturally in a park, simple clothing, soft daylight."
+        neg: ""
+        seed: 27012026
+        walk_seed: false
+        guidance_scale: 3.5
+        sample_steps: 36
+
+meta:
+  name: "[name]"
+  version: "1.0"
+  base_model: "krea/Krea-2-Raw"
+  inference_model: "krea/Krea-2-Turbo"
+  trigger_word: "alexsparks"
