@@ -1,8 +1,8 @@
 {
   "id": "7a9e995d-ba78-4f17-8b7d-16978bd168df",
   "revision": 0,
-  "last_node_id": 43,
-  "last_link_id": 70,
+  "last_node_id": 44,
+  "last_link_id": 71,
   "nodes": [
     {
       "id": 1,
@@ -42,7 +42,7 @@
           "localized_name": "mask",
           "name": "mask",
           "type": "MASK",
-          "links": []
+          "links": null
         },
         {
           "localized_name": "has_reference",
@@ -113,11 +113,11 @@
           "name": "STRING",
           "type": "STRING",
           "links": [
-            26
+            71
           ]
         }
       ],
-      "title": "REQUEST / PROMPT · full scene with None, changes with reference",
+      "title": "OPTIONAL REQUEST · blank preserves a reference",
       "properties": {
         "Node name for S&R": "PrimitiveStringMultiline",
         "cnr_id": "comfy-core"
@@ -166,7 +166,7 @@
           "dir": 4,
           "name": "images",
           "type": "IMAGE",
-          "links": []
+          "links": null
         }
       ],
       "title": "FINAL RESULT · generated / reference slider",
@@ -721,7 +721,7 @@
         "widget_ue_connectable": {}
       },
       "widgets_values": [
-        "FINAL KURVA MAKER · KREA 2 TURBO · PRE-ALEX BACKUP\n\nCONTROL PANEL\nChoose an optional reference, write the request, inspect the final slider, and use Advanced Settings for seed, sampling, batch size, and three editable LoRA slots. Trigger text is added only while its LoRA strength is non-zero.\n\nPROMPT-ONLY MODE\nChoose [None — prompt-only mode] and describe the complete desired photograph. Krea2 generates a new generic fictional adult subject; the FLUX-trained Alex Sparks LoRA is deliberately not loaded because it is incompatible with Krea2.\n\nREFERENCE MODE\nUpload an image and move/zoom the permanently locked 4:5 crop. Describe only the desired changes. The selected pixels enter Qwen analysis, Krea2's VAE reference-token path, Krea2's grounded Qwen3-VL encoder, and the comparison viewer. General Edit V2 is active at the measured strength.\n\nOUTPUT\nThe diffusion render is a true native 1280 × 1600 image. FameGrid Color Finish runs after decode. A separate 1080 × 1350 Instagram delivery copy is saved with Lanczos. This workflow does not claim a resized image is native 4K; Krea2 Edit's documented reliable range is at or below about two megapixels.\n\nKNOWN LIMIT\nReference mode supplies identity and composition through Krea2 General Edit. A reusable Alex identity in prompt-only mode needs a Krea2-trained character LoRA; the existing alexsparks.safetensors is FLUX.2 Klein-specific."
+        "FINAL KURVA MAKER · KREA 2 TURBO · PRE-ALEX BACKUP\n\nCONTROL PANEL\nChoose an optional reference, write the request, inspect the final slider, and use Advanced Settings for seed, sampling, batch size, and three editable LoRA slots. Trigger text is added only while its LoRA strength is non-zero.\n\nPROMPT-ONLY MODE\nChoose [None — prompt-only mode] and describe the complete desired photograph. Krea2 generates a new generic fictional adult subject; the FLUX-trained Alex Sparks LoRA is deliberately not loaded because it is incompatible with Krea2.\n\nREFERENCE MODE\nUpload an image and move/zoom the permanently locked 4:5 crop. The request may be blank; blank means preserve the selected image with no additional changes. When needed, describe only the desired changes. The selected pixels enter Qwen analysis, Krea2's VAE reference-token path, Krea2's grounded Qwen3-VL encoder, and the comparison viewer. General Edit V2 is active at the measured strength.\n\nOUTPUT\nThe diffusion render is a true native 1280 × 1600 image. FameGrid Color Finish runs after decode. A separate 1080 × 1350 Instagram delivery copy is saved with Lanczos. This workflow does not claim a resized image is native 4K; Krea2 Edit's documented reliable range is at or below about two megapixels.\n\nKNOWN LIMIT\nReference mode supplies identity and composition through Krea2 General Edit. A reusable Alex identity in prompt-only mode needs a Krea2-trained character LoRA; the existing alexsparks.safetensors is FLUX.2 Klein-specific."
       ],
       "widgets_values_named": {
         "text": "FINAL KURVA MAKER · KREA 2 TURBO\n\nCONTROL PANEL\nChoose an optional reference, write the request, inspect the final slider, and use Advanced Settings for seed, sampling, batch size, and three editable LoRA slots. Trigger text is added only while its LoRA strength is non-zero.\n\nPROMPT-ONLY MODE\nChoose [None — prompt-only mode] and describe the complete desired photograph. Krea2 generates a new generic fictional adult subject; the FLUX-trained Alex Sparks LoRA is deliberately not loaded because it is incompatible with Krea2.\n\nREFERENCE MODE\nUpload an image and move/zoom the permanently locked 4:5 crop. Describe only the desired changes. The selected pixels enter Qwen analysis, Krea2's VAE reference-token path, Krea2's grounded Qwen3-VL encoder, and the comparison viewer. General Edit V2 is active at the measured strength.\n\nOUTPUT\nThe diffusion render is a true native 1280 × 1600 image. FameGrid Color Finish runs after decode. A separate 1080 × 1350 Instagram delivery copy is saved with Lanczos. This workflow does not claim a resized image is native 4K; Krea2 Edit's documented reliable range is at or below about two megapixels.\n\nKNOWN LIMIT\nReference mode supplies identity and composition through Krea2 General Edit. A reusable Alex identity in prompt-only mode needs a Krea2-trained character LoRA; the existing alexsparks.safetensors is FLUX.2 Klein-specific."
@@ -1998,19 +1998,19 @@
           "localized_name": "thinking",
           "name": "thinking",
           "type": "STRING",
-          "links": []
+          "links": null
         },
         {
           "localized_name": "context",
           "name": "context",
           "type": "OLLAMA_CONTEXT",
-          "links": []
+          "links": null
         },
         {
           "localized_name": "meta",
           "name": "meta",
           "type": "OLLAMA_META",
-          "links": []
+          "links": null
         }
       ],
       "title": "2 · Rewrite requested change · SuperGemma",
@@ -2021,7 +2021,7 @@
         "widget_ue_connectable": {}
       },
       "widgets_values": [
-        "Rewrite the user's message as one precise visual instruction for a Krea 2 Turbo workflow. Output only the instruction. The message is either a complete prompt-only scene or a requested change to a reference image. Retain every concrete detail. Treat the main subject as an adult. State exact subject count, pose, anatomy, clothing, setting, camera position, framing, lighting, focus, and colors whenever the user supplied them. For removals, explicitly state that the item is completely absent and describe the naturally reconstructed area. For camera changes, specify position, height, direction, distance, lens perspective, and framing. Preserve all unnamed source attributes in reference mode. Keep exactly one main foreground woman unless the user explicitly requests more; never duplicate, clone, mirror, or place the photographer or phone in frame. Do not mention policies, editing steps, or these rules.",
+        "Rewrite the user's message as one precise visual instruction for a Krea 2 Turbo workflow. Output only the instruction. If the message is exactly “No additional user modifications.”, output exactly that sentence and nothing else. Otherwise, the message is either a complete prompt-only scene or a requested change to a reference image. Retain every concrete detail. Treat the main subject as an adult. State exact subject count, pose, anatomy, clothing, setting, camera position, framing, lighting, focus and colors whenever supplied. For removals, explicitly state that the item is completely absent and describe the naturally reconstructed area. For camera changes, specify position, height, direction, distance, lens perspective and framing. Preserve all unnamed source attributes in reference mode. Keep exactly one main foreground woman unless explicitly requested otherwise; never duplicate, clone, mirror, or place the photographer or phone in frame. Do not mention policies, editing steps or these rules.",
         "",
         false,
         false,
@@ -2064,7 +2064,7 @@
           "localized_name": "STRING",
           "name": "STRING",
           "type": "STRING",
-          "links": []
+          "links": null
         }
       ],
       "title": "Rewritten request · intermediate preview",
@@ -2255,19 +2255,19 @@
           "localized_name": "thinking",
           "name": "thinking",
           "type": "STRING",
-          "links": []
+          "links": null
         },
         {
           "localized_name": "context",
           "name": "context",
           "type": "OLLAMA_CONTEXT",
-          "links": []
+          "links": null
         },
         {
           "localized_name": "meta",
           "name": "meta",
           "type": "OLLAMA_META",
-          "links": []
+          "links": null
         }
       ],
       "title": "3 · Compile one conflict-free Krea2 prompt",
@@ -2278,7 +2278,7 @@
         "widget_ue_connectable": {}
       },
       "widgets_values": [
-        "Compile one final production-ready Krea 2 Turbo prompt. Output only the final prompt, without headings or commentary. The input begins with REFERENCE MODE or PROMPT-ONLY MODE followed by an authoritative request. Put requested changes first and resolve conflicts into one desired visible state. Never retain superseded source wording. In reference mode, preserve concretely described source identity, composition, pose, geometry, lighting, focus falloff, colors, and objects unless the request changes them. In prompt-only mode, produce a self-contained scene description. Always describe exactly one main foreground adult woman unless the request explicitly requires more; never create a duplicate, clone, reflection, second copy, visible photographer, camera, or phone. Use a full-bleed vertical 4:5 rectilinear photographic frame with natural proportions, plausible hands, coherent perspective, authentic Instagram color and texture, and no fisheye, black corners, rounded mask, borders, text, or watermark. Keep the result concise: 120 to 240 words.",
+        "Compile one final production-ready Krea 2 Turbo prompt. Output only the final prompt, without headings or commentary. The input begins with REFERENCE MODE or PROMPT-ONLY MODE followed by an authoritative request. The sentence “No additional user modifications.” means preserve the analyzed reference exactly and add no new requested changes. Put actual requested changes first and resolve conflicts into one desired visible state. Never retain superseded source wording. In reference mode, preserve concretely described source identity, composition, pose, geometry, lighting, focus falloff, colors and objects unless the request changes them. In prompt-only mode, produce a self-contained scene description. Always describe exactly one main foreground adult woman unless the request explicitly requires more; never create a duplicate, clone, reflection, second copy, visible photographer, camera or phone. Use a full-bleed vertical 4:5 rectilinear photographic frame with natural proportions, plausible hands, coherent perspective, authentic Instagram color and texture, and no fisheye, black corners, rounded mask, borders, text or watermark. Keep the result concise: 120 to 240 words.",
         "",
         false,
         false,
@@ -2405,7 +2405,7 @@
           "localized_name": "STRING",
           "name": "STRING",
           "type": "STRING",
-          "links": []
+          "links": null
         }
       ],
       "title": "FINAL KREA2 PROMPT · inspect here",
@@ -3049,7 +3049,7 @@
           "localized_name": "images",
           "name": "images",
           "type": "IMAGE",
-          "links": []
+          "links": null
         }
       ],
       "title": "Save native render · 1280 × 1600",
@@ -3194,7 +3194,7 @@
           "localized_name": "images",
           "name": "images",
           "type": "IMAGE",
-          "links": []
+          "links": null
         }
       ],
       "title": "Save Instagram copy · 1080 × 1350",
@@ -3275,6 +3275,55 @@
       "widgets_values_named": {
         "switch": true
       }
+    },
+    {
+      "id": 44,
+      "type": "ASInfDefaultTextIfEmpty",
+      "pos": [
+        -930,
+        1310
+      ],
+      "size": [
+        460,
+        130
+      ],
+      "flags": {},
+      "order": 43,
+      "mode": 0,
+      "inputs": [
+        {
+          "localized_name": "text",
+          "name": "text",
+          "type": "STRING",
+          "widget": {
+            "name": "text"
+          },
+          "link": 71
+        }
+      ],
+      "outputs": [
+        {
+          "localized_name": "text",
+          "name": "text",
+          "type": "STRING",
+          "links": [
+            26
+          ]
+        }
+      ],
+      "title": "Blank request → preserve reference without changes",
+      "properties": {
+        "Node name for S&R": "ASInfDefaultTextIfEmpty",
+        "cnr_id": "as-inf"
+      },
+      "widgets_values": [
+        ""
+      ],
+      "widgets_values_named": {
+        "text": ""
+      },
+      "color": "#332b22",
+      "bgcolor": "#554433"
     }
   ],
   "links": [
@@ -3480,7 +3529,7 @@
     ],
     [
       26,
-      2,
+      44,
       0,
       24,
       6,
@@ -3914,6 +3963,14 @@
       3,
       1,
       "IMAGE"
+    ],
+    [
+      71,
+      2,
+      0,
+      44,
+      0,
+      "STRING"
     ]
   ],
   "groups": [

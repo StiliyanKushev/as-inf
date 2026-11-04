@@ -35,7 +35,10 @@ the experimental Alex Krea2 character LoRA.
 `final-kurva-maker-krea2-pre-alex-backup.json` is the exact production graph
 from commit `dab80ad`, before Alex identity experiments began. Use it for a
 clean comparison with the earlier single-reference behavior. Its original
-style strengths and reference-preservation logic are unchanged.
+style strengths and reference-preservation logic are unchanged. One usability
+fix was added: in reference mode the request field may be empty. A blank value
+is converted to `No additional user modifications.` so the prompt compiler
+preserves the selected reference rather than sending an empty Ollama request.
 
 `final-kurva-maker-krea2.json` is the production-style Krea 2 Turbo version of
 the largest Kurva Maker control panel. It retains the optional WYSIWYG
