@@ -11,20 +11,31 @@ The `research/realism-native-4k` branch also contains:
 
 - `research-realism-base-alex-reference-4k.json`
 - `final-kurva-maker-krea2.json`
+- `final-kurva-maker-krea2-pre-alex-backup.json`
 - `final-kurva-maker-krea2-scene-identity.json`
 
 `final-kurva-maker-krea2-scene-identity.json` is the recommended Alex workflow.
 The selected Alex photograph is General Edit V2's only visual conditioning
-image. The optional scene is analyzed into an environment/style brief and is
-never sent to Krea as a person reference or background plate, which prevents a
-scene subject's hair, eyes, eyewear, and face from leaking into Alex. Three
+identity image. The optional scene is analyzed into an environment, pose,
+camera, imperfect-lighting and color brief. A 32 x 40 abstract color/light map
+also reaches Krea at low strength; the downsample destroys usable person detail
+while retaining broad palette and illumination. This prevents a scene subject's
+hair, eyes, eyewear, and face from leaking into Alex. Three
 identity angles remain visible in the control panel, while an angle selector
 forwards only one to Krea2. Sending several identity photographs as equal
 subjects produced twins and collages in live tests. Select the face angle
 closest to the desired head angle. The default prompt contains exactly one
 visible person and reinforces Alex's blonde hair, blue eyes, freckles, and face
-geometry. This workflow does not load the experimental Alex Krea2 character
-LoRA.
+geometry. It also asks Krea to reproduce the source pose approximately and
+retain observed phone-camera defects instead of upgrading them to studio light.
+FameGrid, Realism Engine, and Color Finish are disabled by default in this
+workflow to avoid a polished advertising finish. This workflow does not load
+the experimental Alex Krea2 character LoRA.
+
+`final-kurva-maker-krea2-pre-alex-backup.json` is the exact production graph
+from commit `dab80ad`, before Alex identity experiments began. Use it for a
+clean comparison with the earlier single-reference behavior. Its original
+style strengths and reference-preservation logic are unchanged.
 
 `final-kurva-maker-krea2.json` is the production-style Krea 2 Turbo version of
 the largest Kurva Maker control panel. It retains the optional WYSIWYG

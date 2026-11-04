@@ -1,8 +1,8 @@
 {
   "id": "final-kurva-maker-krea2-scene-identity",
   "revision": 2,
-  "last_node_id": 50,
-  "last_link_id": 86,
+  "last_node_id": 56,
+  "last_link_id": 102,
   "nodes": [
     {
       "id": 1,
@@ -601,14 +601,14 @@
           ]
         }
       ],
-      "title": "LoRA 2 · FameGrid",
+      "title": "LoRA 2 · FameGrid · optional polish (off by default)",
       "properties": {
         "Node name for S&R": "ASInfLoraLoaderModelOnlyWithTrigger",
         "cnr_id": "as-inf"
       },
       "widgets_values": [
         "famegrid_spicy.safetensors",
-        0.5,
+        0.0,
         "famegrid"
       ],
       "widgets_values_named": {
@@ -672,7 +672,8 @@
           "name": "model",
           "type": "MODEL",
           "links": [
-            75
+            75,
+            91
           ]
         },
         {
@@ -684,14 +685,14 @@
           ]
         }
       ],
-      "title": "LoRA 3 · Realism Engine",
+      "title": "LoRA 3 · Realism Engine · optional polish (off by default)",
       "properties": {
         "Node name for S&R": "ASInfLoraLoaderModelOnlyWithTrigger",
         "cnr_id": "as-inf"
       },
       "widgets_values": [
         "realism_engine_krea2_v3.1.safetensors",
-        0.5,
+        0.0,
         ""
       ],
       "widgets_values_named": {
@@ -721,7 +722,7 @@
         "widget_ue_connectable": {}
       },
       "widgets_values": [
-        "FINAL KURVA MAKER · KREA 2 · SCENE INSPIRATION + ALEX IDENTITY\n\nCONTROL PANEL\n1. Optionally upload one scene inspiration and crop it to 4:5.\n2. Select the Alex identity angle closest to the desired head angle.\n3. Leave OPTIONAL TWEAKS empty for an automatic related-but-new photograph, or enter only extra changes you want.\n4. Run and inspect the generated/reference slider.\n\nAUTOMATIC REFERENCE BEHAVIOR\nThe uploaded scene is analyzed for location, camera feel, atmosphere, light, palette, materials, depth and composition. It is never sent to Krea as a person reference or background plate. The workflow invents a distinct plausible view and ignores every person in the scene image.\n\nIDENTITY\nThe selected Alex portrait is the only visual conditioning image. Alex is always the single visible person unless OPTIONAL TWEAKS explicitly asks for others. Her pale blue eyes, fair lightly freckled skin and long straight light golden-blonde centre-parted hair are reinforced in the compiled prompt. Scene-source faces, hair, eyewear and clothing never define her.\n\nOUTPUT\nNative generation is 1280 × 1600. A separate 1080 × 1350 Instagram delivery copy is saved after the FameGrid colour finish."
+        "FINAL KURVA MAKER · KREA 2 · SCENE INSPIRATION + ALEX IDENTITY\n\nCONTROL PANEL\n1. Optionally upload one scene inspiration and crop it to 4:5.\n2. Select the Alex identity angle closest to the desired head angle.\n3. Leave OPTIONAL TWEAKS empty for an automatic related-but-new photograph, or enter only extra changes you want.\n4. Run and inspect the generated/reference slider.\n\nAUTOMATIC REFERENCE BEHAVIOR\nThe uploaded scene is analyzed for environment, approximate pose, camera behavior, imperfect phone lighting, exposure and color. A 32 × 40 abstract palette/light map also reaches Krea at low strength; this retains broad color and illumination while destroying all usable face, hair and clothing identity. The workflow invents a related location and ignores every source person.\n\nIDENTITY\nThe selected Alex portrait is the only visual conditioning image. Alex is always the single visible person unless OPTIONAL TWEAKS explicitly asks for others. Her pale blue eyes, fair lightly freckled skin and long straight light golden-blonde centre-parted hair are reinforced in the compiled prompt. Scene-source faces, hair, eyewear and clothing never define her.\n\nOUTPUT\nFameGrid and Realism style LoRAs plus Color Finish are off by default to avoid polished commercial lighting; enable them in Advanced Settings only when wanted. Native generation is 1280 × 1600. A separate 1080 × 1350 Instagram delivery copy is saved after the FameGrid colour finish."
       ],
       "widgets_values_named": {
         "text": "FINAL KURVA MAKER · KREA 2 · SCENE INSPIRATION + ALEX IDENTITY\n\nCONTROL PANEL\n1. Optionally upload one scene inspiration and crop it to 4:5.\n2. Select the Alex identity angle closest to the desired head angle.\n3. Leave OPTIONAL TWEAKS empty for an automatic related-but-new photograph, or enter only extra changes you want.\n4. Run and inspect the generated/reference slider.\n\nAUTOMATIC REFERENCE BEHAVIOR\nThe scene image supplies visual language: location category, camera feel, atmosphere, lighting, palette, materials, depth of field and broad compositional energy. It is never treated as a background to trace. The workflow automatically invents a distinct plausible view of the same kind of place, varies the viewpoint, layout, objects and incidental people, and never copies background faces, signage or unique identifying details.\n\nIDENTITY\nImage 2 is the sole identity authority. The visible three-image Alex bank lets you select one angle while the model receives exactly one face reference, preventing twins and collages. The experimental Alex Krea2 LoRA is not used.\n\nOUTPUT\nNative generation is 1280 × 1600. A separate 1080 × 1350 Instagram delivery copy is saved after the FameGrid colour finish."
@@ -796,7 +797,9 @@
             37,
             39,
             40,
-            43
+            43,
+            98,
+            101
           ]
         }
       ],
@@ -845,7 +848,8 @@
             13,
             15,
             61,
-            81
+            81,
+            93
           ]
         }
       ],
@@ -931,9 +935,9 @@
           "name": "IMAGE",
           "type": "IMAGE",
           "links": [
-            12,
             18,
-            20
+            20,
+            87
           ]
         }
       ],
@@ -992,10 +996,12 @@
           "localized_name": "LATENT",
           "name": "LATENT",
           "type": "LATENT",
-          "links": null
+          "links": [
+            14
+          ]
         }
       ],
-      "title": "Encode Krea2 reference tokens",
+      "title": "Encode abstract scene color/light map",
       "properties": {
         "Node name for S&R": "VAEEncode",
         "enableTabs": false,
@@ -1060,7 +1066,8 @@
           "type": "LATENT",
           "links": [
             17,
-            54
+            54,
+            95
           ]
         }
       ],
@@ -1110,7 +1117,7 @@
           "name": "source_latent_b",
           "shape": 7,
           "type": "LATENT",
-          "link": null
+          "link": 89
         },
         {
           "name": "ref_boost_mask",
@@ -1134,7 +1141,7 @@
           "name": "source_image_b",
           "shape": 7,
           "type": "IMAGE",
-          "link": null
+          "link": 90
         },
         {
           "name": "target_latent",
@@ -1148,8 +1155,7 @@
           "name": "MODEL",
           "type": "MODEL",
           "links": [
-            9,
-            76
+            9
           ]
         }
       ],
@@ -1158,12 +1164,12 @@
       },
       "widgets_values": [
         2.5,
-        0.0,
+        0.2,
         "fit",
         "beside (right of target)",
-        "beside (right of target)"
+        "aligned (trained)"
       ],
-      "title": "Krea2 General Edit · Alex is the only visual reference",
+      "title": "Scene palette + Alex · color/light 0.2, identity 2.5",
       "widgets_values_named": {
         "ref_boost": 1.5,
         "ref_boost_a": 0.7,
@@ -1221,7 +1227,7 @@
           ]
         }
       ],
-      "title": "Model path · Alex identity always active",
+      "title": "Model path · identity-only or abstract scene palette",
       "properties": {
         "Node name for S&R": "ComfySwitchNode",
         "cnr_id": "comfy-core",
@@ -1570,7 +1576,7 @@
           ]
         }
       ],
-      "title": "1 · Extract scene style, not exact content · Qwen3-VL",
+      "title": "1 · Extract pose, phone lighting, color and scene · Qwen3-VL",
       "properties": {
         "Node name for S&R": "AILab_QwenVL_Advanced",
         "cnr_id": "ComfyUI-QwenVL",
@@ -1583,7 +1589,7 @@
         false,
         "cuda:0",
         "🖼️ Detailed Analysis",
-        "Analyze the supplied photograph only as inspiration for the environment and photographic treatment of a new Krea 2 image. Output one concise English brief with no heading. Describe the location category, camera height, lens feel, framing energy, perspective, atmosphere, time of day, lighting quality and direction, color palette and contrast, materials, textures, spatial density, depth layers and depth of field. Describe broad clothing category and pose only when useful to the composition, without transferring the source person's body, face, hair, eyes, skin, age, eyewear, headwear, accessories or identity. Ignore all people in the source, including the foreground person, bystanders, reflections and crowds. Do not request people in the new background. Do not inventory or preserve exact furniture placement, distinctive objects, signage, logos, text or architectural arrangement. Request a newly invented related setting from a different plausible viewpoint, with exactly one visible adult woman in the entire frame, full-bleed 4:5 rectilinear composition, coherent anatomy, no fisheye, black corners, borders, text, logo or watermark.",
+        "Analyze this photograph as inspiration for a new image of a different person. Output one compact production brief with these labeled clauses in prose, no markdown: POSE, FRAMING, CAMERA, LIGHTING/EXPOSURE, COLOR, SETTING, CLOTHING CATEGORY.\n\nPOSE must be precise enough to recreate approximately: seated or standing; torso direction and lean; head turn, tilt and gaze; shoulder and hip rotation; weight distribution; visible arm angles; elbow bends; exact hand placement; leg positions; and expression category. Describe only geometry, never the source person's body proportions or identity.\n\nLIGHTING/EXPOSURE and COLOR must describe the pixels as they actually look, including imperfections rather than improving them: source direction, direct on-camera phone-flash appearance when the foreground is abruptly bright against a dark background, uneven exposure, blown highlights, crushed shadows, white-balance cast, saturation, contrast, phone HDR halos, sensor noise, sharpening, compression, motion blur and depth of field. State which visible defects and color relationships must be preserved. Do not replace imperfect phone lighting with studio, beauty, cinematic or editorial lighting.\n\nDescribe the environment's high-level style, materials and spatial organization, but request a newly invented related location rather than an exact copy. Ignore the source person's face, hair, eyes, skin, age, body proportions, eyewear, headwear and identity. Do not request background people. End with exactly one visible adult woman, no human reflections, and a full-bleed 4:5 rectilinear phone photograph.",
         900,
         0.2,
         0.9,
@@ -1677,7 +1683,7 @@
       },
       "widgets_values": [
         "",
-        "AUTOMATIC REFERENCE-INSPIRATION MODE: The uploaded scene is environment and photographic-style inspiration only. It is not a background plate and is not a person reference. Reuse its high-level location category, atmosphere, color relationships, lighting logic, materials, lens character, depth of field and broad compositional energy, then invent a clearly distinct believable setting: shift the viewpoint, rebuild the layout and replace exact objects and architecture. Ignore every person in the source, including the foreground subject, bystanders and reflections. Do not copy any source face, body, hair, eye color, skin, clothing, eyewear, headwear, accessory, pose or identity.\n\nThe selected Alex portrait is the sole visual identity authority. The result contains exactly one visible human unless OPTIONAL TWEAKS explicitly requests more. Alex is a fictional adult woman with pale clear blue eyes, fair lightly freckled skin, a softly angular oval face, straight medium brows, a narrow straight nose, naturally shaped pink lips, and long straight light golden-blonde hair with a precise center part. Her eyes are unobstructed and clearly blue; no sunglasses, glasses, hat or headwear unless explicitly requested. Preserve the selected portrait's recognizable facial geometry and apparent age. Never duplicate, clone, mirror or create twins.\n\nProduce a natural full-bleed vertical 4:5 rectilinear Instagram photograph with plausible anatomy and ordinary photographic imperfections. No other people, distant figures, crowd, human reflection, mannequin, poster face, fisheye, black corners, borders, text, logo or watermark. OPTIONAL TWEAKS may be empty; when empty, invent a natural related scene without asking for instructions.",
+        "AUTOMATIC REFERENCE-INSPIRATION MODE: The uploaded scene supplies environment, approximate pose, framing, consumer-phone lighting, exposure behavior, palette and photographic defects. It is not a person-identity reference or a background plate. Recreate the analyzed pose approximately using Alex: preserve body orientation, seated/standing state, head direction, gaze, limb angles, hand placement and weight distribution unless OPTIONAL TWEAKS overrides them. Preserve the observed color relationships, white-balance cast, uneven illumination, flash appearance, clipped highlights, deep shadows, phone HDR, noise, sharpening, compression and depth of field instead of beautifying them. Invent a related but distinct setting with a different exact layout and objects.\n\nIgnore every source person, including foreground identity, bystanders and reflections. Never transfer the source face, body traits, hair, eye color, skin, clothing details, eyewear, headwear, accessories or identity. The selected Alex portrait is the sole identity authority. Alex is a fictional adult woman with pale clear blue eyes, fair lightly freckled skin, a softly angular oval face, straight medium brows, a narrow straight nose, naturally shaped pink lips, and long straight light golden-blonde center-parted hair. Her eyes remain visible and blue; no eyewear or headwear unless explicitly requested.\n\nThe result contains exactly one visible human unless OPTIONAL TWEAKS explicitly requests more. Produce an ordinary spontaneous phone photograph, not a professionally lit portrait or advertisement. No studio key/fill/rim lighting, beauty lighting, perfect symmetry, airbrushed skin, uniformly controlled exposure, background people, human reflections, twins, fisheye, black corners, border, text, logo or watermark. OPTIONAL TWEAKS may be empty.",
         "\n\n"
       ],
       "widgets_values_named": {
@@ -2274,7 +2280,7 @@
         "widget_ue_connectable": {}
       },
       "widgets_values": [
-        "Compile one final production-ready Krea 2 prompt from the mode brief and OPTIONAL TWEAKS. Output only the final prompt, without headings or commentary. The selected Alex portrait is the only visual person reference. Alex is a fictional adult woman with pale clear blue eyes, fair lightly freckled skin, a softly angular oval face, straight medium brows, a narrow straight nose, naturally shaped pink lips, and long straight light golden-blonde center-parted hair. Preserve her recognizable facial geometry and apparent age. Her eyes must be unobstructed and visibly blue; omit sunglasses, glasses, hats and headwear unless the user explicitly requests them.\n\nIn AUTOMATIC REFERENCE-INSPIRATION MODE, use the uploaded scene only for high-level environment and photographic language. Generate a new plausible setting with a different viewpoint and rebuilt layout while retaining location category, atmosphere, color relationships, light, materials, lens character and depth-of-field style. Ignore every human in the source. Never transfer the source person's face, body, hair, eye color, skin, clothing, eyewear, headwear, accessories, pose or identity. Do not reproduce exact camera position, architecture, furniture arrangement, distinctive objects, signs, logos or text.\n\nApply OPTIONAL TWEAKS when present. “No additional user modifications.” means proceed automatically. In PROMPT-ONLY MODE, create the scene from the request. Unless the request explicitly requires multiple people, the entire image must contain exactly one visible human: Alex. No background people, distant figures, crowd, human reflections, mannequins, poster faces, duplicate subject, twin or clone. Use natural proportions, plausible hands, coherent perspective, authentic Instagram color and texture, and a full-bleed vertical 4:5 rectilinear frame. No visible photographer, camera, phone, fisheye, black corners, borders, text, logo or watermark. Keep the result concise: 160 to 240 words.",
+        "Compile one final production-ready Krea 2 prompt from the mode brief and OPTIONAL TWEAKS. Output only the final prompt, without headings or commentary. Preserve all useful POSE, FRAMING, CAMERA, LIGHTING/EXPOSURE and COLOR information from the automatic analysis unless OPTIONAL TWEAKS explicitly replaces it. The source pose should be recognizably similar: keep seated/standing state, torso and head direction, gaze, limb angles, hand placement and weight distribution. Preserve imperfect consumer-phone qualities rather than improving them: uneven automatic exposure, mixed white balance or color cast, direct flash appearance, clipped highlights, crushed shadows, phone HDR halos, sensor noise, sharpening, compression, motion blur and imperfect framing when observed. Explicitly reject studio key/fill/rim light, beauty lighting, polished advertising finish, cinematic grading, airbrushed skin, perfect symmetry and uniformly controlled exposure.\n\nThe selected Alex portrait is the sole person-identity reference. Alex has pale clear blue eyes, fair lightly freckled skin, a softly angular oval face, straight medium brows, a narrow straight nose, naturally shaped pink lips, and long straight light golden-blonde center-parted hair. Preserve her recognizable facial geometry and apparent age. Her eyes remain unobstructed and blue; omit eyewear and headwear unless requested. In automatic reference mode, ignore every source person's identity, body traits, face, hair, eyes, skin, clothing details and accessories. Generate a related but newly arranged setting rather than an exact copy.\n\nApply OPTIONAL TWEAKS when present. “No additional user modifications.” means proceed automatically. In prompt-only mode, create the scene from the request. Unless explicitly requested otherwise, show exactly one visible human: Alex. No bystanders, crowd, human reflections, mannequins, poster faces, twin or clone. Use plausible anatomy and hands and a full-bleed vertical 4:5 rectilinear frame. No visible photographer, camera, phone, fisheye, black corners, border, text, logo or watermark. Keep the result concise: 180 to 260 words.",
         "",
         false,
         false,
@@ -2359,7 +2365,8 @@
           "links": [
             36,
             38,
-            41
+            41,
+            99
           ]
         }
       ],
@@ -2567,7 +2574,7 @@
           "name": "image_b",
           "shape": 7,
           "type": "IMAGE",
-          "link": null
+          "link": 96
         }
       ],
       "outputs": [
@@ -2575,7 +2582,6 @@
           "name": "CONDITIONING",
           "type": "CONDITIONING",
           "links": [
-            45,
             46
           ]
         }
@@ -2586,9 +2592,9 @@
       "widgets_values": [
         "",
         768,
-        "The attached image is the sole authoritative identity reference for the only visible adult woman. Preserve her exact facial proportions, pale clear blue eyes, lightly freckled fair skin, natural brows, nose, lips, jawline, apparent age and long straight light golden-blonde center-parted hair. Keep the eyes visible and blue. Do not create sunglasses, glasses, hats or headwear unless the text explicitly requests them. The described environment is newly generated from text; do not add other people, reflections of people, twins or clones."
+        "Image 1 is an abstract 32 by 40 environment color/light map. It supplies only broad palette, exposure distribution and lighting placement; it contains no usable person identity. Image 2 is the sole Alex identity authority. Preserve Alex's exact facial proportions, pale clear blue eyes, lightly freckled fair skin, natural brows, nose, lips, jawline, apparent age and long straight light golden-blonde center-parted hair. Recreate the source pose approximately from the text. Preserve the analyzed imperfect phone lighting and color instead of beautifying them. Exactly one visible human; no background people, human reflections, twins or clones."
       ],
-      "title": "Identity positive · Alex only; scene supplied as text",
+      "title": "Scene palette + Alex positive · pose supplied as text",
       "widgets_values_named": {
         "prompt": "",
         "grounding_px": 768,
@@ -2633,7 +2639,7 @@
           "name": "image_b",
           "shape": 7,
           "type": "IMAGE",
-          "link": null
+          "link": 97
         }
       ],
       "outputs": [
@@ -2641,7 +2647,6 @@
           "name": "CONDITIONING",
           "type": "CONDITIONING",
           "links": [
-            48,
             49
           ]
         }
@@ -2654,7 +2659,7 @@
         768,
         ""
       ],
-      "title": "Identity unconditional · Alex only",
+      "title": "Scene palette + Alex unconditional",
       "widgets_values_named": {
         "prompt": "",
         "grounding_px": 768,
@@ -2996,7 +3001,7 @@
           ]
         }
       ],
-      "title": "FameGrid Color Finish · measured winner",
+      "title": "FameGrid Color Finish · disabled for raw phone color",
       "properties": {
         "aux_id": "Elevenheights/ComfyUI-FameGridColorFinish",
         "ver": "944c14e53fffee3e9e6dbedad36ab95b0e1629f7",
@@ -3008,8 +3013,8 @@
         }
       },
       "widgets_values": [
-        0.6,
-        0.2
+        0.0,
+        0.0
       ],
       "widgets_values_named": {
         "color_strength": 0.6,
@@ -3443,10 +3448,13 @@
           "name": "identity_image",
           "type": "IMAGE",
           "links": [
-            16,
-            42,
-            44,
-            80
+            80,
+            90,
+            94,
+            96,
+            97,
+            100,
+            102
           ]
         }
       ],
@@ -3489,7 +3497,8 @@
           "name": "LATENT",
           "type": "LATENT",
           "links": [
-            14
+            89,
+            92
           ]
         }
       ],
@@ -3549,6 +3558,405 @@
       },
       "color": "#332b22",
       "bgcolor": "#554433"
+    },
+    {
+      "id": 51,
+      "type": "ImageScale",
+      "pos": [
+        -1740,
+        -650
+      ],
+      "size": [
+        400,
+        130
+      ],
+      "flags": {},
+      "order": 51,
+      "mode": 0,
+      "inputs": [
+        {
+          "localized_name": "image",
+          "name": "image",
+          "type": "IMAGE",
+          "link": 87
+        },
+        {
+          "localized_name": "upscale_method",
+          "name": "upscale_method",
+          "type": "COMBO",
+          "widget": {
+            "name": "upscale_method"
+          },
+          "link": null
+        },
+        {
+          "localized_name": "width",
+          "name": "width",
+          "type": "INT",
+          "widget": {
+            "name": "width"
+          },
+          "link": null
+        },
+        {
+          "localized_name": "height",
+          "name": "height",
+          "type": "INT",
+          "widget": {
+            "name": "height"
+          },
+          "link": null
+        },
+        {
+          "localized_name": "crop",
+          "name": "crop",
+          "type": "COMBO",
+          "widget": {
+            "name": "crop"
+          },
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "localized_name": "IMAGE",
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            88
+          ]
+        }
+      ],
+      "title": "Scene color/light map · destroy identity detail (32 × 40)",
+      "properties": {
+        "Node name for S&R": "ImageScale",
+        "cnr_id": "comfy-core",
+        "ver": "0.3.62",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "area",
+        32,
+        40,
+        "disabled"
+      ],
+      "widgets_values_named": {
+        "upscale_method": "lanczos",
+        "width": 1280,
+        "height": 1600,
+        "crop": "disabled"
+      }
+    },
+    {
+      "id": 52,
+      "type": "ImageScale",
+      "pos": [
+        -1320,
+        -650
+      ],
+      "size": [
+        400,
+        130
+      ],
+      "flags": {},
+      "order": 52,
+      "mode": 0,
+      "inputs": [
+        {
+          "localized_name": "image",
+          "name": "image",
+          "type": "IMAGE",
+          "link": 88
+        },
+        {
+          "localized_name": "upscale_method",
+          "name": "upscale_method",
+          "type": "COMBO",
+          "widget": {
+            "name": "upscale_method"
+          },
+          "link": null
+        },
+        {
+          "localized_name": "width",
+          "name": "width",
+          "type": "INT",
+          "widget": {
+            "name": "width"
+          },
+          "link": null
+        },
+        {
+          "localized_name": "height",
+          "name": "height",
+          "type": "INT",
+          "widget": {
+            "name": "height"
+          },
+          "link": null
+        },
+        {
+          "localized_name": "crop",
+          "name": "crop",
+          "type": "COMBO",
+          "widget": {
+            "name": "crop"
+          },
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "localized_name": "IMAGE",
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            12,
+            16,
+            42,
+            44
+          ]
+        }
+      ],
+      "title": "Scene color/light map · restore canvas for Krea",
+      "properties": {
+        "Node name for S&R": "ImageScale",
+        "cnr_id": "comfy-core",
+        "ver": "0.3.62",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "bicubic",
+        1280,
+        1600,
+        "disabled"
+      ],
+      "widgets_values_named": {
+        "upscale_method": "lanczos",
+        "width": 1280,
+        "height": 1600,
+        "crop": "disabled"
+      }
+    },
+    {
+      "id": 54,
+      "type": "Krea2EditModelPatch",
+      "pos": [
+        -1320,
+        0
+      ],
+      "size": [
+        460,
+        280
+      ],
+      "flags": {},
+      "order": 54,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 91
+        },
+        {
+          "name": "source_latent",
+          "type": "LATENT",
+          "link": 92
+        },
+        {
+          "name": "source_latent_b",
+          "shape": 7,
+          "type": "LATENT",
+          "link": null
+        },
+        {
+          "name": "ref_boost_mask",
+          "shape": 7,
+          "type": "MASK",
+          "link": null
+        },
+        {
+          "name": "vae",
+          "shape": 7,
+          "type": "VAE",
+          "link": 93
+        },
+        {
+          "name": "source_image",
+          "shape": 7,
+          "type": "IMAGE",
+          "link": 94
+        },
+        {
+          "name": "source_image_b",
+          "shape": 7,
+          "type": "IMAGE",
+          "link": null
+        },
+        {
+          "name": "target_latent",
+          "shape": 7,
+          "type": "LATENT",
+          "link": 95
+        }
+      ],
+      "outputs": [
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "links": [
+            76
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "Krea2EditModelPatch"
+      },
+      "widgets_values": [
+        2.5,
+        0.0,
+        "fit",
+        "beside (right of target)",
+        "beside (right of target)"
+      ],
+      "title": "Identity-only model patch · used without scene",
+      "widgets_values_named": {
+        "ref_boost": 1.5,
+        "ref_boost_a": 0.7,
+        "fit_mode": "fit",
+        "ref_position": "beside (right of target)",
+        "ref_position_a": "aligned (trained)"
+      }
+    },
+    {
+      "id": 55,
+      "type": "Krea2EditGroundedEncode",
+      "pos": [
+        -240,
+        300
+      ],
+      "size": [
+        430,
+        240
+      ],
+      "flags": {},
+      "order": 55,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "clip",
+          "type": "CLIP",
+          "link": 98
+        },
+        {
+          "name": "prompt",
+          "type": "STRING",
+          "widget": {
+            "name": "prompt"
+          },
+          "link": 99
+        },
+        {
+          "name": "image",
+          "shape": 7,
+          "type": "IMAGE",
+          "link": 100
+        },
+        {
+          "name": "image_b",
+          "shape": 7,
+          "type": "IMAGE",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "links": [
+            45
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "Krea2EditGroundedEncode"
+      },
+      "widgets_values": [
+        "",
+        768,
+        "The attached Alex portrait is the sole authoritative identity reference for the only visible adult woman. Preserve her exact face, pale clear blue eyes, fair lightly freckled skin and long straight light golden-blonde center-parted hair. No other people, human reflections, twins or clones."
+      ],
+      "title": "Identity-only positive · used without scene",
+      "widgets_values_named": {
+        "prompt": "",
+        "grounding_px": 768,
+        "system_prompt": "Image 1 is scene inspiration, not a plate to copy. Borrow only its high-level place category, camera character, atmosphere, lighting, palette, materials, and depth-of-field style; generate a different viewpoint with a newly arranged environment and different or absent bystanders. Never reproduce background faces, identities, signs, logos, text, or distinctive object placement. Image 2 is the authoritative identity reference for the only main foreground adult woman. Preserve Image 2's exact facial proportions and recognizable identity. Never retain Image 1's foreground identity or create a second copy."
+      }
+    },
+    {
+      "id": 56,
+      "type": "Krea2EditGroundedEncode",
+      "pos": [
+        -240,
+        570
+      ],
+      "size": [
+        430,
+        220
+      ],
+      "flags": {},
+      "order": 56,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "clip",
+          "type": "CLIP",
+          "link": 101
+        },
+        {
+          "name": "prompt",
+          "type": "STRING",
+          "widget": {
+            "name": "prompt"
+          },
+          "link": null
+        },
+        {
+          "name": "image",
+          "shape": 7,
+          "type": "IMAGE",
+          "link": 102
+        },
+        {
+          "name": "image_b",
+          "shape": 7,
+          "type": "IMAGE",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "links": [
+            48
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "Krea2EditGroundedEncode"
+      },
+      "widgets_values": [
+        "",
+        768,
+        ""
+      ],
+      "title": "Identity-only unconditional · used without scene",
+      "widgets_values_named": {
+        "prompt": "",
+        "grounding_px": 768,
+        "system_prompt": ""
+      }
     }
   ],
   "links": [
@@ -3626,7 +4034,7 @@
     ],
     [
       12,
-      13,
+      52,
       0,
       14,
       0,
@@ -3642,7 +4050,7 @@
     ],
     [
       14,
-      49,
+      14,
       0,
       16,
       1,
@@ -3658,7 +4066,7 @@
     ],
     [
       16,
-      48,
+      52,
       0,
       16,
       5,
@@ -3866,7 +4274,7 @@
     ],
     [
       42,
-      48,
+      52,
       0,
       32,
       2,
@@ -3882,7 +4290,7 @@
     ],
     [
       44,
-      48,
+      52,
       0,
       33,
       2,
@@ -3890,7 +4298,7 @@
     ],
     [
       45,
-      32,
+      55,
       0,
       34,
       0,
@@ -3914,7 +4322,7 @@
     ],
     [
       48,
-      33,
+      56,
       0,
       35,
       0,
@@ -4183,7 +4591,7 @@
     ],
     [
       76,
-      16,
+      54,
       0,
       17,
       0,
@@ -4236,6 +4644,134 @@
       24,
       6,
       "STRING"
+    ],
+    [
+      87,
+      13,
+      0,
+      51,
+      0,
+      "IMAGE"
+    ],
+    [
+      88,
+      51,
+      0,
+      52,
+      0,
+      "IMAGE"
+    ],
+    [
+      89,
+      49,
+      0,
+      16,
+      2,
+      "LATENT"
+    ],
+    [
+      90,
+      48,
+      0,
+      16,
+      6,
+      "IMAGE"
+    ],
+    [
+      91,
+      8,
+      0,
+      54,
+      0,
+      "MODEL"
+    ],
+    [
+      92,
+      49,
+      0,
+      54,
+      1,
+      "LATENT"
+    ],
+    [
+      93,
+      12,
+      0,
+      54,
+      4,
+      "VAE"
+    ],
+    [
+      94,
+      48,
+      0,
+      54,
+      5,
+      "IMAGE"
+    ],
+    [
+      95,
+      15,
+      0,
+      54,
+      7,
+      "LATENT"
+    ],
+    [
+      96,
+      48,
+      0,
+      32,
+      3,
+      "IMAGE"
+    ],
+    [
+      97,
+      48,
+      0,
+      33,
+      3,
+      "IMAGE"
+    ],
+    [
+      98,
+      11,
+      0,
+      55,
+      0,
+      "CLIP"
+    ],
+    [
+      99,
+      28,
+      0,
+      55,
+      1,
+      "STRING"
+    ],
+    [
+      100,
+      48,
+      0,
+      55,
+      2,
+      "IMAGE"
+    ],
+    [
+      101,
+      11,
+      0,
+      56,
+      0,
+      "CLIP"
+    ],
+    [
+      102,
+      48,
+      0,
+      56,
+      2,
+      "IMAGE"
     ]
   ],
   "groups": [
