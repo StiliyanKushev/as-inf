@@ -1,0 +1,15 @@
+{
+  "model": "krea2_turbo_fp8_scaled.safetensors",
+  "text_encoder": "qwen3vl_4b_fp8_scaled.safetensors",
+  "vae": "qwen_image_vae.safetensors",
+  "edit_lora": {"name": "krea2_general_edit_v2.safetensors", "strength": 1.0},
+  "sampler": {"steps": 10, "cfg": 1.0, "sampler_name": "euler", "scheduler": "simple", "denoise": 1.0},
+  "identity_reference": "assets/persona_refs/persona_front_neutral.png",
+  "pixelai_ref_boost": 2.0,
+  "tests": [
+    {"file": "native_carousel_red_scene_sheet.png", "size": "2 x 768x960", "seed": 27012026, "prompt_source": "PixelAI Carousel Director"},
+    {"file": "direct_alex_red_768x960.png", "size": "768x960", "seed": 27012026, "prompt_source": "direct scene brief"},
+    {"file": "direct_alex_red_1280x1600_flash.png", "size": "1280x1600", "seed": 27012026, "prompt_source": "direct scene brief + explicit phone flash"},
+    {"file": "direct_alex_beach_768x960.png", "size": "768x960", "seed": 27012033, "prompt_source": "direct scene brief"}
+  ]
+}
