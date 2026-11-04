@@ -13,6 +13,9 @@ The `research/realism-native-4k` branch also contains:
 - `final-kurva-maker-krea2.json`
 - `final-kurva-maker-krea2-pre-alex-backup.json`
 - `final-kurva-maker-krea2-scene-identity.json`
+- `final-kurva-maker-krea2-alex-scene-text.json`
+
+`final-kurva-maker-krea2-alex-scene-text.json` is the simplified direct hybrid validated on 2026-11-04. The uploaded scene is analyzed into text only and its pixels never reach Krea. One selected Alex portrait is Krea's sole visual reference; the model and conditioning switches are locked to that identity-only route. Keep the Alex angle selector on `front` to reproduce the measured setup. This avoided source-person leakage while following two unrelated scene/pose briefs. See `research-results/pixelai_alex_scene_2026-11-04/` for outputs and exact settings.
 
 `final-kurva-maker-krea2-scene-identity.json` is the recommended Alex workflow.
 The selected Alex photograph is General Edit V2's only visual conditioning
