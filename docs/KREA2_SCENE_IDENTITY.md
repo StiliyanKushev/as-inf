@@ -12,6 +12,9 @@ path:
 The control panel displays front, three-quarter-left, and
 three-quarter-right Alex photographs. `ASInfSelectIdentityReference` forwards
 exactly one. Choose the view closest to the scene subject's head angle.
+The installer places stable `alexsparks_*` aliases in ComfyUI's root input
+folder because the current frontend media validator does not index nested input
+folders even though the backend can load them.
 
 ## Measured failures that shaped the design
 

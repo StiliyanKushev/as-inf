@@ -111,10 +111,19 @@ cp -f "$ROOT/workflows/final-kurva-maker-krea2-scene-identity.json" \
 mkdir -p "$COMFY_DIR/input/alexsparks"
 cp -f "$ROOT/assets/persona_refs/persona_front_neutral.png" \
   "$COMFY_DIR/input/alexsparks/front.png"
-cp -f "$ROOT/assets/persona_refs/persona_three_quarter_left.png" \
+cp -f "$ROOT/training/datasets/vexa_person/face_00002_00001.png" \
   "$COMFY_DIR/input/alexsparks/three-quarter-left.png"
 cp -f "$ROOT/assets/persona_refs/persona_three_quarter_right.png" \
   "$COMFY_DIR/input/alexsparks/three-quarter-right.png"
+# ComfyUI's current missing-media scanner only indexes the root input folder.
+# Keep root aliases so the workflow loads without false "media missing" issues;
+# retain the subfolder copies for compatibility with older saved workflows.
+cp -f "$COMFY_DIR/input/alexsparks/front.png" \
+  "$COMFY_DIR/input/alexsparks_front.png"
+cp -f "$COMFY_DIR/input/alexsparks/three-quarter-left.png" \
+  "$COMFY_DIR/input/alexsparks_three_quarter_left.png"
+cp -f "$COMFY_DIR/input/alexsparks/three-quarter-right.png" \
+  "$COMFY_DIR/input/alexsparks_three_quarter_right.png"
 cp -f "$ROOT/research-results/distilled_baseline_seed27012026/native_00001_.png" \
   "$COMFY_DIR/input/scene-inspiration.png"
 

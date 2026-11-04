@@ -3322,7 +3322,7 @@
         "Node name for S&R": "LoadImage"
       },
       "widgets_values": [
-        "alexsparks/front.png",
+        "alexsparks_front.png",
         "image"
       ]
     },
@@ -3362,7 +3362,7 @@
         "Node name for S&R": "LoadImage"
       },
       "widgets_values": [
-        "alexsparks/three-quarter-left.png",
+        "alexsparks_three_quarter_left.png",
         "image"
       ]
     },
@@ -3402,7 +3402,7 @@
         "Node name for S&R": "LoadImage"
       },
       "widgets_values": [
-        "alexsparks/three-quarter-right.png",
+        "alexsparks_three_quarter_right.png",
         "image"
       ]
     },
