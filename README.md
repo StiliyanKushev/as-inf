@@ -49,9 +49,11 @@ Instagram delivery resize.
 For Alex identity, use
 [`workflows/final-kurva-maker-krea2-scene-identity.json`](workflows/final-kurva-maker-krea2-scene-identity.json).
 It separates the scene inspiration from an Alex identity bank and sends one
-selected identity angle through General Edit V2's trained second-reference
-path. Live tests preserved one subject and the source composition; feeding
-several face references simultaneously created duplicate women.
+selected identity angle as General Edit V2's only visual conditioning image.
+The scene reference is converted to a written environment/style brief, so its
+foreground person cannot override Alex. Live tests showed that feeding the
+scene and several face references directly to Krea created identity leakage,
+duplicate women, and collages.
 
 ## Current deployment
 
