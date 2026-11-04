@@ -1,8 +1,8 @@
 {
   "id": "final-kurva-maker-krea2-scene-identity",
-  "revision": 1,
-  "last_node_id": 49,
-  "last_link_id": 85,
+  "revision": 2,
+  "last_node_id": 50,
+  "last_link_id": 86,
   "nodes": [
     {
       "id": 1,
@@ -58,7 +58,7 @@
           ]
         }
       ],
-      "title": "SCENE INSPIRATION \u00b7 fixed 4:5 crop",
+      "title": "SCENE INSPIRATION · fixed 4:5 crop",
       "properties": {
         "Node name for S&R": "ASInfOptionalReferenceCrop4x5",
         "cnr_id": "as-inf"
@@ -72,7 +72,7 @@
         "image"
       ],
       "widgets_values_named": {
-        "image": "[None \u2014 prompt-only mode]",
+        "image": "[None — prompt-only mode]",
         "crop_x": 0.0,
         "crop_y": 0.0,
         "crop_w": 1.0,
@@ -117,13 +117,13 @@
           ]
         }
       ],
-      "title": "REQUEST \u00b7 describe the desired result or scene changes",
+      "title": "OPTIONAL TWEAKS · leave empty for automatic inspiration mode",
       "properties": {
         "Node name for S&R": "PrimitiveStringMultiline",
         "cnr_id": "comfy-core"
       },
       "widgets_values": [
-        "Keep the scene, camera position, pose, outfit, lighting and background from the inspiration image. Replace only its foreground woman with the selected Alex Sparks identity. Keep exactly one woman and preserve the selected identity's facial geometry, blue eyes, freckles, hair and apparent age."
+        ""
       ],
       "widgets_values_named": {
         "value": ""
@@ -169,7 +169,7 @@
           "links": null
         }
       ],
-      "title": "FINAL RESULT \u00b7 generated / scene inspiration slider",
+      "title": "FINAL RESULT · generated / scene inspiration slider",
       "properties": {
         "comparer_mode": "Slide",
         "Node name for S&R": "Image Comparer (rgthree)",
@@ -379,7 +379,7 @@
           ]
         }
       ],
-      "title": "KREA 2 SETTINGS \u00b7 native render + batch",
+      "title": "KREA 2 SETTINGS · native render + batch",
       "properties": {
         "Node name for S&R": "ASInfSamplerSettings",
         "cnr_id": "as-inf"
@@ -434,7 +434,7 @@
           ]
         }
       ],
-      "title": "SEED \u00b7 fixed / randomized",
+      "title": "SEED · fixed / randomized",
       "properties": {
         "Node name for S&R": "PrimitiveInt",
         "cnr_id": "comfy-core",
@@ -517,7 +517,7 @@
           ]
         }
       ],
-      "title": "LoRA 1 \u00b7 Krea2 General Edit V2",
+      "title": "LoRA 1 · Krea2 General Edit V2",
       "properties": {
         "Node name for S&R": "ASInfLoraLoaderModelOnlyWithTrigger",
         "cnr_id": "as-inf"
@@ -600,7 +600,7 @@
           ]
         }
       ],
-      "title": "LoRA 2 \u00b7 FameGrid",
+      "title": "LoRA 2 · FameGrid",
       "properties": {
         "Node name for S&R": "ASInfLoraLoaderModelOnlyWithTrigger",
         "cnr_id": "as-inf"
@@ -684,7 +684,7 @@
           ]
         }
       ],
-      "title": "LoRA 3 \u00b7 Realism Engine",
+      "title": "LoRA 3 · Realism Engine",
       "properties": {
         "Node name for S&R": "ASInfLoraLoaderModelOnlyWithTrigger",
         "cnr_id": "as-inf"
@@ -721,10 +721,10 @@
         "widget_ue_connectable": {}
       },
       "widgets_values": [
-        "FINAL KURVA MAKER \u00b7 KREA 2 \u00b7 SCENE + IDENTITY\n\nCONTROL PANEL\n1. Upload one scene inspiration and crop it to 4:5.\n2. Keep three clear Alex identity views loaded.\n3. Select the identity angle closest to the scene subject's head angle.\n4. Describe the desired result and run.\n\nWHY ONE IDENTITY VIEW IS SELECTED\nKrea2 General Edit has a scene slot and one subject slot. Supplying several face photos as equal subjects creates twins or collages. The visible three-image bank lets you choose the best angle while the model receives exactly one authoritative identity image.\n\nMODEL PATH\nImage 1 is the scene, composition and pose. Image 2 is the identity. General Edit V2 receives both through its VAE reference tokens and grounded Qwen3-VL conditioning. The failed alexsparks_krea2 character LoRA is not used.\n\nOUTPUT\nNative generation is 1280 \u00d7 1600. A separate 1080 \u00d7 1350 Instagram delivery copy is saved after the FameGrid colour finish."
+        "FINAL KURVA MAKER · KREA 2 · SCENE INSPIRATION + ALEX IDENTITY\n\nCONTROL PANEL\n1. Optionally upload one scene inspiration and crop it to 4:5.\n2. Select the Alex identity angle closest to the desired head angle.\n3. Leave OPTIONAL TWEAKS empty for an automatic related-but-new photograph, or enter only extra changes you want.\n4. Run and inspect the generated/reference slider.\n\nAUTOMATIC REFERENCE BEHAVIOR\nThe scene image supplies visual language: location category, camera feel, atmosphere, lighting, palette, materials, depth of field and broad compositional energy. It is never treated as a background to trace. The workflow automatically invents a distinct plausible view of the same kind of place, varies the viewpoint, layout, objects and incidental people, and never copies background faces, signage or unique identifying details.\n\nIDENTITY\nImage 2 is the sole identity authority. The visible three-image Alex bank lets you select one angle while the model receives exactly one face reference, preventing twins and collages. The experimental Alex Krea2 LoRA is not used.\n\nOUTPUT\nNative generation is 1280 × 1600. A separate 1080 × 1350 Instagram delivery copy is saved after the FameGrid colour finish."
       ],
       "widgets_values_named": {
-        "text": "FINAL KURVA MAKER \u00b7 KREA 2 TURBO\n\nCONTROL PANEL\nChoose an optional reference, write the request, inspect the final slider, and use Advanced Settings for seed, sampling, batch size, and three editable LoRA slots. Trigger text is added only while its LoRA strength is non-zero.\n\nPROMPT-ONLY MODE\nChoose [None \u2014 prompt-only mode] and describe the complete desired photograph. Krea2 generates a new generic fictional adult subject; the FLUX-trained Alex Sparks LoRA is deliberately not loaded because it is incompatible with Krea2.\n\nREFERENCE MODE\nUpload an image and move/zoom the permanently locked 4:5 crop. Describe only the desired changes. The selected pixels enter Qwen analysis, Krea2's VAE reference-token path, Krea2's grounded Qwen3-VL encoder, and the comparison viewer. General Edit V2 is active at the measured strength.\n\nOUTPUT\nThe diffusion render is a true native 1280 \u00d7 1600 image. FameGrid Color Finish runs after decode. A separate 1080 \u00d7 1350 Instagram delivery copy is saved with Lanczos. This workflow does not claim a resized image is native 4K; Krea2 Edit's documented reliable range is at or below about two megapixels.\n\nKNOWN LIMIT\nReference mode supplies identity and composition through Krea2 General Edit. A reusable Alex identity in prompt-only mode needs a Krea2-trained character LoRA; the existing alexsparks.safetensors is FLUX.2 Klein-specific."
+        "text": "FINAL KURVA MAKER · KREA 2 · SCENE INSPIRATION + ALEX IDENTITY\n\nCONTROL PANEL\n1. Optionally upload one scene inspiration and crop it to 4:5.\n2. Select the Alex identity angle closest to the desired head angle.\n3. Leave OPTIONAL TWEAKS empty for an automatic related-but-new photograph, or enter only extra changes you want.\n4. Run and inspect the generated/reference slider.\n\nAUTOMATIC REFERENCE BEHAVIOR\nThe scene image supplies visual language: location category, camera feel, atmosphere, lighting, palette, materials, depth of field and broad compositional energy. It is never treated as a background to trace. The workflow automatically invents a distinct plausible view of the same kind of place, varies the viewpoint, layout, objects and incidental people, and never copies background faces, signage or unique identifying details.\n\nIDENTITY\nImage 2 is the sole identity authority. The visible three-image Alex bank lets you select one angle while the model receives exactly one face reference, preventing twins and collages. The experimental Alex Krea2 LoRA is not used.\n\nOUTPUT\nNative generation is 1280 × 1600. A separate 1080 × 1350 Instagram delivery copy is saved after the FameGrid colour finish."
       },
       "color": "#32353b",
       "bgcolor": "#484d55"
@@ -754,7 +754,7 @@
           ]
         }
       ],
-      "title": "1 \u00b7 Krea 2 Turbo FP8",
+      "title": "1 · Krea 2 Turbo FP8",
       "properties": {
         "cnr_id": "comfy-core",
         "ver": "0.42.0",
@@ -801,7 +801,7 @@
           ]
         }
       ],
-      "title": "Qwen3-VL 4B text encoder \u00b7 Krea2",
+      "title": "Qwen3-VL 4B text encoder · Krea2",
       "properties": {
         "cnr_id": "comfy-core",
         "ver": "0.42.0",
@@ -941,7 +941,7 @@
           ]
         }
       ],
-      "title": "Normalize selected crop \u00b7 1280 \u00d7 1600",
+      "title": "Normalize selected crop · 1280 × 1600",
       "properties": {
         "Node name for S&R": "ImageScale",
         "cnr_id": "comfy-core",
@@ -1080,7 +1080,7 @@
         1600,
         1
       ],
-      "title": "Native canvas \u00b7 1280 \u00d7 1600",
+      "title": "Native canvas · 1280 × 1600",
       "widgets_values_named": {
         "width": 1280,
         "height": 1600,
@@ -1163,15 +1163,15 @@
       },
       "widgets_values": [
         1.5,
-        1.0,
+        0.7,
         "fit",
         "beside (right of target)",
         "aligned (trained)"
       ],
-      "title": "Krea2 General Edit \u00b7 scene + selected identity patch",
+      "title": "Krea2 General Edit · inspiration 0.7 + identity 1.5",
       "widgets_values_named": {
-        "ref_boost": 2.0,
-        "ref_boost_a": 1.0,
+        "ref_boost": 1.5,
+        "ref_boost_a": 0.7,
         "fit_mode": "fit",
         "ref_position": "beside (right of target)",
         "ref_position_a": "aligned (trained)"
@@ -1226,7 +1226,7 @@
           ]
         }
       ],
-      "title": "Model path \u00b7 source patch optional",
+      "title": "Model path · source patch optional",
       "properties": {
         "Node name for S&R": "ComfySwitchNode",
         "cnr_id": "comfy-core",
@@ -1289,7 +1289,7 @@
           ]
         }
       ],
-      "title": "General Edit LoRA \u00b7 reference only",
+      "title": "General Edit LoRA · reference only",
       "properties": {
         "Node name for S&R": "ComfySwitchNode",
         "cnr_id": "comfy-core",
@@ -1371,7 +1371,7 @@
           ]
         }
       ],
-      "title": "Comparison reference \u00b7 1080 \u00d7 1350",
+      "title": "Comparison reference · 1080 × 1350",
       "properties": {
         "Node name for S&R": "ImageScale",
         "cnr_id": "comfy-core",
@@ -1575,7 +1575,7 @@
           ]
         }
       ],
-      "title": "1 \u00b7 Analyze reference image \u00b7 Qwen3-VL",
+      "title": "1 · Extract scene style, not exact content · Qwen3-VL",
       "properties": {
         "Node name for S&R": "AILab_QwenVL_Advanced",
         "cnr_id": "ComfyUI-QwenVL",
@@ -1587,8 +1587,8 @@
         "sdpa",
         false,
         "cuda:0",
-        "\ud83d\uddbc\ufe0f Detailed Analysis",
-        "Analyze the supplied scene inspiration for a Krea 2 two-image identity edit. Output only a precise English scene description, with no heading. Describe camera position, 4:5 crop, rectilinear perspective, composition, foreground pose and placement, hands, garments, lighting, focal plane, depth of field, background, colorimetry, objects, architecture and spatial relationships. Do not treat the foreground person's face, hair, eye color, skin or age as identity requirements; a separate authoritative identity image replaces those attributes. End with safeguards against duplicate people, extra limbs or digits, warped geometry, borders, text and watermarks.",
+        "🖼️ Detailed Analysis",
+        "Analyze the supplied photograph as visual inspiration for a new Krea 2 scene, not as a reconstruction target. Output only a concise English inspiration brief with no heading. Extract the high-level photographic and design language: location category, camera-height family, lens feel, framing energy, perspective style, atmosphere, time of day, lighting quality and direction, palette and color contrast, materials and textures, spatial density, depth layers, depth of field, and the broad pose and clothing category of the main subject. Describe what makes the setting feel coherent while explicitly allowing a different viewpoint and a newly invented layout. Do not inventory or preserve exact furniture placement, unique objects, signage, logos, text, architectural arrangement, or background people's faces, identities, clothing, or positions. Treat background people only as anonymous optional ambience that must be regenerated as different individuals. Do not use the original foreground person's face, hair, eyes, skin, or age as identity requirements; Image 2 supplies the authoritative identity. End by requesting one plausible related-but-distinct Instagram photograph with coherent anatomy, no duplicate main subject, no copied bystanders, no borders, text, logo, or watermark.",
         900,
         0.2,
         0.9,
@@ -1606,8 +1606,8 @@
         "attention_mode": "sdpa",
         "use_torch_compile": false,
         "device": "cuda:0",
-        "preset_prompt": "\ud83d\uddbc\ufe0f Detailed Analysis",
-        "custom_prompt": "Analyze the supplied reference photograph for a Krea 2 General Edit instruction. Output only a precise English source description, with no heading or commentary. Describe the exact camera position, 4:5 crop, rectilinear perspective, composition, subject count and placement, pose, proportions, hands, expression, hair, garments, lighting, focal plane, depth of field, background blur, white balance, exposure, contrast, saturation, major colors, objects, architecture, and spatial relationships. Treat visible pixels as authoritative defaults. Do not improve, mute, sharpen, recolor, or redesign them. The final canvas is a full-bleed vertical 4:5 photograph with straight boundaries and no fisheye, black corners, rounded mask, letterbox, or border. A later authoritative request may replace any named attribute; do not prohibit changes. End with safeguards against duplicate people, extra or missing limbs/digits, malformed anatomy, warped geometry, text, watermarks, and unrelated additions.",
+        "preset_prompt": "🖼️ Detailed Analysis",
+        "custom_prompt": "Analyze the supplied photograph as visual inspiration for a new Krea 2 scene, not as a reconstruction target. Output only a concise English inspiration brief with no heading. Extract the high-level photographic and design language: location category, camera-height family, lens feel, framing energy, perspective style, atmosphere, time of day, lighting quality and direction, palette and color contrast, materials and textures, spatial density, depth layers, depth of field, and the broad pose and clothing category of the main subject. Describe what makes the setting feel coherent while explicitly allowing a different viewpoint and a newly invented layout. Do not inventory or preserve exact furniture placement, unique objects, signage, logos, text, architectural arrangement, or background people's faces, identities, clothing, or positions. Treat background people only as anonymous optional ambience that must be regenerated as different individuals. Do not use the original foreground person's face, hair, eyes, skin, or age as identity requirements; Image 2 supplies the authoritative identity. End by requesting one plausible related-but-distinct Instagram photograph with coherent anatomy, no duplicate main subject, no copied bystanders, no borders, text, logo, or watermark.",
         "max_tokens": 900,
         "temperature": 0.2,
         "top_p": 0.9,
@@ -1675,19 +1675,19 @@
           ]
         }
       ],
-      "title": "Reference mode \u00b7 Krea2 preservation rules",
+      "title": "Automatic reference mode · related scene, never a copy",
       "properties": {
         "Node name for S&R": "StringConcatenate",
         "cnr_id": "comfy-core"
       },
       "widgets_values": [
         "",
-        "SCENE + IDENTITY MODE: Image 1 is the scene inspiration and defines composition, pose, clothing, setting, depth of field, color, lighting and camera geometry. Image 2 is the authoritative identity reference and completely replaces the original foreground person's identity. Preserve the selected identity's facial geometry, eyes, eyebrows, nose, lips, jawline, skin features, hair and apparent age while naturally restaging exactly one woman in Image 1. Never retain or blend the original scene person's face. Never duplicate, clone, mirror or create twins. Produce a full-bleed vertical 4:5 rectilinear photograph without fisheye, black corners, borders, text or watermark.",
+        "AUTOMATIC REFERENCE-INSPIRATION MODE: Image 1 is visual inspiration, never a background plate or exact reconstruction target. Reuse its high-level location category, photographic character, atmosphere, palette, lighting logic, materials, depth of field, and broad compositional energy, then create a clearly distinct but believable photograph: shift the viewpoint, rebuild the layout, rearrange or replace objects, vary architectural details, and use a different natural moment. It should feel like another view in the same venue or a different venue with the same design language. Do not copy signage, logos, text, distinctive objects, or any background person's face, identity, clothing, pose, or location; omit bystanders or invent different anonymous people. Image 2 is the sole authoritative identity reference for the only main foreground adult woman. Preserve Image 2's facial geometry, eyes, eyebrows, nose, lips, jawline, skin features, hair, and apparent age. Never retain or blend Image 1's foreground identity. Never duplicate, clone, mirror, or create twins. Produce a full-bleed vertical 4:5 rectilinear Instagram photograph without fisheye, black corners, borders, text, logo, or watermark. The OPTIONAL TWEAKS field may be empty; if it is empty, invent a natural related scene without requiring user instructions.",
         "\n\n"
       ],
       "widgets_values_named": {
         "string_a": "",
-        "string_b": "REFERENCE MODE: use the selected photograph as the Krea2 source image. Its selected 4:5 pixels define the default composition, identity, pose, scene, depth of field, colorimetry, lighting, and geometry. Preserve every visible attribute the authoritative request does not replace. Apply the requested changes clearly while keeping exactly one main foreground adult woman unless the request explicitly asks for more people. Never duplicate, clone, mirror, or add a second version of her. The photographer, camera, and phone stay outside the frame unless explicitly requested. Produce a full-bleed vertical 4:5 rectilinear photograph without fisheye, curved boundaries, black corners, rounded masks, letterboxing, pillarboxing, borders, text, or watermarks.",
+        "string_b": "AUTOMATIC REFERENCE-INSPIRATION MODE: Image 1 is visual inspiration, never a background plate or exact reconstruction target. Reuse its high-level location category, photographic character, atmosphere, palette, lighting logic, materials, depth of field, and broad compositional energy, then create a clearly distinct but believable photograph: shift the viewpoint, rebuild the layout, rearrange or replace objects, vary architectural details, and use a different natural moment. It should feel like another view in the same venue or a different venue with the same design language. Do not copy signage, logos, text, distinctive objects, or any background person's face, identity, clothing, pose, or location; omit bystanders or invent different anonymous people. Image 2 is the sole authoritative identity reference for the only main foreground adult woman. Preserve Image 2's facial geometry, eyes, eyebrows, nose, lips, jawline, skin features, hair, and apparent age. Never retain or blend Image 1's foreground identity. Never duplicate, clone, mirror, or create twins. Produce a full-bleed vertical 4:5 rectilinear Instagram photograph without fisheye, black corners, borders, text, logo, or watermark. The OPTIONAL TWEAKS field may be empty; if it is empty, invent a natural related scene without requiring user instructions.",
         "delimiter": "\n\n"
       }
     },
@@ -1726,17 +1726,17 @@
           ]
         }
       ],
-      "title": "PROMPT-ONLY MODE \u00b7 internal base instruction",
+      "title": "PROMPT-ONLY MODE · internal fallback",
       "properties": {
         "Node name for S&R": "PrimitiveStringMultiline",
         "cnr_id": "comfy-core",
         "widget_ue_connectable": {}
       },
       "widgets_values": [
-        "SCENE + IDENTITY MODE: use Image 1 for the scene and Image 2 for the foreground woman's identity. Replace the original scene person completely while keeping exactly one adult woman."
+        "PROMPT-ONLY MODE: no scene inspiration is active. Generate a new image from the OPTIONAL TWEAKS text as the complete scene request. If that text is empty, create a tasteful candid vertical Instagram photograph of one fictional adult woman in a believable everyday setting. Use natural anatomy, coherent geometry, believable light, ordinary photographic imperfections, and a full-bleed vertical 4:5 rectilinear frame. Avoid duplicate subjects, extra or missing limbs or digits, malformed hands, warped straight lines, fisheye, black corners, borders, text, logos, and watermarks."
       ],
       "widgets_values_named": {
-        "value": "PROMPT-ONLY MODE: generate a new image from scratch with Krea 2 Turbo. There is no reference photograph or source identity. Treat the authoritative request as the complete scene specification and expand only concrete details it provides. Render exactly one fictional adult woman unless another subject count is explicitly requested. The photographer, phone, and camera remain outside the frame. Make a candid, plausible Instagram photograph with natural anatomy, coherent geometry, believable lighting, ordinary photographic imperfections, and a full-bleed vertical 4:5 rectilinear frame. Avoid duplicate subjects, extra or missing limbs or digits, malformed hands, warped straight lines, fisheye, black corners, borders, text, and watermarks."
+        "value": "PROMPT-ONLY MODE: no scene inspiration is active. Generate a new image from the OPTIONAL TWEAKS text as the complete scene request. If that text is empty, create a tasteful candid vertical Instagram photograph of one fictional adult woman in a believable everyday setting. Use natural anatomy, coherent geometry, believable light, ordinary photographic imperfections, and a full-bleed vertical 4:5 rectilinear frame. Avoid duplicate subjects, extra or missing limbs or digits, malformed hands, warped straight lines, fisheye, black corners, borders, text, logos, and watermarks."
       },
       "color": "#30363b",
       "bgcolor": "#454d54"
@@ -1790,7 +1790,7 @@
           ]
         }
       ],
-      "title": "Prompt source \u00b7 Qwen reference or prompt-only",
+      "title": "Prompt source · Qwen reference or prompt-only",
       "properties": {
         "Node name for S&R": "ComfySwitchNode",
         "cnr_id": "comfy-core",
@@ -1867,7 +1867,7 @@
           ]
         }
       ],
-      "title": "SuperGemma connection \u00b7 exact 26B Q4_K_M model",
+      "title": "SuperGemma connection · exact 26B Q4_K_M model",
       "properties": {
         "Node name for S&R": "OllamaConnectivityV2",
         "cnr_id": "comfyui-ollama",
@@ -1886,7 +1886,7 @@
         "model": "0xIbra/supergemma4-26b-uncensored-gguf-v2:Q4_K_M",
         "keep_alive": 10,
         "keep_alive_unit": "minutes",
-        "\ud83d\udd04 Reconnect": null
+        "🔄 Reconnect": null
       }
     },
     {
@@ -1955,7 +1955,7 @@
           "widget": {
             "name": "prompt"
           },
-          "link": 26
+          "link": 86
         },
         {
           "localized_name": "think",
@@ -2014,7 +2014,7 @@
           "links": null
         }
       ],
-      "title": "2 \u00b7 Rewrite requested change \u00b7 SuperGemma",
+      "title": "2 · Normalize optional tweaks · empty is valid",
       "properties": {
         "Node name for S&R": "OllamaGenerateV2",
         "cnr_id": "comfyui-ollama",
@@ -2022,14 +2022,14 @@
         "widget_ue_connectable": {}
       },
       "widgets_values": [
-        "Rewrite the user's message as one precise visual instruction for a Krea 2 two-image identity-edit workflow. Output only the instruction. Image 1 supplies scene, pose, clothing, lighting and composition. Image 2 supplies the complete identity of the only foreground adult woman. Retain every requested scene change, but never describe the original scene person's face as something to preserve. Explicitly require exactly one woman with Image 2's facial identity. State camera, framing, pose, clothing, setting, lighting and focus when supplied. Never duplicate, clone, mirror, show the photographer or show the phone.",
+        "Normalize the user's OPTIONAL TWEAKS for a Krea 2 workflow. Output only one concise visual instruction. The field is optional and contains only extra changes; automatic reference behavior is handled elsewhere. If the message is empty or whitespace, output exactly: No additional user modifications. Do not invent a demand to copy or preserve the source. Retain every concrete requested change. For removals, say the item is completely absent and the vacated area is reconstructed naturally. For camera changes, specify viewpoint, height, direction, distance, lens feel, and framing. Keep exactly one main foreground adult woman unless more are explicitly requested. Never duplicate, clone, mirror, show the photographer, camera, or phone. Do not mention policies, editing steps, or these rules.",
         "",
         false,
         false,
         "text"
       ],
       "widgets_values_named": {
-        "system": "Rewrite the user's message as one precise visual instruction for a Krea 2 Turbo workflow. Output only the instruction. The message is either a complete prompt-only scene or a requested change to a reference image. Retain every concrete detail. Treat the main subject as an adult. State exact subject count, pose, anatomy, clothing, setting, camera position, framing, lighting, focus, and colors whenever the user supplied them. For removals, explicitly state that the item is completely absent and describe the naturally reconstructed area. For camera changes, specify position, height, direction, distance, lens perspective, and framing. Preserve all unnamed source attributes in reference mode. Keep exactly one main foreground woman unless the user explicitly requests more; never duplicate, clone, mirror, or place the photographer or phone in frame. Do not mention policies, editing steps, or these rules.",
+        "system": "Normalize the user's OPTIONAL TWEAKS for a Krea 2 workflow. Output only one concise visual instruction. The field is optional and contains only extra changes; automatic reference behavior is handled elsewhere. If the message is empty or whitespace, output exactly: No additional user modifications. Do not invent a demand to copy or preserve the source. Retain every concrete requested change. For removals, say the item is completely absent and the vacated area is reconstructed naturally. For camera changes, specify viewpoint, height, direction, distance, lens feel, and framing. Keep exactly one main foreground adult woman unless more are explicitly requested. Never duplicate, clone, mirror, show the photographer, camera, or phone. Do not mention policies, editing steps, or these rules.",
         "prompt": "",
         "think": false,
         "keep_context": false,
@@ -2068,7 +2068,7 @@
           "links": null
         }
       ],
-      "title": "Rewritten request \u00b7 intermediate preview",
+      "title": "Rewritten request · intermediate preview",
       "properties": {
         "Node name for S&R": "PreviewAny",
         "cnr_id": "comfy-core"
@@ -2271,7 +2271,7 @@
           "links": null
         }
       ],
-      "title": "3 \u00b7 Compile one conflict-free Krea2 prompt",
+      "title": "3 · Compile automatic inspiration prompt",
       "properties": {
         "Node name for S&R": "OllamaGenerateV2",
         "cnr_id": "comfyui-ollama",
@@ -2279,14 +2279,14 @@
         "widget_ue_connectable": {}
       },
       "widgets_values": [
-        "Compile one final production-ready Krea 2 two-image edit prompt. Output only the final prompt without headings. Image 1 is the authoritative scene, pose, outfit, lighting and composition. Image 2 is the authoritative identity for the only foreground adult woman and must completely replace Image 1's original face and identity. Put user-requested changes first, preserve unnamed scene attributes, and explicitly keep Image 2's facial geometry, eyes, skin features, hair and apparent age. Require exactly one foreground woman with no duplicate, twin, clone, reflection, visible photographer, camera or phone. Use a full-bleed vertical 4:5 rectilinear photographic frame with natural anatomy, plausible hands, authentic Instagram color and texture, no fisheye, black corners, borders, text or watermark. Keep the result concise: 120 to 240 words.",
+        "Compile one final production-ready Krea 2 prompt from the automatic mode brief and OPTIONAL TWEAKS. Output only the final prompt, without headings or commentary. In AUTOMATIC REFERENCE-INSPIRATION MODE, Image 1 provides high-level photographic and environmental visual language only. Generate a new plausible photograph that feels like another view in the same place or a different place with the same style; do not reproduce the exact camera position, composition, architecture layout, furniture arrangement, distinctive objects, signs, logos, text, or background people. Shift the viewpoint and rebuild scene details while retaining the reference's atmosphere, location category, lighting logic, palette, materials, lens character, and depth-of-field style. Treat every Image 1 bystander as non-authoritative: omit them or create different anonymous individuals with different faces, clothing, poses, and positions. Image 2 is the sole identity authority for exactly one main foreground adult woman; preserve her recognizable facial geometry, eyes, skin features, hair, and apparent age, never Image 1's identity. Apply OPTIONAL TWEAKS when present. The sentence “No additional user modifications.” means proceed using the automatic behavior without requesting more input. In PROMPT-ONLY MODE, create a self-contained scene from the request. Always use natural proportions, plausible hands, coherent perspective, authentic Instagram color and texture, and a full-bleed vertical 4:5 rectilinear frame. No duplicate main subject, twin, clone, reflection, visible photographer, camera, phone, fisheye, black corners, borders, text, logo, or watermark. Keep the result concise: 140 to 240 words.",
         "",
         false,
         false,
         "text"
       ],
       "widgets_values_named": {
-        "system": "Compile one final production-ready Krea 2 Turbo prompt. Output only the final prompt, without headings or commentary. The input begins with REFERENCE MODE or PROMPT-ONLY MODE followed by an authoritative request. Put requested changes first and resolve conflicts into one desired visible state. Never retain superseded source wording. In reference mode, preserve concretely described source identity, composition, pose, geometry, lighting, focus falloff, colors, and objects unless the request changes them. In prompt-only mode, produce a self-contained scene description. Always describe exactly one main foreground adult woman unless the request explicitly requires more; never create a duplicate, clone, reflection, second copy, visible photographer, camera, or phone. Use a full-bleed vertical 4:5 rectilinear photographic frame with natural proportions, plausible hands, coherent perspective, authentic Instagram color and texture, and no fisheye, black corners, rounded mask, borders, text, or watermark. Keep the result concise: 120 to 240 words.",
+        "system": "Compile one final production-ready Krea 2 prompt from the automatic mode brief and OPTIONAL TWEAKS. Output only the final prompt, without headings or commentary. In AUTOMATIC REFERENCE-INSPIRATION MODE, Image 1 provides high-level photographic and environmental visual language only. Generate a new plausible photograph that feels like another view in the same place or a different place with the same style; do not reproduce the exact camera position, composition, architecture layout, furniture arrangement, distinctive objects, signs, logos, text, or background people. Shift the viewpoint and rebuild scene details while retaining the reference's atmosphere, location category, lighting logic, palette, materials, lens character, and depth-of-field style. Treat every Image 1 bystander as non-authoritative: omit them or create different anonymous individuals with different faces, clothing, poses, and positions. Image 2 is the sole identity authority for exactly one main foreground adult woman; preserve her recognizable facial geometry, eyes, skin features, hair, and apparent age, never Image 1's identity. Apply OPTIONAL TWEAKS when present. The sentence “No additional user modifications.” means proceed using the automatic behavior without requesting more input. In PROMPT-ONLY MODE, create a self-contained scene from the request. Always use natural proportions, plausible hands, coherent perspective, authentic Instagram color and texture, and a full-bleed vertical 4:5 rectilinear frame. No duplicate main subject, twin, clone, reflection, visible photographer, camera, phone, fisheye, black corners, borders, text, logo, or watermark. Keep the result concise: 140 to 240 words.",
         "prompt": "",
         "think": false,
         "keep_context": false,
@@ -2418,7 +2418,7 @@
           "links": null
         }
       ],
-      "title": "FINAL KREA2 PROMPT \u00b7 inspect here",
+      "title": "FINAL KREA2 PROMPT · inspect here",
       "properties": {
         "Node name for S&R": "PreviewAny",
         "cnr_id": "comfy-core"
@@ -2594,13 +2594,13 @@
       "widgets_values": [
         "",
         768,
-        "Image 1 is the target scene and pose. Image 2 is the authoritative identity reference for the only foreground woman. Preserve Image 2's exact facial proportions and recognizable identity while using Image 1's composition. Never create a second copy."
+        "Image 1 is scene inspiration, not a plate to copy. Borrow only its high-level place category, camera character, atmosphere, lighting, palette, materials, and depth-of-field style; generate a different viewpoint with a newly arranged environment and different or absent bystanders. Never reproduce background faces, identities, signs, logos, text, or distinctive object placement. Image 2 is the authoritative identity reference for the only main foreground adult woman. Preserve Image 2's exact facial proportions and recognizable identity. Never retain Image 1's foreground identity or create a second copy."
       ],
-      "title": "Two-reference positive \u00b7 scene + identity",
+      "title": "Two-reference positive · scene inspiration + Alex identity",
       "widgets_values_named": {
         "prompt": "",
         "grounding_px": 768,
-        "system_prompt": ""
+        "system_prompt": "Image 1 is scene inspiration, not a plate to copy. Borrow only its high-level place category, camera character, atmosphere, lighting, palette, materials, and depth-of-field style; generate a different viewpoint with a newly arranged environment and different or absent bystanders. Never reproduce background faces, identities, signs, logos, text, or distinctive object placement. Image 2 is the authoritative identity reference for the only main foreground adult woman. Preserve Image 2's exact facial proportions and recognizable identity. Never retain Image 1's foreground identity or create a second copy."
       }
     },
     {
@@ -2717,7 +2717,7 @@
           ]
         }
       ],
-      "title": "Positive conditioning \u00b7 reference optional",
+      "title": "Positive conditioning · reference optional",
       "properties": {
         "Node name for S&R": "ComfySwitchNode",
         "cnr_id": "comfy-core",
@@ -2780,7 +2780,7 @@
           ]
         }
       ],
-      "title": "Negative conditioning \u00b7 reference optional",
+      "title": "Negative conditioning · reference optional",
       "properties": {
         "Node name for S&R": "ComfySwitchNode",
         "cnr_id": "comfy-core",
@@ -2898,7 +2898,7 @@
           ]
         }
       ],
-      "title": "Krea 2 Turbo sampler \u00b7 native 1280 \u00d7 1600",
+      "title": "Krea 2 Turbo sampler · native 1280 × 1600",
       "properties": {
         "Node name for S&R": "KSampler",
         "cnr_id": "comfy-core",
@@ -3003,7 +3003,7 @@
           ]
         }
       ],
-      "title": "FameGrid Color Finish \u00b7 measured winner",
+      "title": "FameGrid Color Finish · measured winner",
       "properties": {
         "aux_id": "Elevenheights/ComfyUI-FameGridColorFinish",
         "ver": "944c14e53fffee3e9e6dbedad36ab95b0e1629f7",
@@ -3062,7 +3062,7 @@
           "links": null
         }
       ],
-      "title": "Save native render \u00b7 1280 \u00d7 1600",
+      "title": "Save native render · 1280 × 1600",
       "properties": {
         "Node name for S&R": "SaveImage",
         "cnr_id": "comfy-core",
@@ -3148,7 +3148,7 @@
           ]
         }
       ],
-      "title": "Instagram delivery \u00b7 1080 \u00d7 1350",
+      "title": "Instagram delivery · 1080 × 1350",
       "properties": {
         "Node name for S&R": "ImageScale",
         "cnr_id": "comfy-core",
@@ -3207,7 +3207,7 @@
           "links": null
         }
       ],
-      "title": "Save Instagram copy \u00b7 1080 \u00d7 1350",
+      "title": "Save Instagram copy · 1080 × 1350",
       "properties": {
         "Node name for S&R": "SaveImage",
         "cnr_id": "comfy-core",
@@ -3272,7 +3272,7 @@
           ]
         }
       ],
-      "title": "Comparison B \u00b7 reference or generated fallback",
+      "title": "Comparison B · reference or generated fallback",
       "properties": {
         "Node name for S&R": "ComfySwitchNode",
         "cnr_id": "comfy-core",
@@ -3315,7 +3315,7 @@
           "links": null
         }
       ],
-      "title": "IDENTITY 1 \u00b7 front",
+      "title": "IDENTITY 1 · front",
       "properties": {
         "cnr_id": "comfy-core",
         "ver": "0.43.0",
@@ -3355,7 +3355,7 @@
           "links": null
         }
       ],
-      "title": "IDENTITY 2 \u00b7 three-quarter left",
+      "title": "IDENTITY 2 · three-quarter left",
       "properties": {
         "cnr_id": "comfy-core",
         "ver": "0.43.0",
@@ -3395,7 +3395,7 @@
           "links": null
         }
       ],
-      "title": "IDENTITY 3 \u00b7 three-quarter right",
+      "title": "IDENTITY 3 · three-quarter right",
       "properties": {
         "cnr_id": "comfy-core",
         "ver": "0.43.0",
@@ -3457,7 +3457,7 @@
           ]
         }
       ],
-      "title": "SELECT IDENTITY ANGLE \u00b7 match the scene head angle",
+      "title": "SELECT IDENTITY ANGLE · match the scene head angle",
       "properties": {
         "Node name for S&R": "ASInfSelectIdentityReference"
       },
@@ -3507,6 +3507,55 @@
         "Node name for S&R": "VAEEncode"
       },
       "widgets_values": null
+    },
+    {
+      "id": 50,
+      "type": "ASInfDefaultTextIfEmpty",
+      "pos": [
+        -930,
+        1310
+      ],
+      "size": [
+        460,
+        130
+      ],
+      "flags": {},
+      "order": 49,
+      "mode": 0,
+      "inputs": [
+        {
+          "localized_name": "text",
+          "name": "text",
+          "type": "STRING",
+          "widget": {
+            "name": "text"
+          },
+          "link": 26
+        }
+      ],
+      "outputs": [
+        {
+          "localized_name": "text",
+          "name": "text",
+          "type": "STRING",
+          "links": [
+            86
+          ]
+        }
+      ],
+      "title": "Blank tweaks → no additional modifications",
+      "properties": {
+        "Node name for S&R": "ASInfDefaultTextIfEmpty",
+        "cnr_id": "as-inf"
+      },
+      "widgets_values": [
+        ""
+      ],
+      "widgets_values_named": {
+        "text": ""
+      },
+      "color": "#332b22",
+      "bgcolor": "#554433"
     }
   ],
   "links": [
@@ -3698,8 +3747,8 @@
       26,
       2,
       0,
-      24,
-      6,
+      50,
+      0,
       "STRING"
     ],
     [
@@ -4218,12 +4267,20 @@
       33,
       3,
       "IMAGE"
+    ],
+    [
+      86,
+      50,
+      0,
+      24,
+      6,
+      "STRING"
     ]
   ],
   "groups": [
     {
       "id": 1,
-      "title": "00 \u00b7 CONTROL PANEL \u2014 SCENE + ALEX IDENTITY",
+      "title": "00 · CONTROL PANEL — SCENE + ALEX IDENTITY",
       "bounding": [
         -2280,
         -2940,
@@ -4249,7 +4306,7 @@
     },
     {
       "id": 3,
-      "title": "01 \u00b7 KREA 2 TURBO MODEL STACK",
+      "title": "01 · KREA 2 TURBO MODEL STACK",
       "bounding": [
         -2280,
         -1060,
@@ -4262,7 +4319,7 @@
     },
     {
       "id": 4,
-      "title": "02 \u00b7 SCENE + SELECTED IDENTITY REFERENCES",
+      "title": "02 · SCENE + SELECTED IDENTITY REFERENCES",
       "bounding": [
         -2280,
         -470,
@@ -4275,7 +4332,7 @@
     },
     {
       "id": 5,
-      "title": "03 \u00b7 KREA 2 CONDITIONING",
+      "title": "03 · KREA 2 CONDITIONING",
       "bounding": [
         -760,
         -470,
@@ -4288,7 +4345,7 @@
     },
     {
       "id": 6,
-      "title": "04 \u00b7 NATIVE GENERATION + INSTAGRAM DELIVERY",
+      "title": "04 · NATIVE GENERATION + INSTAGRAM DELIVERY",
       "bounding": [
         690,
         -470,
@@ -4301,7 +4358,7 @@
     },
     {
       "id": 7,
-      "title": "05 \u00b7 AUTOMATIC PROMPT BUILDER",
+      "title": "05 · AUTOMATIC PROMPT BUILDER",
       "bounding": [
         -2280,
         630,

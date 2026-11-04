@@ -9,6 +9,18 @@ path:
    person beside the target, with identity reference boost 1.5.
 4. Grounded Qwen3-VL conditioning receives the same scene/identity ordering.
 
+The scene is an inspiration source rather than a reconstruction target. Qwen
+extracts its location category, camera character, atmosphere, lighting, palette,
+materials, and depth-of-field style while excluding exact layouts, distinctive
+objects, signage, and background identities. The final prompt asks Krea2 for a
+different plausible view with rebuilt scene details. Scene reference boost is
+0.7 while the selected Alex identity remains stronger at 1.5.
+
+The control-panel text field is **OPTIONAL TWEAKS**. It can remain completely
+empty when a scene reference is selected; the workflow then generates the
+related-but-new scene automatically. Text entered there is applied only as an
+additional change, such as clothing, pose, weather, or camera direction.
+
 The control panel displays front, three-quarter-left, and
 three-quarter-right Alex photographs. `ASInfSelectIdentityReference` forwards
 exactly one. Choose the view closest to the scene subject's head angle.
@@ -40,3 +52,12 @@ completed successfully and produced exactly one subject while retaining the
 scene and transferring Alex's fair freckled skin, blue-green eyes, facial
 geometry, and hair. The saved proof image is
 `research-results/krea2_scene_identity/final_selector_validation_00001_.png`.
+
+The automatic inspiration path was validated on 2026-11-04 with a scene image
+and a completely empty OPTIONAL TWEAKS field. The blank-input guard emitted the
+internal no-modifications sentinel, Qwen/SuperGemma built a complete prompt,
+and Krea2 produced a different golden-hour street-cafe view with a changed
+camera angle, pose, architecture, object layout, light, and anonymous
+background person. It retained the broad cafe/Instagram visual language rather
+than tracing the source. The reduced-resolution proof is
+`research-results/krea2_scene_identity/automatic_inspiration_empty_text_validation.png`.

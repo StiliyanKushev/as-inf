@@ -264,6 +264,40 @@ class PrependLoraTriggers:
         return ("\n\n".join(parts),)
 
 
+class DefaultTextIfEmpty:
+    """Replace a blank optional instruction with a stable internal sentinel.
+
+    Ollama treats a literally empty user prompt as a request with no generation
+    and can return an empty response without consulting the system prompt. This
+    node keeps the visible user field optional while ensuring the downstream
+    prompt-rewriter always receives a meaningful request.
+    """
+
+    FALLBACK = "No additional user modifications."
+
+    @classmethod
+    def INPUT_TYPES(cls):
+        return {
+            "required": {
+                "text": ("STRING", {"default": "", "multiline": True}),
+            }
+        }
+
+    RETURN_TYPES = ("STRING",)
+    RETURN_NAMES = ("text",)
+    FUNCTION = "apply"
+    CATEGORY = "AS-INF/text"
+    DESCRIPTION = (
+        "Passes non-empty optional tweaks through unchanged; converts blank "
+        "input to an internal no-modifications sentinel."
+    )
+
+    @classmethod
+    def apply(cls, text):
+        value = str(text).strip()
+        return (value if value else cls.FALLBACK,)
+
+
 class SamplerSettings:
     """Expose sampling and batch controls used by the synchronized passes.
 
@@ -359,6 +393,7 @@ NODE_CLASS_MAPPINGS = {
     "ASInfOptionalReferenceCrop4x5": OptionalReferenceCrop4x5,
     "ASInfLoraLoaderModelOnlyWithTrigger": LoraLoaderModelOnlyWithTrigger,
     "ASInfPrependLoraTriggers": PrependLoraTriggers,
+    "ASInfDefaultTextIfEmpty": DefaultTextIfEmpty,
     "ASInfSamplerSettings": SamplerSettings,
     "ASInfSelectIdentityReference": SelectIdentityReference,
 }
@@ -368,6 +403,7 @@ NODE_DISPLAY_NAME_MAPPINGS = {
     "ASInfOptionalReferenceCrop4x5": "Optional Reference + Fixed 4:5 Crop",
     "ASInfLoraLoaderModelOnlyWithTrigger": "LoRA Loader + Conditional Trigger",
     "ASInfPrependLoraTriggers": "Prepend Active LoRA Triggers",
+    "ASInfDefaultTextIfEmpty": "Optional Text · Blank Is No Changes",
     "ASInfSamplerSettings": "Sampler Settings",
     "ASInfSelectIdentityReference": "Select Identity Reference",
 }
