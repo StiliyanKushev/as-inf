@@ -1,5 +1,5 @@
 diff --git a/__init__.py b/__init__.py
-index e924efb..e31a852 100644
+index e924efb..a4a16fc 100644
 --- a/__init__.py
 +++ b/__init__.py
 @@ -53 +53,7 @@ def _imgids_offset(bs, frame, gh, gw, th, tw, device):
@@ -11,105 +11,25 @@ index e924efb..e31a852 100644
 +    "beside (right of target)",
 +    "bag of features",
 +]
-@@ -58,0 +65,3 @@ def _place_refs(ref_ids, modes, h_, w_):
-+    balanced modes are expanded into weighted aligned + beside copies before
-+    this helper is called.  Keeping the blend in attention space avoids the
-+    hard vertical boundary produced by partially overlapping coordinate grids.
-@@ -83,0 +93,15 @@ def _place_refs(ref_ids, modes, h_, w_):
-+def _placement_mix(mode):
-+    """Turn a user-facing balanced mode into a seamless positional mixture.
-+
-+    A literal 75% spatial overlap creates a discontinuity at x=25% of the
-+    target.  Duplicating the clean reference tokens and weighting their
-+    aligned/beside attention keeps the mixture spatially uniform instead.
-+    Legacy mode strings are retained so saved workflows continue to load.
-+    """
-+    if mode.startswith("balanced (75%"):
-+        return [("aligned (trained)", 0.75), ("beside (right of target)", 0.25)]
-+    if mode.startswith("balanced"):
-+        return [("aligned (trained)", 0.50), ("beside (right of target)", 0.50)]
-+    return [(mode, 1.0)]
-+
-+
-@@ -170 +194,2 @@ def _fit_encode_image(image, vae, H, W, cache, key, fit_mode="crop"):
--def _ref_attn_bias(boosts, boost_mask, txtlen, slens, tgtlen, mask_hw, device, dtype):
-+def _ref_attn_bias(boosts, mix_weights, boost_mask, mask_refs,
-+                   txtlen, slens, tgtlen, mask_hw, device, dtype):
-@@ -173,5 +198,5 @@ def _ref_attn_bias(boosts, boost_mask, txtlen, slens, tgtlen, mask_hw, device, d
--    boosts: per-ref factor on target->ref attention, aligned with the source blocks
--    (last entry = last ref = the subject by workflow convention). Equivalent to
--    multiplying those keys' post-softmax attention weight before renormalization.
--    boost_mask (ComfyUI MASK, ref-image pixel space) restricts the LAST ref's boost
--    to a region (e.g. the face).
-+    boosts: per-original-ref factor on target->ref attention.
-+    mix_weights: per-expanded-block share.  Two copies weighted .75/.25 have
-+    the same total reference mass as one ordinary block, but different RoPE
-+    placements.  boost_mask restricts the user boost (not the mixture weight)
-+    to blocks copied from the last original reference.
-@@ -179 +203,0 @@ def _ref_attn_bias(boosts, boost_mask, txtlen, slens, tgtlen, mask_hw, device, d
--    nsrc = len(slens)
-@@ -186 +210,5 @@ def _ref_attn_bias(boosts, boost_mask, txtlen, slens, tgtlen, mask_hw, device, d
--    for i, b in enumerate(boosts):
-+    for i, (b, mix_weight) in enumerate(zip(boosts, mix_weights)):
-+        off, sl = offs[i], slens[i]
-+        all_cols = torch.arange(off, off + sl, device=device)
-+        if mix_weight != 1.0:
-+            bias[:, :, rows0:, all_cols] += math.log(max(mix_weight, 1e-4))
-@@ -189,2 +217 @@ def _ref_attn_bias(boosts, boost_mask, txtlen, slens, tgtlen, mask_hw, device, d
--        off, sl = offs[i], slens[i]
--        if boost_mask is not None and i == nsrc - 1 and mask_hw is not None:
-+        if boost_mask is not None and mask_refs[i] and mask_hw is not None:
-@@ -197,2 +224,2 @@ def _ref_attn_bias(boosts, boost_mask, txtlen, slens, tgtlen, mask_hw, device, d
--            cols = torch.arange(off, off + sl, device=device)
--        bias[:, :, rows0:, cols] = math.log(max(b, 1e-4))
-+            cols = all_cols
-+        bias[:, :, rows0:, cols] += math.log(max(b, 1e-4))
-@@ -254,4 +281,3 @@ def krea2_edit_forward(m, x, timesteps, context, src_latent, transformer_options
--    srclen = sum(si.shape[1] for si in src_imgs)
--    combined = torch.cat([context] + src_imgs + [tgt_img], dim=1)  # [text | refs... | target]
--
--    device = combined.device
-+    device = tgt_img.device
-+    original_modes = [ref_position_a] * (len(src_imgs) - 1) + [ref_position]
-+    original_boosts = [ref_boost_a] * (len(src_imgs) - 1) + [ref_boost]
-@@ -260,2 +286,2 @@ def krea2_edit_forward(m, x, timesteps, context, src_latent, transformer_options
--        ref_ids = [_imgids_offset(bs, i + 1, gh, gw, h_, w_, device)
--                   for i, (gh, gw) in enumerate(src_grids)]
-+        original_ids = [_imgids_offset(bs, i + 1, gh, gw, h_, w_, device)
-+                        for i, (gh, gw) in enumerate(src_grids)]
-@@ -263,4 +289,23 @@ def krea2_edit_forward(m, x, timesteps, context, src_latent, transformer_options
--        ref_ids = [_imgids(bs, i + 1, gh, gw, device) for i, (gh, gw) in enumerate(src_grids)]
--    # per-ref placement, same convention as ref_boost/ref_boost_a: last ref = subject (ref_position),
--    # earlier refs = scene (ref_position_a)
--    ref_ids = _place_refs(ref_ids, [ref_position_a] * (len(ref_ids) - 1) + [ref_position], h_, w_)
-+        original_ids = [_imgids(bs, i + 1, gh, gw, device)
-+                        for i, (gh, gw) in enumerate(src_grids)]
-+
-+    # Expand only balanced references.  Both copies retain the same frame id
-+    # (they are two positional views of one image, not two different subjects).
-+    expanded_imgs, expanded_ids, expanded_modes = [], [], []
-+    expanded_boosts, mix_weights, expanded_grids, mask_refs = [], [], [], []
-+    for i, (img, ids, grid, mode, boost) in enumerate(zip(
-+            src_imgs, original_ids, src_grids, original_modes, original_boosts)):
-+        for placement, weight in _placement_mix(mode):
-+            expanded_imgs.append(img)
-+            expanded_ids.append(ids)
-+            expanded_modes.append(placement)
-+            expanded_boosts.append(boost)
-+            mix_weights.append(weight)
-+            expanded_grids.append(grid)
-+            mask_refs.append(i == len(src_imgs) - 1)
-+
-+    src_imgs = expanded_imgs
-+    src_grids = expanded_grids
-+    ref_ids = _place_refs(expanded_ids, expanded_modes, h_, w_)
-+    srclen = sum(si.shape[1] for si in src_imgs)
-+    combined = torch.cat([context] + src_imgs + [tgt_img], dim=1)  # [text | refs... | target]
-@@ -275,4 +320,3 @@ def krea2_edit_forward(m, x, timesteps, context, src_latent, transformer_options
--    if ref_boost != 1.0 or ref_boost_a != 1.0:
--        # last ref = subject (single-ref: the only ref); earlier refs (scene) get ref_boost_a
--        boosts = [ref_boost_a] * (len(src_imgs) - 1) + [ref_boost]
--        attn_bias = _ref_attn_bias(boosts, ref_boost_mask, txtlen,
-+    if any(b != 1.0 for b in expanded_boosts) or any(w != 1.0 for w in mix_weights):
-+        attn_bias = _ref_attn_bias(expanded_boosts, mix_weights,
-+                                   ref_boost_mask, mask_refs, txtlen,
+@@ -58,0 +65,2 @@ def _place_refs(ref_ids, modes, h_, w_):
++    balanced: keep a uniformly distributed subset of tokens aligned and move
++              the remainder beside the canvas. This creates no internal edge.
+@@ -72 +80,17 @@ def _place_refs(ref_ids, modes, h_, w_):
+-        if mode.startswith("beside"):
++        if mode.startswith("balanced"):
++            # Token sequences are flattened row-major. Release positions using
++            # a deterministic lattice spanning the whole reference rather than
++            # one contiguous strip. 75% releases one token per 4x4 row/column
++            # permutation; 50% uses a checkerboard.
++            first_y = ids[0, 0, 1]
++            gw = int((ids[0, :, 1] == first_y).sum().item())
++            flat = torch.arange(ids.shape[1], device=ids.device)
++            row, col = flat // gw, flat % gw
++            if mode.startswith("balanced (75%"):
++                detached = (col.remainder(4) == (3 * row.remainder(4) + 1).remainder(4))
++            else:
++                detached = (row + col).remainder(2) == 1
++            local_x = ids[:, detached, 2] - ids[..., 2].min()
++            ids[:, detached, 2] = local_x + x0
++            x0 = max(x0, float(ids[:, detached, 2].max()) + 1.0)
++        elif mode.startswith("beside"):

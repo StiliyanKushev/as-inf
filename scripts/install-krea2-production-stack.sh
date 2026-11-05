@@ -72,7 +72,7 @@ git -C "$COMFY_DIR" checkout --detach "$COMFY_REV"
 install_node comfyui-krea2edit \
   https://github.com/lbouaraba/comfyui-krea2edit.git \
   13ef60f20828949becada815d3cbc371eb5ccaab
-# Add the repository-versioned seamless attention mixture used by the production
+# Add the repository-versioned distributed reference grid used by the production
 # workflow. The pinned upstream node provides only fully aligned or fully beside.
 # The patch is stored without context-only blank lines so the repository itself
 # stays whitespace-clean; --unidiff-zero is therefore required for apply/check.

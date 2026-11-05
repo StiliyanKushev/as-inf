@@ -35,13 +35,13 @@ The saved production defaults now use:
 
 - `Inspired — beside`: fresh latent at denoise 1.0 with detached reference
   coordinates, producing a related new photograph
-- `Balanced — partial alignment`: fresh latent at denoise 1.0 with a seamless
-  50/50 attention mixture of aligned and beside positional views; this is the
-  saved default between Inspired and Close
-- `Balanced 75% — stronger alignment`: uses a seamless 75/25 attention mixture
-  of aligned and beside positional views. It stays closer to Close while still
-  allowing more scene variation. Both views affect the entire canvas, so there
-  is no boundary where one positional treatment begins.
+- `Balanced — partial alignment`: fresh latent at denoise 1.0 with half of the
+  reference token positions aligned in a distributed checkerboard and half
+  detached; this is the saved default between Inspired and Close
+- `Balanced 75% — stronger alignment`: keeps three quarters of reference token
+  positions aligned and detaches one quarter using a staggered 4x4 lattice.
+  Released positions are distributed over the entire canvas, so there is no
+  boundary where one positional treatment begins.
 - `Close — aligned`: fresh latent at denoise 1.0 with reference and target
   coordinates aligned, preserving composition and pose more closely
 - `Pixel-preserving — aligned + low denoise`: starts from the VAE-encoded
