@@ -1,8 +1,8 @@
 {
   "id": "f89a75cc-81dc-4d09-98e3-efd7552cf848",
   "revision": 0,
-  "last_node_id": 57,
-  "last_link_id": 105,
+  "last_node_id": 67,
+  "last_link_id": 136,
   "nodes": [
     {
       "id": 1,
@@ -54,7 +54,8 @@
             68,
             103,
             104,
-            105
+            105,
+            136
           ]
         }
       ],
@@ -270,14 +271,16 @@
           "name": "STEPS",
           "type": "INT",
           "links": [
-            56
+            56,
+            125
           ]
         },
         {
           "name": "CFG",
           "type": "FLOAT",
           "links": [
-            57
+            57,
+            126
           ]
         },
         {
@@ -349,7 +352,8 @@
             "res_2m"
           ],
           "links": [
-            58
+            58,
+            127
           ]
         },
         {
@@ -368,7 +372,8 @@
             "beta57"
           ],
           "links": [
-            59
+            59,
+            128
           ]
         },
         {
@@ -430,7 +435,8 @@
           "name": "INT",
           "type": "INT",
           "links": [
-            55
+            55,
+            124
           ]
         }
       ],
@@ -673,7 +679,8 @@
           "type": "MODEL",
           "links": [
             75,
-            91
+            91,
+            110
           ]
         },
         {
@@ -799,7 +806,9 @@
             40,
             43,
             98,
-            101
+            101,
+            115,
+            118
           ]
         }
       ],
@@ -849,7 +858,10 @@
             15,
             61,
             81,
-            93
+            93,
+            109,
+            112,
+            130
           ]
         }
       ],
@@ -939,7 +951,8 @@
             16,
             18,
             42,
-            44
+            44,
+            106
           ]
         }
       ],
@@ -1069,7 +1082,9 @@
           "links": [
             17,
             54,
-            95
+            95,
+            114,
+            123
           ]
         }
       ],
@@ -2511,7 +2526,12 @@
           "name": "IMAGE",
           "type": "IMAGE",
           "links": [
-            62
+            108,
+            113,
+            117,
+            119,
+            131,
+            134
           ]
         }
       ],
@@ -3381,6 +3401,936 @@
       },
       "color": "#30363b",
       "bgcolor": "#454d54"
+    },
+    {
+      "id": 19,
+      "type": "AILab_QwenVL_Advanced",
+      "pos": [
+        300,
+        1860
+      ],
+      "size": [
+        560,
+        560
+      ],
+      "flags": {},
+      "order": 57,
+      "mode": 0,
+      "inputs": [
+        {
+          "localized_name": "image",
+          "name": "image",
+          "shape": 7,
+          "type": "IMAGE",
+          "link": 106
+        },
+        {
+          "localized_name": "video",
+          "name": "video",
+          "shape": 7,
+          "type": "IMAGE",
+          "link": null
+        },
+        {
+          "localized_name": "model_name",
+          "name": "model_name",
+          "type": "COMBO",
+          "widget": {
+            "name": "model_name"
+          },
+          "link": null
+        },
+        {
+          "localized_name": "quantization",
+          "name": "quantization",
+          "type": "COMBO",
+          "widget": {
+            "name": "quantization"
+          },
+          "link": null
+        },
+        {
+          "localized_name": "attention_mode",
+          "name": "attention_mode",
+          "type": "COMBO",
+          "widget": {
+            "name": "attention_mode"
+          },
+          "link": null
+        },
+        {
+          "localized_name": "use_torch_compile",
+          "name": "use_torch_compile",
+          "type": "BOOLEAN",
+          "widget": {
+            "name": "use_torch_compile"
+          },
+          "link": null
+        },
+        {
+          "localized_name": "device",
+          "name": "device",
+          "type": "COMBO",
+          "widget": {
+            "name": "device"
+          },
+          "link": null
+        },
+        {
+          "localized_name": "preset_prompt",
+          "name": "preset_prompt",
+          "type": "COMBO",
+          "widget": {
+            "name": "preset_prompt"
+          },
+          "link": null
+        },
+        {
+          "localized_name": "custom_prompt",
+          "name": "custom_prompt",
+          "type": "STRING",
+          "widget": {
+            "name": "custom_prompt"
+          },
+          "link": null
+        },
+        {
+          "localized_name": "max_tokens",
+          "name": "max_tokens",
+          "type": "INT",
+          "widget": {
+            "name": "max_tokens"
+          },
+          "link": null
+        },
+        {
+          "localized_name": "temperature",
+          "name": "temperature",
+          "type": "FLOAT",
+          "widget": {
+            "name": "temperature"
+          },
+          "link": null
+        },
+        {
+          "localized_name": "top_p",
+          "name": "top_p",
+          "type": "FLOAT",
+          "widget": {
+            "name": "top_p"
+          },
+          "link": null
+        },
+        {
+          "localized_name": "num_beams",
+          "name": "num_beams",
+          "type": "INT",
+          "widget": {
+            "name": "num_beams"
+          },
+          "link": null
+        },
+        {
+          "localized_name": "repetition_penalty",
+          "name": "repetition_penalty",
+          "type": "FLOAT",
+          "widget": {
+            "name": "repetition_penalty"
+          },
+          "link": null
+        },
+        {
+          "localized_name": "frame_count",
+          "name": "frame_count",
+          "type": "INT",
+          "widget": {
+            "name": "frame_count"
+          },
+          "link": null
+        },
+        {
+          "localized_name": "video_frame_size",
+          "name": "video_frame_size",
+          "type": "COMBO",
+          "widget": {
+            "name": "video_frame_size"
+          },
+          "link": null
+        },
+        {
+          "localized_name": "keep_model_loaded",
+          "name": "keep_model_loaded",
+          "type": "BOOLEAN",
+          "widget": {
+            "name": "keep_model_loaded"
+          },
+          "link": null
+        },
+        {
+          "localized_name": "seed",
+          "name": "seed",
+          "type": "INT",
+          "widget": {
+            "name": "seed"
+          },
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "localized_name": "RESPONSE",
+          "name": "RESPONSE",
+          "type": "STRING",
+          "links": [
+            107
+          ]
+        }
+      ],
+      "title": "Analyze source expression + accessories \u00b7 Qwen3-VL 8B BF16",
+      "properties": {
+        "Node name for S&R": "AILab_QwenVL_Advanced",
+        "cnr_id": "ComfyUI-QwenVL",
+        "ver": "1b67b44"
+      },
+      "widgets_values": [
+        "Qwen3-VL-8B-Instruct",
+        "None (FP16)",
+        "sdpa",
+        false,
+        "cuda:0",
+        "\ud83d\uddbc\ufe0f Detailed Analysis",
+        "Inspect only the main foreground adult subject in this image. Output exactly one compact imperative sentence beginning APPLY SOURCE FACE STYLING:. Describe the visible facial expression and mouth shape, gaze direction, head turn and tilt, eyewear including frame shape/color and lens opacity, makeup, jewelry, headwear, and small face-adjacent accessories. Preserve these styling and performance details, but do not describe or transfer the person's underlying facial identity, hair color, skin color, age, or body traits. Explicitly say 'no eyewear' when none is present and 'no headwear' when none is present. Do not discuss the background, clothing, pose below the shoulders, or image quality.",
+        350,
+        0.1,
+        0.9,
+        1,
+        1.1,
+        16,
+        "auto",
+        false,
+        1,
+        "fixed"
+      ],
+      "widgets_values_named": {
+        "model_name": "Qwen3-VL-8B-Instruct",
+        "quantization": "None (FP16)",
+        "attention_mode": "sdpa",
+        "use_torch_compile": false,
+        "device": "cuda:0",
+        "preset_prompt": "\ud83d\uddbc\ufe0f Detailed Analysis",
+        "custom_prompt": "Analyze the supplied photograph as visual inspiration for a new Krea 2 scene, not as a reconstruction target. Output only a concise English inspiration brief with no heading. Extract the high-level photographic and design language: location category, camera-height family, lens feel, framing energy, perspective style, atmosphere, time of day, lighting quality and direction, palette and color contrast, materials and textures, spatial density, depth layers, depth of field, and the broad pose and clothing category of the main subject. Describe what makes the setting feel coherent while explicitly allowing a different viewpoint and a newly invented layout. Do not inventory or preserve exact furniture placement, unique objects, signage, logos, text, architectural arrangement, or background people's faces, identities, clothing, or positions. Treat background people only as anonymous optional ambience that must be regenerated as different individuals. Do not use the original foreground person's face, hair, eyes, skin, or age as identity requirements; Image 2 supplies the authoritative identity. End by requesting one plausible related-but-distinct Instagram photograph with coherent anatomy, no duplicate main subject, no copied bystanders, no borders, text, logo, or watermark.",
+        "max_tokens": 900,
+        "temperature": 0.2,
+        "top_p": 0.9,
+        "num_beams": 1,
+        "repetition_penalty": 1.1,
+        "frame_count": 16,
+        "video_frame_size": "auto",
+        "keep_model_loaded": true,
+        "seed": 1,
+        "control_after_generate": "fixed"
+      },
+      "color": "#28403f",
+      "bgcolor": "#28403f"
+    },
+    {
+      "id": 58,
+      "type": "StringConcatenate",
+      "pos": [
+        910,
+        1880
+      ],
+      "size": [
+        560,
+        260
+      ],
+      "flags": {},
+      "order": 58,
+      "mode": 0,
+      "inputs": [
+        {
+          "localized_name": "string_a",
+          "name": "string_a",
+          "type": "STRING",
+          "widget": {
+            "name": "string_a"
+          },
+          "link": 107
+        },
+        {
+          "localized_name": "string_b",
+          "name": "string_b",
+          "type": "STRING",
+          "widget": {
+            "name": "string_b"
+          },
+          "link": null
+        },
+        {
+          "localized_name": "delimiter",
+          "name": "delimiter",
+          "type": "STRING",
+          "widget": {
+            "name": "delimiter"
+          },
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "localized_name": "STRING",
+          "name": "STRING",
+          "type": "STRING",
+          "links": [
+            116
+          ]
+        }
+      ],
+      "title": "Build minimal expression/accessory edit instruction",
+      "properties": {
+        "Node name for S&R": "StringConcatenate",
+        "cnr_id": "comfy-core"
+      },
+      "widgets_values": [
+        "",
+        "Apply the preceding SOURCE FACE STYLING report to the foreground Alex only. Preserve Alex's underlying recognizable identity. If the report specifies glasses or sunglasses, they are mandatory even when they hide her eyes. If it says no eyewear, do not add any. Change only expression, gaze, head angle, makeup, eyewear, jewelry, headwear, and face-adjacent accessories named in the report. Preserve the generated body, pose, hair identity, clothing, camera, lighting, colors, scene, background people, and every other element.",
+        "\n\n"
+      ],
+      "widgets_values_named": {
+        "string_a": "",
+        "string_b": "Apply the preceding SOURCE FACE STYLING report to the foreground Alex only. Preserve Alex's underlying recognizable identity. If the report specifies glasses or sunglasses, they are mandatory even when they hide her eyes. If it says no eyewear, do not add any. Change only expression, gaze, head angle, makeup, eyewear, jewelry, headwear, and face-adjacent accessories named in the report. Preserve the generated body, pose, hair identity, clothing, camera, lighting, colors, scene, background people, and every other element.",
+        "delimiter": "\n\n"
+      }
+    },
+    {
+      "id": 59,
+      "type": "VAEEncode",
+      "pos": [
+        910,
+        2200
+      ],
+      "size": [
+        400,
+        100
+      ],
+      "flags": {
+        "collapsed": false
+      },
+      "order": 59,
+      "mode": 0,
+      "inputs": [
+        {
+          "localized_name": "pixels",
+          "name": "pixels",
+          "type": "IMAGE",
+          "link": 108
+        },
+        {
+          "localized_name": "vae",
+          "name": "vae",
+          "type": "VAE",
+          "link": 109
+        }
+      ],
+      "outputs": [
+        {
+          "localized_name": "LATENT",
+          "name": "LATENT",
+          "type": "LATENT",
+          "links": [
+            111
+          ]
+        }
+      ],
+      "title": "Encode generated image for styling finish",
+      "properties": {
+        "Node name for S&R": "VAEEncode",
+        "enableTabs": false,
+        "tabWidth": 65,
+        "tabXOffset": 10,
+        "hasSecondTab": false,
+        "secondTabText": "Send Back",
+        "secondTabOffset": 80,
+        "secondTabWidth": 65,
+        "cnr_id": "comfy-core",
+        "ver": "0.8.2",
+        "ue_properties": {
+          "widget_ue_connectable": {},
+          "version": "7.7",
+          "input_ue_unconnectable": {}
+        }
+      }
+    },
+    {
+      "id": 60,
+      "type": "Krea2EditModelPatch",
+      "pos": [
+        1360,
+        2180
+      ],
+      "size": [
+        480,
+        290
+      ],
+      "flags": {},
+      "order": 60,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 110
+        },
+        {
+          "name": "source_latent",
+          "type": "LATENT",
+          "link": 111
+        },
+        {
+          "name": "source_latent_b",
+          "shape": 7,
+          "type": "LATENT",
+          "link": null
+        },
+        {
+          "name": "ref_boost_mask",
+          "shape": 7,
+          "type": "MASK",
+          "link": null
+        },
+        {
+          "name": "vae",
+          "shape": 7,
+          "type": "VAE",
+          "link": 112
+        },
+        {
+          "name": "source_image",
+          "shape": 7,
+          "type": "IMAGE",
+          "link": 113
+        },
+        {
+          "name": "source_image_b",
+          "shape": 7,
+          "type": "IMAGE",
+          "link": null
+        },
+        {
+          "name": "target_latent",
+          "shape": 7,
+          "type": "LATENT",
+          "link": 114
+        }
+      ],
+      "outputs": [
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "links": [
+            120
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "Krea2EditModelPatch"
+      },
+      "widgets_values": [
+        3.0,
+        1.0,
+        "fit",
+        "aligned (trained)",
+        "aligned (trained)"
+      ],
+      "title": "Minimal aligned styling edit \u00b7 preserve generated image",
+      "widgets_values_named": {
+        "ref_boost": 3.0,
+        "ref_boost_a": 1.0,
+        "fit_mode": "fit",
+        "ref_position": "aligned (trained)",
+        "ref_position_a": "aligned (trained)"
+      }
+    },
+    {
+      "id": 61,
+      "type": "Krea2EditGroundedEncode",
+      "pos": [
+        1900,
+        1840
+      ],
+      "size": [
+        500,
+        300
+      ],
+      "flags": {},
+      "order": 61,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "clip",
+          "type": "CLIP",
+          "link": 115
+        },
+        {
+          "name": "prompt",
+          "type": "STRING",
+          "widget": {
+            "name": "prompt"
+          },
+          "link": 116
+        },
+        {
+          "name": "image",
+          "shape": 7,
+          "type": "IMAGE",
+          "link": 117
+        },
+        {
+          "name": "image_b",
+          "shape": 7,
+          "type": "IMAGE",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "links": [
+            121
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "Krea2EditGroundedEncode"
+      },
+      "widgets_values": [
+        "",
+        768,
+        "This is a minimal localized expression and accessory edit of the attached generated photograph. The attached generated image is authoritative for the subject's underlying Alex identity and for every scene element. Apply only the expression, gaze, head-angle, eyewear, makeup, jewelry, headwear, and face-adjacent accessories explicitly reported in the prompt. Glasses remain mandatory when reported even if they obscure Alex's eyes. Preserve everything else."
+      ],
+      "title": "Expression/accessory finish \u00b7 grounded positive",
+      "widgets_values_named": {
+        "prompt": "",
+        "grounding_px": 768,
+        "system_prompt": "This is a minimal localized expression and accessory edit of the attached generated photograph. The attached generated image is authoritative for the subject's underlying Alex identity and for every scene element. Apply only the expression, gaze, head-angle, eyewear, makeup, jewelry, headwear, and face-adjacent accessories explicitly reported in the prompt. Glasses remain mandatory when reported even if they obscure Alex's eyes. Preserve everything else."
+      }
+    },
+    {
+      "id": 62,
+      "type": "Krea2EditGroundedEncode",
+      "pos": [
+        1900,
+        2180
+      ],
+      "size": [
+        500,
+        220
+      ],
+      "flags": {},
+      "order": 62,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "clip",
+          "type": "CLIP",
+          "link": 118
+        },
+        {
+          "name": "prompt",
+          "type": "STRING",
+          "widget": {
+            "name": "prompt"
+          },
+          "link": null
+        },
+        {
+          "name": "image",
+          "shape": 7,
+          "type": "IMAGE",
+          "link": 119
+        },
+        {
+          "name": "image_b",
+          "shape": 7,
+          "type": "IMAGE",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "links": [
+            122
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "Krea2EditGroundedEncode"
+      },
+      "widgets_values": [
+        "",
+        768,
+        ""
+      ],
+      "title": "Expression/accessory finish \u00b7 unconditional",
+      "widgets_values_named": {
+        "prompt": "",
+        "grounding_px": 768,
+        "system_prompt": ""
+      }
+    },
+    {
+      "id": 63,
+      "type": "KSampler",
+      "pos": [
+        2460,
+        1840
+      ],
+      "size": [
+        430,
+        300
+      ],
+      "flags": {},
+      "order": 63,
+      "mode": 0,
+      "inputs": [
+        {
+          "localized_name": "model",
+          "name": "model",
+          "type": "MODEL",
+          "link": 120
+        },
+        {
+          "localized_name": "positive",
+          "name": "positive",
+          "type": "CONDITIONING",
+          "link": 121
+        },
+        {
+          "localized_name": "negative",
+          "name": "negative",
+          "type": "CONDITIONING",
+          "link": 122
+        },
+        {
+          "localized_name": "latent_image",
+          "name": "latent_image",
+          "type": "LATENT",
+          "link": 123
+        },
+        {
+          "localized_name": "seed",
+          "name": "seed",
+          "type": "INT",
+          "widget": {
+            "name": "seed"
+          },
+          "link": 124
+        },
+        {
+          "localized_name": "steps",
+          "name": "steps",
+          "type": "INT",
+          "widget": {
+            "name": "steps"
+          },
+          "link": 125
+        },
+        {
+          "localized_name": "cfg",
+          "name": "cfg",
+          "type": "FLOAT",
+          "widget": {
+            "name": "cfg"
+          },
+          "link": 126
+        },
+        {
+          "localized_name": "sampler_name",
+          "name": "sampler_name",
+          "type": "COMBO",
+          "widget": {
+            "name": "sampler_name"
+          },
+          "link": 127
+        },
+        {
+          "localized_name": "scheduler",
+          "name": "scheduler",
+          "type": "COMBO",
+          "widget": {
+            "name": "scheduler"
+          },
+          "link": 128
+        },
+        {
+          "localized_name": "denoise",
+          "name": "denoise",
+          "type": "FLOAT",
+          "widget": {
+            "name": "denoise"
+          },
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "localized_name": "LATENT",
+          "name": "LATENT",
+          "type": "LATENT",
+          "links": [
+            129
+          ]
+        }
+      ],
+      "title": "Minimal styling sampler \u00b7 reference mode only",
+      "properties": {
+        "Node name for S&R": "KSampler",
+        "cnr_id": "comfy-core",
+        "ver": "0.3.62",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        27012026,
+        "fixed",
+        10,
+        1.0,
+        "euler",
+        "simple",
+        1.0
+      ],
+      "widgets_values_named": {
+        "seed": 27012026,
+        "control_after_generate": "fixed",
+        "steps": 10,
+        "cfg": 1.0,
+        "sampler_name": "euler",
+        "scheduler": "simple",
+        "denoise": 1.0
+      },
+      "color": "#3b3156",
+      "bgcolor": "#514475"
+    },
+    {
+      "id": 64,
+      "type": "VAEDecode",
+      "pos": [
+        2940,
+        1840
+      ],
+      "size": [
+        340,
+        90
+      ],
+      "flags": {},
+      "order": 64,
+      "mode": 0,
+      "inputs": [
+        {
+          "localized_name": "samples",
+          "name": "samples",
+          "type": "LATENT",
+          "link": 129
+        },
+        {
+          "localized_name": "vae",
+          "name": "vae",
+          "type": "VAE",
+          "link": 130
+        }
+      ],
+      "outputs": [
+        {
+          "localized_name": "IMAGE",
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            132
+          ]
+        }
+      ],
+      "title": "Decode expression/accessory finish",
+      "properties": {
+        "Node name for S&R": "VAEDecode",
+        "cnr_id": "comfy-core",
+        "ver": "0.3.62",
+        "widget_ue_connectable": {}
+      }
+    },
+    {
+      "id": 65,
+      "type": "ComfySwitchNode",
+      "pos": [
+        2940,
+        2020
+      ],
+      "size": [
+        400,
+        130
+      ],
+      "flags": {},
+      "order": 65,
+      "mode": 0,
+      "inputs": [
+        {
+          "localized_name": "on_false",
+          "name": "on_false",
+          "shape": 7,
+          "type": "IMAGE",
+          "link": 131
+        },
+        {
+          "localized_name": "on_true",
+          "name": "on_true",
+          "shape": 7,
+          "type": "IMAGE",
+          "link": 132
+        },
+        {
+          "localized_name": "switch",
+          "name": "switch",
+          "type": "BOOLEAN",
+          "widget": {
+            "name": "switch"
+          },
+          "link": 133
+        }
+      ],
+      "outputs": [
+        {
+          "localized_name": "output",
+          "name": "output",
+          "type": "IMAGE",
+          "links": [
+            135
+          ]
+        }
+      ],
+      "title": "EXPRESSION + ACCESSORIES \u00b7 optional finish",
+      "properties": {
+        "Node name for S&R": "ComfySwitchNode",
+        "cnr_id": "comfy-core",
+        "ver": "0.35.0",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        true
+      ],
+      "widgets_values_named": {
+        "switch": true
+      }
+    },
+    {
+      "id": 66,
+      "type": "PrimitiveBoolean",
+      "pos": [
+        -930,
+        -2520
+      ],
+      "size": [
+        390,
+        100
+      ],
+      "flags": {},
+      "order": 66,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "value",
+          "type": "BOOLEAN",
+          "link": null,
+          "widget": {
+            "name": "value"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "BOOLEAN",
+          "type": "BOOLEAN",
+          "links": [
+            133
+          ]
+        }
+      ],
+      "title": "PRESERVE SOURCE EXPRESSION + ACCESSORIES \u00b7 second pass",
+      "properties": {
+        "Node name for S&R": "PrimitiveBoolean",
+        "cnr_id": "comfy-core"
+      },
+      "widgets_values": [
+        true
+      ],
+      "widgets_values_named": {
+        "value": true
+      },
+      "color": "#493c5b",
+      "bgcolor": "#31293e"
+    },
+    {
+      "id": 67,
+      "type": "ComfySwitchNode",
+      "pos": [
+        2940,
+        2190
+      ],
+      "size": [
+        400,
+        130
+      ],
+      "flags": {},
+      "order": 67,
+      "mode": 0,
+      "inputs": [
+        {
+          "localized_name": "on_false",
+          "name": "on_false",
+          "shape": 7,
+          "type": "IMAGE",
+          "link": 134
+        },
+        {
+          "localized_name": "on_true",
+          "name": "on_true",
+          "shape": 7,
+          "type": "IMAGE",
+          "link": 135
+        },
+        {
+          "localized_name": "switch",
+          "name": "switch",
+          "type": "BOOLEAN",
+          "widget": {
+            "name": "switch"
+          },
+          "link": 136
+        }
+      ],
+      "outputs": [
+        {
+          "localized_name": "output",
+          "name": "output",
+          "type": "IMAGE",
+          "links": [
+            62
+          ]
+        }
+      ],
+      "title": "FINAL IMAGE \u00b7 finish only when reference exists",
+      "properties": {
+        "Node name for S&R": "ComfySwitchNode",
+        "cnr_id": "comfy-core",
+        "ver": "0.35.0",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        false
+      ],
+      "widgets_values_named": {
+        "switch": true
+      }
     }
   ],
   "links": [
@@ -3879,7 +4829,7 @@
     ],
     [
       62,
-      37,
+      67,
       0,
       38,
       0,
@@ -4148,6 +5098,254 @@
       35,
       2,
       "BOOLEAN"
+    ],
+    [
+      106,
+      13,
+      0,
+      19,
+      0,
+      "IMAGE"
+    ],
+    [
+      107,
+      19,
+      0,
+      58,
+      0,
+      "STRING"
+    ],
+    [
+      108,
+      37,
+      0,
+      59,
+      0,
+      "IMAGE"
+    ],
+    [
+      109,
+      12,
+      0,
+      59,
+      1,
+      "VAE"
+    ],
+    [
+      110,
+      8,
+      0,
+      60,
+      0,
+      "MODEL"
+    ],
+    [
+      111,
+      59,
+      0,
+      60,
+      1,
+      "LATENT"
+    ],
+    [
+      112,
+      12,
+      0,
+      60,
+      4,
+      "VAE"
+    ],
+    [
+      113,
+      37,
+      0,
+      60,
+      5,
+      "IMAGE"
+    ],
+    [
+      114,
+      15,
+      0,
+      60,
+      7,
+      "LATENT"
+    ],
+    [
+      115,
+      11,
+      0,
+      61,
+      0,
+      "CLIP"
+    ],
+    [
+      116,
+      58,
+      0,
+      61,
+      1,
+      "STRING"
+    ],
+    [
+      117,
+      37,
+      0,
+      61,
+      2,
+      "IMAGE"
+    ],
+    [
+      118,
+      11,
+      0,
+      62,
+      0,
+      "CLIP"
+    ],
+    [
+      119,
+      37,
+      0,
+      62,
+      2,
+      "IMAGE"
+    ],
+    [
+      120,
+      60,
+      0,
+      63,
+      0,
+      "MODEL"
+    ],
+    [
+      121,
+      61,
+      0,
+      63,
+      1,
+      "CONDITIONING"
+    ],
+    [
+      122,
+      62,
+      0,
+      63,
+      2,
+      "CONDITIONING"
+    ],
+    [
+      123,
+      15,
+      0,
+      63,
+      3,
+      "LATENT"
+    ],
+    [
+      124,
+      5,
+      0,
+      63,
+      4,
+      "INT"
+    ],
+    [
+      125,
+      4,
+      0,
+      63,
+      5,
+      "INT"
+    ],
+    [
+      126,
+      4,
+      1,
+      63,
+      6,
+      "FLOAT"
+    ],
+    [
+      127,
+      4,
+      2,
+      63,
+      7,
+      "COMBO"
+    ],
+    [
+      128,
+      4,
+      3,
+      63,
+      8,
+      "COMBO"
+    ],
+    [
+      129,
+      63,
+      0,
+      64,
+      0,
+      "LATENT"
+    ],
+    [
+      130,
+      12,
+      0,
+      64,
+      1,
+      "VAE"
+    ],
+    [
+      131,
+      37,
+      0,
+      65,
+      0,
+      "IMAGE"
+    ],
+    [
+      132,
+      64,
+      0,
+      65,
+      1,
+      "IMAGE"
+    ],
+    [
+      133,
+      66,
+      0,
+      65,
+      2,
+      "BOOLEAN"
+    ],
+    [
+      134,
+      37,
+      0,
+      67,
+      0,
+      "IMAGE"
+    ],
+    [
+      135,
+      65,
+      0,
+      67,
+      1,
+      "IMAGE"
+    ],
+    [
+      136,
+      1,
+      2,
+      67,
+      2,
+      "BOOLEAN"
     ]
   ],
   "groups": [
@@ -4239,6 +5437,19 @@
         1260
       ],
       "color": "#66513d",
+      "font_size": 24,
+      "flags": {}
+    },
+    {
+      "id": 8,
+      "title": "06 \u00b7 SOURCE EXPRESSION + ACCESSORY FINISH",
+      "bounding": [
+        260,
+        1780,
+        3120,
+        760
+      ],
+      "color": "#5b416f",
       "font_size": 24,
       "flags": {}
     }

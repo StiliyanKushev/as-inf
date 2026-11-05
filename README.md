@@ -121,7 +121,7 @@ LFS.
 
 ## Workflows
 
-- `final-kurva-maker-krea2-alex-direct-scene.json` — preferred Krea 2 workflow when a scene reference should remain recognizably close. The full 4:5 scene controls composition, pose, clothing, camera, lighting, crowd density, and layout; a separate Alex portrait controls only the foreground identity. It automatically falls back to Alex-only generation when no scene is selected.
+- `final-kurva-maker-krea2-alex-direct-scene.json` — preferred Krea 2 workflow when a scene reference should remain recognizably close without copying its exact layout. The full 4:5 scene supplies pose, clothing, camera character, lighting, crowd density, and materials; a separate Alex portrait controls the foreground identity. A default-on second pass transfers source expression and accessories such as glasses. It automatically falls back to Alex-only generation when no scene is selected.
 
 - `final-kurva-maker-krea2.json` — Krea 2 Turbo production candidate with the
   same optional-reference control panel, SuperGemma/Qwen prompt pipeline,
