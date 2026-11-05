@@ -141,7 +141,51 @@ def main() -> None:
     by_id[57]["widgets_values"] = [True]
     by_id[57]["widgets_values_named"] = {"switch": True}
 
-    workflow["nodes"].extend(nodes)
+    # Two user-facing floats drive the formerly embedded patch values.  They
+    # live beside the identity toggle in Advanced Settings.
+    primitive_template = copy.deepcopy(node_by_id(workflow, 5))
+    strength_nodes = []
+    for node_id, title, value, y in [
+        (58, "PRESERVATION STRENGTH · tested default 3.0", 3.0, -2660),
+        (59, "ALEX IDENTITY STRENGTH · tested default 2.0", 2.0, -2500),
+    ]:
+        node = copy.deepcopy(primitive_template)
+        node["id"] = node_id
+        node["type"] = "PrimitiveFloat"
+        node["pos"] = [-410, y]
+        node["size"] = [350, 110]
+        node["order"] = node_id
+        node["title"] = title
+        node["inputs"][0]["type"] = "FLOAT"
+        node["outputs"][0]["name"] = "FLOAT"
+        node["outputs"][0]["type"] = "FLOAT"
+        node["properties"] = {
+            "Node name for S&R": "PrimitiveFloat",
+            "cnr_id": "comfy-core",
+        }
+        node["widgets_values"] = [value]
+        node["widgets_values_named"] = {"value": value}
+        reset_links(node)
+        strength_nodes.append(node)
+
+    # Convert the two Krea patch widgets to externally connected widget inputs.
+    patch_inputs = by_id[51]["inputs"]
+    patch_inputs[3:3] = [
+        {
+            "name": "ref_boost",
+            "type": "FLOAT",
+            "widget": {"name": "ref_boost"},
+            "link": None,
+        },
+        {
+            "name": "ref_boost_a",
+            "type": "FLOAT",
+            "widget": {"name": "ref_boost_a"},
+            "link": None,
+        },
+    ]
+
+    workflow["nodes"].extend(nodes + strength_nodes)
 
     node_by_id(workflow, 9)["widgets_values"] = [
         "FINAL KURVA MAKER · KREA 2 TURBO · BACKUP-FIRST ALEX FINISH\n\n"
@@ -149,7 +193,8 @@ def main() -> None:
         "restrained Krea edit then substitutes Alex's face and hair identity while treating the "
         "first render as authoritative for expression, eyewear, pose, clothing, lighting, texture, "
         "camera and background. Disable APPLY ALEX IDENTITY FINISH to recover the untouched backup "
-        "result. Select the Alex view closest to the intended head angle when needed."
+        "result. Advanced Settings exposes PRESERVATION STRENGTH (3.0 tested) and ALEX IDENTITY "
+        "STRENGTH (2.0 tested). Select the Alex view closest to the intended head angle when needed."
     ]
     node_by_id(workflow, 39)["title"] = "Save native Alex-finished render · 1280 × 1600"
     node_by_id(workflow, 39)["widgets_values"] = [
@@ -190,10 +235,14 @@ def main() -> None:
     add(8, 0, 51, 0, "MODEL")
     add(50, 0, 51, 1, "LATENT")
     add(49, 0, 51, 2, "LATENT")
-    add(12, 0, 51, 4, "VAE")
-    add(37, 0, 51, 5, "IMAGE")
-    add(48, 0, 51, 6, "IMAGE")
-    add(15, 0, 51, 7, "LATENT")
+    # ref_boost controls the LAST reference (Alex); ref_boost_a controls the
+    # FIRST reference (the preserved first-pass photograph).
+    add(59, 0, 51, 3, "FLOAT")
+    add(58, 0, 51, 4, "FLOAT")
+    add(12, 0, 51, 6, "VAE")
+    add(37, 0, 51, 7, "IMAGE")
+    add(48, 0, 51, 8, "IMAGE")
+    add(15, 0, 51, 9, "LATENT")
     add(11, 0, 52, 0, "CLIP")
     add(37, 0, 52, 2, "IMAGE")
     add(48, 0, 52, 3, "IMAGE")

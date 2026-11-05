@@ -62,6 +62,8 @@ Proof files:
 - source backup remains untouched
 - `APPLY ALEX IDENTITY FINISH` is enabled by default; disabling it returns the
   original first-pass output
+- Advanced Settings exposes `PRESERVATION STRENGTH` and
+  `ALEX IDENTITY STRENGTH`; their tested defaults remain 3.0 and 2.0
 - select the Alex portrait closest to the desired head angle when needed
 
 The installer already copies the versioned persona references from

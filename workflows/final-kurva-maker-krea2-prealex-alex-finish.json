@@ -1,8 +1,8 @@
 {
   "id": "7a9e995d-ba78-4f17-8b7d-16978bd168df",
   "revision": 0,
-  "last_node_id": 57,
-  "last_link_id": 106,
+  "last_node_id": 59,
+  "last_link_id": 108,
   "nodes": [
     {
       "id": 1,
@@ -271,7 +271,7 @@
           "type": "INT",
           "links": [
             56,
-            97
+            99
           ]
         },
         {
@@ -279,7 +279,7 @@
           "type": "FLOAT",
           "links": [
             57,
-            98
+            100
           ]
         },
         {
@@ -352,7 +352,7 @@
           ],
           "links": [
             58,
-            99
+            101
           ]
         },
         {
@@ -372,7 +372,7 @@
           ],
           "links": [
             59,
-            100
+            102
           ]
         },
         {
@@ -435,7 +435,7 @@
           "type": "INT",
           "links": [
             55,
-            96
+            98
           ]
         }
       ],
@@ -727,7 +727,7 @@
         "widget_ue_connectable": {}
       },
       "widgets_values": [
-        "FINAL KURVA MAKER \u00b7 KREA 2 TURBO \u00b7 BACKUP-FIRST ALEX FINISH\n\nThe proven pre-Alex workflow generates the complete photograph first. A second, restrained Krea edit then substitutes Alex's face and hair identity while treating the first render as authoritative for expression, eyewear, pose, clothing, lighting, texture, camera and background. Disable APPLY ALEX IDENTITY FINISH to recover the untouched backup result. Select the Alex view closest to the intended head angle when needed."
+        "FINAL KURVA MAKER \u00b7 KREA 2 TURBO \u00b7 BACKUP-FIRST ALEX FINISH\n\nThe proven pre-Alex workflow generates the complete photograph first. A second, restrained Krea edit then substitutes Alex's face and hair identity while treating the first render as authoritative for expression, eyewear, pose, clothing, lighting, texture, camera and background. Disable APPLY ALEX IDENTITY FINISH to recover the untouched backup result. Advanced Settings exposes PRESERVATION STRENGTH (3.0 tested) and ALEX IDENTITY STRENGTH (2.0 tested). Select the Alex view closest to the intended head angle when needed."
       ],
       "widgets_values_named": {
         "text": "FINAL KURVA MAKER \u00b7 KREA 2 TURBO\n\nCONTROL PANEL\nChoose an optional reference, write the request, inspect the final slider, and use Advanced Settings for seed, sampling, batch size, and three editable LoRA slots. Trigger text is added only while its LoRA strength is non-zero.\n\nPROMPT-ONLY MODE\nChoose [None \u2014 prompt-only mode] and describe the complete desired photograph. Krea2 generates a new generic fictional adult subject; the FLUX-trained Alex Sparks LoRA is deliberately not loaded because it is incompatible with Krea2.\n\nREFERENCE MODE\nUpload an image and move/zoom the permanently locked 4:5 crop. Describe only the desired changes. The selected pixels enter Qwen analysis, Krea2's VAE reference-token path, Krea2's grounded Qwen3-VL encoder, and the comparison viewer. General Edit V2 is active at the measured strength.\n\nOUTPUT\nThe diffusion render is a true native 1280 \u00d7 1600 image. FameGrid Color Finish runs after decode. A separate 1080 \u00d7 1350 Instagram delivery copy is saved with Lanczos. This workflow does not claim a resized image is native 4K; Krea2 Edit's documented reliable range is at or below about two megapixels.\n\nKNOWN LIMIT\nReference mode supplies identity and composition through Krea2 General Edit. A reusable Alex identity in prompt-only mode needs a Krea2-trained character LoRA; the existing alexsparks.safetensors is FLUX.2 Klein-specific."
@@ -804,8 +804,8 @@
             39,
             40,
             43,
-            86,
-            89
+            88,
+            91
           ]
         }
       ],
@@ -856,8 +856,8 @@
             61,
             76,
             78,
-            82,
-            102
+            84,
+            104
           ]
         }
       ],
@@ -1078,8 +1078,8 @@
           "links": [
             17,
             54,
-            85,
-            95
+            87,
+            97
           ]
         }
       ],
@@ -2965,10 +2965,10 @@
           "type": "IMAGE",
           "links": [
             77,
-            83,
-            87,
-            90,
-            103
+            85,
+            89,
+            92,
+            105
           ]
         }
       ],
@@ -2998,7 +2998,7 @@
         {
           "name": "image",
           "type": "IMAGE",
-          "link": 106
+          "link": 108
         }
       ],
       "outputs": [
@@ -3508,9 +3508,9 @@
           "type": "IMAGE",
           "links": [
             75,
-            84,
-            88,
-            91
+            86,
+            90,
+            93
           ]
         }
       ],
@@ -3656,6 +3656,22 @@
           "link": 81
         },
         {
+          "name": "ref_boost",
+          "type": "FLOAT",
+          "widget": {
+            "name": "ref_boost"
+          },
+          "link": 82
+        },
+        {
+          "name": "ref_boost_a",
+          "type": "FLOAT",
+          "widget": {
+            "name": "ref_boost_a"
+          },
+          "link": 83
+        },
+        {
           "name": "ref_boost_mask",
           "shape": 7,
           "type": "MASK",
@@ -3665,25 +3681,25 @@
           "name": "vae",
           "shape": 7,
           "type": "VAE",
-          "link": 82
+          "link": 84
         },
         {
           "name": "source_image",
           "shape": 7,
           "type": "IMAGE",
-          "link": 83
+          "link": 85
         },
         {
           "name": "source_image_b",
           "shape": 7,
           "type": "IMAGE",
-          "link": 84
+          "link": 86
         },
         {
           "name": "target_latent",
           "shape": 7,
           "type": "LATENT",
-          "link": 85
+          "link": 87
         }
       ],
       "outputs": [
@@ -3691,7 +3707,7 @@
           "name": "MODEL",
           "type": "MODEL",
           "links": [
-            92
+            94
           ]
         }
       ],
@@ -3732,7 +3748,7 @@
         {
           "name": "clip",
           "type": "CLIP",
-          "link": 86
+          "link": 88
         },
         {
           "name": "prompt",
@@ -3746,13 +3762,13 @@
           "name": "image",
           "shape": 7,
           "type": "IMAGE",
-          "link": 87
+          "link": 89
         },
         {
           "name": "image_b",
           "shape": 7,
           "type": "IMAGE",
-          "link": 88
+          "link": 90
         }
       ],
       "outputs": [
@@ -3760,7 +3776,7 @@
           "name": "CONDITIONING",
           "type": "CONDITIONING",
           "links": [
-            93
+            95
           ]
         }
       ],
@@ -3797,7 +3813,7 @@
         {
           "name": "clip",
           "type": "CLIP",
-          "link": 89
+          "link": 91
         },
         {
           "name": "prompt",
@@ -3811,13 +3827,13 @@
           "name": "image",
           "shape": 7,
           "type": "IMAGE",
-          "link": 90
+          "link": 92
         },
         {
           "name": "image_b",
           "shape": 7,
           "type": "IMAGE",
-          "link": 91
+          "link": 93
         }
       ],
       "outputs": [
@@ -3825,7 +3841,7 @@
           "name": "CONDITIONING",
           "type": "CONDITIONING",
           "links": [
-            94
+            96
           ]
         }
       ],
@@ -3863,25 +3879,25 @@
           "localized_name": "model",
           "name": "model",
           "type": "MODEL",
-          "link": 92
+          "link": 94
         },
         {
           "localized_name": "positive",
           "name": "positive",
           "type": "CONDITIONING",
-          "link": 93
+          "link": 95
         },
         {
           "localized_name": "negative",
           "name": "negative",
           "type": "CONDITIONING",
-          "link": 94
+          "link": 96
         },
         {
           "localized_name": "latent_image",
           "name": "latent_image",
           "type": "LATENT",
-          "link": 95
+          "link": 97
         },
         {
           "localized_name": "seed",
@@ -3890,7 +3906,7 @@
           "widget": {
             "name": "seed"
           },
-          "link": 96
+          "link": 98
         },
         {
           "localized_name": "steps",
@@ -3899,7 +3915,7 @@
           "widget": {
             "name": "steps"
           },
-          "link": 97
+          "link": 99
         },
         {
           "localized_name": "cfg",
@@ -3908,7 +3924,7 @@
           "widget": {
             "name": "cfg"
           },
-          "link": 98
+          "link": 100
         },
         {
           "localized_name": "sampler_name",
@@ -3917,7 +3933,7 @@
           "widget": {
             "name": "sampler_name"
           },
-          "link": 99
+          "link": 101
         },
         {
           "localized_name": "scheduler",
@@ -3926,7 +3942,7 @@
           "widget": {
             "name": "scheduler"
           },
-          "link": 100
+          "link": 102
         },
         {
           "localized_name": "denoise",
@@ -3944,7 +3960,7 @@
           "name": "LATENT",
           "type": "LATENT",
           "links": [
-            101
+            103
           ]
         }
       ],
@@ -3995,13 +4011,13 @@
           "localized_name": "samples",
           "name": "samples",
           "type": "LATENT",
-          "link": 101
+          "link": 103
         },
         {
           "localized_name": "vae",
           "name": "vae",
           "type": "VAE",
-          "link": 102
+          "link": 104
         }
       ],
       "outputs": [
@@ -4010,7 +4026,7 @@
           "name": "IMAGE",
           "type": "IMAGE",
           "links": [
-            104
+            106
           ]
         }
       ],
@@ -4051,7 +4067,7 @@
           "name": "BOOLEAN",
           "type": "BOOLEAN",
           "links": [
-            105
+            107
           ]
         }
       ],
@@ -4089,14 +4105,14 @@
           "name": "on_false",
           "shape": 7,
           "type": "IMAGE",
-          "link": 103
+          "link": 105
         },
         {
           "localized_name": "on_true",
           "name": "on_true",
           "shape": 7,
           "type": "IMAGE",
-          "link": 104
+          "link": 106
         },
         {
           "localized_name": "switch",
@@ -4105,7 +4121,7 @@
           "widget": {
             "name": "switch"
           },
-          "link": 105
+          "link": 107
         }
       ],
       "outputs": [
@@ -4114,7 +4130,7 @@
           "name": "output",
           "type": "IMAGE",
           "links": [
-            106
+            108
           ]
         }
       ],
@@ -4131,6 +4147,100 @@
       "widgets_values_named": {
         "switch": true
       }
+    },
+    {
+      "id": 58,
+      "type": "PrimitiveFloat",
+      "pos": [
+        -410,
+        -2660
+      ],
+      "size": [
+        350,
+        110
+      ],
+      "flags": {},
+      "order": 58,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "value",
+          "type": "FLOAT",
+          "link": null,
+          "widget": {
+            "name": "value"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "FLOAT",
+          "type": "FLOAT",
+          "links": [
+            83
+          ]
+        }
+      ],
+      "title": "PRESERVATION STRENGTH \u00b7 tested default 3.0",
+      "properties": {
+        "Node name for S&R": "PrimitiveFloat",
+        "cnr_id": "comfy-core"
+      },
+      "widgets_values": [
+        3.0
+      ],
+      "widgets_values_named": {
+        "value": 3.0
+      },
+      "color": "#493c5b",
+      "bgcolor": "#31293e"
+    },
+    {
+      "id": 59,
+      "type": "PrimitiveFloat",
+      "pos": [
+        -410,
+        -2500
+      ],
+      "size": [
+        350,
+        110
+      ],
+      "flags": {},
+      "order": 59,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "value",
+          "type": "FLOAT",
+          "link": null,
+          "widget": {
+            "name": "value"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "FLOAT",
+          "type": "FLOAT",
+          "links": [
+            82
+          ]
+        }
+      ],
+      "title": "ALEX IDENTITY STRENGTH \u00b7 tested default 2.0",
+      "properties": {
+        "Node name for S&R": "PrimitiveFloat",
+        "cnr_id": "comfy-core"
+      },
+      "widgets_values": [
+        2.0
+      ],
+      "widgets_values_named": {
+        "value": 2.0
+      },
+      "color": "#493c5b",
+      "bgcolor": "#31293e"
     }
   ],
   "links": [
@@ -4853,38 +4963,54 @@
     ],
     [
       82,
-      12,
+      59,
       0,
       51,
-      4,
-      "VAE"
+      3,
+      "FLOAT"
     ],
     [
       83,
-      37,
+      58,
       0,
       51,
-      5,
-      "IMAGE"
+      4,
+      "FLOAT"
     ],
     [
       84,
-      48,
+      12,
       0,
       51,
       6,
-      "IMAGE"
+      "VAE"
     ],
     [
       85,
-      15,
+      37,
       0,
       51,
       7,
-      "LATENT"
+      "IMAGE"
     ],
     [
       86,
+      48,
+      0,
+      51,
+      8,
+      "IMAGE"
+    ],
+    [
+      87,
+      15,
+      0,
+      51,
+      9,
+      "LATENT"
+    ],
+    [
+      88,
       11,
       0,
       52,
@@ -4892,7 +5018,7 @@
       "CLIP"
     ],
     [
-      87,
+      89,
       37,
       0,
       52,
@@ -4900,31 +5026,31 @@
       "IMAGE"
     ],
     [
-      88,
+      90,
       48,
       0,
       52,
       3,
-      "IMAGE"
-    ],
-    [
-      89,
-      11,
-      0,
-      53,
-      0,
-      "CLIP"
-    ],
-    [
-      90,
-      37,
-      0,
-      53,
-      2,
       "IMAGE"
     ],
     [
       91,
+      11,
+      0,
+      53,
+      0,
+      "CLIP"
+    ],
+    [
+      92,
+      37,
+      0,
+      53,
+      2,
+      "IMAGE"
+    ],
+    [
+      93,
       48,
       0,
       53,
@@ -4932,7 +5058,7 @@
       "IMAGE"
     ],
     [
-      92,
+      94,
       51,
       0,
       54,
@@ -4940,7 +5066,7 @@
       "MODEL"
     ],
     [
-      93,
+      95,
       52,
       0,
       54,
@@ -4948,7 +5074,7 @@
       "CONDITIONING"
     ],
     [
-      94,
+      96,
       53,
       0,
       54,
@@ -4956,7 +5082,7 @@
       "CONDITIONING"
     ],
     [
-      95,
+      97,
       15,
       0,
       54,
@@ -4964,23 +5090,23 @@
       "LATENT"
     ],
     [
-      96,
-      5,
-      0,
-      54,
-      4,
-      "INT"
-    ],
-    [
-      97,
-      4,
-      0,
-      54,
-      5,
-      "INT"
-    ],
-    [
       98,
+      5,
+      0,
+      54,
+      4,
+      "INT"
+    ],
+    [
+      99,
+      4,
+      0,
+      54,
+      5,
+      "INT"
+    ],
+    [
+      100,
       4,
       1,
       54,
@@ -4988,7 +5114,7 @@
       "FLOAT"
     ],
     [
-      99,
+      101,
       4,
       2,
       54,
@@ -4996,7 +5122,7 @@
       "COMBO"
     ],
     [
-      100,
+      102,
       4,
       3,
       54,
@@ -5004,7 +5130,7 @@
       "COMBO"
     ],
     [
-      101,
+      103,
       54,
       0,
       55,
@@ -5012,7 +5138,7 @@
       "LATENT"
     ],
     [
-      102,
+      104,
       12,
       0,
       55,
@@ -5020,7 +5146,7 @@
       "VAE"
     ],
     [
-      103,
+      105,
       37,
       0,
       57,
@@ -5028,7 +5154,7 @@
       "IMAGE"
     ],
     [
-      104,
+      106,
       55,
       0,
       57,
@@ -5036,7 +5162,7 @@
       "IMAGE"
     ],
     [
-      105,
+      107,
       56,
       0,
       57,
@@ -5044,7 +5170,7 @@
       "BOOLEAN"
     ],
     [
-      106,
+      108,
       57,
       0,
       38,
