@@ -1,5 +1,5 @@
 diff --git a/__init__.py b/__init__.py
-index e924efb..a4a16fc 100644
+index e924efb..e37f199 100644
 --- a/__init__.py
 +++ b/__init__.py
 @@ -53 +53,7 @@ def _imgids_offset(bs, frame, gh, gw, th, tw, device):
@@ -12,24 +12,14 @@ index e924efb..a4a16fc 100644
 +    "bag of features",
 +]
 @@ -58,0 +65,2 @@ def _place_refs(ref_ids, modes, h_, w_):
-+    balanced: keep a uniformly distributed subset of tokens aligned and move
-+              the remainder beside the canvas. This creates no internal edge.
-@@ -72 +80,17 @@ def _place_refs(ref_ids, modes, h_, w_):
++    balanced 75%: shift by one quarter target width, retaining 75% overlap.
++    balanced half: shift by half a target width, retaining 50% overlap.
+@@ -72 +80,7 @@ def _place_refs(ref_ids, modes, h_, w_):
 -        if mode.startswith("beside"):
-+        if mode.startswith("balanced"):
-+            # Token sequences are flattened row-major. Release positions using
-+            # a deterministic lattice spanning the whole reference rather than
-+            # one contiguous strip. 75% releases one token per 4x4 row/column
-+            # permutation; 50% uses a checkerboard.
-+            first_y = ids[0, 0, 1]
-+            gw = int((ids[0, :, 1] == first_y).sum().item())
-+            flat = torch.arange(ids.shape[1], device=ids.device)
-+            row, col = flat // gw, flat % gw
-+            if mode.startswith("balanced (75%"):
-+                detached = (col.remainder(4) == (3 * row.remainder(4) + 1).remainder(4))
-+            else:
-+                detached = (row + col).remainder(2) == 1
-+            local_x = ids[:, detached, 2] - ids[..., 2].min()
-+            ids[:, detached, 2] = local_x + x0
-+            x0 = max(x0, float(ids[:, detached, 2].max()) + 1.0)
++        if mode.startswith("balanced (75%"):
++            ids[..., 2] = ids[..., 2] - ids[..., 2].min() + (float(w_) / 4.0)
++            x0 = max(x0, float(ids[..., 2].max()) + 1.0)
++        elif mode.startswith("balanced"):
++            ids[..., 2] = ids[..., 2] - ids[..., 2].min() + (float(w_) / 2.0)
++            x0 = max(x0, float(ids[..., 2].max()) + 1.0)
 +        elif mode.startswith("beside"):

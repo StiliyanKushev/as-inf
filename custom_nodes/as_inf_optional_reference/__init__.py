@@ -393,11 +393,9 @@ class ReferenceBehavior:
     FUNCTION = "resolve"
     CATEGORY = "AS-INF/sampling"
     DESCRIPTION = (
-        "Inspired puts the reference beside the target. Balanced keeps 50% or "
-        "75% of reference token positions aligned in a distributed grid and "
-        "detaches the rest, leaving uniform room to regenerate. Close is fully "
-        "aligned; Pixel-preserving also starts from the reference latent at "
-        "denoise 0.25."
+        "Inspired puts the reference beside the target; Balanced shifts it for "
+        "50% or 75% spatial overlap; Close fully aligns it; Pixel-preserving "
+        "also starts from the reference latent at denoise 0.25."
     )
 
     @staticmethod

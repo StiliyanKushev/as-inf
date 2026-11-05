@@ -73,13 +73,10 @@ For a clean-volume installation, export `CIVITAI_API_TOKEN` before running
 `scripts/install-krea2-production-stack.sh`; the installer verifies SHA-256
 `6ec564e04eed317ae24093b4907004ac59a7c528d19d025bb41b4d719c4d16ec`.
 
-The Balanced 50% and Balanced 75% controls use a distributed token lattice.
-Half or three quarters of reference token positions remain aligned while the
-rest are detached into beside-coordinate space in a repeating grid across the
-whole frame. Earlier builds shifted one contiguous reference block and exposed
-a hard vertical seam; a later full-frame attention mixture still behaved too
-much like Close. The lattice leaves uniformly distributed room to regenerate
-without creating one internal canvas edge.
+The Balanced 50% and Balanced 75% controls use the original partial-overlap
+placement. Balanced 50% shifts the complete reference grid by half the target
+width; Balanced 75% shifts it by one quarter, retaining about 75% spatial
+overlap. This produced the preferred amount of scene regeneration in testing.
 
 ## Current deployment
 
