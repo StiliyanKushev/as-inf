@@ -252,6 +252,7 @@ def main() -> None:
                 "name": "ref_position",
                 "type": [
                     "aligned (trained)",
+                    "balanced (half overlap)",
                     "beside (right of target)",
                     "bag of features",
                 ],
@@ -263,9 +264,9 @@ def main() -> None:
             "Node name for S&R": "ASInfReferenceBehavior",
             "cnr_id": "as-inf",
         },
-        "widgets_values": ["Inspired — beside"],
-        "widgets_values_named": {"mode": "Inspired — beside"},
-        "title": "REFERENCE BEHAVIOR · Inspired / Close / Pixel-preserving",
+        "widgets_values": ["Balanced — partial alignment"],
+        "widgets_values_named": {"mode": "Balanced — partial alignment"},
+        "title": "REFERENCE BEHAVIOR · Inspired / Balanced / Close / Pixel-preserving",
     }
 
     workflow["nodes"].extend(nodes + strength_nodes + [reference_mode])
@@ -355,6 +356,7 @@ def main() -> None:
     add(61, 0, 16, 8, "LATENT")
     add(61, 1, 16, 9, [
         "aligned (trained)",
+        "balanced (half overlap)",
         "beside (right of target)",
         "bag of features",
     ])

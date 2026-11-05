@@ -1,0 +1,36 @@
+diff --git a/__init__.py b/__init__.py
+index e924efb..685ca99 100644
+--- a/__init__.py
++++ b/__init__.py
+@@ -50,12 +50,18 @@ def _imgids_offset(bs, frame, gh, gw, th, tw, device):
+     return ids.reshape(1, gh * gw, 3).repeat(bs, 1, 1)
+ 
+ 
+-REF_POSITIONS = ["aligned (trained)", "beside (right of target)", "bag of features"]
++REF_POSITIONS = [
++    "aligned (trained)",
++    "balanced (half overlap)",
++    "beside (right of target)",
++    "bag of features",
++]
+ 
+ 
+ def _place_refs(ref_ids, modes, h_, w_):
+     """Reference placement on the h/w RoPE axes (frame axis untouched: refs keep 1..N).
+     aligned (trained): ref token (h, w) sits on target token (h, w) -- how the models were trained.
++    balanced: shift by half a target width, retaining partial spatial overlap.
+     beside: each ref is shifted to the right of the target canvas (and of earlier refs): no h/w overlap,
+             vertical placement and the ref's internal layout unchanged.
+     bag of features (experimental): every token of a ref gets one position (the target's centre), so
+@@ -69,7 +75,10 @@ def _place_refs(ref_ids, modes, h_, w_):
+             out.append(ids)
+             continue
+         ids = ids.clone()
+-        if mode.startswith("beside"):
++        if mode.startswith("balanced"):
++            ids[..., 2] = ids[..., 2] - ids[..., 2].min() + (float(w_) / 2.0)
++            x0 = max(x0, float(ids[..., 2].max()) + 1.0)
++        elif mode.startswith("beside"):
+             ids[..., 2] = ids[..., 2] - ids[..., 2].min() + x0
+             x0 = float(ids[..., 2].max()) + 1.0
+         elif mode.startswith("bag"):

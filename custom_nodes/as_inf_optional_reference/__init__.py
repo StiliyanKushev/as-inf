@@ -14,11 +14,13 @@ import torch
 NONE = "[None — prompt-only mode]"
 REFERENCE_MODES = [
     "Inspired — beside",
+    "Balanced — partial alignment",
     "Close — aligned",
     "Pixel-preserving — aligned + low denoise",
 ]
 KREA_REFERENCE_POSITIONS = [
     "aligned (trained)",
+    "balanced (half overlap)",
     "beside (right of target)",
     "bag of features",
 ]
@@ -358,10 +360,10 @@ class SamplerSettings:
 class ReferenceBehavior:
     """Resolve one user-facing reference mode into the Krea sampling controls.
 
-    Inspired and Close both generate a fresh latent; their difference is the
-    Krea reference's positional placement. Pixel-preserving starts from the
-    encoded source and uses low denoise. Prompt-only mode always falls back to
-    ordinary generation from the empty latent.
+    Inspired, Balanced, and Close generate a fresh latent; their difference is
+    the Krea reference's positional placement. Pixel-preserving starts from
+    the encoded source and uses low denoise. Prompt-only mode always falls
+    back to ordinary generation from the empty latent.
     """
 
     @classmethod
@@ -371,7 +373,7 @@ class ReferenceBehavior:
                 "empty_latent": ("LATENT",),
                 "reference_latent": ("LATENT",),
                 "has_reference": ("BOOLEAN",),
-                "mode": (REFERENCE_MODES, {"default": REFERENCE_MODES[0]}),
+                "mode": (REFERENCE_MODES, {"default": REFERENCE_MODES[1]}),
             }
         }
 
@@ -380,18 +382,20 @@ class ReferenceBehavior:
     FUNCTION = "resolve"
     CATEGORY = "AS-INF/sampling"
     DESCRIPTION = (
-        "Inspired generates a related scene with the reference beside the target; "
-        "Close spatially aligns the reference; Pixel-preserving initializes from "
-        "the reference latent at denoise 0.25."
+        "Inspired puts the reference beside the target; Balanced retains half "
+        "spatial overlap; Close fully aligns it; Pixel-preserving also starts "
+        "from the reference latent at denoise 0.25."
     )
 
     @staticmethod
     def resolve(empty_latent, reference_latent, has_reference, mode):
         if not bool(has_reference):
             return empty_latent, "beside (right of target)", 1.0
-        if mode == REFERENCE_MODES[1]:
+        if mode == "Balanced — partial alignment":
+            return empty_latent, "balanced (half overlap)", 1.0
+        if mode == "Close — aligned":
             return empty_latent, "aligned (trained)", 1.0
-        if mode == REFERENCE_MODES[2]:
+        if mode == "Pixel-preserving — aligned + low denoise":
             return reference_latent, "aligned (trained)", 0.25
         return empty_latent, "beside (right of target)", 1.0
 
@@ -457,7 +461,7 @@ NODE_DISPLAY_NAME_MAPPINGS = {
     "ASInfPrependLoraTriggers": "Prepend Active LoRA Triggers",
     "ASInfDefaultTextIfEmpty": "Optional Text · Blank Is No Changes",
     "ASInfSamplerSettings": "Sampler Settings",
-    "ASInfReferenceBehavior": "Reference Behavior · Inspired / Close / Pixel-preserving",
+    "ASInfReferenceBehavior": "Reference Behavior · Inspired / Balanced / Close / Pixel-preserving",
     "ASInfSelectIdentityReference": "Select Identity Reference",
 }
 

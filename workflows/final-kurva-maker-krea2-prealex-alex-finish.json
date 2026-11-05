@@ -4358,6 +4358,7 @@
           "name": "ref_position",
           "type": [
             "aligned (trained)",
+            "balanced (half overlap)",
             "beside (right of target)",
             "bag of features"
           ],
@@ -4378,12 +4379,12 @@
         "cnr_id": "as-inf"
       },
       "widgets_values": [
-        "Inspired \u2014 beside"
+        "Balanced \u2014 partial alignment"
       ],
       "widgets_values_named": {
-        "mode": "Inspired \u2014 beside"
+        "mode": "Balanced \u2014 partial alignment"
       },
-      "title": "REFERENCE BEHAVIOR \u00b7 Inspired / Close / Pixel-preserving"
+      "title": "REFERENCE BEHAVIOR \u00b7 Inspired / Balanced / Close / Pixel-preserving"
     }
   ],
   "links": [
@@ -5352,6 +5353,7 @@
       9,
       [
         "aligned (trained)",
+        "balanced (half overlap)",
         "beside (right of target)",
         "bag of features"
       ]
