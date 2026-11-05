@@ -18,15 +18,17 @@ The workflow has two independent diffusion passes:
    B and supplies only face and hair identity. Color Finish runs once, after
    the optional identity pass.
 
-The identity pass uses:
+The saved production defaults now use:
 
-- first-pass preservation strength: `3.0`
-- Alex identity strength: `2.0`
+- sampler/scheduler: `LCM / Simple`
+- steps / CFG: `10 / 1.0`
+- first-pass reference strength: `2.0`
+- identity-pass preservation strength: `2.0`
+- Alex identity strength: `3.0`
 - first-pass placement: `aligned (trained)`
 - Alex placement: `beside (right of target)`
 - fit mode: `fit`
 - Krea 2 Turbo FP8, General Edit V2 1.0, FameGrid 0.5, Realism Engine 0.5
-- 10 steps, CFG 1, Euler/Simple
 - native 1280×1600 target
 
 The prompt explicitly limits the edit to underlying face and hair identity. It
@@ -62,8 +64,11 @@ Proof files:
 - source backup remains untouched
 - `APPLY ALEX IDENTITY FINISH` is enabled by default; disabling it returns the
   original first-pass output
-- Advanced Settings exposes `PRESERVATION STRENGTH` and
-  `ALEX IDENTITY STRENGTH`; their tested defaults remain 3.0 and 2.0
+- Advanced Settings exposes `FIRST-PASS REFERENCE STRENGTH`,
+  `PRESERVATION STRENGTH`, and `ALEX IDENTITY STRENGTH`
+- first-pass reference strength is an attention multiplier rather than a
+  literal percentage: `1.0` is neutral, values above `1.0` pull harder toward
+  the source image, and values below `1.0` allow more deviation
 - select the Alex portrait closest to the desired head angle when needed
 
 The installer already copies the versioned persona references from

@@ -71,18 +71,18 @@ def main() -> None:
     by_id[50]["title"] = "Encode untouched first-pass photograph"
     by_id[50]["pos"] = [-1260, 2100]
 
-    by_id[51]["title"] = "Restrained identity substitution · preserve 3.0 / Alex 2.0"
+    by_id[51]["title"] = "Restrained identity substitution · preserve 2.0 / Alex 3.0"
     by_id[51]["pos"] = [-800, 2100]
     by_id[51]["widgets_values"] = [
-        2.0,
         3.0,
+        2.0,
         "fit",
         "beside (right of target)",
         "aligned (trained)",
     ]
     by_id[51]["widgets_values_named"] = {
-        "ref_boost": 2.0,
-        "ref_boost_a": 3.0,
+        "ref_boost": 3.0,
+        "ref_boost_a": 2.0,
         "fit_mode": "fit",
         "ref_position": "beside (right of target)",
         "ref_position_a": "aligned (trained)",
@@ -141,13 +141,14 @@ def main() -> None:
     by_id[57]["widgets_values"] = [True]
     by_id[57]["widgets_values_named"] = {"switch": True}
 
-    # Two user-facing floats drive the formerly embedded patch values.  They
-    # live beside the identity toggle in Advanced Settings.
+    # Three user-facing floats drive formerly embedded Krea reference-patch
+    # values. They live beside the identity toggle in Advanced Settings.
     primitive_template = copy.deepcopy(node_by_id(workflow, 5))
     strength_nodes = []
     for node_id, title, value, y in [
-        (58, "PRESERVATION STRENGTH · tested default 3.0", 3.0, -2660),
-        (59, "ALEX IDENTITY STRENGTH · tested default 2.0", 2.0, -2500),
+        (58, "PRESERVATION STRENGTH · default 2.0", 2.0, -2660),
+        (59, "ALEX IDENTITY STRENGTH · default 3.0", 3.0, -2500),
+        (60, "FIRST-PASS REFERENCE STRENGTH · default 2.0", 2.0, -2340),
     ]:
         node = copy.deepcopy(primitive_template)
         node["id"] = node_id
@@ -185,6 +186,39 @@ def main() -> None:
         },
     ]
 
+    # Expose the single-reference boost used by the original first Krea pass.
+    # This is the actual target->reference attention multiplier: 1.0 is neutral,
+    # >1.0 pulls harder toward the source, and <1.0 allows more change.
+    first_patch = node_by_id(workflow, 16)
+    first_patch["title"] = "Krea2 General Edit · adjustable reference strength"
+    first_patch["inputs"].insert(
+        3,
+        {
+            "name": "ref_boost",
+            "type": "FLOAT",
+            "widget": {"name": "ref_boost"},
+            "link": None,
+        },
+    )
+
+    # The inserted socket shifts the existing optional sockets and therefore
+    # their canonical target slot numbers in the link table.
+    for link in workflow["links"]:
+        if link[3] == 16 and link[4] >= 3:
+            link[4] += 1
+
+    # Save the empirically preferred sampler defaults from the control panel.
+    sampler_settings = node_by_id(workflow, 4)
+    sampler_settings["widgets_values"] = [10, 1.0, "lcm", "simple", 1]
+    sampler_settings["widgets_values_named"] = {
+        "steps": 10,
+        "cfg": 1.0,
+        "sampler_name": "lcm",
+        "scheduler": "simple",
+        "batch_size": 1,
+    }
+    next(group for group in workflow["groups"] if group["id"] == 2)["bounding"][3] = 720
+
     workflow["nodes"].extend(nodes + strength_nodes)
 
     node_by_id(workflow, 9)["widgets_values"] = [
@@ -193,8 +227,9 @@ def main() -> None:
         "restrained Krea edit then substitutes Alex's face and hair identity while treating the "
         "first render as authoritative for expression, eyewear, pose, clothing, lighting, texture, "
         "camera and background. Disable APPLY ALEX IDENTITY FINISH to recover the untouched backup "
-        "result. Advanced Settings exposes PRESERVATION STRENGTH (3.0 tested) and ALEX IDENTITY "
-        "STRENGTH (2.0 tested). Select the Alex view closest to the intended head angle when needed."
+        "result. Advanced Settings exposes FIRST-PASS REFERENCE STRENGTH (2.0), PRESERVATION "
+        "STRENGTH (2.0), and ALEX IDENTITY STRENGTH (3.0). LCM / Simple at 10 steps and CFG 1 "
+        "is the saved production default. Select the Alex view closest to the intended head angle."
     ]
     node_by_id(workflow, 39)["title"] = "Save native Alex-finished render · 1280 × 1600"
     node_by_id(workflow, 39)["widgets_values"] = [
@@ -264,6 +299,7 @@ def main() -> None:
     add(55, 0, 57, 1, "IMAGE")
     add(56, 0, 57, 2, "BOOLEAN")
     add(57, 0, 38, 0, "IMAGE")
+    add(60, 0, 16, 3, "FLOAT")
 
     # Rebuild all per-node link references from the canonical link table.
     nodes_by_id = {node["id"]: node for node in workflow["nodes"]}

@@ -1,8 +1,8 @@
 {
   "id": "7a9e995d-ba78-4f17-8b7d-16978bd168df",
   "revision": 0,
-  "last_node_id": 59,
-  "last_link_id": 108,
+  "last_node_id": 60,
+  "last_link_id": 109,
   "nodes": [
     {
       "id": 1,
@@ -391,14 +391,14 @@
       "widgets_values": [
         10,
         1.0,
-        "euler",
+        "lcm",
         "simple",
         1
       ],
       "widgets_values_named": {
         "steps": 10,
         "cfg": 1.0,
-        "sampler_name": "euler",
+        "sampler_name": "lcm",
         "scheduler": "simple",
         "batch_size": 1
       },
@@ -727,7 +727,7 @@
         "widget_ue_connectable": {}
       },
       "widgets_values": [
-        "FINAL KURVA MAKER \u00b7 KREA 2 TURBO \u00b7 BACKUP-FIRST ALEX FINISH\n\nThe proven pre-Alex workflow generates the complete photograph first. A second, restrained Krea edit then substitutes Alex's face and hair identity while treating the first render as authoritative for expression, eyewear, pose, clothing, lighting, texture, camera and background. Disable APPLY ALEX IDENTITY FINISH to recover the untouched backup result. Advanced Settings exposes PRESERVATION STRENGTH (3.0 tested) and ALEX IDENTITY STRENGTH (2.0 tested). Select the Alex view closest to the intended head angle when needed."
+        "FINAL KURVA MAKER \u00b7 KREA 2 TURBO \u00b7 BACKUP-FIRST ALEX FINISH\n\nThe proven pre-Alex workflow generates the complete photograph first. A second, restrained Krea edit then substitutes Alex's face and hair identity while treating the first render as authoritative for expression, eyewear, pose, clothing, lighting, texture, camera and background. Disable APPLY ALEX IDENTITY FINISH to recover the untouched backup result. Advanced Settings exposes FIRST-PASS REFERENCE STRENGTH (2.0), PRESERVATION STRENGTH (2.0), and ALEX IDENTITY STRENGTH (3.0). LCM / Simple at 10 steps and CFG 1 is the saved production default. Select the Alex view closest to the intended head angle."
       ],
       "widgets_values_named": {
         "text": "FINAL KURVA MAKER \u00b7 KREA 2 TURBO\n\nCONTROL PANEL\nChoose an optional reference, write the request, inspect the final slider, and use Advanced Settings for seed, sampling, batch size, and three editable LoRA slots. Trigger text is added only while its LoRA strength is non-zero.\n\nPROMPT-ONLY MODE\nChoose [None \u2014 prompt-only mode] and describe the complete desired photograph. Krea2 generates a new generic fictional adult subject; the FLUX-trained Alex Sparks LoRA is deliberately not loaded because it is incompatible with Krea2.\n\nREFERENCE MODE\nUpload an image and move/zoom the permanently locked 4:5 crop. Describe only the desired changes. The selected pixels enter Qwen analysis, Krea2's VAE reference-token path, Krea2's grounded Qwen3-VL encoder, and the comparison viewer. General Edit V2 is active at the measured strength.\n\nOUTPUT\nThe diffusion render is a true native 1280 \u00d7 1600 image. FameGrid Color Finish runs after decode. A separate 1080 \u00d7 1350 Instagram delivery copy is saved with Lanczos. This workflow does not claim a resized image is native 4K; Krea2 Edit's documented reliable range is at or below about two megapixels.\n\nKNOWN LIMIT\nReference mode supplies identity and composition through Krea2 General Edit. A reusable Alex identity in prompt-only mode needs a Krea2-trained character LoRA; the existing alexsparks.safetensors is FLUX.2 Klein-specific."
@@ -1132,6 +1132,14 @@
           "link": null
         },
         {
+          "name": "ref_boost",
+          "type": "FLOAT",
+          "widget": {
+            "name": "ref_boost"
+          },
+          "link": 109
+        },
+        {
           "name": "ref_boost_mask",
           "shape": 7,
           "type": "MASK",
@@ -1181,7 +1189,7 @@
         "beside (right of target)",
         "aligned (trained)"
       ],
-      "title": "Krea2 General Edit \u00b7 source patch",
+      "title": "Krea2 General Edit \u00b7 adjustable reference strength",
       "widgets_values_named": {
         "ref_boost": 2.0,
         "ref_boost_a": 1.0,
@@ -3715,16 +3723,16 @@
         "Node name for S&R": "Krea2EditModelPatch"
       },
       "widgets_values": [
-        2.0,
         3.0,
+        2.0,
         "fit",
         "beside (right of target)",
         "aligned (trained)"
       ],
-      "title": "Restrained identity substitution \u00b7 preserve 3.0 / Alex 2.0",
+      "title": "Restrained identity substitution \u00b7 preserve 2.0 / Alex 3.0",
       "widgets_values_named": {
-        "ref_boost": 2.0,
-        "ref_boost_a": 3.0,
+        "ref_boost": 3.0,
+        "ref_boost_a": 2.0,
         "fit_mode": "fit",
         "ref_position": "beside (right of target)",
         "ref_position_a": "aligned (trained)"
@@ -4181,16 +4189,16 @@
           ]
         }
       ],
-      "title": "PRESERVATION STRENGTH \u00b7 tested default 3.0",
+      "title": "PRESERVATION STRENGTH \u00b7 default 2.0",
       "properties": {
         "Node name for S&R": "PrimitiveFloat",
         "cnr_id": "comfy-core"
       },
       "widgets_values": [
-        3.0
+        2.0
       ],
       "widgets_values_named": {
-        "value": 3.0
+        "value": 2.0
       },
       "color": "#493c5b",
       "bgcolor": "#31293e"
@@ -4228,7 +4236,54 @@
           ]
         }
       ],
-      "title": "ALEX IDENTITY STRENGTH \u00b7 tested default 2.0",
+      "title": "ALEX IDENTITY STRENGTH \u00b7 default 3.0",
+      "properties": {
+        "Node name for S&R": "PrimitiveFloat",
+        "cnr_id": "comfy-core"
+      },
+      "widgets_values": [
+        3.0
+      ],
+      "widgets_values_named": {
+        "value": 3.0
+      },
+      "color": "#493c5b",
+      "bgcolor": "#31293e"
+    },
+    {
+      "id": 60,
+      "type": "PrimitiveFloat",
+      "pos": [
+        -410,
+        -2340
+      ],
+      "size": [
+        350,
+        110
+      ],
+      "flags": {},
+      "order": 60,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "value",
+          "type": "FLOAT",
+          "link": null,
+          "widget": {
+            "name": "value"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "FLOAT",
+          "type": "FLOAT",
+          "links": [
+            109
+          ]
+        }
+      ],
+      "title": "FIRST-PASS REFERENCE STRENGTH \u00b7 default 2.0",
       "properties": {
         "Node name for S&R": "PrimitiveFloat",
         "cnr_id": "comfy-core"
@@ -4361,7 +4416,7 @@
       12,
       0,
       16,
-      4,
+      5,
       "VAE"
     ],
     [
@@ -4369,7 +4424,7 @@
       13,
       0,
       16,
-      5,
+      6,
       "IMAGE"
     ],
     [
@@ -4377,7 +4432,7 @@
       15,
       0,
       16,
-      7,
+      8,
       "LATENT"
     ],
     [
@@ -5176,6 +5231,14 @@
       38,
       0,
       "IMAGE"
+    ],
+    [
+      109,
+      60,
+      0,
+      16,
+      3,
+      "FLOAT"
     ]
   ],
   "groups": [
@@ -5199,7 +5262,7 @@
         -2240,
         -2870,
         2200,
-        560
+        720
       ],
       "color": "#4c3f73",
       "font_size": 24,
