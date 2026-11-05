@@ -72,12 +72,14 @@ git -C "$COMFY_DIR" checkout --detach "$COMFY_REV"
 install_node comfyui-krea2edit \
   https://github.com/lbouaraba/comfyui-krea2edit.git \
   13ef60f20828949becada815d3cbc371eb5ccaab
-# Add the repository-versioned partial-overlap placement used by the production
+# Add the repository-versioned seamless attention mixture used by the production
 # workflow. The pinned upstream node provides only fully aligned or fully beside.
+# The patch is stored without context-only blank lines so the repository itself
+# stays whitespace-clean; --unidiff-zero is therefore required for apply/check.
 KREA_BALANCED_PATCH="$ROOT/patches/comfyui-krea2edit-balanced-position.patch"
 KREA_EDIT_DIR="$COMFY_DIR/custom_nodes/comfyui-krea2edit"
-if ! git -C "$KREA_EDIT_DIR" apply --reverse --check "$KREA_BALANCED_PATCH" 2>/dev/null; then
-  git -C "$KREA_EDIT_DIR" apply "$KREA_BALANCED_PATCH"
+if ! git -C "$KREA_EDIT_DIR" apply --unidiff-zero --reverse --check "$KREA_BALANCED_PATCH" 2>/dev/null; then
+  git -C "$KREA_EDIT_DIR" apply --unidiff-zero "$KREA_BALANCED_PATCH"
 fi
 install_node ComfyUI-Krea2-Edit-Carousel \
   https://github.com/Pixelailabs/ComfyUI-Krea2-Edit-Carousel.git \

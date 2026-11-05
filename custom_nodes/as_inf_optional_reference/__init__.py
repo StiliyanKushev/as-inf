@@ -393,10 +393,9 @@ class ReferenceBehavior:
     FUNCTION = "resolve"
     CATEGORY = "AS-INF/sampling"
     DESCRIPTION = (
-        "Inspired puts the reference beside the target. Balanced uses trained, "
-        "fully aligned geometry with 50% or 75% of the selected attention "
-        "strength, avoiding the hard vertical seams caused by partial spatial "
-        "overlap. Close uses full aligned strength; Pixel-preserving also starts "
+        "Inspired puts the reference beside the target. Balanced seamlessly "
+        "mixes aligned and beside positional attention at 50/50 or 75/25 across "
+        "the whole canvas. Close is fully aligned; Pixel-preserving also starts "
         "from the reference latent at denoise 0.25."
     )
 
@@ -408,9 +407,9 @@ class ReferenceBehavior:
         if not bool(has_reference):
             return empty_latent, "beside (right of target)", 1.0, 1.0
         if mode == "Balanced — partial alignment":
-            return empty_latent, "aligned (trained)", 1.0, strength * 0.50
+            return empty_latent, "balanced (half overlap)", 1.0, strength
         if mode == "Balanced 75% — stronger alignment":
-            return empty_latent, "aligned (trained)", 1.0, strength * 0.75
+            return empty_latent, "balanced (75% overlap)", 1.0, strength
         if mode == "Close — aligned":
             return empty_latent, "aligned (trained)", 1.0, strength
         if mode == "Pixel-preserving — aligned + low denoise":
