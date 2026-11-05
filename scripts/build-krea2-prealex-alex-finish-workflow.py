@@ -33,7 +33,12 @@ def main() -> None:
     # The original workflow remains untouched.  Only its first-pass decode is
     # rerouted through a new, optional identity-edit pass before color finish.
     workflow["nodes"] = copy.deepcopy(workflow["nodes"])
-    workflow["links"] = [link for link in workflow["links"] if link[0] != 62]
+    workflow["links"] = [
+        link
+        for link in workflow["links"]
+        if link[0] != 62
+        and not (link[1] == 15 and link[3] in {16, 36})
+    ]
 
     # Reuse known-good node schemas from the deployed direct-scene workflow.
     source_ids = [45, 46, 47, 48, 49, 59, 60, 61, 62, 63, 64, 66, 65]
@@ -200,6 +205,14 @@ def main() -> None:
             "link": None,
         },
     )
+    first_patch["inputs"].append(
+        {
+            "name": "ref_position",
+            "type": "COMBO",
+            "widget": {"name": "ref_position"},
+            "link": None,
+        }
+    )
 
     # The inserted socket shifts the existing optional sockets and therefore
     # their canonical target slot numbers in the link table.
@@ -217,9 +230,45 @@ def main() -> None:
         "scheduler": "simple",
         "batch_size": 1,
     }
-    next(group for group in workflow["groups"] if group["id"] == 2)["bounding"][3] = 720
+    next(group for group in workflow["groups"] if group["id"] == 2)["bounding"][3] = 880
 
-    workflow["nodes"].extend(nodes + strength_nodes)
+    reference_mode = {
+        "id": 61,
+        "type": "ASInfReferenceBehavior",
+        "pos": [-410, -2180],
+        "size": [350, 150],
+        "flags": {},
+        "order": 61,
+        "mode": 0,
+        "inputs": [
+            {"name": "empty_latent", "type": "LATENT", "link": None},
+            {"name": "reference_latent", "type": "LATENT", "link": None},
+            {"name": "has_reference", "type": "BOOLEAN", "link": None},
+            {"name": "mode", "type": "COMBO", "widget": {"name": "mode"}, "link": None},
+        ],
+        "outputs": [
+            {"name": "latent_image", "type": "LATENT", "links": None},
+            {
+                "name": "ref_position",
+                "type": [
+                    "aligned (trained)",
+                    "beside (right of target)",
+                    "bag of features",
+                ],
+                "links": None,
+            },
+            {"name": "denoise", "type": "FLOAT", "links": None},
+        ],
+        "properties": {
+            "Node name for S&R": "ASInfReferenceBehavior",
+            "cnr_id": "as-inf",
+        },
+        "widgets_values": ["Inspired — beside"],
+        "widgets_values_named": {"mode": "Inspired — beside"},
+        "title": "REFERENCE BEHAVIOR · Inspired / Close / Pixel-preserving",
+    }
+
+    workflow["nodes"].extend(nodes + strength_nodes + [reference_mode])
 
     node_by_id(workflow, 9)["widgets_values"] = [
         "FINAL KURVA MAKER · KREA 2 TURBO · BACKUP-FIRST ALEX FINISH\n\n"
@@ -227,7 +276,7 @@ def main() -> None:
         "restrained Krea edit then substitutes Alex's face and hair identity while treating the "
         "first render as authoritative for expression, eyewear, pose, clothing, lighting, texture, "
         "camera and background. Disable APPLY ALEX IDENTITY FINISH to recover the untouched backup "
-        "result. Advanced Settings exposes FIRST-PASS REFERENCE STRENGTH (2.0), PRESERVATION "
+        "result. Advanced Settings exposes REFERENCE BEHAVIOR, FIRST-PASS REFERENCE STRENGTH (2.0), PRESERVATION "
         "STRENGTH (2.0), and ALEX IDENTITY STRENGTH (3.0). LCM / Simple at 10 steps and CFG 1 "
         "is the saved production default. Select the Alex view closest to the intended head angle."
     ]
@@ -300,6 +349,17 @@ def main() -> None:
     add(56, 0, 57, 2, "BOOLEAN")
     add(57, 0, 38, 0, "IMAGE")
     add(60, 0, 16, 3, "FLOAT")
+    add(15, 0, 61, 0, "LATENT")
+    add(14, 0, 61, 1, "LATENT")
+    add(1, 2, 61, 2, "BOOLEAN")
+    add(61, 0, 16, 8, "LATENT")
+    add(61, 1, 16, 9, [
+        "aligned (trained)",
+        "beside (right of target)",
+        "bag of features",
+    ])
+    add(61, 0, 36, 3, "LATENT")
+    add(61, 2, 36, 9, "FLOAT")
 
     # Rebuild all per-node link references from the canonical link table.
     nodes_by_id = {node["id"]: node for node in workflow["nodes"]}

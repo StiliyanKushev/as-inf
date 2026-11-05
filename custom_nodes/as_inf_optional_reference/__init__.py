@@ -12,6 +12,16 @@ import torch
 
 
 NONE = "[None — prompt-only mode]"
+REFERENCE_MODES = [
+    "Inspired — beside",
+    "Close — aligned",
+    "Pixel-preserving — aligned + low denoise",
+]
+KREA_REFERENCE_POSITIONS = [
+    "aligned (trained)",
+    "beside (right of target)",
+    "bag of features",
+]
 
 
 class OptionalReferenceImage(nodes.LoadImage):
@@ -345,6 +355,47 @@ class SamplerSettings:
         return steps, cfg, sampler_name, scheduler, batch_size
 
 
+class ReferenceBehavior:
+    """Resolve one user-facing reference mode into the Krea sampling controls.
+
+    Inspired and Close both generate a fresh latent; their difference is the
+    Krea reference's positional placement. Pixel-preserving starts from the
+    encoded source and uses low denoise. Prompt-only mode always falls back to
+    ordinary generation from the empty latent.
+    """
+
+    @classmethod
+    def INPUT_TYPES(cls):
+        return {
+            "required": {
+                "empty_latent": ("LATENT",),
+                "reference_latent": ("LATENT",),
+                "has_reference": ("BOOLEAN",),
+                "mode": (REFERENCE_MODES, {"default": REFERENCE_MODES[0]}),
+            }
+        }
+
+    RETURN_TYPES = ("LATENT", KREA_REFERENCE_POSITIONS, "FLOAT")
+    RETURN_NAMES = ("latent_image", "ref_position", "denoise")
+    FUNCTION = "resolve"
+    CATEGORY = "AS-INF/sampling"
+    DESCRIPTION = (
+        "Inspired generates a related scene with the reference beside the target; "
+        "Close spatially aligns the reference; Pixel-preserving initializes from "
+        "the reference latent at denoise 0.25."
+    )
+
+    @staticmethod
+    def resolve(empty_latent, reference_latent, has_reference, mode):
+        if not bool(has_reference):
+            return empty_latent, "beside (right of target)", 1.0
+        if mode == REFERENCE_MODES[1]:
+            return empty_latent, "aligned (trained)", 1.0
+        if mode == REFERENCE_MODES[2]:
+            return reference_latent, "aligned (trained)", 0.25
+        return empty_latent, "beside (right of target)", 1.0
+
+
 class SelectIdentityReference:
     """Choose one identity view for Krea2's single subject-reference slot.
 
@@ -395,6 +446,7 @@ NODE_CLASS_MAPPINGS = {
     "ASInfPrependLoraTriggers": PrependLoraTriggers,
     "ASInfDefaultTextIfEmpty": DefaultTextIfEmpty,
     "ASInfSamplerSettings": SamplerSettings,
+    "ASInfReferenceBehavior": ReferenceBehavior,
     "ASInfSelectIdentityReference": SelectIdentityReference,
 }
 NODE_DISPLAY_NAME_MAPPINGS = {
@@ -405,6 +457,7 @@ NODE_DISPLAY_NAME_MAPPINGS = {
     "ASInfPrependLoraTriggers": "Prepend Active LoRA Triggers",
     "ASInfDefaultTextIfEmpty": "Optional Text · Blank Is No Changes",
     "ASInfSamplerSettings": "Sampler Settings",
+    "ASInfReferenceBehavior": "Reference Behavior · Inspired / Close / Pixel-preserving",
     "ASInfSelectIdentityReference": "Select Identity Reference",
 }
 

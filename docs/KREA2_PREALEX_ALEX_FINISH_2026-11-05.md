@@ -31,6 +31,18 @@ The saved production defaults now use:
 - Krea 2 Turbo FP8, General Edit V2 1.0, FameGrid 0.5, Realism Engine 0.5
 - native 1280×1600 target
 
+`REFERENCE BEHAVIOR` has three first-pass modes:
+
+- `Inspired — beside`: fresh latent at denoise 1.0 with detached reference
+  coordinates, producing a related new photograph; this remains the default
+- `Close — aligned`: fresh latent at denoise 1.0 with reference and target
+  coordinates aligned, preserving composition and pose more closely
+- `Pixel-preserving — aligned + low denoise`: starts from the VAE-encoded
+  reference at denoise 0.25 and uses aligned coordinates for restrained edits
+
+With no reference selected, all three settings safely fall back to ordinary
+prompt-only generation from the empty latent at denoise 1.0.
+
 The prompt explicitly limits the edit to underlying face and hair identity. It
 defines the first pass as authoritative for expression, gaze, head angle,
 eyewear, jewelry, clothing, pose, hands, lighting, skin texture, focus, camera,

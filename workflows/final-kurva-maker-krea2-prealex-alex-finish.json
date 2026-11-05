@@ -1,8 +1,8 @@
 {
   "id": "7a9e995d-ba78-4f17-8b7d-16978bd168df",
   "revision": 0,
-  "last_node_id": 60,
-  "last_link_id": 109,
+  "last_node_id": 61,
+  "last_link_id": 116,
   "nodes": [
     {
       "id": 1,
@@ -54,7 +54,8 @@
             24,
             47,
             50,
-            68
+            68,
+            112
           ]
         }
       ],
@@ -727,7 +728,7 @@
         "widget_ue_connectable": {}
       },
       "widgets_values": [
-        "FINAL KURVA MAKER \u00b7 KREA 2 TURBO \u00b7 BACKUP-FIRST ALEX FINISH\n\nThe proven pre-Alex workflow generates the complete photograph first. A second, restrained Krea edit then substitutes Alex's face and hair identity while treating the first render as authoritative for expression, eyewear, pose, clothing, lighting, texture, camera and background. Disable APPLY ALEX IDENTITY FINISH to recover the untouched backup result. Advanced Settings exposes FIRST-PASS REFERENCE STRENGTH (2.0), PRESERVATION STRENGTH (2.0), and ALEX IDENTITY STRENGTH (3.0). LCM / Simple at 10 steps and CFG 1 is the saved production default. Select the Alex view closest to the intended head angle."
+        "FINAL KURVA MAKER \u00b7 KREA 2 TURBO \u00b7 BACKUP-FIRST ALEX FINISH\n\nThe proven pre-Alex workflow generates the complete photograph first. A second, restrained Krea edit then substitutes Alex's face and hair identity while treating the first render as authoritative for expression, eyewear, pose, clothing, lighting, texture, camera and background. Disable APPLY ALEX IDENTITY FINISH to recover the untouched backup result. Advanced Settings exposes REFERENCE BEHAVIOR, FIRST-PASS REFERENCE STRENGTH (2.0), PRESERVATION STRENGTH (2.0), and ALEX IDENTITY STRENGTH (3.0). LCM / Simple at 10 steps and CFG 1 is the saved production default. Select the Alex view closest to the intended head angle."
       ],
       "widgets_values_named": {
         "text": "FINAL KURVA MAKER \u00b7 KREA 2 TURBO\n\nCONTROL PANEL\nChoose an optional reference, write the request, inspect the final slider, and use Advanced Settings for seed, sampling, batch size, and three editable LoRA slots. Trigger text is added only while its LoRA strength is non-zero.\n\nPROMPT-ONLY MODE\nChoose [None \u2014 prompt-only mode] and describe the complete desired photograph. Krea2 generates a new generic fictional adult subject; the FLUX-trained Alex Sparks LoRA is deliberately not loaded because it is incompatible with Krea2.\n\nREFERENCE MODE\nUpload an image and move/zoom the permanently locked 4:5 crop. Describe only the desired changes. The selected pixels enter Qwen analysis, Krea2's VAE reference-token path, Krea2's grounded Qwen3-VL encoder, and the comparison viewer. General Edit V2 is active at the measured strength.\n\nOUTPUT\nThe diffusion render is a true native 1280 \u00d7 1600 image. FameGrid Color Finish runs after decode. A separate 1080 \u00d7 1350 Instagram delivery copy is saved with Lanczos. This workflow does not claim a resized image is native 4K; Krea2 Edit's documented reliable range is at or below about two megapixels.\n\nKNOWN LIMIT\nReference mode supplies identity and composition through Krea2 General Edit. A reusable Alex identity in prompt-only mode needs a Krea2-trained character LoRA; the existing alexsparks.safetensors is FLUX.2 Klein-specific."
@@ -1008,7 +1009,8 @@
           "name": "LATENT",
           "type": "LATENT",
           "links": [
-            14
+            14,
+            111
           ]
         }
       ],
@@ -1076,10 +1078,9 @@
           "name": "LATENT",
           "type": "LATENT",
           "links": [
-            17,
-            54,
             87,
-            97
+            97,
+            110
           ]
         }
       ],
@@ -1167,7 +1168,15 @@
           "name": "target_latent",
           "shape": 7,
           "type": "LATENT",
-          "link": 17
+          "link": 113
+        },
+        {
+          "name": "ref_position",
+          "type": "COMBO",
+          "widget": {
+            "name": "ref_position"
+          },
+          "link": 114
         }
       ],
       "outputs": [
@@ -2843,7 +2852,7 @@
           "localized_name": "latent_image",
           "name": "latent_image",
           "type": "LATENT",
-          "link": 54
+          "link": 115
         },
         {
           "localized_name": "seed",
@@ -2897,7 +2906,7 @@
           "widget": {
             "name": "denoise"
           },
-          "link": null
+          "link": 116
         }
       ],
       "outputs": [
@@ -4296,6 +4305,85 @@
       },
       "color": "#493c5b",
       "bgcolor": "#31293e"
+    },
+    {
+      "id": 61,
+      "type": "ASInfReferenceBehavior",
+      "pos": [
+        -410,
+        -2180
+      ],
+      "size": [
+        350,
+        150
+      ],
+      "flags": {},
+      "order": 61,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "empty_latent",
+          "type": "LATENT",
+          "link": 110
+        },
+        {
+          "name": "reference_latent",
+          "type": "LATENT",
+          "link": 111
+        },
+        {
+          "name": "has_reference",
+          "type": "BOOLEAN",
+          "link": 112
+        },
+        {
+          "name": "mode",
+          "type": "COMBO",
+          "widget": {
+            "name": "mode"
+          },
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "latent_image",
+          "type": "LATENT",
+          "links": [
+            113,
+            115
+          ]
+        },
+        {
+          "name": "ref_position",
+          "type": [
+            "aligned (trained)",
+            "beside (right of target)",
+            "bag of features"
+          ],
+          "links": [
+            114
+          ]
+        },
+        {
+          "name": "denoise",
+          "type": "FLOAT",
+          "links": [
+            116
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ASInfReferenceBehavior",
+        "cnr_id": "as-inf"
+      },
+      "widgets_values": [
+        "Inspired \u2014 beside"
+      ],
+      "widgets_values_named": {
+        "mode": "Inspired \u2014 beside"
+      },
+      "title": "REFERENCE BEHAVIOR \u00b7 Inspired / Close / Pixel-preserving"
     }
   ],
   "links": [
@@ -4426,14 +4514,6 @@
       16,
       6,
       "IMAGE"
-    ],
-    [
-      17,
-      15,
-      0,
-      16,
-      8,
-      "LATENT"
     ],
     [
       18,
@@ -4722,14 +4802,6 @@
       36,
       2,
       "CONDITIONING"
-    ],
-    [
-      54,
-      15,
-      0,
-      36,
-      3,
-      "LATENT"
     ],
     [
       55,
@@ -5239,6 +5311,66 @@
       16,
       3,
       "FLOAT"
+    ],
+    [
+      110,
+      15,
+      0,
+      61,
+      0,
+      "LATENT"
+    ],
+    [
+      111,
+      14,
+      0,
+      61,
+      1,
+      "LATENT"
+    ],
+    [
+      112,
+      1,
+      2,
+      61,
+      2,
+      "BOOLEAN"
+    ],
+    [
+      113,
+      61,
+      0,
+      16,
+      8,
+      "LATENT"
+    ],
+    [
+      114,
+      61,
+      1,
+      16,
+      9,
+      [
+        "aligned (trained)",
+        "beside (right of target)",
+        "bag of features"
+      ]
+    ],
+    [
+      115,
+      61,
+      0,
+      36,
+      3,
+      "LATENT"
+    ],
+    [
+      116,
+      61,
+      2,
+      36,
+      9,
+      "FLOAT"
     ]
   ],
   "groups": [
@@ -5262,7 +5394,7 @@
         -2240,
         -2870,
         2200,
-        720
+        880
       ],
       "color": "#4c3f73",
       "font_size": 24,
