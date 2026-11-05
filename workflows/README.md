@@ -14,6 +14,9 @@ The `research/realism-native-4k` branch also contains:
 - `final-kurva-maker-krea2-pre-alex-backup.json`
 - `final-kurva-maker-krea2-scene-identity.json`
 - `final-kurva-maker-krea2-alex-scene-text.json`
+- `final-kurva-maker-krea2-alex-direct-scene.json`
+
+`final-kurva-maker-krea2-alex-direct-scene.json` is the preferred close-match workflow when the uploaded image should control the visible scene. It sends the full cropped source to Krea as aligned reference A at neutral strength 1.0 and the selected Alex portrait as identity reference B at strength 2.5. It preserves composition, body pose, garment design/color, camera, lighting, crowd density, and spatial layout while regenerating source identities. When the selector is `None`, it automatically falls back to the Alex-only prompt route. The optional request may be blank. The validated beach-club result and exact settings are documented in `docs/KREA2_DIRECT_SCENE_REFERENCE_2026-11-05.md`.
 
 `final-kurva-maker-krea2-alex-scene-text.json` is the simplified direct hybrid validated on 2026-11-04. The uploaded scene is analyzed into text only and its pixels never reach Krea. One selected Alex portrait is Krea's sole visual reference; the model and conditioning switches are locked to that identity-only route. Keep the Alex angle selector on `front` to reproduce the measured setup. This avoided source-person leakage while following two unrelated scene/pose briefs. See `research-results/pixelai_alex_scene_2026-11-04/` for outputs and exact settings.
 
