@@ -55,6 +55,16 @@ foreground person cannot override Alex. Live tests showed that feeding the
 scene and several face references directly to Krea created identity leakage,
 duplicate women, and collages.
 
+The backup-first Alex experiment is
+[`workflows/final-kurva-maker-krea2-prealex-alex-finish.json`](workflows/final-kurva-maker-krea2-prealex-alex-finish.json).
+It preserves the strong original pre-Alex single-reference generation as the
+first pass, then performs a separate conservative identity substitution using
+the finished photograph and one selected Alex portrait. In the measured
+1280×1600 test, preservation strength 3.0 and identity strength 2.0 changed a
+clearly brunette subject into Alex while retaining the source expression,
+clothing, pose, hands, lighting, focus, framing, and staircase. The second pass
+is optional and can be disabled to expose the untouched backup result.
+
 ## Current deployment
 
 | Setting | Value |
@@ -120,6 +130,14 @@ pulls the exact SuperGemma model, and restores the four workflow LoRAs from Git
 LFS.
 
 ## Workflows
+
+- `final-kurva-maker-krea2-prealex-alex-finish.json` — the proven pre-Alex
+  single-reference workflow followed by an optional restrained Alex identity
+  pass. This is the preferred experiment when the backup's scene quality is
+  more important than solving scene and identity in the same diffusion pass.
+  It uses preservation 3.0, Alex identity 2.0, and an aligned first-pass image.
+  A full-resolution before/after proof is in
+  `research-results/krea2-prealex-alex-finish/`.
 
 - `final-kurva-maker-krea2-alex-direct-scene.json` — preferred Krea 2 workflow when a scene reference should remain recognizably close without copying its exact layout. The full 4:5 scene supplies pose, clothing, camera character, lighting, crowd density, and materials; a separate Alex portrait controls the foreground identity. A default-on second pass transfers source expression and accessories such as glasses. It automatically falls back to Alex-only generation when no scene is selected.
 

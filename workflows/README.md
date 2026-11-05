@@ -12,9 +12,21 @@ The `research/realism-native-4k` branch also contains:
 - `research-realism-base-alex-reference-4k.json`
 - `final-kurva-maker-krea2.json`
 - `final-kurva-maker-krea2-pre-alex-backup.json`
+- `final-kurva-maker-krea2-prealex-alex-finish.json`
 - `final-kurva-maker-krea2-scene-identity.json`
 - `final-kurva-maker-krea2-alex-scene-text.json`
 - `final-kurva-maker-krea2-alex-direct-scene.json`
+
+`final-kurva-maker-krea2-prealex-alex-finish.json` keeps the pre-Alex backup's
+entire first pass unchanged. Its decoded photograph becomes aligned reference A
+in a second Krea edit, while one selected Alex portrait is reference B. The
+measured conservative settings are preservation 3.0 and Alex identity 2.0.
+This separated a successful scene generation from identity replacement and, in
+a 1280×1600 brunette test, retained expression, clothes, pose, hands, lighting,
+camera, depth of field, and environment while changing the subject to Alex.
+`APPLY ALEX IDENTITY FINISH` is enabled by default and can be disabled to return
+the untouched backup output. See
+`docs/KREA2_PREALEX_ALEX_FINISH_2026-11-05.md`.
 
 `final-kurva-maker-krea2-alex-direct-scene.json` is the preferred close-match workflow when the uploaded image should control the visible scene. It sends the full cropped source beside the target at neutral strength 1.0 and the selected Alex portrait as identity reference B at strength 2.5. This produces a newly arranged nearby viewpoint while retaining the source's scene family, approximate pose, garment design/color, camera character, lighting, crowd density, and materials. A default-on second pass transfers the source expression and face-adjacent styling such as glasses, makeup, jewelry, and headwear onto the generated Alex image; it can be disabled in Advanced Settings. When the selector is `None`, the workflow automatically falls back to the Alex-only prompt route and skips the finish. The optional request may be blank. The validated beach-club results and exact settings are documented in `docs/KREA2_DIRECT_SCENE_REFERENCE_2026-11-05.md`.
 
