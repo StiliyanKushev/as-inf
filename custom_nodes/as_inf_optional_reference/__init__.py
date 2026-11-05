@@ -15,11 +15,13 @@ NONE = "[None — prompt-only mode]"
 REFERENCE_MODES = [
     "Inspired — beside",
     "Balanced — partial alignment",
+    "Balanced 75% — stronger alignment",
     "Close — aligned",
     "Pixel-preserving — aligned + low denoise",
 ]
 KREA_REFERENCE_POSITIONS = [
     "aligned (trained)",
+    "balanced (75% overlap)",
     "balanced (half overlap)",
     "beside (right of target)",
     "bag of features",
@@ -382,9 +384,9 @@ class ReferenceBehavior:
     FUNCTION = "resolve"
     CATEGORY = "AS-INF/sampling"
     DESCRIPTION = (
-        "Inspired puts the reference beside the target; Balanced retains half "
-        "spatial overlap; Close fully aligns it; Pixel-preserving also starts "
-        "from the reference latent at denoise 0.25."
+        "Inspired puts the reference beside the target; Balanced offers 50% or "
+        "75% spatial overlap; Close fully aligns it; Pixel-preserving also "
+        "starts from the reference latent at denoise 0.25."
     )
 
     @staticmethod
@@ -393,6 +395,8 @@ class ReferenceBehavior:
             return empty_latent, "beside (right of target)", 1.0
         if mode == "Balanced — partial alignment":
             return empty_latent, "balanced (half overlap)", 1.0
+        if mode == "Balanced 75% — stronger alignment":
+            return empty_latent, "balanced (75% overlap)", 1.0
         if mode == "Close — aligned":
             return empty_latent, "aligned (trained)", 1.0
         if mode == "Pixel-preserving — aligned + low denoise":
@@ -461,7 +465,7 @@ NODE_DISPLAY_NAME_MAPPINGS = {
     "ASInfPrependLoraTriggers": "Prepend Active LoRA Triggers",
     "ASInfDefaultTextIfEmpty": "Optional Text · Blank Is No Changes",
     "ASInfSamplerSettings": "Sampler Settings",
-    "ASInfReferenceBehavior": "Reference Behavior · Inspired / Balanced / Close / Pixel-preserving",
+    "ASInfReferenceBehavior": "Reference Behavior · Inspired / Balanced 50% / Balanced 75% / Close / Pixel-preserving",
     "ASInfSelectIdentityReference": "Select Identity Reference",
 }
 

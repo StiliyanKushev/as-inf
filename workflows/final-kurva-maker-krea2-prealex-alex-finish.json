@@ -4358,6 +4358,7 @@
           "name": "ref_position",
           "type": [
             "aligned (trained)",
+            "balanced (75% overlap)",
             "balanced (half overlap)",
             "beside (right of target)",
             "bag of features"
@@ -4384,7 +4385,7 @@
       "widgets_values_named": {
         "mode": "Balanced \u2014 partial alignment"
       },
-      "title": "REFERENCE BEHAVIOR \u00b7 Inspired / Balanced / Close / Pixel-preserving"
+      "title": "REFERENCE BEHAVIOR \u00b7 Inspired / Balanced 50% / Balanced 75% / Close / Pixel-preserving"
     }
   ],
   "links": [
@@ -5353,6 +5354,7 @@
       9,
       [
         "aligned (trained)",
+        "balanced (75% overlap)",
         "balanced (half overlap)",
         "beside (right of target)",
         "bag of features"

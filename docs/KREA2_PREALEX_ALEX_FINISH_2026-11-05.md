@@ -31,13 +31,16 @@ The saved production defaults now use:
 - Krea 2 Turbo FP8, General Edit V2 1.0, FameGrid 0.5, Realism Engine 0.5
 - native 1280×1600 target
 
-`REFERENCE BEHAVIOR` has four first-pass modes:
+`REFERENCE BEHAVIOR` has five first-pass modes:
 
 - `Inspired — beside`: fresh latent at denoise 1.0 with detached reference
   coordinates, producing a related new photograph
 - `Balanced — partial alignment`: fresh latent at denoise 1.0 with the
   reference shifted by half a target width, retaining partial spatial overlap;
   this is the saved default between Inspired and Close
+- `Balanced 75% — stronger alignment`: shifts the reference by one quarter of
+  the target width, retaining about 75% spatial overlap; it is closer to
+  Aligned while still allowing more scene variation
 - `Close — aligned`: fresh latent at denoise 1.0 with reference and target
   coordinates aligned, preserving composition and pose more closely
 - `Pixel-preserving — aligned + low denoise`: starts from the VAE-encoded

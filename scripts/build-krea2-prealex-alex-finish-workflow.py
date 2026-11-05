@@ -252,6 +252,7 @@ def main() -> None:
                 "name": "ref_position",
                 "type": [
                     "aligned (trained)",
+                    "balanced (75% overlap)",
                     "balanced (half overlap)",
                     "beside (right of target)",
                     "bag of features",
@@ -266,7 +267,7 @@ def main() -> None:
         },
         "widgets_values": ["Balanced — partial alignment"],
         "widgets_values_named": {"mode": "Balanced — partial alignment"},
-        "title": "REFERENCE BEHAVIOR · Inspired / Balanced / Close / Pixel-preserving",
+        "title": "REFERENCE BEHAVIOR · Inspired / Balanced 50% / Balanced 75% / Close / Pixel-preserving",
     }
 
     workflow["nodes"].extend(nodes + strength_nodes + [reference_mode])
@@ -356,6 +357,7 @@ def main() -> None:
     add(61, 0, 16, 8, "LATENT")
     add(61, 1, 16, 9, [
         "aligned (trained)",
+        "balanced (75% overlap)",
         "balanced (half overlap)",
         "beside (right of target)",
         "bag of features",
