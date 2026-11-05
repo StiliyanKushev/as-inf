@@ -58,7 +58,7 @@
           ]
         }
       ],
-      "title": "SCENE REFERENCE \u00b7 direct composition / pose / light",
+      "title": "SCENE INSPIRATION \u00b7 close resemblance, newly arranged",
       "properties": {
         "Node name for S&R": "ASInfOptionalReferenceCrop4x5",
         "cnr_id": "as-inf"
@@ -169,7 +169,7 @@
           "links": null
         }
       ],
-      "title": "FINAL RESULT \u00b7 generated / direct scene slider",
+      "title": "FINAL RESULT \u00b7 generated / scene inspiration slider",
       "properties": {
         "comparer_mode": "Slide",
         "Node name for S&R": "Image Comparer (rgthree)",
@@ -1169,9 +1169,9 @@
         1.0,
         "fit",
         "beside (right of target)",
-        "aligned (trained)"
+        "beside (right of target)"
       ],
-      "title": "Full scene + Alex \u00b7 scene 1.0, identity 2.5",
+      "title": "Scene inspiration + Alex \u00b7 restaged scene 1.0, identity 2.5",
       "widgets_values_named": {
         "ref_boost": 1.5,
         "ref_boost_a": 0.7,
@@ -2145,9 +2145,9 @@
       "widgets_values": [
         "",
         768,
-        "Image 1 is the authoritative scene, composition, body pose, clothing, camera, and lighting reference. Image 2 is the sole identity authority for the main foreground woman. Replace the foreground woman's identity with Alex from image 2 while retaining image 1's camera distance, camera height, foreground placement, pose, limb arrangement, hand placement, garment design and color, environment density, material character, perspective, depth of field, and imperfect consumer-phone lighting. Preserve Alex's facial proportions, pale clear blue eyes, fair lightly freckled skin, natural brows, nose, lips, jawline, apparent age, and long straight light golden-blonde center-parted hair. Do not transfer the source foreground identity. Regenerate every background person as a different anonymous adult. Never give Alex's face, hair, or identity to a bystander. Keep background people only when the source scene contains them, visually secondary and softly detailed. Exactly one Alex."
+        "Image 1 is a close visual inspiration for scene family, outfit, approximate pose, camera distance, lighting, palette, materials, spatial character, and crowd energy, but it is not a plate to reproduce exactly. Produce a distinct photograph as if taken moments later from a slightly different nearby viewpoint, with a newly invented but highly related arrangement of architecture, furniture, objects, vegetation, and regenerated anonymous background people. Image 2 is the sole identity authority for the main foreground woman, Alex. Preserve Alex's facial proportions, pale clear blue eyes, fair lightly freckled skin, natural brows, nose, lips, jawline, apparent age, and long straight light golden-blonde center-parted hair. Never transfer image 1's foreground identity and never give Alex's face, hair, or identity to a bystander. Keep background people only when the source scene calls for them, visually secondary and varied. Exactly one Alex."
       ],
-      "title": "Direct scene + Alex positive \u00b7 full composition grounding",
+      "title": "Close scene inspiration + Alex positive \u00b7 newly arranged",
       "widgets_values_named": {
         "prompt": "",
         "grounding_px": 768,
@@ -3367,14 +3367,14 @@
           ]
         }
       ],
-      "title": "REFERENCE MODE \u00b7 preserve scene, replace foreground identity",
+      "title": "REFERENCE MODE \u00b7 very close resemblance, never an exact copy",
       "properties": {
         "Node name for S&R": "PrimitiveStringMultiline",
         "cnr_id": "comfy-core",
         "widget_ue_connectable": {}
       },
       "widgets_values": [
-        "REFERENCE SCENE MODE: Use the uploaded scene as the authoritative visual guide for composition, camera position and distance, foreground body pose and limb placement, clothing design and color, lighting direction and exposure, palette, perspective, depth of field, crowd density, environment materials, and spatial layout. Create a newly rendered photograph rather than a pixel copy, but keep these visible relationships recognizably close. Replace only the main foreground woman's identity with Alex from image 2. Alex is a fictional adult woman with pale clear blue eyes, fair lightly freckled skin, a softly angular oval face, straight medium brows, a narrow straight nose, naturally shaped pink lips, and long straight light golden-blonde center-parted hair. Preserve her recognizable facial geometry and apparent age. Her face and eyes remain visible unless OPTIONAL TWEAKS explicitly requests eyewear. Do not transfer the source foreground person's face, hair, eyes, skin, age, or identity. Regenerate bystanders as different anonymous adults and never apply Alex's identity to them. Keep bystanders only when the source scene visibly requires them. Preserve ordinary phone-camera imperfections and uneven real-world lighting; avoid studio polish, cinematic relighting, beauty retouching, perfect symmetry, fisheye, black corners, borders, text, logos, or watermarks. OPTIONAL TWEAKS may be empty."
+        "REFERENCE INSPIRATION MODE: Create a new photograph that very closely resembles the uploaded scene, as though captured moments later from a slightly different nearby viewpoint. Preserve its scene category, foreground scale, approximate body pose and limb placement, clothing category/design/color, camera distance and height, lighting direction and exposure, palette, depth of field, crowd density, materials, atmosphere, and casual phone-camera character. Invent a different but highly related arrangement of the background, objects, architecture, furniture, vegetation, and anonymous visitors. Do not reproduce the source pixels, exact camera position, exact spatial layout, exact objects, signage, or any person's identity. Replace the main foreground identity with Alex from image 2. Alex is a fictional adult woman with pale clear blue eyes, fair lightly freckled skin, a softly angular oval face, straight medium brows, a narrow straight nose, naturally shaped pink lips, and long straight light golden-blonde center-parted hair. Preserve her recognizable facial geometry and apparent age. Do not transfer the source foreground face, hair, eyes, skin, age, or identity. Regenerate bystanders as different anonymous adults and never apply Alex's identity to them. Preserve ordinary phone-camera imperfections and uneven real-world lighting; avoid studio polish, cinematic relighting, beauty retouching, perfect symmetry, fisheye, black corners, borders, text, logos, or watermarks. OPTIONAL TWEAKS may be empty."
       ],
       "widgets_values_named": {
         "value": "PROMPT-ONLY MODE: no scene inspiration is active. Generate a new image from the OPTIONAL TWEAKS text as the complete scene request. If that text is empty, create a tasteful candid vertical Instagram photograph of one fictional adult woman in a believable everyday setting. Use natural anatomy, coherent geometry, believable light, ordinary photographic imperfections, and a full-bleed vertical 4:5 rectilinear frame. Avoid duplicate subjects, extra or missing limbs or digits, malformed hands, warped straight lines, fisheye, black corners, borders, text, logos, and watermarks."
@@ -4231,7 +4231,7 @@
     },
     {
       "id": 7,
-      "title": "05 \u00b7 DIRECT REFERENCE PROMPT BUILDER",
+      "title": "05 \u00b7 CLOSE-INSPIRATION PROMPT BUILDER",
       "bounding": [
         -2280,
         630,
