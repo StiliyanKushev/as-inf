@@ -1,8 +1,8 @@
 {
   "id": "7a9e995d-ba78-4f17-8b7d-16978bd168df",
   "revision": 0,
-  "last_node_id": 61,
-  "last_link_id": 116,
+  "last_node_id": 62,
+  "last_link_id": 119,
   "nodes": [
     {
       "id": 1,
@@ -55,7 +55,7 @@
             47,
             50,
             68,
-            112
+            111
           ]
         }
       ],
@@ -677,9 +677,7 @@
           "name": "model",
           "type": "MODEL",
           "links": [
-            7,
-            8,
-            79
+            118
           ]
         },
         {
@@ -1010,7 +1008,7 @@
           "type": "LATENT",
           "links": [
             14,
-            111
+            110
           ]
         }
       ],
@@ -1080,7 +1078,7 @@
           "links": [
             87,
             97,
-            110
+            109
           ]
         }
       ],
@@ -1138,7 +1136,7 @@
           "widget": {
             "name": "ref_boost"
           },
-          "link": 109
+          "link": 117
         },
         {
           "name": "ref_boost_mask",
@@ -2375,6 +2373,15 @@
             "name": "prompt"
           },
           "link": 35
+        },
+        {
+          "localized_name": "trigger_4",
+          "name": "trigger_4",
+          "type": "STRING",
+          "widget": {
+            "name": "trigger_4"
+          },
+          "link": 119
         }
       ],
       "outputs": [
@@ -2398,13 +2405,15 @@
         "",
         "",
         "",
+        "",
         ""
       ],
       "widgets_values_named": {
         "trigger_1": "",
         "trigger_2": "",
         "trigger_3": "",
-        "prompt": ""
+        "prompt": "",
+        "trigger_4": ""
       },
       "color": "#4d3d61",
       "bgcolor": "#6b5685"
@@ -4059,7 +4068,7 @@
       "id": 56,
       "type": "PrimitiveBoolean",
       "pos": [
-        -410,
+        40,
         -2800
       ],
       "size": [
@@ -4169,7 +4178,7 @@
       "id": 58,
       "type": "PrimitiveFloat",
       "pos": [
-        -410,
+        40,
         -2660
       ],
       "size": [
@@ -4216,7 +4225,7 @@
       "id": 59,
       "type": "PrimitiveFloat",
       "pos": [
-        -410,
+        40,
         -2500
       ],
       "size": [
@@ -4263,7 +4272,7 @@
       "id": 60,
       "type": "PrimitiveFloat",
       "pos": [
-        -410,
+        40,
         -2340
       ],
       "size": [
@@ -4288,7 +4297,7 @@
           "name": "FLOAT",
           "type": "FLOAT",
           "links": [
-            109
+            112
           ]
         }
       ],
@@ -4310,7 +4319,7 @@
       "id": 61,
       "type": "ASInfReferenceBehavior",
       "pos": [
-        -410,
+        40,
         -2180
       ],
       "size": [
@@ -4324,17 +4333,17 @@
         {
           "name": "empty_latent",
           "type": "LATENT",
-          "link": 110
+          "link": 109
         },
         {
           "name": "reference_latent",
           "type": "LATENT",
-          "link": 111
+          "link": 110
         },
         {
           "name": "has_reference",
           "type": "BOOLEAN",
-          "link": 112
+          "link": 111
         },
         {
           "name": "mode",
@@ -4343,6 +4352,14 @@
             "name": "mode"
           },
           "link": null
+        },
+        {
+          "name": "reference_strength",
+          "type": "FLOAT",
+          "widget": {
+            "name": "reference_strength"
+          },
+          "link": 112
         }
       ],
       "outputs": [
@@ -4373,6 +4390,13 @@
           "links": [
             116
           ]
+        },
+        {
+          "name": "effective_reference_strength",
+          "type": "FLOAT",
+          "links": [
+            117
+          ]
         }
       ],
       "properties": {
@@ -4385,7 +4409,92 @@
       "widgets_values_named": {
         "mode": "Balanced \u2014 partial alignment"
       },
-      "title": "REFERENCE BEHAVIOR \u00b7 Inspired / Balanced 50% / Balanced 75% / Close / Pixel-preserving"
+      "title": "REFERENCE BEHAVIOR \u00b7 Inspired / Seamless Balanced 50% / Seamless Balanced 75% / Close / Pixel-preserving"
+    },
+    {
+      "id": 62,
+      "type": "ASInfLoraLoaderModelOnlyWithTrigger",
+      "pos": [
+        -410,
+        -2800
+      ],
+      "size": [
+        400,
+        190
+      ],
+      "flags": {},
+      "order": 8,
+      "mode": 0,
+      "inputs": [
+        {
+          "localized_name": "model",
+          "name": "model",
+          "type": "MODEL",
+          "link": 118
+        },
+        {
+          "localized_name": "lora_name",
+          "name": "lora_name",
+          "type": "COMBO",
+          "widget": {
+            "name": "lora_name"
+          },
+          "link": null
+        },
+        {
+          "localized_name": "strength_model",
+          "name": "strength_model",
+          "type": "FLOAT",
+          "widget": {
+            "name": "strength_model"
+          },
+          "link": null
+        },
+        {
+          "localized_name": "trigger_words",
+          "name": "trigger_words",
+          "type": "STRING",
+          "widget": {
+            "name": "trigger_words"
+          },
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "localized_name": "model",
+          "name": "model",
+          "type": "MODEL",
+          "links": [
+            7,
+            8,
+            79
+          ]
+        },
+        {
+          "localized_name": "active_trigger_words",
+          "name": "active_trigger_words",
+          "type": "STRING",
+          "links": [
+            119
+          ]
+        }
+      ],
+      "title": "LoRA 4 \u00b7 Krea 2 NSFW v4.3 EXP",
+      "properties": {
+        "Node name for S&R": "ASInfLoraLoaderModelOnlyWithTrigger",
+        "cnr_id": "as-inf"
+      },
+      "widgets_values": [
+        "KNP_v4.3_EXP.safetensors",
+        1.0,
+        ""
+      ],
+      "widgets_values_named": {
+        "lora_name": "KNP_v4.3_EXP.safetensors",
+        "strength_model": 1.0,
+        "trigger_words": ""
+      }
     }
   ],
   "links": [
@@ -4439,7 +4548,7 @@
     ],
     [
       7,
-      8,
+      62,
       0,
       16,
       0,
@@ -4447,7 +4556,7 @@
     ],
     [
       8,
-      8,
+      62,
       0,
       17,
       0,
@@ -5068,7 +5177,7 @@
     ],
     [
       79,
-      8,
+      62,
       0,
       51,
       0,
@@ -5308,14 +5417,6 @@
     ],
     [
       109,
-      60,
-      0,
-      16,
-      3,
-      "FLOAT"
-    ],
-    [
-      110,
       15,
       0,
       61,
@@ -5323,7 +5424,7 @@
       "LATENT"
     ],
     [
-      111,
+      110,
       14,
       0,
       61,
@@ -5331,12 +5432,20 @@
       "LATENT"
     ],
     [
-      112,
+      111,
       1,
       2,
       61,
       2,
       "BOOLEAN"
+    ],
+    [
+      112,
+      60,
+      0,
+      61,
+      4,
+      "FLOAT"
     ],
     [
       113,
@@ -5375,6 +5484,30 @@
       36,
       9,
       "FLOAT"
+    ],
+    [
+      117,
+      61,
+      3,
+      16,
+      3,
+      "FLOAT"
+    ],
+    [
+      118,
+      8,
+      0,
+      62,
+      0,
+      "MODEL"
+    ],
+    [
+      119,
+      62,
+      1,
+      28,
+      4,
+      "STRING"
     ]
   ],
   "groups": [
@@ -5384,7 +5517,7 @@
       "bounding": [
         -2280,
         -2940,
-        2340,
+        2730,
         1510
       ],
       "color": "#2b607d",
@@ -5397,7 +5530,7 @@
       "bounding": [
         -2240,
         -2870,
-        2200,
+        2670,
         880
       ],
       "color": "#4c3f73",

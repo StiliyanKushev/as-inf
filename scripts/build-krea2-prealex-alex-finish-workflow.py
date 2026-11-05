@@ -136,7 +136,7 @@ def main() -> None:
     by_id[55]["pos"] = [800, 2100]
 
     by_id[56]["title"] = "APPLY ALEX IDENTITY FINISH · tested conservative pass"
-    by_id[56]["pos"] = [-410, -2800]
+    by_id[56]["pos"] = [40, -2800]
     by_id[56]["size"] = [350, 100]
     by_id[56]["widgets_values"] = [True]
     by_id[56]["widgets_values_named"] = {"value": True}
@@ -158,7 +158,7 @@ def main() -> None:
         node = copy.deepcopy(primitive_template)
         node["id"] = node_id
         node["type"] = "PrimitiveFloat"
-        node["pos"] = [-410, y]
+        node["pos"] = [40, y]
         node["size"] = [350, 110]
         node["order"] = node_id
         node["title"] = title
@@ -230,12 +230,15 @@ def main() -> None:
         "scheduler": "simple",
         "batch_size": 1,
     }
-    next(group for group in workflow["groups"] if group["id"] == 2)["bounding"][3] = 880
+    advanced_group = next(group for group in workflow["groups"] if group["id"] == 2)
+    advanced_group["bounding"][2] = 2670
+    advanced_group["bounding"][3] = 880
+    next(group for group in workflow["groups"] if group["id"] == 1)["bounding"][2] = 2730
 
     reference_mode = {
         "id": 61,
         "type": "ASInfReferenceBehavior",
-        "pos": [-410, -2180],
+        "pos": [40, -2180],
         "size": [350, 150],
         "flags": {},
         "order": 61,
@@ -245,6 +248,12 @@ def main() -> None:
             {"name": "reference_latent", "type": "LATENT", "link": None},
             {"name": "has_reference", "type": "BOOLEAN", "link": None},
             {"name": "mode", "type": "COMBO", "widget": {"name": "mode"}, "link": None},
+            {
+                "name": "reference_strength",
+                "type": "FLOAT",
+                "widget": {"name": "reference_strength"},
+                "link": None,
+            },
         ],
         "outputs": [
             {"name": "latent_image", "type": "LATENT", "links": None},
@@ -260,6 +269,7 @@ def main() -> None:
                 "links": None,
             },
             {"name": "denoise", "type": "FLOAT", "links": None},
+            {"name": "effective_reference_strength", "type": "FLOAT", "links": None},
         ],
         "properties": {
             "Node name for S&R": "ASInfReferenceBehavior",
@@ -267,10 +277,40 @@ def main() -> None:
         },
         "widgets_values": ["Balanced — partial alignment"],
         "widgets_values_named": {"mode": "Balanced — partial alignment"},
-        "title": "REFERENCE BEHAVIOR · Inspired / Balanced 50% / Balanced 75% / Close / Pixel-preserving",
+        "title": "REFERENCE BEHAVIOR · Inspired / Seamless Balanced 50% / Seamless Balanced 75% / Close / Pixel-preserving",
     }
 
-    workflow["nodes"].extend(nodes + strength_nodes + [reference_mode])
+    # Add the newer Krea 2 NSFW v4.3 experimental checkpoint as a fourth,
+    # independently adjustable model-only LoRA.  A strength of 1.0 is a
+    # conservative starting point; the model author's examples go as high as
+    # 2.0.  It declares no trigger word.
+    lora4 = copy.deepcopy(node_by_id(workflow, 8))
+    lora4["id"] = 62
+    lora4["order"] = 8
+    lora4["pos"] = [-410, -2800]
+    lora4["title"] = "LoRA 4 · Krea 2 NSFW v4.3 EXP"
+    lora4["widgets_values"] = ["KNP_v4.3_EXP.safetensors", 1.0, ""]
+    lora4["widgets_values_named"] = {
+        "lora_name": "KNP_v4.3_EXP.safetensors",
+        "strength_model": 1.0,
+        "trigger_words": "",
+    }
+    reset_links(lora4)
+
+    trigger_compiler = node_by_id(workflow, 28)
+    trigger_compiler["inputs"].append(
+        {
+            "localized_name": "trigger_4",
+            "name": "trigger_4",
+            "type": "STRING",
+            "widget": {"name": "trigger_4"},
+            "link": None,
+        }
+    )
+    trigger_compiler["widgets_values"].append("")
+    trigger_compiler["widgets_values_named"]["trigger_4"] = ""
+
+    workflow["nodes"].extend(nodes + strength_nodes + [reference_mode, lora4])
 
     node_by_id(workflow, 9)["widgets_values"] = [
         "FINAL KURVA MAKER · KREA 2 TURBO · BACKUP-FIRST ALEX FINISH\n\n"
@@ -350,10 +390,10 @@ def main() -> None:
     add(55, 0, 57, 1, "IMAGE")
     add(56, 0, 57, 2, "BOOLEAN")
     add(57, 0, 38, 0, "IMAGE")
-    add(60, 0, 16, 3, "FLOAT")
     add(15, 0, 61, 0, "LATENT")
     add(14, 0, 61, 1, "LATENT")
     add(1, 2, 61, 2, "BOOLEAN")
+    add(60, 0, 61, 4, "FLOAT")
     add(61, 0, 16, 8, "LATENT")
     add(61, 1, 16, 9, [
         "aligned (trained)",
@@ -364,6 +404,16 @@ def main() -> None:
     ])
     add(61, 0, 36, 3, "LATENT")
     add(61, 2, 36, 9, "FLOAT")
+    add(61, 3, 16, 3, "FLOAT")
+
+    # Insert LoRA 4 after the previous three LoRAs for every generation path.
+    # Existing node 8 model links are retargeted to originate from node 62, and
+    # node 8 now feeds only the new LoRA loader.
+    for link in links:
+        if link[1] == 8 and link[2] == 0 and link[3] in {16, 17, 51}:
+            link[1] = 62
+    add(8, 0, 62, 0, "MODEL")
+    add(62, 1, 28, 4, "STRING")
 
     # Rebuild all per-node link references from the canonical link table.
     nodes_by_id = {node["id"]: node for node in workflow["nodes"]}

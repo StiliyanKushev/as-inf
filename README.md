@@ -65,6 +65,20 @@ clearly brunette subject into Alex while retaining the source expression,
 clothing, pose, hands, lighting, focus, framing, and staircase. The second pass
 is optional and can be disabled to expose the untouched backup result.
 
+That workflow also exposes `KNP_v4.3_EXP.safetensors` (Civitai model version
+`3147117`, file `3027612`) as LoRA 4. Its default strength is `1.0`; the
+publisher's examples use strengths up to `2.0`. The file requires an
+authenticated Civitai download and is not redistributed by this repository.
+For a clean-volume installation, export `CIVITAI_API_TOKEN` before running
+`scripts/install-krea2-production-stack.sh`; the installer verifies SHA-256
+`6ec564e04eed317ae24093b4907004ac59a7c528d19d025bb41b4d719c4d16ec`.
+
+The Balanced 50% and Balanced 75% controls use full-frame trained alignment
+with scaled reference attention. Earlier builds shifted the reference grid by
+half or one-quarter of the canvas, which could expose a hard vertical seam at
+exactly that boundary. The seamless mapping preserves the strength choices
+without creating an internal canvas edge.
+
 ## Current deployment
 
 | Setting | Value |

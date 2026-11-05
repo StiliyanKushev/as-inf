@@ -376,32 +376,46 @@ class ReferenceBehavior:
                 "reference_latent": ("LATENT",),
                 "has_reference": ("BOOLEAN",),
                 "mode": (REFERENCE_MODES, {"default": REFERENCE_MODES[1]}),
+                "reference_strength": (
+                    "FLOAT",
+                    {"default": 2.0, "min": 0.0, "max": 1000.0, "step": 0.05},
+                ),
             }
         }
 
-    RETURN_TYPES = ("LATENT", KREA_REFERENCE_POSITIONS, "FLOAT")
-    RETURN_NAMES = ("latent_image", "ref_position", "denoise")
+    RETURN_TYPES = ("LATENT", KREA_REFERENCE_POSITIONS, "FLOAT", "FLOAT")
+    RETURN_NAMES = (
+        "latent_image",
+        "ref_position",
+        "denoise",
+        "effective_reference_strength",
+    )
     FUNCTION = "resolve"
     CATEGORY = "AS-INF/sampling"
     DESCRIPTION = (
-        "Inspired puts the reference beside the target; Balanced offers 50% or "
-        "75% spatial overlap; Close fully aligns it; Pixel-preserving also "
-        "starts from the reference latent at denoise 0.25."
+        "Inspired puts the reference beside the target. Balanced uses trained, "
+        "fully aligned geometry with 50% or 75% of the selected attention "
+        "strength, avoiding the hard vertical seams caused by partial spatial "
+        "overlap. Close uses full aligned strength; Pixel-preserving also starts "
+        "from the reference latent at denoise 0.25."
     )
 
     @staticmethod
-    def resolve(empty_latent, reference_latent, has_reference, mode):
+    def resolve(
+        empty_latent, reference_latent, has_reference, mode, reference_strength
+    ):
+        strength = max(0.0, float(reference_strength))
         if not bool(has_reference):
-            return empty_latent, "beside (right of target)", 1.0
+            return empty_latent, "beside (right of target)", 1.0, 1.0
         if mode == "Balanced — partial alignment":
-            return empty_latent, "balanced (half overlap)", 1.0
+            return empty_latent, "aligned (trained)", 1.0, strength * 0.50
         if mode == "Balanced 75% — stronger alignment":
-            return empty_latent, "balanced (75% overlap)", 1.0
+            return empty_latent, "aligned (trained)", 1.0, strength * 0.75
         if mode == "Close — aligned":
-            return empty_latent, "aligned (trained)", 1.0
+            return empty_latent, "aligned (trained)", 1.0, strength
         if mode == "Pixel-preserving — aligned + low denoise":
-            return reference_latent, "aligned (trained)", 0.25
-        return empty_latent, "beside (right of target)", 1.0
+            return reference_latent, "aligned (trained)", 0.25, strength
+        return empty_latent, "beside (right of target)", 1.0, strength
 
 
 class SelectIdentityReference:
@@ -465,7 +479,7 @@ NODE_DISPLAY_NAME_MAPPINGS = {
     "ASInfPrependLoraTriggers": "Prepend Active LoRA Triggers",
     "ASInfDefaultTextIfEmpty": "Optional Text · Blank Is No Changes",
     "ASInfSamplerSettings": "Sampler Settings",
-    "ASInfReferenceBehavior": "Reference Behavior · Inspired / Balanced 50% / Balanced 75% / Close / Pixel-preserving",
+    "ASInfReferenceBehavior": "Reference Behavior · Inspired / Seamless Balanced 50% / Seamless Balanced 75% / Close / Pixel-preserving",
     "ASInfSelectIdentityReference": "Select Identity Reference",
 }
 

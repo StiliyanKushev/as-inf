@@ -43,6 +43,25 @@ download_and_check() {
   echo "$expected  $target" | sha256sum -c -
 }
 
+download_civitai_and_check() {
+  local model_version="$1" file_id="$2" target="$3" expected="$4"
+  mkdir -p "$(dirname "$target")"
+  if [[ -s "$target" ]] && echo "$expected  $target" | sha256sum -c --status; then
+    echo "Already verified: $(basename "$target")"
+    return
+  fi
+  if [[ -z "${CIVITAI_API_TOKEN:-}" ]]; then
+    echo "ERROR: $(basename "$target") requires an authenticated Civitai download." >&2
+    echo "Set CIVITAI_API_TOKEN and rerun this installer." >&2
+    return 1
+  fi
+  curl --fail --location --retry 5 --retry-all-errors --continue-at - \
+    --header "Authorization: Bearer $CIVITAI_API_TOKEN" \
+    --output "$target" \
+    "https://civitai.com/api/download/models/$model_version?fileId=$file_id"
+  echo "$expected  $target" | sha256sum -c -
+}
+
 # This is the exact ComfyUI revision used for the measured Krea2 runs. The
 # existing checkout remains recoverable through Git, and all model data stays
 # in the network volume.
@@ -108,12 +127,18 @@ download_and_check \
   'https://huggingface.co/RazzzHF/realism_engine_krea2/resolve/main/realism_engine_krea2_v3.1.safetensors' \
   "$COMFY_DIR/models/loras/realism_engine_krea2_v3.1.safetensors" \
   'a6712629445a2e91a616568e82befa8c8c7518e891a0f7c9918138634b5b54a5'
+download_civitai_and_check \
+  '3147117' '3027612' \
+  "$COMFY_DIR/models/loras/KNP_v4.3_EXP.safetensors" \
+  '6ec564e04eed317ae24093b4907004ac59a7c528d19d025bb41b4d719c4d16ec'
 
 mkdir -p "$COMFY_DIR/user/default/workflows"
 cp -f "$ROOT/workflows/final-kurva-maker-krea2.json" \
   "$COMFY_DIR/user/default/workflows/final-kurva-maker-krea2.json"
 cp -f "$ROOT/workflows/final-kurva-maker-krea2-scene-identity.json" \
   "$COMFY_DIR/user/default/workflows/final-kurva-maker-krea2-scene-identity.json"
+cp -f "$ROOT/workflows/final-kurva-maker-krea2-prealex-alex-finish.json" \
+  "$COMFY_DIR/user/default/workflows/final-kurva-maker-krea2-prealex-alex-finish.json"
 
 mkdir -p "$COMFY_DIR/input/alexsparks"
 cp -f "$ROOT/assets/persona_refs/persona_front_neutral.png" \
