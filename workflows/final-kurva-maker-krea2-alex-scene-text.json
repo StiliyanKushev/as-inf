@@ -1573,14 +1573,14 @@
           ]
         }
       ],
-      "title": "1 · Analyze scene/pose/light only · Qwen3-VL 4B",
+      "title": "1 · Analyze scene/pose/light only · Qwen3-VL 8B BF16",
       "properties": {
         "Node name for S&R": "AILab_QwenVL_Advanced",
         "cnr_id": "ComfyUI-QwenVL",
         "ver": "1b67b44"
       },
       "widgets_values": [
-        "Qwen3-VL-4B-Instruct-FP8",
+        "Qwen3-VL-8B-Instruct",
         "None (FP16)",
         "sdpa",
         false,
