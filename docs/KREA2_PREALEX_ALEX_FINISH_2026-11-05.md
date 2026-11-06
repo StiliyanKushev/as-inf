@@ -122,3 +122,40 @@ Proof files:
 
 The installer already copies the versioned persona references from
 `assets/persona_refs/` to the stable `alexsparks_*.png` ComfyUI input names.
+
+## Inspired-mode phone-focus diagnostic (2026-11-06)
+
+The beach-club reference was tested with a blank user request after automatic
+blur language had been removed from the prompt compiler. Close/aligned produced
+a resolved background, but Inspired/beside still generated pronounced portrait
+bokeh even though the compiled prompt explicitly requested deep focus and no
+artificial background blur.
+
+A save directly from the first-pass VAE decode proved that the blur already
+exists before the optional Alex identity finish. The identity pass is therefore
+not its source. A second first-pass test strengthened the instruction to an
+ordinary iPhone rear 1x Photo-mode snapshot, portrait mode off, 24mm-equivalent
+wide perspective, no computational depth map, no DSLR portrait look, and
+legible background people and materials. This reduced the portrait character
+only slightly and did not remove the blur.
+
+The remaining controlled variables are the Inspired placement and the style
+stack. Inspired starts from an empty latent and places the reference outside the
+target coordinates, giving Krea freedom to fall back to its subject-isolating
+portrait prior. FameGrid 0.5 and Realism Engine 0.5 are likely amplifiers; KNP
+1.0 may also contribute. The queued no-style-LoRA ablation was interrupted when
+the RunPod credit balance reached zero and the H200 pod was automatically
+terminated. If it completed before termination, its persistent output is under
+`output/FocusDiagnosis/inspired_iphone_no_style_loras_00001_.png`.
+
+Proof outputs retained on the network volume:
+
+- `output/FocusDiagnosis/inspired_first_pass_00001_.png`
+- `output/FocusDiagnosis/inspired_iphone_prompt_00001_.png`
+- `output/FocusFixTest/native_1280x1600_00001_.png` (resolved Close/aligned control)
+
+The next experiment should keep General Edit and KNP active while bypassing
+FameGrid and Realism Engine only for the Inspired first pass. If that resolves
+the background, expose an `iPhone Photo mode` switch that selects this model
+path and appends the tested phone-camera instruction. Until that ablation is
+complete, Balanced or Close is the proven choice for a resolved environment.
