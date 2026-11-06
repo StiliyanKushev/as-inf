@@ -31,7 +31,8 @@ The saved production defaults now use:
 - Krea 2 Turbo FP8, General Edit V2 1.0, FameGrid 0.5, Realism Engine 0.5
 - native 1280×1600 target
 
-`REFERENCE BEHAVIOR` has five first-pass modes:
+`REFERENCE BEHAVIOR` has six first-pass modes when the experimental workflow is
+installed:
 
 - `Inspired — beside`: fresh latent at denoise 1.0 with detached reference
   coordinates, producing a related new photograph
@@ -41,6 +42,11 @@ The saved production defaults now use:
 - `Balanced 75% — stronger alignment`: shifts the reference by one quarter of
   the target width, retaining about 75% spatial overlap; it is closer to
   Aligned while still allowing more scene variation
+- `Balanced 75% — feathered` (experimental workflow): applies that same
+  quarter-width displacement gradually. For local reference coordinate `x`,
+  target width `W`, and blend fraction `b`, it uses
+  `x' = x + (W/4) * smoothstep(clamp(x/(W*b), 0, 1))`. This removes the one
+  abrupt positional boundary without turning the mode into aligned copying.
 - `Close — aligned`: fresh latent at denoise 1.0 with reference and target
   coordinates aligned, preserving composition and pose more closely
 - `Pixel-preserving — aligned + low denoise`: starts from the VAE-encoded
@@ -78,7 +84,10 @@ Proof files:
 ## Workflow and reproducibility
 
 - workflow: `workflows/final-kurva-maker-krea2-prealex-alex-finish.json`
+- feathered experiment:
+  `workflows/final-kurva-maker-krea2-prealex-alex-finish-feathered.json`
 - deterministic builder: `scripts/build-krea2-prealex-alex-finish-workflow.py`
+- feathered builder: `scripts/build-krea2-feathered-workflow.py`
 - source backup remains untouched
 - `APPLY ALEX IDENTITY FINISH` is enabled by default; disabling it returns the
   original first-pass output
@@ -87,6 +96,9 @@ Proof files:
 - first-pass reference strength is an attention multiplier rather than a
   literal percentage: `1.0` is neutral, values above `1.0` pull harder toward
   the source image, and values below `1.0` allow more deviation
+- `FEATHER BLEND WIDTH` is a fraction of target width and affects only the
+  feathered mode. The saved default is `0.25`; `0` deliberately reproduces the
+  original hard 75% shift for controlled comparisons.
 - select the Alex portrait closest to the desired head angle when needed
 
 The installer already copies the versioned persona references from

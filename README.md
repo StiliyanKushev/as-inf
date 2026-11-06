@@ -57,6 +57,13 @@ duplicate women, and collages.
 
 The backup-first Alex experiment is
 [`workflows/final-kurva-maker-krea2-prealex-alex-finish.json`](workflows/final-kurva-maker-krea2-prealex-alex-finish.json).
+
+The experimental smooth-overlap variant is
+[`workflows/final-kurva-maker-krea2-prealex-alex-finish-feathered.json`](workflows/final-kurva-maker-krea2-prealex-alex-finish-feathered.json).
+It keeps the original 75% overlap mode available and adds **Balanced 75% —
+feathered**. Its exposed blend-width control ramps the quarter-canvas positional
+shift with smoothstep instead of introducing it at one hard boundary. `0.25` is
+the starting value; `0` reproduces the original hard shift for direct A/B tests.
 It preserves the strong original pre-Alex single-reference generation as the
 first pass, then performs a separate conservative identity substitution using
 the finished photograph and one selected Alex portrait. In the measured

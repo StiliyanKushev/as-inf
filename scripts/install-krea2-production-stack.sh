@@ -141,6 +141,8 @@ cp -f "$ROOT/workflows/final-kurva-maker-krea2-scene-identity.json" \
   "$COMFY_DIR/user/default/workflows/final-kurva-maker-krea2-scene-identity.json"
 cp -f "$ROOT/workflows/final-kurva-maker-krea2-prealex-alex-finish.json" \
   "$COMFY_DIR/user/default/workflows/final-kurva-maker-krea2-prealex-alex-finish.json"
+cp -f "$ROOT/workflows/final-kurva-maker-krea2-prealex-alex-finish-feathered.json" \
+  "$COMFY_DIR/user/default/workflows/final-kurva-maker-krea2-prealex-alex-finish-feathered.json"
 
 mkdir -p "$COMFY_DIR/input/alexsparks"
 cp -f "$ROOT/assets/persona_refs/persona_front_neutral.png" \

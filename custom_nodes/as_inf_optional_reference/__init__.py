@@ -16,12 +16,14 @@ REFERENCE_MODES = [
     "Inspired — beside",
     "Balanced — partial alignment",
     "Balanced 75% — stronger alignment",
+    "Balanced 75% — feathered",
     "Close — aligned",
     "Pixel-preserving — aligned + low denoise",
 ]
 KREA_REFERENCE_POSITIONS = [
     "aligned (trained)",
     "balanced (75% overlap)",
+    "feathered (75% shift)",
     "balanced (half overlap)",
     "beside (right of target)",
     "bag of features",
@@ -409,6 +411,8 @@ class ReferenceBehavior:
             return empty_latent, "balanced (half overlap)", 1.0, strength
         if mode == "Balanced 75% — stronger alignment":
             return empty_latent, "balanced (75% overlap)", 1.0, strength
+        if mode == "Balanced 75% — feathered":
+            return empty_latent, "feathered (75% shift)", 1.0, strength
         if mode == "Close — aligned":
             return empty_latent, "aligned (trained)", 1.0, strength
         if mode == "Pixel-preserving — aligned + low denoise":

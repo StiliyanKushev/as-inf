@@ -1,25 +1,71 @@
 diff --git a/__init__.py b/__init__.py
-index e924efb..e37f199 100644
+index e924efb..a308794 100644
 --- a/__init__.py
 +++ b/__init__.py
-@@ -53 +53,7 @@ def _imgids_offset(bs, frame, gh, gw, th, tw, device):
+@@ -53 +53,8 @@ def _imgids_offset(bs, frame, gh, gw, th, tw, device):
 -REF_POSITIONS = ["aligned (trained)", "beside (right of target)", "bag of features"]
 +REF_POSITIONS = [
 +    "aligned (trained)",
 +    "balanced (75% overlap)",
++    "feathered (75% shift)",
 +    "balanced (half overlap)",
 +    "beside (right of target)",
 +    "bag of features",
 +]
-@@ -58,0 +65,2 @@ def _place_refs(ref_ids, modes, h_, w_):
+@@ -56 +63 @@ REF_POSITIONS = ["aligned (trained)", "beside (right of target)", "bag of featur
+-def _place_refs(ref_ids, modes, h_, w_):
++def _place_refs(ref_ids, modes, h_, w_, blend_widths=None):
+@@ -58,0 +66,3 @@ def _place_refs(ref_ids, modes, h_, w_):
 +    balanced 75%: shift by one quarter target width, retaining 75% overlap.
++    feathered 75%: ramp that quarter-width shift smoothly from zero to full shift.
 +    balanced half: shift by half a target width, retaining 50% overlap.
-@@ -72 +80,7 @@ def _place_refs(ref_ids, modes, h_, w_):
+@@ -65,0 +76,4 @@ def _place_refs(ref_ids, modes, h_, w_):
++    if blend_widths is None:
++        blend_widths = [0.25] * len(ref_ids)
++    elif isinstance(blend_widths, (int, float)):
++        blend_widths = [float(blend_widths)] * len(ref_ids)
+@@ -67 +81 @@ def _place_refs(ref_ids, modes, h_, w_):
+-    for ids, mode in zip(ref_ids, modes):
++    for ids, mode, blend_width in zip(ref_ids, modes, blend_widths):
+@@ -72 +86,18 @@ def _place_refs(ref_ids, modes, h_, w_):
 -        if mode.startswith("beside"):
 +        if mode.startswith("balanced (75%"):
 +            ids[..., 2] = ids[..., 2] - ids[..., 2].min() + (float(w_) / 4.0)
++            x0 = max(x0, float(ids[..., 2].max()) + 1.0)
++        elif mode.startswith("feathered"):
++            local_x = ids[..., 2] - ids[..., 2].min()
++            shift = float(w_) / 4.0
++            blend_tokens = float(w_) * max(0.0, min(1.0, float(blend_width)))
++            if blend_tokens <= 0.0:
++                multiplier = torch.ones_like(local_x)
++            else:
++                t = (local_x / blend_tokens).clamp(0.0, 1.0)
++                multiplier = t * t * (3.0 - 2.0 * t)
++            ids[..., 2] = local_x + shift * multiplier
 +            x0 = max(x0, float(ids[..., 2].max()) + 1.0)
 +        elif mode.startswith("balanced"):
 +            ids[..., 2] = ids[..., 2] - ids[..., 2].min() + (float(w_) / 2.0)
 +            x0 = max(x0, float(ids[..., 2].max()) + 1.0)
 +        elif mode.startswith("beside"):
+@@ -205 +236 @@ def krea2_edit_forward(m, x, timesteps, context, src_latent, transformer_options
+-                       ref_position_a="aligned (trained)"):
++                       ref_position_a="aligned (trained)", ref_blend_width=0.25):
+@@ -266 +297,6 @@ def krea2_edit_forward(m, x, timesteps, context, src_latent, transformer_options
+-    ref_ids = _place_refs(ref_ids, [ref_position_a] * (len(ref_ids) - 1) + [ref_position], h_, w_)
++    ref_ids = _place_refs(
++        ref_ids,
++        [ref_position_a] * (len(ref_ids) - 1) + [ref_position],
++        h_, w_,
++        [0.25] * (len(ref_ids) - 1) + [ref_blend_width],
++    )
+@@ -320,0 +357,2 @@ class Krea2EditModelPatch:
++            "ref_blend_width": ("FLOAT", {"default": 0.25, "min": 0.0, "max": 1.0, "step": 0.01, "round": 0.001,
++                                "tooltip": "only affects feathered (75% shift): fraction of the target width over which the positional shift ramps smoothly from zero to one-quarter width. 0 reproduces the original hard 75% shift; 0.25 is the recommended default"}),
+@@ -331 +369,2 @@ class Krea2EditModelPatch:
+-              ref_position="aligned (trained)", ref_position_a="aligned (trained)", **_future):
++              ref_position="aligned (trained)", ref_position_a="aligned (trained)",
++              ref_blend_width=0.25, **_future):
+@@ -418 +457,2 @@ class Krea2EditModelPatch:
+-                                   ref_position=ref_position, ref_position_a=ref_position_a)
++                                   ref_position=ref_position, ref_position_a=ref_position_a,
++                                   ref_blend_width=ref_blend_width)
