@@ -139,23 +139,45 @@ wide perspective, no computational depth map, no DSLR portrait look, and
 legible background people and materials. This reduced the portrait character
 only slightly and did not remove the blur.
 
-The remaining controlled variables are the Inspired placement and the style
+The remaining controlled variables were the Inspired placement and the style
 stack. Inspired starts from an empty latent and places the reference outside the
 target coordinates, giving Krea freedom to fall back to its subject-isolating
-portrait prior. FameGrid 0.5 and Realism Engine 0.5 are likely amplifiers; KNP
-1.0 may also contribute. The queued no-style-LoRA ablation was interrupted when
-the RunPod credit balance reached zero and the H200 pod was automatically
-terminated. If it completed before termination, its persistent output is under
-`output/FocusDiagnosis/inspired_iphone_no_style_loras_00001_.png`.
+portrait prior.
+
+The interrupted ablation was repeated on a B200 with the same source, seed,
+LCM/simple sampler, steps, CFG, explicit iPhone Photo-mode instruction, and
+first-pass graph:
+
+- General Edit + KNP, bypassing FameGrid and Realism Engine
+- General Edit alone, bypassing FameGrid, Realism Engine, and KNP
+
+Both outputs retained pronounced background focus falloff. Removing the style
+LoRAs changed composition and rendering, but did not remove the portrait-like
+depth of field. The style stack is therefore not the root cause.
+
+Two full-stack spatial controls then changed only reference placement. Balanced
+50% recovered more environmental structure but retained visible falloff.
+Feathered 75% kept the beach-bar patrons, palm wrapping, thatch, ropes, stools,
+and cabana structure substantially more legible without the original hard
+quarter-width seam. This confirms that coordinate overlap, rather than prompt
+wording or the optional Alex finish, determines whether Krea inherits the
+reference photograph's phone-like depth.
 
 Proof outputs retained on the network volume:
 
 - `output/FocusDiagnosis/inspired_first_pass_00001_.png`
 - `output/FocusDiagnosis/inspired_iphone_prompt_00001_.png`
+- `output/FocusDiagnosis/inspired_iphone_no_famegrid_realism_00001_.png`
+- `output/FocusDiagnosis/inspired_iphone_general_edit_only_00001_.png`
+- `output/FocusDiagnosis/iphone_balanced_50_full_stack_00001_.png`
+- `output/FocusDiagnosis/iphone_feathered_75_full_stack_00001_.png`
 - `output/FocusFixTest/native_1280x1600_00001_.png` (resolved Close/aligned control)
 
-The next experiment should keep General Edit and KNP active while bypassing
-FameGrid and Realism Engine only for the Inspired first pass. If that resolves
-the background, expose an `iPhone Photo mode` switch that selects this model
-path and appends the tested phone-camera instruction. Until that ablation is
-complete, Balanced or Close is the proven choice for a resolved environment.
+The five diagnostic comparisons are also versioned under
+`research-results/krea2-focus-diagnosis/`. For this Krea2 Turbo stack,
+Inspired/beside should be treated as a scene-invention mode that may introduce
+portrait blur even when it is forbidden in text. Use Feathered 75% when the
+reference has ordinary phone-camera depth and scene variation is still wanted;
+use Close/aligned when preserving the source focus and layout matters more than
+inventing a different view. Post-processing cannot restore details that were
+never generated in an Inspired-mode blurred background.

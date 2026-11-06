@@ -47,6 +47,9 @@ images/
 !training/datasets/vexa_person/*.png
 !research-results/three-way-2026-10-28/**/*.png
 !research-results/three-way-2026-10-28/**/*.jpg
+!research-results/krea2-focus-diagnosis/
+!research-results/krea2-focus-diagnosis/*.png
+!research-results/krea2-focus-diagnosis/README.md
 
 # Local/runtime files.
 .venv/
