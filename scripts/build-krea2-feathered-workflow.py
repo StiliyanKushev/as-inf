@@ -46,7 +46,7 @@ REFERENCE_RULES = (
     "REFERENCE MODE: use the selected photograph as the Krea2 source image. Its "
     "selected 4:5 pixels define the default composition, identity, pose, scene, "
     "depth of field, colorimetry, lighting, and geometry. Preserve every visible "
-    "attribute the authoritative request does not replace. Reproduce the source's "
+    "attribute the authoritative request does not replace. Treat the "
     "source pixels as the only authority for optical focus. Do not translate "
     "ordinary distance softness into a textual blur instruction. Never add or "
     "increase background blur, shallow depth of field, portrait mode, bokeh, soft "
