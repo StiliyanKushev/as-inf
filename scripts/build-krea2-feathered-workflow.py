@@ -303,7 +303,7 @@ def build() -> dict:
                 "link": 126,
             },
         ],
-        "outputs": [{"name": "output", "type": "IMAGE", "links": [63, 64]}],
+        "outputs": [{"name": "output", "type": "IMAGE", "links": [127]}],
         "title": "Reference selected? · apply color match / bypass",
         "properties": {
             "Node name for S&R": "ComfySwitchNode",
@@ -313,15 +313,110 @@ def build() -> dict:
         "widgets_values": [True],
         "widgets_values_named": {"switch": True},
     }
-    workflow["nodes"].extend([color_strength, color_transfer, color_switch])
+    saturation_enabled = {
+        "id": 67,
+        "type": "PrimitiveBoolean",
+        "pos": [-410, -2220],
+        "size": [350, 110],
+        "flags": {},
+        "order": 67,
+        "mode": 0,
+        "inputs": [
+            {
+                "name": "value",
+                "type": "BOOLEAN",
+                "link": None,
+                "widget": {"name": "value"},
+            }
+        ],
+        "outputs": [{"name": "BOOLEAN", "type": "BOOLEAN", "links": [128]}],
+        "title": "APPLY SATURATION ADJUSTMENT",
+        "properties": {
+            "Node name for S&R": "PrimitiveBoolean",
+            "cnr_id": "comfy-core",
+        },
+        "widgets_values": [True],
+        "widgets_values_named": {"value": True},
+        "color": "#493c5b",
+        "bgcolor": "#31293e",
+    }
+    saturation_amount = {
+        "id": 68,
+        "type": "PrimitiveFloat",
+        "pos": [-410, -2080],
+        "size": [350, 110],
+        "flags": {},
+        "order": 68,
+        "mode": 0,
+        "inputs": [
+            {
+                "name": "value",
+                "type": "FLOAT",
+                "link": None,
+                "widget": {"name": "value"},
+            }
+        ],
+        "outputs": [{"name": "FLOAT", "type": "FLOAT", "links": [129]}],
+        "title": "SATURATION · 1.0 = neutral, 0 = grayscale",
+        "properties": {
+            "Node name for S&R": "PrimitiveFloat",
+            "cnr_id": "comfy-core",
+        },
+        "widgets_values": [1.0],
+        "widgets_values_named": {"value": 1.0},
+        "color": "#493c5b",
+        "bgcolor": "#31293e",
+    }
+    saturation_adjust = {
+        "id": 69,
+        "type": "ASInfSaturationAdjust",
+        "pos": [2540, -360],
+        "size": [420, 180],
+        "flags": {},
+        "order": 69,
+        "mode": 0,
+        "inputs": [
+            {"name": "image", "type": "IMAGE", "link": 127},
+            {
+                "name": "enabled",
+                "type": "BOOLEAN",
+                "widget": {"name": "enabled"},
+                "link": 128,
+            },
+            {
+                "name": "saturation",
+                "type": "FLOAT",
+                "widget": {"name": "saturation"},
+                "link": 129,
+            },
+        ],
+        "outputs": [{"name": "image", "type": "IMAGE", "links": [63, 64]}],
+        "title": "Final global saturation adjustment",
+        "properties": {
+            "Node name for S&R": "ASInfSaturationAdjust",
+        },
+        "widgets_values": [True, 1.0],
+        "widgets_values_named": {"enabled": True, "saturation": 1.0},
+    }
+    workflow["nodes"].extend(
+        [
+            color_strength,
+            color_transfer,
+            color_switch,
+            saturation_enabled,
+            saturation_amount,
+            saturation_adjust,
+        ]
+    )
 
-    # Insert the match after FameGrid Color Finish so no later node can undo it.
+    # Insert color matching and saturation after FameGrid Color Finish so no
+    # later image-processing node can undo either adjustment.
     node(workflow, 38)["outputs"][0]["links"] = [121, 124]
     node(workflow, 13)["outputs"][0]["links"].append(122)
     node(workflow, 1)["outputs"][2]["links"].append(126)
     for link in workflow["links"]:
         if link[0] in (63, 64):
-            link[1] = 66
+            link[1] = 69
     workflow["links"].extend(
         [
             [121, 38, 0, 65, 0, "IMAGE"],
@@ -330,22 +425,25 @@ def build() -> dict:
             [124, 38, 0, 66, 0, "IMAGE"],
             [125, 65, 0, 66, 1, "IMAGE"],
             [126, 1, 2, 66, 2, "BOOLEAN"],
+            [127, 66, 0, 69, 0, "IMAGE"],
+            [128, 67, 0, 69, 1, "BOOLEAN"],
+            [129, 68, 0, 69, 2, "FLOAT"],
         ]
     )
 
-    node(workflow, 39)["pos"] = [2540, -360]
-    node(workflow, 41)["pos"] = [2540, -120]
-    node(workflow, 42)["pos"] = [2540, 100]
+    node(workflow, 39)["pos"] = [3000, -360]
+    node(workflow, 41)["pos"] = [3000, -120]
+    node(workflow, 42)["pos"] = [3000, 100]
     for group in workflow.get("groups", []):
         if group["id"] == 6:
-            group["bounding"][2] = 2290
+            group["bounding"][2] = 2750
 
     for link in workflow["links"]:
         if link[0] == 114:
             link[5] = POSITIONS
 
-    workflow["last_node_id"] = 66
-    workflow["last_link_id"] = 126
+    workflow["last_node_id"] = 69
+    workflow["last_link_id"] = 129
     return workflow
 
 
@@ -359,7 +457,9 @@ def validate(workflow: dict) -> None:
     assert node(workflow, 61)["widgets_values"][0] == "Balanced 75% — feathered"
     assert node(workflow, 16)["inputs"][-1]["name"] == "ref_blend_width"
     assert node(workflow, 65)["widgets_values"][0] == "reinhard_lab"
-    assert node(workflow, 66)["outputs"][0]["links"] == [63, 64]
+    assert node(workflow, 66)["outputs"][0]["links"] == [127]
+    assert node(workflow, 69)["outputs"][0]["links"] == [63, 64]
+    assert node(workflow, 68)["widgets_values"][0] == 1.0
 
 
 if __name__ == "__main__":

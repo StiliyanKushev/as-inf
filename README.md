@@ -72,6 +72,9 @@ The same workflow has an optional final reference color match. Its default
 Reinhard Lab strength of `0.35` gently transfers global hue, saturation,
 luminance, and contrast after FameGrid Color Finish; `0` disables it, and the
 stage is bypassed when no scene reference is selected.
+An independent final saturation stage is also exposed in Advanced Settings.
+Its enable toggle is an exact bypass; `1.0` is neutral, values below `1.0` mute
+color, and values above `1.0` increase saturation.
 It preserves the strong original pre-Alex single-reference generation as the
 first pass, then performs a separate conservative identity substitution using
 the finished photograph and one selected Alex portrait. In the measured

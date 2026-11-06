@@ -462,6 +462,60 @@ class SelectIdentityReference:
         return (images[selected_view],)
 
 
+class SaturationAdjust:
+    """Adjust global image saturation with an exact opt-out path.
+
+    ComfyUI images use floating-point RGB in BHWC layout. Interpolating from
+    luminance at 0.0 through the source at 1.0 gives a predictable saturation
+    control without changing image dimensions, geometry, or alpha state.
+    """
+
+    @classmethod
+    def INPUT_TYPES(cls):
+        return {
+            "required": {
+                "image": ("IMAGE",),
+                "enabled": ("BOOLEAN", {"default": True}),
+                "saturation": (
+                    "FLOAT",
+                    {
+                        "default": 1.0,
+                        "min": 0.0,
+                        "max": 3.0,
+                        "step": 0.05,
+                        "tooltip": (
+                            "0.0 is grayscale, 1.0 preserves the input, and "
+                            "values above 1.0 increase saturation."
+                        ),
+                    },
+                ),
+            }
+        }
+
+    RETURN_TYPES = ("IMAGE",)
+    RETURN_NAMES = ("image",)
+    FUNCTION = "adjust"
+    CATEGORY = "AS-INF/image"
+    DESCRIPTION = (
+        "Adjusts global RGB saturation after generation. Disabled is an exact "
+        "bypass; 0 is grayscale, 1 is neutral, and values above 1 increase color."
+    )
+
+    @staticmethod
+    def adjust(image, enabled, saturation):
+        amount = float(saturation)
+        if not bool(enabled) or abs(amount - 1.0) <= 1e-8:
+            return (image,)
+        weights = image.new_tensor((0.299, 0.587, 0.114))
+        luminance = (image[..., :3] * weights).sum(dim=-1, keepdim=True)
+        adjusted_rgb = luminance + (image[..., :3] - luminance) * amount
+        if image.shape[-1] > 3:
+            adjusted = torch.cat((adjusted_rgb, image[..., 3:]), dim=-1)
+        else:
+            adjusted = adjusted_rgb
+        return (adjusted.clamp(0.0, 1.0),)
+
+
 NODE_CLASS_MAPPINGS = {
     "ASInfOptionalReferenceImage": OptionalReferenceImage,
     "ASInfOptionalReferenceCrop3x4": OptionalReferenceCrop3x4,
@@ -472,6 +526,7 @@ NODE_CLASS_MAPPINGS = {
     "ASInfSamplerSettings": SamplerSettings,
     "ASInfReferenceBehavior": ReferenceBehavior,
     "ASInfSelectIdentityReference": SelectIdentityReference,
+    "ASInfSaturationAdjust": SaturationAdjust,
 }
 NODE_DISPLAY_NAME_MAPPINGS = {
     "ASInfOptionalReferenceImage": "Optional Reference Image",
@@ -483,6 +538,7 @@ NODE_DISPLAY_NAME_MAPPINGS = {
     "ASInfSamplerSettings": "Sampler Settings",
     "ASInfReferenceBehavior": "Reference Behavior · Inspired / Seamless Balanced 50% / Seamless Balanced 75% / Close / Pixel-preserving",
     "ASInfSelectIdentityReference": "Select Identity Reference",
+    "ASInfSaturationAdjust": "Saturation Adjustment",
 }
 
 WEB_DIRECTORY = "./web"

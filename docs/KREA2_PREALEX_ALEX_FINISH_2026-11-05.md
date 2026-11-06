@@ -111,6 +111,11 @@ Proof files:
   without changing geometry or adding detail. `0` disables it; `0.2` to `0.5`
   is the recommended range. The node is bypassed automatically in prompt-only
   mode, so an absent reference cannot affect the result.
+- a separate final saturation control runs after reference color matching.
+  `APPLY SATURATION ADJUSTMENT` is an exact bypass toggle. With it enabled,
+  `SATURATION` uses `1.0` as neutral, `0.0` as grayscale, values below `1.0`
+  to mute color, and values above `1.0` to strengthen color. This adjustment
+  works in both reference and prompt-only modes and does not alter geometry.
 - select the Alex portrait closest to the desired head angle when needed
 
 The installer already copies the versioned persona references from

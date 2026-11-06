@@ -1,8 +1,8 @@
 {
   "id": "7a9e995d-ba78-4f17-8b7d-16978bd168df",
   "revision": 0,
-  "last_node_id": 66,
-  "last_link_id": 126,
+  "last_node_id": 69,
+  "last_link_id": 129,
   "nodes": [
     {
       "id": 1,
@@ -3073,7 +3073,7 @@
       "id": 39,
       "type": "SaveImage",
       "pos": [
-        2540,
+        3000,
         -360
       ],
       "size": [
@@ -3218,7 +3218,7 @@
       "id": 41,
       "type": "SaveImage",
       "pos": [
-        2540,
+        3000,
         -120
       ],
       "size": [
@@ -3273,7 +3273,7 @@
       "id": 42,
       "type": "ComfySwitchNode",
       "pos": [
-        2540,
+        3000,
         100
       ],
       "size": [
@@ -4720,8 +4720,7 @@
           "name": "output",
           "type": "IMAGE",
           "links": [
-            63,
-            64
+            127
           ]
         }
       ],
@@ -4736,6 +4735,160 @@
       ],
       "widgets_values_named": {
         "switch": true
+      }
+    },
+    {
+      "id": 67,
+      "type": "PrimitiveBoolean",
+      "pos": [
+        -410,
+        -2220
+      ],
+      "size": [
+        350,
+        110
+      ],
+      "flags": {},
+      "order": 67,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "value",
+          "type": "BOOLEAN",
+          "link": null,
+          "widget": {
+            "name": "value"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "BOOLEAN",
+          "type": "BOOLEAN",
+          "links": [
+            128
+          ]
+        }
+      ],
+      "title": "APPLY SATURATION ADJUSTMENT",
+      "properties": {
+        "Node name for S&R": "PrimitiveBoolean",
+        "cnr_id": "comfy-core"
+      },
+      "widgets_values": [
+        true
+      ],
+      "widgets_values_named": {
+        "value": true
+      },
+      "color": "#493c5b",
+      "bgcolor": "#31293e"
+    },
+    {
+      "id": 68,
+      "type": "PrimitiveFloat",
+      "pos": [
+        -410,
+        -2080
+      ],
+      "size": [
+        350,
+        110
+      ],
+      "flags": {},
+      "order": 68,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "value",
+          "type": "FLOAT",
+          "link": null,
+          "widget": {
+            "name": "value"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "FLOAT",
+          "type": "FLOAT",
+          "links": [
+            129
+          ]
+        }
+      ],
+      "title": "SATURATION \u00b7 1.0 = neutral, 0 = grayscale",
+      "properties": {
+        "Node name for S&R": "PrimitiveFloat",
+        "cnr_id": "comfy-core"
+      },
+      "widgets_values": [
+        1.0
+      ],
+      "widgets_values_named": {
+        "value": 1.0
+      },
+      "color": "#493c5b",
+      "bgcolor": "#31293e"
+    },
+    {
+      "id": 69,
+      "type": "ASInfSaturationAdjust",
+      "pos": [
+        2540,
+        -360
+      ],
+      "size": [
+        420,
+        180
+      ],
+      "flags": {},
+      "order": 69,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "link": 127
+        },
+        {
+          "name": "enabled",
+          "type": "BOOLEAN",
+          "widget": {
+            "name": "enabled"
+          },
+          "link": 128
+        },
+        {
+          "name": "saturation",
+          "type": "FLOAT",
+          "widget": {
+            "name": "saturation"
+          },
+          "link": 129
+        }
+      ],
+      "outputs": [
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "links": [
+            63,
+            64
+          ]
+        }
+      ],
+      "title": "Final global saturation adjustment",
+      "properties": {
+        "Node name for S&R": "ASInfSaturationAdjust"
+      },
+      "widgets_values": [
+        true,
+        1.0
+      ],
+      "widgets_values_named": {
+        "enabled": true,
+        "saturation": 1.0
       }
     }
   ],
@@ -5291,7 +5444,7 @@
     ],
     [
       63,
-      66,
+      69,
       0,
       39,
       0,
@@ -5299,7 +5452,7 @@
     ],
     [
       64,
-      66,
+      69,
       0,
       40,
       0,
@@ -5807,6 +5960,30 @@
       66,
       2,
       "BOOLEAN"
+    ],
+    [
+      127,
+      66,
+      0,
+      69,
+      0,
+      "IMAGE"
+    ],
+    [
+      128,
+      67,
+      0,
+      69,
+      1,
+      "BOOLEAN"
+    ],
+    [
+      129,
+      68,
+      0,
+      69,
+      2,
+      "FLOAT"
     ]
   ],
   "groups": [
@@ -5881,7 +6058,7 @@
       "bounding": [
         690,
         -470,
-        2290,
+        2750,
         760
       ],
       "color": "#48634e",

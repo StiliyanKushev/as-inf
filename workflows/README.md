@@ -35,6 +35,9 @@ Settings. With a scene reference selected, the default `0.35` applies a mild
 Reinhard Lab color transfer after FameGrid Color Finish so the generated photo
 inherits the source's broad hue, saturation, luminance, and contrast. Set it to
 `0` to disable the transfer. Prompt-only runs bypass it automatically.
+Its independent `APPLY SATURATION ADJUSTMENT` toggle and `SATURATION` value run
+after color matching. `1.0` is neutral, `0.0` is grayscale, and values above
+`1.0` increase saturation. Disabling the toggle returns the input unchanged.
 
 `final-kurva-maker-krea2-alex-direct-scene.json` is the preferred close-match workflow when the uploaded image should control the visible scene. It sends the full cropped source beside the target at neutral strength 1.0 and the selected Alex portrait as identity reference B at strength 2.5. This produces a newly arranged nearby viewpoint while retaining the source's scene family, approximate pose, garment design/color, camera character, lighting, crowd density, and materials. A default-on second pass transfers the source expression and face-adjacent styling such as glasses, makeup, jewelry, and headwear onto the generated Alex image; it can be disabled in Advanced Settings. When the selector is `None`, the workflow automatically falls back to the Alex-only prompt route and skips the finish. The optional request may be blank. The validated beach-club results and exact settings are documented in `docs/KREA2_DIRECT_SCENE_REFERENCE_2026-11-05.md`.
 
