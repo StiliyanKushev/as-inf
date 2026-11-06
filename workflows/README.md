@@ -30,6 +30,12 @@ exposed beside this toggle in Advanced Settings; their tested defaults remain
 3.0 and 2.0. See
 `docs/KREA2_PREALEX_ALEX_FINISH_2026-11-05.md`.
 
+The feathered variant additionally exposes `REFERENCE COLOR MATCH` in Advanced
+Settings. With a scene reference selected, the default `0.35` applies a mild
+Reinhard Lab color transfer after FameGrid Color Finish so the generated photo
+inherits the source's broad hue, saturation, luminance, and contrast. Set it to
+`0` to disable the transfer. Prompt-only runs bypass it automatically.
+
 `final-kurva-maker-krea2-alex-direct-scene.json` is the preferred close-match workflow when the uploaded image should control the visible scene. It sends the full cropped source beside the target at neutral strength 1.0 and the selected Alex portrait as identity reference B at strength 2.5. This produces a newly arranged nearby viewpoint while retaining the source's scene family, approximate pose, garment design/color, camera character, lighting, crowd density, and materials. A default-on second pass transfers the source expression and face-adjacent styling such as glasses, makeup, jewelry, and headwear onto the generated Alex image; it can be disabled in Advanced Settings. When the selector is `None`, the workflow automatically falls back to the Alex-only prompt route and skips the finish. The optional request may be blank. The validated beach-club results and exact settings are documented in `docs/KREA2_DIRECT_SCENE_REFERENCE_2026-11-05.md`.
 
 `final-kurva-maker-krea2-alex-scene-text.json` is the simplified direct hybrid validated on 2026-11-04. The uploaded scene is analyzed into text only and its pixels never reach Krea. One selected Alex portrait is Krea's sole visual reference; the model and conditioning switches are locked to that identity-only route. Keep the Alex angle selector on `front` to reproduce the measured setup. This avoided source-person leakage while following two unrelated scene/pose briefs. See `research-results/pixelai_alex_scene_2026-11-04/` for outputs and exact settings.

@@ -104,6 +104,13 @@ Proof files:
   compiler preserves that classification without amplifying it. Prompt-only
   mode defaults to phone-camera deep focus. An explicit request for blur,
   bokeh, portrait mode, or deep focus overrides the automatic rule.
+- the feathered workflow optionally matches the finished image's global color
+  statistics to the selected scene reference after FameGrid Color Finish. The
+  `REFERENCE COLOR MATCH` control uses ComfyUI's core Reinhard Lab transfer at
+  `0.35` by default. It adjusts broad hue, saturation, luminance, and contrast
+  without changing geometry or adding detail. `0` disables it; `0.2` to `0.5`
+  is the recommended range. The node is bypassed automatically in prompt-only
+  mode, so an absent reference cannot affect the result.
 - select the Alex portrait closest to the desired head angle when needed
 
 The installer already copies the versioned persona references from

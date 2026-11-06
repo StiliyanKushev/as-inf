@@ -1,8 +1,8 @@
 {
   "id": "7a9e995d-ba78-4f17-8b7d-16978bd168df",
   "revision": 0,
-  "last_node_id": 63,
-  "last_link_id": 120,
+  "last_node_id": 66,
+  "last_link_id": 126,
   "nodes": [
     {
       "id": 1,
@@ -55,7 +55,8 @@
             47,
             50,
             68,
-            111
+            111,
+            126
           ]
         }
       ],
@@ -947,7 +948,8 @@
             18,
             20,
             42,
-            44
+            44,
+            122
           ]
         }
       ],
@@ -3042,8 +3044,8 @@
           "name": "image",
           "type": "IMAGE",
           "links": [
-            63,
-            64
+            121,
+            124
           ]
         }
       ],
@@ -3071,7 +3073,7 @@
       "id": 39,
       "type": "SaveImage",
       "pos": [
-        2080,
+        2540,
         -360
       ],
       "size": [
@@ -3216,7 +3218,7 @@
       "id": 41,
       "type": "SaveImage",
       "pos": [
-        2080,
+        2540,
         -120
       ],
       "size": [
@@ -3271,7 +3273,7 @@
       "id": 42,
       "type": "ComfySwitchNode",
       "pos": [
-        2080,
+        2540,
         100
       ],
       "size": [
@@ -4553,6 +4555,188 @@
       },
       "color": "#493c5b",
       "bgcolor": "#31293e"
+    },
+    {
+      "id": 64,
+      "type": "PrimitiveFloat",
+      "pos": [
+        -410,
+        -2370
+      ],
+      "size": [
+        350,
+        110
+      ],
+      "flags": {},
+      "order": 64,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "value",
+          "type": "FLOAT",
+          "link": null,
+          "widget": {
+            "name": "value"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "FLOAT",
+          "type": "FLOAT",
+          "links": [
+            123
+          ]
+        }
+      ],
+      "title": "REFERENCE COLOR MATCH \u00b7 0 = off, 0.35 = default",
+      "properties": {
+        "Node name for S&R": "PrimitiveFloat",
+        "cnr_id": "comfy-core"
+      },
+      "widgets_values": [
+        0.35
+      ],
+      "widgets_values_named": {
+        "value": 0.35
+      },
+      "color": "#493c5b",
+      "bgcolor": "#31293e"
+    },
+    {
+      "id": 65,
+      "type": "ColorTransfer",
+      "pos": [
+        2080,
+        -480
+      ],
+      "size": [
+        420,
+        210
+      ],
+      "flags": {},
+      "order": 65,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "image_target",
+          "type": "IMAGE",
+          "link": 121
+        },
+        {
+          "name": "image_ref",
+          "type": "IMAGE",
+          "link": 122
+        },
+        {
+          "name": "method",
+          "type": "COMBO",
+          "widget": {
+            "name": "method"
+          },
+          "link": null
+        },
+        {
+          "name": "source_stats",
+          "type": "COMFY_DYNAMICCOMBO_V3",
+          "widget": {
+            "name": "source_stats"
+          },
+          "link": null
+        },
+        {
+          "name": "strength",
+          "type": "FLOAT",
+          "widget": {
+            "name": "strength"
+          },
+          "link": 123
+        }
+      ],
+      "outputs": [
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "links": [
+            125
+          ]
+        }
+      ],
+      "title": "Match generated color to selected reference \u00b7 Reinhard Lab",
+      "properties": {
+        "Node name for S&R": "ColorTransfer",
+        "cnr_id": "comfy-core",
+        "ver": "0.43.0"
+      },
+      "widgets_values": [
+        "reinhard_lab",
+        "per_frame",
+        0.35
+      ],
+      "widgets_values_named": {
+        "method": "reinhard_lab",
+        "source_stats": "per_frame",
+        "strength": 0.35
+      }
+    },
+    {
+      "id": 66,
+      "type": "ComfySwitchNode",
+      "pos": [
+        2080,
+        -220
+      ],
+      "size": [
+        420,
+        140
+      ],
+      "flags": {},
+      "order": 66,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "on_false",
+          "shape": 7,
+          "type": "IMAGE",
+          "link": 124
+        },
+        {
+          "name": "on_true",
+          "shape": 7,
+          "type": "IMAGE",
+          "link": 125
+        },
+        {
+          "name": "switch",
+          "type": "BOOLEAN",
+          "widget": {
+            "name": "switch"
+          },
+          "link": 126
+        }
+      ],
+      "outputs": [
+        {
+          "name": "output",
+          "type": "IMAGE",
+          "links": [
+            63,
+            64
+          ]
+        }
+      ],
+      "title": "Reference selected? \u00b7 apply color match / bypass",
+      "properties": {
+        "Node name for S&R": "ComfySwitchNode",
+        "cnr_id": "comfy-core",
+        "ver": "0.43.0"
+      },
+      "widgets_values": [
+        true
+      ],
+      "widgets_values_named": {
+        "switch": true
+      }
     }
   ],
   "links": [
@@ -5107,7 +5291,7 @@
     ],
     [
       63,
-      38,
+      66,
       0,
       39,
       0,
@@ -5115,7 +5299,7 @@
     ],
     [
       64,
-      38,
+      66,
       0,
       40,
       0,
@@ -5575,6 +5759,54 @@
       16,
       10,
       "FLOAT"
+    ],
+    [
+      121,
+      38,
+      0,
+      65,
+      0,
+      "IMAGE"
+    ],
+    [
+      122,
+      13,
+      0,
+      65,
+      1,
+      "IMAGE"
+    ],
+    [
+      123,
+      64,
+      0,
+      65,
+      4,
+      "FLOAT"
+    ],
+    [
+      124,
+      38,
+      0,
+      66,
+      0,
+      "IMAGE"
+    ],
+    [
+      125,
+      65,
+      0,
+      66,
+      1,
+      "IMAGE"
+    ],
+    [
+      126,
+      1,
+      2,
+      66,
+      2,
+      "BOOLEAN"
     ]
   ],
   "groups": [
@@ -5649,7 +5881,7 @@
       "bounding": [
         690,
         -470,
-        1830,
+        2290,
         760
       ],
       "color": "#48634e",

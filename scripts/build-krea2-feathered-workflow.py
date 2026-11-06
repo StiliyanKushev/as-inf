@@ -204,12 +204,148 @@ def build() -> dict:
     workflow["nodes"].append(control)
     workflow["links"].append([120, 63, 0, 16, 10, "FLOAT"])
 
+    color_strength = {
+        "id": 64,
+        "type": "PrimitiveFloat",
+        "pos": [-410, -2370],
+        "size": [350, 110],
+        "flags": {},
+        "order": 64,
+        "mode": 0,
+        "inputs": [
+            {
+                "name": "value",
+                "type": "FLOAT",
+                "link": None,
+                "widget": {"name": "value"},
+            }
+        ],
+        "outputs": [{"name": "FLOAT", "type": "FLOAT", "links": [123]}],
+        "title": "REFERENCE COLOR MATCH · 0 = off, 0.35 = default",
+        "properties": {
+            "Node name for S&R": "PrimitiveFloat",
+            "cnr_id": "comfy-core",
+        },
+        "widgets_values": [0.35],
+        "widgets_values_named": {"value": 0.35},
+        "color": "#493c5b",
+        "bgcolor": "#31293e",
+    }
+    color_transfer = {
+        "id": 65,
+        "type": "ColorTransfer",
+        "pos": [2080, -480],
+        "size": [420, 210],
+        "flags": {},
+        "order": 65,
+        "mode": 0,
+        "inputs": [
+            {"name": "image_target", "type": "IMAGE", "link": 121},
+            {"name": "image_ref", "type": "IMAGE", "link": 122},
+            {
+                "name": "method",
+                "type": "COMBO",
+                "widget": {"name": "method"},
+                "link": None,
+            },
+            {
+                "name": "source_stats",
+                "type": "COMFY_DYNAMICCOMBO_V3",
+                "widget": {"name": "source_stats"},
+                "link": None,
+            },
+            {
+                "name": "strength",
+                "type": "FLOAT",
+                "widget": {"name": "strength"},
+                "link": 123,
+            },
+        ],
+        "outputs": [{"name": "image", "type": "IMAGE", "links": [125]}],
+        "title": "Match generated color to selected reference · Reinhard Lab",
+        "properties": {
+            "Node name for S&R": "ColorTransfer",
+            "cnr_id": "comfy-core",
+            "ver": "0.43.0",
+        },
+        "widgets_values": ["reinhard_lab", "per_frame", 0.35],
+        "widgets_values_named": {
+            "method": "reinhard_lab",
+            "source_stats": "per_frame",
+            "strength": 0.35,
+        },
+    }
+    color_switch = {
+        "id": 66,
+        "type": "ComfySwitchNode",
+        "pos": [2080, -220],
+        "size": [420, 140],
+        "flags": {},
+        "order": 66,
+        "mode": 0,
+        "inputs": [
+            {
+                "name": "on_false",
+                "shape": 7,
+                "type": "IMAGE",
+                "link": 124,
+            },
+            {
+                "name": "on_true",
+                "shape": 7,
+                "type": "IMAGE",
+                "link": 125,
+            },
+            {
+                "name": "switch",
+                "type": "BOOLEAN",
+                "widget": {"name": "switch"},
+                "link": 126,
+            },
+        ],
+        "outputs": [{"name": "output", "type": "IMAGE", "links": [63, 64]}],
+        "title": "Reference selected? · apply color match / bypass",
+        "properties": {
+            "Node name for S&R": "ComfySwitchNode",
+            "cnr_id": "comfy-core",
+            "ver": "0.43.0",
+        },
+        "widgets_values": [True],
+        "widgets_values_named": {"switch": True},
+    }
+    workflow["nodes"].extend([color_strength, color_transfer, color_switch])
+
+    # Insert the match after FameGrid Color Finish so no later node can undo it.
+    node(workflow, 38)["outputs"][0]["links"] = [121, 124]
+    node(workflow, 13)["outputs"][0]["links"].append(122)
+    node(workflow, 1)["outputs"][2]["links"].append(126)
+    for link in workflow["links"]:
+        if link[0] in (63, 64):
+            link[1] = 66
+    workflow["links"].extend(
+        [
+            [121, 38, 0, 65, 0, "IMAGE"],
+            [122, 13, 0, 65, 1, "IMAGE"],
+            [123, 64, 0, 65, 4, "FLOAT"],
+            [124, 38, 0, 66, 0, "IMAGE"],
+            [125, 65, 0, 66, 1, "IMAGE"],
+            [126, 1, 2, 66, 2, "BOOLEAN"],
+        ]
+    )
+
+    node(workflow, 39)["pos"] = [2540, -360]
+    node(workflow, 41)["pos"] = [2540, -120]
+    node(workflow, 42)["pos"] = [2540, 100]
+    for group in workflow.get("groups", []):
+        if group["id"] == 6:
+            group["bounding"][2] = 2290
+
     for link in workflow["links"]:
         if link[0] == 114:
             link[5] = POSITIONS
 
-    workflow["last_node_id"] = 63
-    workflow["last_link_id"] = 120
+    workflow["last_node_id"] = 66
+    workflow["last_link_id"] = 126
     return workflow
 
 
@@ -222,6 +358,8 @@ def validate(workflow: dict) -> None:
     assert max(link_ids) == workflow["last_link_id"]
     assert node(workflow, 61)["widgets_values"][0] == "Balanced 75% — feathered"
     assert node(workflow, 16)["inputs"][-1]["name"] == "ref_blend_width"
+    assert node(workflow, 65)["widgets_values"][0] == "reinhard_lab"
+    assert node(workflow, 66)["outputs"][0]["links"] == [63, 64]
 
 
 if __name__ == "__main__":

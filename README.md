@@ -68,6 +68,10 @@ Its prompt compiler also treats background focus as source-controlled: sharp
 references remain sharp, genuine source bokeh is preserved, and prompt-only
 generation defaults to ordinary phone-camera deep focus unless the request
 explicitly asks for blur.
+The same workflow has an optional final reference color match. Its default
+Reinhard Lab strength of `0.35` gently transfers global hue, saturation,
+luminance, and contrast after FameGrid Color Finish; `0` disables it, and the
+stage is bypassed when no scene reference is selected.
 It preserves the strong original pre-Alex single-reference generation as the
 first pass, then performs a separate conservative identity substitution using
 the finished photograph and one selected Alex portrait. In the measured
