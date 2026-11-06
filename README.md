@@ -64,9 +64,11 @@ It keeps the original 75% overlap mode available and adds **Balanced 75% —
 feathered**. Its exposed blend-width control ramps the quarter-canvas positional
 shift with smoothstep instead of introducing it at one hard boundary. `0.25` is
 the starting value; `0` reproduces the original hard shift for direct A/B tests.
-Its prompt compiler also treats background focus as source-controlled: sharp
-references remain sharp, genuine source bokeh is preserved, and prompt-only
-generation defaults to ordinary phone-camera deep focus unless the request
+Its prompt compiler treats background focus as pixel-controlled. Automatic
+reference prose cannot request shallow depth of field or bokeh, preventing
+ordinary distance softness from being amplified into portrait-mode blur. Real
+source softness can still pass through image conditioning, while prompt-only
+generation defaults to ordinary phone-camera deep focus unless the user request
 explicitly asks for blur.
 The same workflow has an optional final reference color match. Its default
 Reinhard Lab strength of `0.35` gently transfers global hue, saturation,

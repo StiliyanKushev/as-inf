@@ -99,11 +99,13 @@ Proof files:
 - `FEATHER BLEND WIDTH` is a fraction of target width and affects only the
   feathered mode. The saved default is `0.25`; `0` deliberately reproduces the
   original hard 75% shift for controlled comparisons.
-- background focus is conditional rather than a generic portrait default. Qwen
-  classifies the selected source as sharp, mildly soft, or true bokeh; the
-  compiler preserves that classification without amplifying it. Prompt-only
-  mode defaults to phone-camera deep focus. An explicit request for blur,
-  bokeh, portrait mode, or deep focus overrides the automatic rule.
+- background focus is pixel-controlled rather than generated from Qwen's prose.
+  The reference analyzer is forbidden from turning ordinary distance softness
+  into shallow-depth-of-field or bokeh language, and the compiler removes such
+  language unless it appears in the authoritative user request. The reference
+  pixels can still carry real optical softness into Krea without a text prompt
+  that amplifies it. Prompt-only mode defaults to phone-camera deep focus; an
+  explicit user request for blur, bokeh, portrait mode, or deep focus wins.
 - the feathered workflow optionally matches the finished image's global color
   statistics to the selected scene reference after FameGrid Color Finish. The
   `REFERENCE COLOR MATCH` control uses ComfyUI's core Reinhard Lab transfer at
