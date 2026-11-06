@@ -99,6 +99,11 @@ Proof files:
 - `FEATHER BLEND WIDTH` is a fraction of target width and affects only the
   feathered mode. The saved default is `0.25`; `0` deliberately reproduces the
   original hard 75% shift for controlled comparisons.
+- background focus is conditional rather than a generic portrait default. Qwen
+  classifies the selected source as sharp, mildly soft, or true bokeh; the
+  compiler preserves that classification without amplifying it. Prompt-only
+  mode defaults to phone-camera deep focus. An explicit request for blur,
+  bokeh, portrait mode, or deep focus overrides the automatic rule.
 - select the Alex portrait closest to the desired head angle when needed
 
 The installer already copies the versioned persona references from
